@@ -6,11 +6,13 @@
   --bg: #FFFFFF; --bg-warm: #FAF8F4;
   --card: #F5F5F7; --card-2: #ECECEE;
   --card-dark: #1D1D1F; --card-cream: #FAF6EE;
+  --surface-1: #F5F5F7;
   --text: #1D1D1F; --text-2: #6E6E73; --text-3: #86868B;
   --accent: #E89318; --accent-soft: #F5A623;
-  --line: #D2D2D7;
+  --line: #D2D2D7; --border: #D2D2D7;
   --radius: 22px; --radius-lg: 32px;
   --gap: 20px; --pad-x: 64px; --pad-y: 56px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --dur: 700ms; --dur-hero: 950ms;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
 }

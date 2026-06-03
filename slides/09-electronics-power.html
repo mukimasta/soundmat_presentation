@@ -1,0 +1,46 @@
+<section class="slide bento" id="slide-9">
+  <div class="slide-header">
+    <div>
+      <div class="slide-eyebrow">Power module</div>
+      <h2 class="slide-title">One USB-C, 45 W peak, no outlet required</h2>
+    </div>
+    <div class="slide-index">09</div>
+  </div>
+  <div class="bento-grid">
+
+    <!-- ======== HERO · hand-drawn power schematic ======== -->
+    <div class="bento-card c-hero image-card flush">
+      <img class="cover-img"
+           src="soundmat/electronics-power-module.png"
+           alt="Hand-drawn power module schematic: USB-C PD trigger, DC buck converter, star grounding, 1000µF decoupling, dual-feed LED."
+           loading="lazy">
+      <div class="card-overlay-label">Hand-drawn schematic · actual boards beneath</div>
+    </div>
+
+    <!-- ======== c1 · 20V accent ======== -->
+    <div class="bento-card c1 accent">
+      <div class="card-label" style="color: rgba(255,255,255,0.78)">USB-C PD trigger</div>
+      <div class="card-stretch">
+        <div>
+          <div class="card-big-num"><span data-countup="20">20</span><span class="num-unit">V</span></div>
+          <div style="font-size:18px; opacity:0.92; margin-top:8px; font-weight:600">From any laptop brick or power bank</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== c2 · Why 20V then buck ======== -->
+    <div class="bento-card c2">
+      <div class="card-label">Why high then low</div>
+      <div class="card-title" style="font-size:22px">20V down the cable. 5V at the load.</div>
+      <div class="card-body sm">45 W at 5V draws 9 A — wires get fat and voltage sags. At 20V it's 2.3 A; the buck steps down close to the loads. Same wall plug, half the copper.</div>
+    </div>
+
+    <!-- ======== c3 · Protect the data line ======== -->
+    <div class="bento-card c3 dark">
+      <div class="card-label" style="color: rgba(255,255,255,0.78)">Protect the data line</div>
+      <div class="card-title" style="color:white; font-size:22px">Star GND · 1000µF · 330Ω</div>
+      <div class="card-body sm" style="color: rgba(255,255,255,0.78)">WS2812B blinks burn through 6 A of inrush. Star-grounding stops shared returns from talking to the Pi; the bulk cap absorbs the spike at the strip; a 330Ω damper at the first LED kills DIN ringing.</div>
+    </div>
+
+  </div>
+</section>

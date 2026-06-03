@@ -1,0 +1,191 @@
+<section class="slide bento" id="slide-7">
+  <div class="slide-header">
+    <div>
+      <div class="slide-eyebrow">Sensor</div>
+      <h2 class="slide-title">A 224-zone polar pressure mat — without the phantoms</h2>
+    </div>
+    <div class="slide-index">07</div>
+  </div>
+  <div class="bento-grid">
+
+    <!-- ======== HERO · ghost-path comparison ======== -->
+    <div class="bento-card c-hero">
+      <div class="card-label">Ghost path</div>
+      <div class="card-title">Pull idle rows to GND, not float.</div>
+      <div class="ghost-diagram-wrap">
+        <svg class="ghost-diagram" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="cellHatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="6" stroke="#1D1D1F" stroke-width="0.5" opacity="0.18"/>
+            </pattern>
+          </defs>
+
+          <!-- ===== LEFT panel: FLOAT (with phantom) ===== -->
+          <g transform="translate(20 30)">
+            <!-- background -->
+            <rect x="-2" y="-2" width="244" height="204" rx="6" fill="white" stroke="#D2D2D7" stroke-width="1"/>
+            <!-- row labels -->
+            <g font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#86868B">
+              <text x="-12" y="25"  text-anchor="end">R0</text>
+              <text x="-12" y="75"  text-anchor="end">R1</text>
+              <text x="-12" y="125" text-anchor="end">R2</text>
+              <text x="-12" y="175" text-anchor="end">R3</text>
+            </g>
+            <text x="-12" y="22" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#E89318" font-weight="700">HIGH</text>
+            <text x="-12" y="72" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
+            <text x="-12" y="122" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
+            <text x="-12" y="172" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
+
+            <!-- 4x4 grid base -->
+            <g>
+              <!-- background cells -->
+              <g fill="url(#cellHatch)">
+                <rect x="0"   y="0"   width="60" height="50"/>
+                <rect x="60"  y="0"   width="60" height="50"/>
+                <rect x="120" y="0"   width="60" height="50"/>
+                <rect x="180" y="0"   width="60" height="50"/>
+                <rect x="0"   y="50"  width="60" height="50"/>
+                <rect x="60"  y="50"  width="60" height="50"/>
+                <rect x="120" y="50"  width="60" height="50"/>
+                <rect x="180" y="50"  width="60" height="50"/>
+                <rect x="0"   y="100" width="60" height="50"/>
+                <rect x="60"  y="100" width="60" height="50"/>
+                <rect x="120" y="100" width="60" height="50"/>
+                <rect x="180" y="100" width="60" height="50"/>
+                <rect x="0"   y="150" width="60" height="50"/>
+                <rect x="60"  y="150" width="60" height="50"/>
+                <rect x="120" y="150" width="60" height="50"/>
+                <rect x="180" y="150" width="60" height="50"/>
+              </g>
+              <!-- lit cells (real reads, orange) -->
+              <rect x="0"   y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
+              <rect x="180" y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
+              <rect x="0"   y="100" width="60" height="50" fill="#F5A623" opacity="0.85"/>
+              <!-- PHANTOM cell (ghost, dashed outline) -->
+              <rect x="180" y="100" width="60" height="50" fill="#FF3B30" fill-opacity="0.32"
+                    stroke="#FF3B30" stroke-width="2" stroke-dasharray="5 3"/>
+              <!-- grid lines on top -->
+              <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.6">
+                <line x1="0" y1="0"   x2="240" y2="0"/>
+                <line x1="0" y1="50"  x2="240" y2="50"/>
+                <line x1="0" y1="100" x2="240" y2="100"/>
+                <line x1="0" y1="150" x2="240" y2="150"/>
+                <line x1="0" y1="200" x2="240" y2="200"/>
+                <line x1="0"   y1="0" x2="0"   y2="200"/>
+                <line x1="60"  y1="0" x2="60"  y2="200"/>
+                <line x1="120" y1="0" x2="120" y2="200"/>
+                <line x1="180" y1="0" x2="180" y2="200"/>
+                <line x1="240" y1="0" x2="240" y2="200"/>
+              </g>
+              <!-- stones on (R0,C0), (R0,C3), (R2,C0) -->
+              <ellipse cx="30"  cy="25"  rx="14" ry="9"  fill="#3D2E1F"/>
+              <ellipse cx="210" cy="25"  rx="16" ry="10" fill="#3D2E1F"/>
+              <ellipse cx="30"  cy="125" rx="14" ry="9"  fill="#3D2E1F"/>
+              <!-- "?" mark on phantom -->
+              <text x="210" y="132" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="22" font-weight="800" fill="#FF3B30">?</text>
+            </g>
+
+            <!-- panel label -->
+            <text x="120" y="232" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#1D1D1F" letter-spacing="3">FLOAT</text>
+            <text x="120" y="254" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#FF3B30">3 presses → 4 reads (1 phantom)</text>
+          </g>
+
+          <!-- divider -->
+          <line x1="296" y1="20" x2="296" y2="280" stroke="#D2D2D7" stroke-width="1" stroke-dasharray="3 4"/>
+
+          <!-- ===== RIGHT panel: GND (clean) ===== -->
+          <g transform="translate(320 30)">
+            <rect x="-2" y="-2" width="244" height="204" rx="6" fill="white" stroke="#D2D2D7" stroke-width="1"/>
+            <g font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#86868B">
+              <text x="-12" y="25"  text-anchor="end">R0</text>
+              <text x="-12" y="75"  text-anchor="end">R1</text>
+              <text x="-12" y="125" text-anchor="end">R2</text>
+              <text x="-12" y="175" text-anchor="end">R3</text>
+            </g>
+            <text x="-12" y="22" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#E89318" font-weight="700">HIGH</text>
+            <text x="-12" y="72" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
+            <text x="-12" y="122" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
+            <text x="-12" y="172" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
+
+            <g>
+              <g fill="url(#cellHatch)">
+                <rect x="0"   y="0"   width="60" height="50"/>
+                <rect x="60"  y="0"   width="60" height="50"/>
+                <rect x="120" y="0"   width="60" height="50"/>
+                <rect x="180" y="0"   width="60" height="50"/>
+                <rect x="0"   y="50"  width="60" height="50"/>
+                <rect x="60"  y="50"  width="60" height="50"/>
+                <rect x="120" y="50"  width="60" height="50"/>
+                <rect x="180" y="50"  width="60" height="50"/>
+                <rect x="0"   y="100" width="60" height="50"/>
+                <rect x="60"  y="100" width="60" height="50"/>
+                <rect x="120" y="100" width="60" height="50"/>
+                <rect x="180" y="100" width="60" height="50"/>
+                <rect x="0"   y="150" width="60" height="50"/>
+                <rect x="60"  y="150" width="60" height="50"/>
+                <rect x="120" y="150" width="60" height="50"/>
+                <rect x="180" y="150" width="60" height="50"/>
+              </g>
+              <!-- lit cells (real reads only) -->
+              <rect x="0"   y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
+              <rect x="180" y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
+              <rect x="0"   y="100" width="60" height="50" fill="#F5A623" opacity="0.85"/>
+              <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.6">
+                <line x1="0" y1="0"   x2="240" y2="0"/>
+                <line x1="0" y1="50"  x2="240" y2="50"/>
+                <line x1="0" y1="100" x2="240" y2="100"/>
+                <line x1="0" y1="150" x2="240" y2="150"/>
+                <line x1="0" y1="200" x2="240" y2="200"/>
+                <line x1="0"   y1="0" x2="0"   y2="200"/>
+                <line x1="60"  y1="0" x2="60"  y2="200"/>
+                <line x1="120" y1="0" x2="120" y2="200"/>
+                <line x1="180" y1="0" x2="180" y2="200"/>
+                <line x1="240" y1="0" x2="240" y2="200"/>
+              </g>
+              <ellipse cx="30"  cy="25"  rx="14" ry="9"  fill="#3D2E1F"/>
+              <ellipse cx="210" cy="25"  rx="16" ry="10" fill="#3D2E1F"/>
+              <ellipse cx="30"  cy="125" rx="14" ry="9"  fill="#3D2E1F"/>
+            </g>
+
+            <text x="120" y="232" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#1D1D1F" letter-spacing="3">GND</text>
+            <text x="120" y="254" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#2D7A2D">3 presses → 3 reads</text>
+          </g>
+        </svg>
+      </div>
+      <div class="card-body sm">When you scan one ring, current sneaks back through any pressed cells on idle rings — every L-shaped trio fakes a fourth read. Clamping idle rings to ground kills the return path.</div>
+    </div>
+
+    <!-- ======== c1 · 224 zones (accent number) ======== -->
+    <div class="bento-card c1 accent">
+      <div class="card-label" style="color: rgba(255,255,255,0.78)">Sensing zones</div>
+      <div class="card-stretch">
+        <div>
+          <div class="card-big-num" data-countup="224">224</div>
+          <div style="font-size:18px; opacity:0.92; margin-top:8px; font-weight:600">8 rings · 32 slices · polar</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== c2 · Crosstalk acknowledged ======== -->
+    <div class="bento-card c2">
+      <div class="card-label">Crosstalk</div>
+      <div class="card-title" style="font-size:22px">Accepted by design.</div>
+      <div class="card-body sm">Multi-press still drags column voltage — physics, not bugs. Inner two rings use 16 slices instead of 32 to keep cell area honest, and gaps stay at 3.5 mm.</div>
+    </div>
+
+    <!-- ======== c3 · Auto design tool ======== -->
+    <div class="bento-card c3 dark">
+      <div class="card-label" style="color: rgba(255,255,255,0.78)">Tooling</div>
+      <div class="card-title" style="color:white; font-size:22px"><span style="font-family: var(--font-mono); font-size:0.85em; color:#F5A623">sensor_design_tool</span></div>
+      <div class="card-body sm" style="color: rgba(255,255,255,0.78)">Vibe-coded in Cursor. Type ring count, slice count, diameter — get a laser-ready SVG / PDF. We re-cut the whole mat in an afternoon.</div>
+      <div class="tool-pipeline">
+        <span>params</span>
+        <span class="arr">→</span>
+        <span>geometry</span>
+        <span class="arr">→</span>
+        <span>SVG / PDF</span>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -23,8 +23,9 @@ html, body {
 .slide.hero { align-items: center; justify-content: center; text-align: center; }
 
 .hero-eyebrow {
-  font-size: 14px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.18em;
+  font-size: clamp(28px, 2.6vw, 40px);
+  font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
   color: var(--accent); margin-bottom: 36px;
 }
 .hero-title {
@@ -78,13 +79,16 @@ html, body {
   margin-bottom: 4px; padding: 0 4px;
 }
 .slide-eyebrow {
-  font-size: 13px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--accent);
+  font-size: clamp(26px, 2.4vw, 38px);
+  font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--accent); margin-bottom: 8px;
+  line-height: 1.05;
 }
 .slide-title {
-  font-size: 34px; font-weight: 700;
-  letter-spacing: -0.025em;
+  font-size: clamp(30px, 2.9vw, 40px);
+  font-weight: 700; letter-spacing: -0.028em;
+  line-height: 1.1;
 }
 .slide-index {
   font-size: 13px; color: var(--text-3);
@@ -107,29 +111,37 @@ html, body {
   min-width: 0; min-height: 0;
 }
 .bento-card.dark { background: var(--card-dark); color: white; }
-.bento-card.dark .card-body { color: rgba(255,255,255,0.65); }
-.bento-card.dark .card-label { color: rgba(255,255,255,0.45); }
+.bento-card.dark .card-body { color: rgba(255,255,255,0.72); }
+.bento-card.dark .card-label { color: rgba(255,255,255,0.62); }
 .bento-card.cream { background: var(--card-cream); }
 .bento-card.accent { background: linear-gradient(135deg, #F5A623, #D67D0C); color: white; }
+.bento-card.accent .card-body { color: rgba(255,255,255,0.85); }
+.bento-card.accent .card-label { color: rgba(255,255,255,0.8); }
 .bento-card.image-card { padding: 0; }
 .bento-card.tight { padding: 26px; }
 
 .card-label {
-  font-size: 11px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.14em;
-  color: var(--text-3); margin-bottom: 14px;
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-2); margin-bottom: 14px;
 }
 .card-title {
-  font-size: 26px; font-weight: 600;
-  letter-spacing: -0.02em; line-height: 1.18;
+  font-size: clamp(24px, 1.95vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em; line-height: 1.2;
   color: inherit;
 }
-.card-title.lg { font-size: 34px; font-weight: 700; }
+.card-title.lg {
+  font-size: clamp(30px, 2.4vw, 38px);
+  font-weight: 700;
+}
 .card-body {
-  font-size: 16px; color: var(--text-2);
+  font-size: clamp(15px, 1.15vw, 18px);
+  color: var(--text-2);
   line-height: 1.45; margin-top: 10px;
 }
-.card-body.sm { font-size: 14px; }
+.card-body.sm { font-size: clamp(13px, 1vw, 16px); }
 .card-big-num {
   font-size: clamp(72px, 8vw, 108px);
   font-weight: 700; letter-spacing: -0.045em;
@@ -151,8 +163,9 @@ html, body {
 .slide.zoom { align-items: center; justify-content: center; text-align: center; }
 .zoom-content { width: 100%; max-width: 1500px; }
 .zoom-eyebrow {
-  font-size: 13px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.16em;
+  font-size: clamp(24px, 2.2vw, 34px);
+  font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
   color: var(--accent); margin-bottom: 28px;
 }
 .zoom-title {
@@ -316,6 +329,7 @@ svg.diagram { width: 100%; height: 100%; display: block; }
 .slide.active .zoom-content > *:nth-child(2) { animation-delay: 200ms; }
 .slide.active .zoom-content > *:nth-child(3) { animation-delay: 320ms; }
 .slide.active .zoom-content > *:nth-child(4) { animation-delay: 480ms; }
+.slide.active .zoom-content > *:nth-child(5) { animation-delay: 620ms; }
 @keyframes enterUp {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }

@@ -11,30 +11,28 @@ function read(path) {
   return readFileSync(path, 'utf8');
 }
 
-function stripActive(html) {
-  return html.replace(/class="([^"]*)"/, (_, classes) => {
-    const c = classes.replace(/\bactive\b/g, '').replace(/\s+/g, ' ').trim();
-    return `class="${c}"`;
+function processSlideRoot(html, name, index, isFirst) {
+  // Stable name-based class (strip leading "NN-" so reordering doesn't churn CSS)
+  const stable = `s-${name.replace(/^\d+-/, '')}`;
+  // Replace numeric id to match runtime position (still used by URL hash)
+  html = html.replace(/id="slide-\d+"/, `id="slide-${index}"`);
+  // Patch the first class= attribute (the slide root)
+  html = html.replace(/class="([^"]*)"/, (_, classes) => {
+    let parts = classes
+      .split(/\s+/)
+      .filter(c => c && c !== 'active' && !c.startsWith('s-'));
+    parts.push(stable);
+    if (isFirst) parts.push('active');
+    return `class="${parts.join(' ')}"`;
   });
-}
-
-function assignSlideIds(html, index) {
-  return html.replace(/id="slide-\d+"/, `id="slide-${index}"`);
+  return html;
 }
 
 const manifest = JSON.parse(read(manifestPath));
 const slidesHtml = manifest
   .map((name, i) => {
     let html = read(join(root, 'slides', `${name}.html`)).trim();
-    html = stripActive(html);
-    html = assignSlideIds(html, i + 1);
-    if (i === 0) {
-      html = html.replace(/class="([^"]*)"/, (_, classes) => {
-        const c = classes.replace(/\bactive\b/g, '').replace(/\s+/g, ' ').trim();
-        return `class="${c} active"`;
-      });
-    }
-    return html;
+    return processSlideRoot(html, name, i + 1, i === 0);
   })
   .join('\n\n');
 

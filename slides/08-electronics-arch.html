@@ -1,0 +1,175 @@
+<section class="slide zoom" id="slide-8"
+  data-step-titles='["Five modules, one shell","POWER","COMPUTE","I/O"]'
+  data-step-subs='["USB-C in, 3.5 mm audio out — everything else is hidden under the felt.","USB-C PD requests 20V, a buck steps to 5V, then it splits — one rail for the LED strip, one rail for the Pi.","Pi 3B runs Python + SuperCollider; an ESP32 handles every GPIO — ADC for the mat, level-shifted DIN for the LEDs.","WS2812B strip out, polar sensor in, USB DAC drops 3.5 mm to the speaker."]'>
+  <div class="zoom-content arch-zoom-content">
+    <div class="zoom-eyebrow">Electronics</div>
+    <h2 class="zoom-title" data-step-title>Five modules, one shell</h2>
+    <p class="zoom-caption" data-step-sub>USB-C in, 3.5 mm audio out — everything else is hidden under the felt.</p>
+
+    <div class="arch-stage-wrap">
+      <svg id="archDiagram" class="arch-diagram" viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="archArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#6E6E73"/>
+          </marker>
+          <marker id="archArrAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#E89318"/>
+          </marker>
+        </defs>
+
+        <g id="archStage" transform="translate(0 0) scale(1)">
+
+          <!-- ============= POWER (step 1) ============= -->
+          <g class="arch-zone" data-step="1">
+            <!-- USB-C jack icon -->
+            <rect x="568" y="42" width="64" height="22" rx="11" fill="#1D1D1F"/>
+            <rect x="576" y="50" width="48" height="8"  rx="3" fill="#444"/>
+            <line x1="600" y1="64" x2="600" y2="84" stroke="#1D1D1F" stroke-width="2.5"/>
+            <text x="600" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="#86868B">USB-C in</text>
+
+            <rect x="180" y="84" width="840" height="148" rx="14"
+                  fill="#FAF6EE" stroke="#E89318" stroke-width="2.5"/>
+            <text x="212" y="120" font-size="18" font-weight="800" fill="#E89318" letter-spacing="3">POWER</text>
+
+            <!-- PD trigger sub-block -->
+            <rect x="260" y="142" width="180" height="62" rx="8" fill="white" stroke="#1D1D1F" stroke-width="1.5"/>
+            <text x="350" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#1D1D1F">PD trigger</text>
+            <text x="350" y="190" text-anchor="middle" font-size="22" font-weight="800" fill="#E89318">20V</text>
+
+            <line x1="445" y1="173" x2="495" y2="173" stroke="#1D1D1F" stroke-width="2.5" marker-end="url(#archArr)"/>
+
+            <!-- Buck sub-block -->
+            <rect x="500" y="142" width="180" height="62" rx="8" fill="white" stroke="#1D1D1F" stroke-width="1.5"/>
+            <text x="590" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#1D1D1F">Buck</text>
+            <text x="590" y="190" text-anchor="middle" font-size="14" font-weight="700" fill="#1D1D1F">20V → 5V · ≥5A</text>
+
+            <line x1="685" y1="173" x2="735" y2="173" stroke="#1D1D1F" stroke-width="2.5"/>
+            <text x="710" y="160" text-anchor="middle" font-size="14" fill="#1D1D1F" font-weight="800">5V</text>
+
+            <!-- Split junction node -->
+            <circle cx="735" cy="173" r="5" fill="#1D1D1F"/>
+            <text x="760" y="178" font-size="13" font-weight="700" fill="#86868B">→ split</text>
+          </g>
+
+          <!-- power lines down (step 1) -->
+          <g class="arch-conn" data-step="1">
+            <!-- to LED (left) -->
+            <path d="M 735 178 L 735 250 L 200 250 L 200 310"
+                  stroke="#1D1D1F" stroke-width="3" fill="none"/>
+            <text x="370" y="244" font-size="13" font-weight="800" fill="#1D1D1F">5V → LED</text>
+            <!-- to COMPUTE (right) -->
+            <path d="M 735 178 L 735 250 L 600 250 L 600 310"
+                  stroke="#1D1D1F" stroke-width="3" fill="none"/>
+            <text x="612" y="290" font-size="13" font-weight="800" fill="#1D1D1F">5V → Pi</text>
+          </g>
+
+          <!-- ============= LED (step 3) ============= -->
+          <g class="arch-zone" data-step="3">
+            <rect x="80" y="310" width="240" height="130" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="108" y="342" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">LED</text>
+            <!-- strip icon -->
+            <g transform="translate(200 388)">
+              <rect x="-80" y="-13" width="160" height="26" rx="3" fill="#2A2724"/>
+              <circle cx="-60" cy="0" r="5" fill="#F5A623"/>
+              <circle cx="-30" cy="0" r="5" fill="#F5A623"/>
+              <circle cx="0"   cy="0" r="5" fill="#F5A623"/>
+              <circle cx="30"  cy="0" r="5" fill="#F5A623"/>
+              <circle cx="60"  cy="0" r="5" fill="#F5A623"/>
+            </g>
+            <text x="200" y="426" text-anchor="middle" font-size="13" fill="#86868B" font-weight="700">WS2812B · 108 LEDs</text>
+          </g>
+
+          <!-- Level shifter ellipse -->
+          <g class="arch-zone" data-step="3">
+            <ellipse cx="360" cy="388" rx="32" ry="22" fill="#FAF6EE" stroke="#E89318" stroke-width="1.5"/>
+            <text x="360" y="384" text-anchor="middle" font-size="11" font-weight="800" fill="#1D1D1F">Level</text>
+            <text x="360" y="398" text-anchor="middle" font-size="11" font-weight="800" fill="#1D1D1F">shift</text>
+          </g>
+
+          <!-- ============= COMPUTE (step 2) ============= -->
+          <g class="arch-zone" data-step="2">
+            <rect x="400" y="310" width="440" height="180" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2.5"/>
+            <text x="428" y="342" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">COMPUTE</text>
+
+            <!-- Pi sub-box -->
+            <rect x="430" y="356" width="180" height="64" rx="8" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.2"/>
+            <text x="520" y="384" text-anchor="middle" font-size="15" font-weight="800" fill="#1D1D1F">Raspberry Pi 3B</text>
+            <text x="520" y="406" text-anchor="middle" font-size="12" fill="#6E6E73" font-weight="600">Python + SuperCollider</text>
+
+            <!-- ESP32 sub-box -->
+            <rect x="630" y="356" width="180" height="64" rx="8" fill="#1D1D1F"/>
+            <text x="720" y="384" text-anchor="middle" font-size="15" font-weight="800" fill="#F5A623">ESP32</text>
+            <text x="720" y="406" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">ADC + LED ctl</text>
+
+            <!-- Pi <-> ESP32 link -->
+            <line x1="610" y1="388" x2="630" y2="388" stroke="#86868B" stroke-width="1.8" stroke-dasharray="3 3"/>
+            <text x="620" y="378" text-anchor="middle" font-size="10" fill="#86868B" font-weight="700">USB</text>
+
+            <text x="620" y="464" text-anchor="middle" font-size="12" fill="#6E6E73" font-weight="600">SBC for software · MCU for every GPIO</text>
+          </g>
+
+          <!-- ESP32 → Level shifter → LED (step 3) -->
+          <g class="arch-conn" data-step="3">
+            <path d="M 660 420 L 660 460 L 360 460 L 360 410"
+                  stroke="#6E6E73" stroke-width="1.8" fill="none" marker-end="url(#archArr)"/>
+            <text x="500" y="454" text-anchor="middle" font-size="12" fill="#6E6E73" font-weight="700">DIN · 3.3V → 5V</text>
+          </g>
+
+          <!-- ============= SENSOR (step 3) ============= -->
+          <g class="arch-zone" data-step="3">
+            <rect x="880" y="310" width="240" height="130" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="908" y="342" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">SENSOR</text>
+            <!-- mini polar mat -->
+            <g transform="translate(1000 388)">
+              <circle cx="0" cy="0" r="32" fill="#FAF6EE" stroke="#2A2724" stroke-width="1.5"/>
+              <circle cx="0" cy="0" r="10" fill="none" stroke="#86868B" stroke-width="0.6" opacity="0.6"/>
+              <circle cx="0" cy="0" r="21" fill="none" stroke="#86868B" stroke-width="0.6" opacity="0.6"/>
+              <line x1="0" y1="-32" x2="0" y2="32" stroke="#86868B" stroke-width="0.5" opacity="0.5"/>
+              <line x1="-32" y1="0" x2="32" y2="0" stroke="#86868B" stroke-width="0.5" opacity="0.5"/>
+              <line x1="-23" y1="-23" x2="23" y2="23" stroke="#86868B" stroke-width="0.4" opacity="0.4"/>
+              <line x1="-23" y1="23" x2="23" y2="-23" stroke="#86868B" stroke-width="0.4" opacity="0.4"/>
+            </g>
+            <text x="1000" y="426" text-anchor="middle" font-size="13" fill="#86868B" font-weight="700">Velostat + 2× CD4067 mux</text>
+          </g>
+
+          <!-- ESP32 ↔ SENSOR (step 3) -->
+          <g class="arch-conn" data-step="3">
+            <line x1="840" y1="384" x2="876" y2="384" stroke="#6E6E73" stroke-width="2" marker-end="url(#archArr)"/>
+            <line x1="876" y1="394" x2="840" y2="394" stroke="#6E6E73" stroke-width="2" marker-end="url(#archArr)"/>
+            <text x="858" y="376" text-anchor="middle" font-size="11" fill="#6E6E73" font-weight="700">ctl · ADC</text>
+          </g>
+
+          <!-- ============= AUDIO (step 3) ============= -->
+          <g class="arch-zone" data-step="3">
+            <rect x="400" y="510" width="440" height="110" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="428" y="542" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">AUDIO</text>
+            <rect x="500" y="554" width="160" height="48" rx="8" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.2"/>
+            <text x="580" y="585" text-anchor="middle" font-size="16" font-weight="800" fill="#1D1D1F">USB DAC</text>
+            <line x1="660" y1="578" x2="740" y2="578" stroke="#1D1D1F" stroke-width="2.5" marker-end="url(#archArr)"/>
+            <text x="760" y="582" font-size="14" fill="#1D1D1F" font-weight="700">3.5 mm out</text>
+          </g>
+
+          <!-- Pi → AUDIO (step 3) -->
+          <g class="arch-conn" data-step="3">
+            <line x1="480" y1="420" x2="480" y2="510" stroke="#6E6E73" stroke-width="1.8" stroke-dasharray="3 3" marker-end="url(#archArr)"/>
+            <text x="490" y="466" font-size="12" fill="#6E6E73" font-weight="700">USB</text>
+          </g>
+
+          <!-- Legend -->
+          <text x="1180" y="624" text-anchor="end" font-family="-apple-system, sans-serif"
+                font-size="12" font-weight="700" fill="#86868B">
+            ━ power  ·  → control  ·  ⇄ data
+          </text>
+
+        </g>
+      </svg>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+  </div>
+</section>

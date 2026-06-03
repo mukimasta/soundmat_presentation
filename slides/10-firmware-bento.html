@@ -1,0 +1,49 @@
+<section class="slide bento" id="slide-10">
+  <div class="slide-header">
+    <div>
+      <div class="slide-eyebrow">Firmware</div>
+      <h2 class="slide-title">The whole ESP32 program, in four lines</h2>
+    </div>
+    <div class="slide-index">10</div>
+  </div>
+  <div class="bento-grid">
+
+    <!-- ======== HERO · the four-line loop ======== -->
+    <div class="bento-card c-hero dark">
+      <div class="card-label" style="color: rgba(255,255,255,0.78)">Main loop</div>
+      <div class="code-block">
+<span class="kw">loop</span>() {
+  <span class="fn">scan_sensors</span>();      <span class="cmt">// drive ring HIGH, sweep two muxes, ADC × 256</span>
+  <span class="fn">send_sensor_data</span>();  <span class="cmt">// S frame  →  Pi</span>
+  <span class="fn">receive_led_data</span>();  <span class="cmt">// L frame  ←  Pi   (non-blocking)</span>
+  <span class="fn">update_leds</span>();       <span class="cmt">// WS2812B via RMT</span>
+}
+      </div>
+      <div class="card-body" style="color: rgba(255,255,255,0.82); margin-top: 18px">
+        No threads. No acks. No retries.
+        A scan finishes, the frame ships. The Pi answers when it can; the buffer is sipped at the top of each tick. A bad checksum just drops — environmental music never notices a missing frame.
+      </div>
+    </div>
+
+    <!-- ======== c1 · S frame ======== -->
+    <div class="bento-card c1">
+      <div class="card-label">ESP32 → Pi</div>
+      <div class="card-title" style="font-size:22px">S frame · 256 raw ADC reads</div>
+      <div class="frame-block">
+        <span class="ftype">S</span><span class="fpunct">:</span><span class="fdata">4095,4093,4090,2031,&hellip;,3498</span><span class="fpunct">*</span><span class="ftype">A7</span><span class="fpunct">\n</span>
+      </div>
+      <div class="card-body sm">ASCII, comma-separated, XOR-checksum. Inner rings ship 32 values too — the Pi folds them down. Tail it in any serial monitor.</div>
+    </div>
+
+    <!-- ======== c2 · L frame ======== -->
+    <div class="bento-card c2 cream">
+      <div class="card-label">Pi → ESP32</div>
+      <div class="card-title" style="font-size:22px">L frame · 108 RGB triplets</div>
+      <div class="frame-block">
+        <span class="ftype">L</span><span class="fpunct">:</span><span class="fdata">000000,0A0500,1A0F00,&hellip;,000000</span><span class="fpunct">*</span><span class="ftype">3E</span><span class="fpunct">\n</span>
+      </div>
+      <div class="card-body sm">Same envelope, hex payload. No L frame this tick? Repeat the last buffer. The light always has something to do.</div>
+    </div>
+
+  </div>
+</section>
