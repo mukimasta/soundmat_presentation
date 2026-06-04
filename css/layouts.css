@@ -44,7 +44,7 @@
 .s-tagline .cinematic-caption {
   position: absolute;
   left: 0; right: 0;
-  bottom: clamp(72px, 9.5vh, 128px);
+  bottom: calc(clamp(72px, 9.5vh, 128px) + var(--deck-bar-h));
   text-align: center;
   z-index: 2;
   pointer-events: none;

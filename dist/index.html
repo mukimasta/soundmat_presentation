@@ -11,7 +11,6 @@
 <link rel="preload" as="image" href="soundmat/exterior-render-chatgpt.png" fetchpriority="high">
 </head>
 <body>
-<div class="progress-bar" id="progressBar"></div>
 <div class="deck" id="deck">
 
 <section class="slide hero s-title active" id="slide-1">
@@ -27,7 +26,7 @@
   </div>
 </section>
 
-<section class="slide cinematic s-tagline" id="slide-2">
+<section class="slide cinematic s-tagline" data-deck-theme="dark" id="slide-2">
   <div class="cinematic-bg"></div>
   <div class="cinematic-stage">
     <img class="cinematic-image"
@@ -3349,7 +3348,7 @@ drums        = "lofi"</pre>
   <p class="hero-subtitle">Five minutes. From silence, to a control stone, to a full Lo-Fi loop, and back to silence.</p>
 </section>
 
-<section class="slide hero s-closing">
+<section class="slide hero s-closing" data-deck-theme="dark">
   <div class="closing-bg" aria-hidden="true">
     <img class="closing-bg-image"
          src="soundmat/exterior-render-chatgpt.png"
@@ -3375,6 +3374,11 @@ drums        = "lofi"</pre>
 
 <div class="slide-counter" id="slideCounter">01 / 22</div>
 <div class="help-hint"><kbd>SPACE</kbd> next / step · <kbd>←</kbd><kbd>→</kbd> nav · <kbd>F</kbd> fullscreen</div>
+
+<footer class="deck-bottom" id="deckBottom">
+  <nav class="chapter-rail" id="chapterRail" aria-label="Presentation sections"></nav>
+  <div class="progress-track" id="progressTrack"></div>
+</footer>
 
 <script src="js/deck.js"></script>
 </body>

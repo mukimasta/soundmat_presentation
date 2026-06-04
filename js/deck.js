@@ -1,9 +1,103 @@
 (function() {
+  /** Chapter markers — `at` matches stable slide class `s-{at}` from manifest */
+  const CHAPTERS = [
+    { at: 'title', label: 'Intro' },
+    { at: 'idea-origin', label: 'Concept' },
+    { at: 'structure-bento', label: 'Structure' },
+    { at: 'system-zoom', label: 'System' },
+    { at: 'sensor-bento', label: 'Sensor' },
+    { at: 'spine-electronics', label: 'Electronics' },
+    { at: 'spine-firmware', label: 'Firmware' },
+    { at: 'spine-software', label: 'Software' },
+    { at: 'spine-sound', label: 'Sonification' },
+    { at: 'system-recap', label: 'Closing' },
+  ];
+
   const slides = Array.from(document.querySelectorAll('.slide'));
   const total = slides.length;
-  const progressBar = document.getElementById('progressBar');
+  const progressTrack = document.getElementById('progressTrack');
+  const chapterRail = document.getElementById('chapterRail');
   const counter = document.getElementById('slideCounter');
   let current = 0;
+
+  function chapterStartIndex(at) {
+    const cls = 's-' + at;
+    const i = slides.findIndex(s => s.classList.contains(cls));
+    return i >= 0 ? i : 0;
+  }
+
+  const chapterStarts = CHAPTERS.map(ch => ({
+    ...ch,
+    idx: chapterStartIndex(ch.at),
+  }));
+
+  const chapterCols = `repeat(${CHAPTERS.length}, 1fr)`;
+
+  function buildChapterRail() {
+    if (!chapterRail) return;
+    chapterRail.style.gridTemplateColumns = chapterCols;
+    document.documentElement.style.setProperty('--chapter-count', String(CHAPTERS.length));
+    chapterRail.replaceChildren();
+    chapterStarts.forEach(ch => {
+      const seg = document.createElement('button');
+      seg.type = 'button';
+      seg.className = 'chapter-seg';
+      seg.textContent = ch.label;
+      seg.title = ch.label;
+      seg.addEventListener('click', () => showSlide(ch.idx));
+      chapterRail.appendChild(seg);
+    });
+  }
+
+  function getChapterState(idx) {
+    let active = 0;
+    for (let i = chapterStarts.length - 1; i >= 0; i--) {
+      if (idx >= chapterStarts[i].idx) { active = i; break; }
+    }
+    const start = chapterStarts[active].idx;
+    const end = active < chapterStarts.length - 1
+      ? chapterStarts[active + 1].idx
+      : total;
+    const span = Math.max(1, end - start);
+    const within = (idx - start + 1) / span;
+    return { active, within };
+  }
+
+  function buildProgressSegments() {
+    if (!progressTrack || progressTrack.querySelector('.progress-segments')) return;
+    const grid = document.createElement('div');
+    grid.className = 'progress-segments';
+    grid.style.gridTemplateColumns = chapterCols;
+    grid.setAttribute('aria-hidden', 'true');
+    CHAPTERS.forEach(() => {
+      const cell = document.createElement('span');
+      const fill = document.createElement('i');
+      fill.className = 'progress-fill';
+      cell.appendChild(fill);
+      grid.appendChild(cell);
+    });
+    progressTrack.appendChild(grid);
+  }
+
+  function updateChapterRail(idx) {
+    const { active } = getChapterState(idx);
+    if (chapterRail) {
+      chapterRail.querySelectorAll('.chapter-seg').forEach((seg, i) => {
+        seg.classList.toggle('active', i === active);
+        seg.classList.toggle('done', i < active);
+      });
+    }
+    if (!progressTrack) return;
+    const cells = progressTrack.querySelectorAll('.progress-segments span');
+    const { within } = getChapterState(idx);
+    cells.forEach((cell, i) => {
+      const fill = cell.querySelector('.progress-fill');
+      if (!fill) return;
+      if (i < active) fill.style.width = '100%';
+      else if (i === active) fill.style.width = (within * 100).toFixed(2) + '%';
+      else fill.style.width = '0%';
+    });
+  }
 
   // ----- existing SVG helpers for sensor slide -----
   const sl32 = document.getElementById('sliceLines32');
@@ -149,12 +243,12 @@
   function showSlide(idx, toEnd) {
     idx = Math.max(0, Math.min(total - 1, idx));
     slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-    progressBar.style.width = ((idx + 1) / total * 100) + '%';
-    counter.textContent = pad(idx + 1) + ' / ' + pad(total);
+    const active = slides[idx];
+    document.body.classList.toggle('deck-dark', active.dataset.deckTheme === 'dark');
+    if (counter) counter.textContent = pad(idx + 1) + ' / ' + pad(total);
+    updateChapterRail(idx);
     current = idx;
     history.replaceState(null, '', '#' + (idx + 1));
-
-    const active = slides[idx];
 
     const stepper = getStepper(active);
     if (stepper) stepper.reset(!!toEnd);
@@ -223,5 +317,7 @@
   });
 
   document.querySelectorAll('[data-zoom-stage]').forEach(setupZoomStage);
+  buildChapterRail();
+  buildProgressSegments();
   showSlide(current);
 })();

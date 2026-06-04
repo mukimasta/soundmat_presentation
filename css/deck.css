@@ -6,13 +6,14 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.012em;
+  --deck-bar-h: 50px;
 }
 
 .deck { width: 100vw; height: 100vh; position: relative; }
 
 .slide {
   position: absolute; inset: 0;
-  padding: var(--pad-y) var(--pad-x);
+  padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) + var(--deck-bar-h));
   display: flex; flex-direction: column;
   opacity: 0; visibility: hidden;
   transition: opacity 500ms var(--ease), visibility 500ms;
@@ -68,7 +69,7 @@ html, body {
   color: transparent;
 }
 .hero-meta {
-  position: absolute; bottom: 56px;
+  position: absolute; bottom: calc(56px + var(--deck-bar-h));
   font-size: clamp(18px, 1.65vw, 26px);
   line-height: 1.45;
   color: var(--text-2);
@@ -285,30 +286,162 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   margin-top: 12px; line-height: 1.5;
 }
 
-.progress-bar {
-  position: fixed; top: 0; left: 0;
-  height: 2px; background: var(--accent);
-  transition: width 500ms var(--ease);
+.deck-bottom {
+  position: fixed; bottom: 0; left: 0; right: 0;
   z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.8);
+  transition:
+    background 420ms var(--ease),
+    border-color 420ms var(--ease),
+    box-shadow 420ms var(--ease);
+}
+.chapter-rail {
+  display: grid;
+  grid-template-columns: repeat(var(--chapter-count, 10), 1fr);
+  align-items: center;
+  height: calc(var(--deck-bar-h) - 5px);
+  padding: 4px clamp(10px, 1.8vw, 28px) 4px;
+  gap: 0;
+}
+.chapter-seg {
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 5px 3px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: clamp(10px, 0.88vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--text-2);
+  opacity: 0.88;
+  cursor: pointer;
+  transition: color 280ms var(--ease), opacity 280ms var(--ease), background 280ms var(--ease);
+  white-space: nowrap;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chapter-seg:hover {
+  opacity: 1;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.05);
+}
+.chapter-seg.done {
+  opacity: 1;
+  color: var(--text);
+  font-weight: 700;
+}
+.chapter-seg.active {
+  opacity: 1;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: clamp(11px, 0.92vw, 14px);
+  background: rgba(232, 147, 24, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(232, 147, 24, 0.22);
+}
+.progress-track {
+  position: relative;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+}
+.progress-segments {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--chapter-count, 10), 1fr);
+  pointer-events: none;
+}
+.progress-segments span {
+  position: relative;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+.progress-segments span:last-child { border-right: none; }
+.progress-fill {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: var(--accent);
+  transition: width 500ms var(--ease);
+  box-shadow: 0 0 8px rgba(232, 147, 24, 0.35);
 }
 .slide-counter {
-  position: fixed; bottom: 22px; right: 32px;
+  position: fixed;
+  bottom: calc(var(--deck-bar-h) + 10px);
+  right: 32px;
   font-size: 11px; color: var(--text-3);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.08em; font-weight: 500;
-  z-index: 100;
+  z-index: 210;
+  pointer-events: none;
 }
 .help-hint {
-  position: fixed; bottom: 22px; left: 32px;
+  position: fixed;
+  bottom: calc(var(--deck-bar-h) + 10px);
+  left: 32px;
   font-size: 10px; color: var(--text-3);
-  letter-spacing: 0.06em; z-index: 100;
+  letter-spacing: 0.06em; z-index: 210;
   opacity: 0.55; font-weight: 500;
+  pointer-events: none;
 }
 .help-hint kbd {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   background: var(--card-2); padding: 2px 6px;
   border-radius: 4px; margin: 0 3px;
   font-size: 9px; color: var(--text-2);
+  transition: background 420ms var(--ease), color 420ms var(--ease);
+}
+
+/* Full-bleed dark slides (tagline, closing) — match #07060A */
+body.deck-dark .deck-bottom {
+  background: rgba(7, 6, 10, 0.94);
+  border-top-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
+}
+body.deck-dark .chapter-seg {
+  color: rgba(255, 255, 255, 0.55);
+  opacity: 1;
+}
+body.deck-dark .chapter-seg:hover {
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.08);
+}
+body.deck-dark .chapter-seg.done {
+  color: rgba(255, 255, 255, 0.82);
+}
+body.deck-dark .chapter-seg.active {
+  color: #F5A623;
+  background: rgba(245, 166, 35, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(245, 166, 35, 0.35);
+}
+body.deck-dark .progress-track {
+  background: rgba(255, 255, 255, 0.14);
+}
+body.deck-dark .progress-segments span {
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+body.deck-dark .progress-fill {
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.45);
+}
+body.deck-dark .slide-counter,
+body.deck-dark .help-hint {
+  color: rgba(255, 255, 255, 0.42);
+  opacity: 1;
+}
+body.deck-dark .help-hint kbd {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .slide.active .bento-card,
