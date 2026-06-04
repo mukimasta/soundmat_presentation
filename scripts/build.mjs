@@ -11,11 +11,15 @@ function read(path) {
   return readFileSync(path, 'utf8');
 }
 
+const pad = n => String(n).padStart(2, '0');
+
 function processSlideRoot(html, name, index, isFirst) {
   // Stable name-based class (strip leading "NN-" so reordering doesn't churn CSS)
   const stable = `s-${name.replace(/^\d+-/, '')}`;
   // Replace numeric id to match runtime position (still used by URL hash)
   html = html.replace(/id="slide-\d+"/, `id="slide-${index}"`);
+  // Auto-number the top-right slide-index badge by position
+  html = html.replace(/(<div class="slide-index">)[^<]*(<\/div>)/, `$1${pad(index)}$2`);
   // Patch the first class= attribute (the slide root)
   html = html.replace(/class="([^"]*)"/, (_, classes) => {
     let parts = classes

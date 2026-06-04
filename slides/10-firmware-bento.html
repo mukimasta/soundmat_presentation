@@ -1,48 +1,66 @@
-<section class="slide bento" id="slide-10">
+<section class="slide bento" id="slide-9">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Firmware</div>
-      <h2 class="slide-title">The whole ESP32 program, in four lines</h2>
+      <h2 class="slide-title">One tight loop on the ESP32</h2>
     </div>
-    <div class="slide-index">10</div>
+    <div class="slide-index">09</div>
   </div>
   <div class="bento-grid">
 
-    <!-- ======== HERO · the four-line loop ======== -->
-    <div class="bento-card c-hero dark">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">Main loop</div>
-      <div class="code-block">
-<span class="kw">loop</span>() {
-  <span class="fn">scan_sensors</span>();      <span class="cmt">// drive ring HIGH, sweep two muxes, ADC × 256</span>
-  <span class="fn">send_sensor_data</span>();  <span class="cmt">// S frame  →  Pi</span>
-  <span class="fn">receive_led_data</span>();  <span class="cmt">// L frame  ←  Pi   (non-blocking)</span>
-  <span class="fn">update_leds</span>();       <span class="cmt">// WS2812B via RMT</span>
-}
-      </div>
-      <div class="card-body" style="color: rgba(255,255,255,0.82); margin-top: 18px">
-        No threads. No acks. No retries.
-        A scan finishes, the frame ships. The Pi answers when it can; the buffer is sipped at the top of each tick. A bad checksum just drops — environmental music never notices a missing frame.
+    <div class="bento-card c-hero">
+      <div class="card-label">The whole firmware</div>
+      <div class="card-title">Scan &rarr; send &rarr; receive &rarr; light, forever</div>
+      <div class="diagram-wrap" style="margin-top:14px">
+        <svg class="diagram" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="fArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E89318"/></marker></defs>
+          <g font-family="-apple-system, 'SF Pro Text', sans-serif" text-anchor="middle">
+            <g>
+              <rect x="60" y="40" width="180" height="78" rx="14" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.6"/>
+              <text x="150" y="76" font-size="20" font-weight="800" fill="#1D1D1F">Scan</text>
+              <text x="150" y="100" font-size="14" font-weight="600" fill="#6E6E73">8 rings &times; 32</text>
+            </g>
+            <g>
+              <rect x="320" y="40" width="180" height="78" rx="14" fill="#1D1D1F"/>
+              <text x="410" y="76" font-size="20" font-weight="800" fill="#fff">Send</text>
+              <text x="410" y="100" font-size="14" font-weight="600" fill="rgba(255,255,255,0.7)">S-frame &rarr; Pi</text>
+            </g>
+            <g>
+              <rect x="320" y="200" width="180" height="78" rx="14" fill="#1D1D1F"/>
+              <text x="410" y="236" font-size="20" font-weight="800" fill="#fff">Receive</text>
+              <text x="410" y="260" font-size="14" font-weight="600" fill="rgba(255,255,255,0.7)">L-frame, if any</text>
+            </g>
+            <g>
+              <rect x="60" y="200" width="180" height="78" rx="14" fill="#FAF6EE" stroke="#E89318" stroke-width="1.6"/>
+              <text x="150" y="236" font-size="20" font-weight="800" fill="#1D1D1F">Light</text>
+              <text x="150" y="260" font-size="14" font-weight="600" fill="#A65E00">108 LEDs</text>
+            </g>
+            <line x1="240" y1="79" x2="320" y2="79" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <line x1="410" y1="118" x2="410" y2="200" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <line x1="320" y1="239" x2="240" y2="239" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <line x1="150" y1="200" x2="150" y2="118" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <text x="280" y="165" text-anchor="middle" font-size="15" font-weight="800" fill="#1D1D1F">~20 Hz</text>
+            <text x="280" y="186" text-anchor="middle" font-size="12.5" font-weight="600" fill="#86868B">non-blocking</text>
+          </g>
+        </svg>
       </div>
     </div>
 
-    <!-- ======== c1 · S frame ======== -->
-    <div class="bento-card c1">
-      <div class="card-label">ESP32 → Pi</div>
-      <div class="card-title" style="font-size:22px">S frame · 256 raw ADC reads</div>
-      <div class="frame-block">
-        <span class="ftype">S</span><span class="fpunct">:</span><span class="fdata">4095,4093,4090,2031,&hellip;,3498</span><span class="fpunct">*</span><span class="ftype">A7</span><span class="fpunct">\n</span>
+    <div class="bento-card c1 dark">
+      <div class="card-label">The one real subtlety</div>
+      <div class="card-title">Ghost-path suppression</div>
+      <div class="card-body" style="color:rgba(255,255,255,0.72)">Drive one ring HIGH, force every other ring to GND &mdash; not floating. Floating rings leak current through pressed neighbours and invent presses that never happened.</div>
+      <div class="protocol-frame" style="margin-top:14px">
+<span class="punct">for</span> ring <span class="punct">in</span> 0..7<span class="punct">:</span><br>
+&nbsp;&nbsp;rings = <span class="data">GND</span><span class="punct">;</span> ring = <span class="type">HIGH</span><br>
+&nbsp;&nbsp;read 32 slices <span class="punct">via</span> MUX
       </div>
-      <div class="card-body sm">ASCII, comma-separated, XOR-checksum. Inner rings ship 32 values too — the Pi folds them down. Tail it in any serial monitor.</div>
     </div>
 
-    <!-- ======== c2 · L frame ======== -->
     <div class="bento-card c2 cream">
-      <div class="card-label">Pi → ESP32</div>
-      <div class="card-title" style="font-size:22px">L frame · 108 RGB triplets</div>
-      <div class="frame-block">
-        <span class="ftype">L</span><span class="fpunct">:</span><span class="fdata">000000,0A0500,1A0F00,&hellip;,000000</span><span class="fpunct">*</span><span class="ftype">3E</span><span class="fpunct">\n</span>
-      </div>
-      <div class="card-body sm">Same envelope, hex payload. No L frame this tick? Repeat the last buffer. The light always has something to do.</div>
+      <div class="card-label">Robust because it's simple</div>
+      <div class="card-title">Drop a bad frame. Never retransmit.</div>
+      <div class="card-body sm" style="margin-top:8px">Both ends stream freely. Each frame carries an XOR checksum; if it fails, throw it away. In ambient music a single lost frame is imperceptible &mdash; and retries would only add latency.</div>
     </div>
 
   </div>

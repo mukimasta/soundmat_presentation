@@ -284,16 +284,16 @@
   </div>
 </section>
 
-<section class="slide zoom s-system-zoom" id="slide-6"
+<section class="slide zoom zwalk s-system-zoom" id="slide-6"
   data-step-titles='["End-to-end signal flow","Touch","Scan","Synth","Sound + Light"]'
   data-step-subs='["From stones to sound — five hardware boundaries, one Python + SuperCollider stack, one USB-C cable.","Pressure on the felt deforms Velostat — 224 polar zones become analog readings.","An ESP32 walks all 224 zones through two CD4067 multiplexers, 20 times a second.","UART frames land on a Raspberry Pi — Python does logic, SuperCollider renders sound.","USB-C DAC drives the speaker. L-frames travel back to light the LED ring."]'>
-  <div class="zoom-content system-zoom-content">
+  <div class="zoom-content zoom-walk-content">
     <div class="zoom-eyebrow">System overview</div>
     <h2 class="zoom-title" data-step-title>End-to-end signal flow</h2>
     <p class="zoom-caption" data-step-sub>From stones to sound — five hardware boundaries, one Python + SuperCollider stack, one USB-C cable.</p>
 
-    <div class="system-stage-wrap">
-      <svg id="systemDiagram" class="system-diagram" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
+    <div class="zoom-stage-wrap">
+      <svg id="systemDiagram" class="zoom-walk-svg" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="sysArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
@@ -306,10 +306,12 @@
           </marker>
         </defs>
 
-        <g id="systemStage" transform="translate(0 0) scale(1)">
+        <g id="systemStage" data-zoom-stage
+           data-zones='[{"s":1.00,"cx":700,"cy":240},{"s":1.85,"cx":200,"cy":240},{"s":1.85,"cx":540,"cy":270},{"s":1.85,"cx":870,"cy":240},{"s":1.85,"cx":1190,"cy":240}]'
+           transform="translate(0 0) scale(1)">
 
           <!-- =================== Zone 1 · Touch =================== -->
-          <g class="sys-zone" data-step="1">
+          <g class="zw" data-step="1">
             <circle cx="200" cy="220" r="118" fill="#FAF6EE" stroke="#2A2724" stroke-width="2"/>
             <g stroke="#86868B" stroke-width="0.7" fill="none" opacity="0.5">
               <circle cx="200" cy="220" r="32"/>
@@ -330,13 +332,13 @@
           </g>
 
           <!-- arrow 1 → 2 -->
-          <g class="sys-arrow" data-step="2">
+          <g class="zw" data-step="2">
             <line x1="328" y1="220" x2="432" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
             <text x="380" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">analog</text>
           </g>
 
           <!-- =================== Zone 2 · Scan =================== -->
-          <g class="sys-zone" data-step="2">
+          <g class="zw" data-step="2">
             <rect x="442" y="130" width="200" height="170" rx="14" fill="#1D1D1F"/>
             <rect x="466" y="158" width="76" height="50" rx="5" fill="#2D2D30"/>
             <text x="504" y="190" text-anchor="middle" font-size="15" fill="#F5A623" font-weight="800" letter-spacing="0.5">ESP32</text>
@@ -360,13 +362,13 @@
           </g>
 
           <!-- arrow 2 → 3 -->
-          <g class="sys-arrow" data-step="3">
+          <g class="zw" data-step="3">
             <line x1="652" y1="220" x2="756" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
-            <text x="704" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">UART 921600</text>
+            <text x="704" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">UART</text>
           </g>
 
           <!-- =================== Zone 3 · Synth =================== -->
-          <g class="sys-zone" data-step="3">
+          <g class="zw" data-step="3">
             <rect x="766" y="130" width="208" height="170" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
             <text x="870" y="168" text-anchor="middle" font-size="16" fill="#1D1D1F" font-weight="700">Raspberry Pi 3B</text>
             <rect x="784" y="186" width="84" height="32" rx="16" fill="#2D7A2D" fill-opacity="0.14"/>
@@ -381,13 +383,13 @@
           </g>
 
           <!-- arrow 3 → 4 -->
-          <g class="sys-arrow" data-step="4">
+          <g class="zw" data-step="4">
             <line x1="984" y1="220" x2="1088" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
             <text x="1036" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">USB audio</text>
           </g>
 
           <!-- =================== Zone 4 · Output =================== -->
-          <g class="sys-zone" data-step="4">
+          <g class="zw" data-step="4">
             <rect x="1100" y="138" width="96" height="160" rx="12" fill="#1D1D1F"/>
             <circle cx="1148" cy="184" r="28" fill="#2D2D30" stroke="#555" stroke-width="2"/>
             <circle cx="1148" cy="184" r="10" fill="#0A0A0B"/>
@@ -401,7 +403,7 @@
           </g>
 
           <!-- back-channel Pi → LED ring -->
-          <g class="sys-arrow sys-back" data-step="4">
+          <g class="zw" data-step="4">
             <path d="M 870 130 Q 870 50 1280 50 L 1280 162"
                   stroke="#E89318" stroke-width="2" stroke-dasharray="6 5" fill="none"
                   marker-end="url(#sysArrAccent)"/>
@@ -426,356 +428,199 @@
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Sensor</div>
-      <h2 class="slide-title">A 224-zone polar pressure mat — without the phantoms</h2>
+      <h2 class="slide-title">A pressure grid in polar coordinates</h2>
     </div>
     <div class="slide-index">07</div>
   </div>
   <div class="bento-grid">
 
-    <!-- ======== HERO · ghost-path comparison ======== -->
     <div class="bento-card c-hero">
-      <div class="card-label">Ghost path</div>
-      <div class="card-title">Pull idle rows to GND, not float.</div>
-      <div class="ghost-diagram-wrap">
-        <svg class="ghost-diagram" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="cellHatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="6" stroke="#1D1D1F" stroke-width="0.5" opacity="0.18"/>
-            </pattern>
-          </defs>
-
-          <!-- ===== LEFT panel: FLOAT (with phantom) ===== -->
-          <g transform="translate(20 30)">
-            <!-- background -->
-            <rect x="-2" y="-2" width="244" height="204" rx="6" fill="white" stroke="#D2D2D7" stroke-width="1"/>
-            <!-- row labels -->
-            <g font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#86868B">
-              <text x="-12" y="25"  text-anchor="end">R0</text>
-              <text x="-12" y="75"  text-anchor="end">R1</text>
-              <text x="-12" y="125" text-anchor="end">R2</text>
-              <text x="-12" y="175" text-anchor="end">R3</text>
-            </g>
-            <text x="-12" y="22" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#E89318" font-weight="700">HIGH</text>
-            <text x="-12" y="72" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
-            <text x="-12" y="122" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
-            <text x="-12" y="172" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
-
-            <!-- 4x4 grid base -->
-            <g>
-              <!-- background cells -->
-              <g fill="url(#cellHatch)">
-                <rect x="0"   y="0"   width="60" height="50"/>
-                <rect x="60"  y="0"   width="60" height="50"/>
-                <rect x="120" y="0"   width="60" height="50"/>
-                <rect x="180" y="0"   width="60" height="50"/>
-                <rect x="0"   y="50"  width="60" height="50"/>
-                <rect x="60"  y="50"  width="60" height="50"/>
-                <rect x="120" y="50"  width="60" height="50"/>
-                <rect x="180" y="50"  width="60" height="50"/>
-                <rect x="0"   y="100" width="60" height="50"/>
-                <rect x="60"  y="100" width="60" height="50"/>
-                <rect x="120" y="100" width="60" height="50"/>
-                <rect x="180" y="100" width="60" height="50"/>
-                <rect x="0"   y="150" width="60" height="50"/>
-                <rect x="60"  y="150" width="60" height="50"/>
-                <rect x="120" y="150" width="60" height="50"/>
-                <rect x="180" y="150" width="60" height="50"/>
-              </g>
-              <!-- lit cells (real reads, orange) -->
-              <rect x="0"   y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="180" y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="0"   y="100" width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <!-- PHANTOM cell (ghost, dashed outline) -->
-              <rect x="180" y="100" width="60" height="50" fill="#FF3B30" fill-opacity="0.32"
-                    stroke="#FF3B30" stroke-width="2" stroke-dasharray="5 3"/>
-              <!-- grid lines on top -->
-              <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.6">
-                <line x1="0" y1="0"   x2="240" y2="0"/>
-                <line x1="0" y1="50"  x2="240" y2="50"/>
-                <line x1="0" y1="100" x2="240" y2="100"/>
-                <line x1="0" y1="150" x2="240" y2="150"/>
-                <line x1="0" y1="200" x2="240" y2="200"/>
-                <line x1="0"   y1="0" x2="0"   y2="200"/>
-                <line x1="60"  y1="0" x2="60"  y2="200"/>
-                <line x1="120" y1="0" x2="120" y2="200"/>
-                <line x1="180" y1="0" x2="180" y2="200"/>
-                <line x1="240" y1="0" x2="240" y2="200"/>
-              </g>
-              <!-- stones on (R0,C0), (R0,C3), (R2,C0) -->
-              <ellipse cx="30"  cy="25"  rx="14" ry="9"  fill="#3D2E1F"/>
-              <ellipse cx="210" cy="25"  rx="16" ry="10" fill="#3D2E1F"/>
-              <ellipse cx="30"  cy="125" rx="14" ry="9"  fill="#3D2E1F"/>
-              <!-- "?" mark on phantom -->
-              <text x="210" y="132" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="22" font-weight="800" fill="#FF3B30">?</text>
-            </g>
-
-            <!-- panel label -->
-            <text x="120" y="232" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#1D1D1F" letter-spacing="3">FLOAT</text>
-            <text x="120" y="254" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#FF3B30">3 presses → 4 reads (1 phantom)</text>
+      <div class="card-label">Geometry</div>
+      <div class="card-title">Rings &times; slices on Velostat</div>
+      <div class="card-body sm">Concentric rings as one electrode axis, radial slices as the other, with piezoresistive Velostat sandwiched between. A circular sensor for a circular device.</div>
+      <div class="diagram-wrap" style="margin-top:10px">
+        <svg class="diagram" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="matGlow" cx="0" cy="0" r="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFFAF0"/><stop offset="100%" stop-color="#F5F5F7"/></radialGradient></defs>
+          <circle cx="0" cy="0" r="180" fill="url(#matGlow)"/>
+          <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.55">
+            <circle cx="0" cy="0" r="22"/><circle cx="0" cy="0" r="44"/><circle cx="0" cy="0" r="66"/><circle cx="0" cy="0" r="88"/>
+            <circle cx="0" cy="0" r="110"/><circle cx="0" cy="0" r="132"/><circle cx="0" cy="0" r="154"/><circle cx="0" cy="0" r="176"/>
           </g>
-
-          <!-- divider -->
-          <line x1="296" y1="20" x2="296" y2="280" stroke="#D2D2D7" stroke-width="1" stroke-dasharray="3 4"/>
-
-          <!-- ===== RIGHT panel: GND (clean) ===== -->
-          <g transform="translate(320 30)">
-            <rect x="-2" y="-2" width="244" height="204" rx="6" fill="white" stroke="#D2D2D7" stroke-width="1"/>
-            <g font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#86868B">
-              <text x="-12" y="25"  text-anchor="end">R0</text>
-              <text x="-12" y="75"  text-anchor="end">R1</text>
-              <text x="-12" y="125" text-anchor="end">R2</text>
-              <text x="-12" y="175" text-anchor="end">R3</text>
-            </g>
-            <text x="-12" y="22" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#E89318" font-weight="700">HIGH</text>
-            <text x="-12" y="72" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
-            <text x="-12" y="122" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
-            <text x="-12" y="172" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
-
-            <g>
-              <g fill="url(#cellHatch)">
-                <rect x="0"   y="0"   width="60" height="50"/>
-                <rect x="60"  y="0"   width="60" height="50"/>
-                <rect x="120" y="0"   width="60" height="50"/>
-                <rect x="180" y="0"   width="60" height="50"/>
-                <rect x="0"   y="50"  width="60" height="50"/>
-                <rect x="60"  y="50"  width="60" height="50"/>
-                <rect x="120" y="50"  width="60" height="50"/>
-                <rect x="180" y="50"  width="60" height="50"/>
-                <rect x="0"   y="100" width="60" height="50"/>
-                <rect x="60"  y="100" width="60" height="50"/>
-                <rect x="120" y="100" width="60" height="50"/>
-                <rect x="180" y="100" width="60" height="50"/>
-                <rect x="0"   y="150" width="60" height="50"/>
-                <rect x="60"  y="150" width="60" height="50"/>
-                <rect x="120" y="150" width="60" height="50"/>
-                <rect x="180" y="150" width="60" height="50"/>
-              </g>
-              <!-- lit cells (real reads only) -->
-              <rect x="0"   y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="180" y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="0"   y="100" width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.6">
-                <line x1="0" y1="0"   x2="240" y2="0"/>
-                <line x1="0" y1="50"  x2="240" y2="50"/>
-                <line x1="0" y1="100" x2="240" y2="100"/>
-                <line x1="0" y1="150" x2="240" y2="150"/>
-                <line x1="0" y1="200" x2="240" y2="200"/>
-                <line x1="0"   y1="0" x2="0"   y2="200"/>
-                <line x1="60"  y1="0" x2="60"  y2="200"/>
-                <line x1="120" y1="0" x2="120" y2="200"/>
-                <line x1="180" y1="0" x2="180" y2="200"/>
-                <line x1="240" y1="0" x2="240" y2="200"/>
-              </g>
-              <ellipse cx="30"  cy="25"  rx="14" ry="9"  fill="#3D2E1F"/>
-              <ellipse cx="210" cy="25"  rx="16" ry="10" fill="#3D2E1F"/>
-              <ellipse cx="30"  cy="125" rx="14" ry="9"  fill="#3D2E1F"/>
-            </g>
-
-            <text x="120" y="232" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#1D1D1F" letter-spacing="3">GND</text>
-            <text x="120" y="254" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#2D7A2D">3 presses → 3 reads</text>
+          <g id="sliceLines32" stroke="#1D1D1F" stroke-width="0.4" opacity="0.4"></g>
+          <g id="sliceLines16" stroke="#1D1D1F" stroke-width="0.4" opacity="0.4"></g>
+          <g fill="#F5A623" opacity="0.92" class="pulse-on-active">
+            <path d="M 110,0 A 110,110 0 0,1 105.46,32.30 L 89.83,27.51 A 88,88 0 0,0 88,0 Z" transform="rotate(56.25)"/>
+            <path d="M 132,0 A 132,132 0 0,1 125.55,38.46 L 109.92,33.67 A 110,110 0 0,0 110,0 Z" transform="rotate(270)"/>
+            <path d="M 154,0 A 154,154 0 0,1 145.65,44.61 L 130.02,39.82 A 132,132 0 0,0 132,0 Z" transform="rotate(157.5)"/>
           </g>
+          <circle cx="0" cy="0" r="3" fill="#1D1D1F"/>
         </svg>
       </div>
-      <div class="card-body sm">When you scan one ring, current sneaks back through any pressed cells on idle rings — every L-shaped trio fakes a fourth read. Clamping idle rings to ground kills the return path.</div>
     </div>
 
-    <!-- ======== c1 · 224 zones (accent number) ======== -->
     <div class="bento-card c1 accent">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">Sensing zones</div>
-      <div class="card-stretch">
+      <div class="card-label">Sensing zones</div>
+      <div class="card-stretch" style="justify-content:flex-start; align-items:flex-start">
         <div>
           <div class="card-big-num" data-countup="224">224</div>
-          <div style="font-size:18px; opacity:0.92; margin-top:8px; font-weight:600">8 rings · 32 slices · polar</div>
+          <div style="font-size:16px; opacity:0.92; margin-top:10px; font-weight:600">6&nbsp;rings &times; 32 + 2 inner &times; 16</div>
+          <div style="font-size:14px; opacity:0.82; margin-top:4px; line-height:1.4">Inner rings drop to 16 slices &mdash; near the center, 32 would crowd into noise.</div>
         </div>
       </div>
     </div>
 
-    <!-- ======== c2 · Crosstalk acknowledged ======== -->
     <div class="bento-card c2">
-      <div class="card-label">Crosstalk</div>
-      <div class="card-title" style="font-size:22px">Accepted by design.</div>
-      <div class="card-body sm">Multi-press still drags column voltage — physics, not bugs. Inner two rings use 16 slices instead of 32 to keep cell area honest, and gaps stay at 3.5 mm.</div>
+      <div class="card-label">Why polar, not a grid</div>
+      <div class="compare">
+        <div class="col-head"></div>
+        <div class="col-head">Grid</div>
+        <div class="col-head">Polar</div>
+        <div class="row-label">Circle fit</div>
+        <div class="no">corners wasted</div>
+        <div class="yes">native</div>
+        <div class="row-label">Meaning</div>
+        <div class="row-label">x, y</div>
+        <div class="yes">radius, angle</div>
+        <div class="row-label">Zones for same feel</div>
+        <div class="no">dense grid</div>
+        <div class="yes">far fewer</div>
+      </div>
     </div>
 
-    <!-- ======== c3 · Auto design tool ======== -->
     <div class="bento-card c3 dark">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">Tooling</div>
-      <div class="card-title" style="color:white; font-size:22px"><span style="font-family: var(--font-mono); font-size:0.85em; color:#F5A623">sensor_design_tool</span></div>
-      <div class="card-body sm" style="color: rgba(255,255,255,0.78)">Vibe-coded in Cursor. Type ring count, slice count, diameter — get a laser-ready SVG / PDF. We re-cut the whole mat in an afternoon.</div>
+      <div class="card-label">Automated design tool</div>
+      <div class="card-title" style="font-size:22px">Parameters in, laser-cut files out</div>
       <div class="tool-pipeline">
-        <span>params</span>
-        <span class="arr">→</span>
-        <span>geometry</span>
-        <span class="arr">→</span>
-        <span>SVG / PDF</span>
+        <span class="tool-step">params</span>
+        <span class="tool-arrow">&rarr;</span>
+        <span class="tool-step">geometry</span>
+        <span class="tool-arrow">&rarr;</span>
+        <span class="tool-step accent">SVG / PDF</span>
       </div>
+      <div class="card-body sm" style="margin-top:14px; color:rgba(255,255,255,0.72)">A small tool we vibe-coded in Cursor: change 8 numbers, regenerate the whole cut pattern in seconds. Open-sourced as <span style="color:#FFD89A; font-weight:600">sensor_design_tool</span>.</div>
     </div>
 
   </div>
 </section>
 
-<section class="slide zoom s-electronics-arch" id="slide-8"
-  data-step-titles='["Five modules, one shell","POWER","COMPUTE","I/O"]'
-  data-step-subs='["USB-C in, 3.5 mm audio out — everything else is hidden under the felt.","USB-C PD requests 20V, a buck steps to 5V, then it splits — one rail for the LED strip, one rail for the Pi.","Pi 3B runs Python + SuperCollider; an ESP32 handles every GPIO — ADC for the mat, level-shifted DIN for the LEDs.","WS2812B strip out, polar sensor in, USB DAC drops 3.5 mm to the speaker."]'>
-  <div class="zoom-content arch-zoom-content">
-    <div class="zoom-eyebrow">Electronics</div>
-    <h2 class="zoom-title" data-step-title>Five modules, one shell</h2>
-    <p class="zoom-caption" data-step-sub>USB-C in, 3.5 mm audio out — everything else is hidden under the felt.</p>
+<section class="slide zoom zwalk s-electronics-arch" id="slide-8"
+  data-step-titles='["Five modules, three kinds of wire","Power","Compute","Sensor &amp; LED","Audio"]'
+  data-step-subs='["Power in, data up, control out, sound out — every connection is power, data, or control.","One USB-C cable. PD negotiates 20 V; a buck converter drops it to 5 V for the whole device.","Raspberry Pi is the brain. ESP32 is its senses and nerves — analog in, GPIO out.","224 analog zones read through two cascaded multiplexers; 108 LEDs driven via a level shifter.","The Pi streams over USB to an external DAC — clean 3.5 mm line-out to the room."]'>
+  <div class="zoom-content zoom-walk-content">
+    <div class="zoom-eyebrow">Electronics architecture</div>
+    <h2 class="zoom-title" data-step-title>Five modules, three kinds of wire</h2>
+    <p class="zoom-caption" data-step-sub>Power in, data up, control out, sound out — every connection is power, data, or control.</p>
 
-    <div class="arch-stage-wrap">
-      <svg id="archDiagram" class="arch-diagram" viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg">
+    <div class="zoom-stage-wrap">
+      <svg class="zoom-walk-svg" viewBox="0 0 1400 560" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <marker id="archArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#6E6E73"/>
-          </marker>
-          <marker id="archArrAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#E89318"/>
-          </marker>
+          <marker id="mPwr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D1D1F"/></marker>
+          <marker id="mData" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B6CB0"/></marker>
+          <marker id="mDataS" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="#2B6CB0"/></marker>
+          <marker id="mCtrl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E89318"/></marker>
         </defs>
 
-        <g id="archStage" transform="translate(0 0) scale(1)">
+        <g data-zoom-stage
+           data-zones='[{"s":1.00,"cx":700,"cy":300},{"s":1.70,"cx":250,"cy":135},{"s":1.50,"cx":650,"cy":345},{"s":1.40,"cx":1110,"cy":340},{"s":1.60,"cx":780,"cy":505}]'
+           transform="translate(0 0) scale(1)">
 
-          <!-- ============= POWER (step 1) ============= -->
-          <g class="arch-zone" data-step="1">
-            <!-- USB-C jack icon -->
-            <rect x="568" y="42" width="64" height="22" rx="11" fill="#1D1D1F"/>
-            <rect x="576" y="50" width="48" height="8"  rx="3" fill="#444"/>
-            <line x1="600" y1="64" x2="600" y2="84" stroke="#1D1D1F" stroke-width="2.5"/>
-            <text x="600" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="#86868B">USB-C in</text>
-
-            <rect x="180" y="84" width="840" height="148" rx="14"
-                  fill="#FAF6EE" stroke="#E89318" stroke-width="2.5"/>
-            <text x="212" y="120" font-size="18" font-weight="800" fill="#E89318" letter-spacing="3">POWER</text>
-
-            <!-- PD trigger sub-block -->
-            <rect x="260" y="142" width="180" height="62" rx="8" fill="white" stroke="#1D1D1F" stroke-width="1.5"/>
-            <text x="350" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#1D1D1F">PD trigger</text>
-            <text x="350" y="190" text-anchor="middle" font-size="22" font-weight="800" fill="#E89318">20V</text>
-
-            <line x1="445" y1="173" x2="495" y2="173" stroke="#1D1D1F" stroke-width="2.5" marker-end="url(#archArr)"/>
-
-            <!-- Buck sub-block -->
-            <rect x="500" y="142" width="180" height="62" rx="8" fill="white" stroke="#1D1D1F" stroke-width="1.5"/>
-            <text x="590" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#1D1D1F">Buck</text>
-            <text x="590" y="190" text-anchor="middle" font-size="14" font-weight="700" fill="#1D1D1F">20V → 5V · ≥5A</text>
-
-            <line x1="685" y1="173" x2="735" y2="173" stroke="#1D1D1F" stroke-width="2.5"/>
-            <text x="710" y="160" text-anchor="middle" font-size="14" fill="#1D1D1F" font-weight="800">5V</text>
-
-            <!-- Split junction node -->
-            <circle cx="735" cy="173" r="5" fill="#1D1D1F"/>
-            <text x="760" y="178" font-size="13" font-weight="700" fill="#86868B">→ split</text>
+          <!-- ===== connectors: POWER (thick dark) ===== -->
+          <g class="zw" data-step="1">
+            <path d="M 250 210 L 250 345 L 462 345" stroke="#1D1D1F" stroke-width="6" fill="none" marker-end="url(#mPwr)"/>
+            <text x="300" y="334" font-size="16" fill="#1D1D1F" font-weight="800">5 V</text>
+          </g>
+          <g class="zw" data-step="3">
+            <path d="M 380 120 L 1360 120 L 1360 405 L 1328 405" stroke="#1D1D1F" stroke-width="6" fill="none" marker-end="url(#mPwr)"/>
+            <text x="1338" y="270" font-size="16" fill="#1D1D1F" font-weight="800" text-anchor="end">5 V</text>
           </g>
 
-          <!-- power lines down (step 1) -->
-          <g class="arch-conn" data-step="1">
-            <!-- to LED (left) -->
-            <path d="M 735 178 L 735 250 L 200 250 L 200 310"
-                  stroke="#1D1D1F" stroke-width="3" fill="none"/>
-            <text x="370" y="244" font-size="13" font-weight="800" fill="#1D1D1F">5V → LED</text>
-            <!-- to COMPUTE (right) -->
-            <path d="M 735 178 L 735 250 L 600 250 L 600 310"
-                  stroke="#1D1D1F" stroke-width="3" fill="none"/>
-            <text x="612" y="290" font-size="13" font-weight="800" fill="#1D1D1F">5V → Pi</text>
+          <!-- ===== connectors: DATA (blue) ===== -->
+          <g class="zw" data-step="3">
+            <path d="M 900 292 L 855 292 L 855 344 L 818 344" stroke="#2B6CB0" stroke-width="3.5" fill="none" marker-end="url(#mData)"/>
+            <text x="884" y="278" font-size="15" fill="#2B6CB0" font-weight="700" text-anchor="end">analog</text>
+          </g>
+          <g class="zw" data-step="2">
+            <line x1="652" y1="344" x2="660" y2="344" stroke="#2B6CB0" stroke-width="3.5" marker-end="url(#mData)" marker-start="url(#mDataS)"/>
+            <text x="656" y="330" font-size="14" fill="#2B6CB0" font-weight="700" text-anchor="middle">UART</text>
+          </g>
+          <g class="zw" data-step="4">
+            <path d="M 575 402 L 575 474" stroke="#2B6CB0" stroke-width="3.5" fill="none" marker-end="url(#mData)"/>
+            <text x="588" y="445" font-size="15" fill="#2B6CB0" font-weight="700">USB</text>
+          </g>
+          <g class="zw" data-step="4">
+            <path d="M 830 510 L 1050 510" stroke="#2B6CB0" stroke-width="3.5" fill="none" marker-end="url(#mData)"/>
+            <text x="940" y="498" font-size="15" fill="#2B6CB0" font-weight="700" text-anchor="middle">3.5 mm</text>
           </g>
 
-          <!-- ============= LED (step 3) ============= -->
-          <g class="arch-zone" data-step="3">
-            <rect x="80" y="310" width="240" height="130" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
-            <text x="108" y="342" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">LED</text>
-            <!-- strip icon -->
-            <g transform="translate(200 388)">
-              <rect x="-80" y="-13" width="160" height="26" rx="3" fill="#2A2724"/>
-              <circle cx="-60" cy="0" r="5" fill="#F5A623"/>
-              <circle cx="-30" cy="0" r="5" fill="#F5A623"/>
-              <circle cx="0"   cy="0" r="5" fill="#F5A623"/>
-              <circle cx="30"  cy="0" r="5" fill="#F5A623"/>
-              <circle cx="60"  cy="0" r="5" fill="#F5A623"/>
-            </g>
-            <text x="200" y="426" text-anchor="middle" font-size="13" fill="#86868B" font-weight="700">WS2812B · 108 LEDs</text>
+          <!-- ===== connectors: CONTROL (orange) ===== -->
+          <g class="zw" data-step="3">
+            <path d="M 818 376 L 860 376 L 860 406 L 898 406" stroke="#E89318" stroke-width="3.5" fill="none" marker-end="url(#mCtrl)"/>
+            <text x="866" y="362" font-size="15" fill="#E89318" font-weight="700">GPIO</text>
           </g>
 
-          <!-- Level shifter ellipse -->
-          <g class="arch-zone" data-step="3">
-            <ellipse cx="360" cy="388" rx="32" ry="22" fill="#FAF6EE" stroke="#E89318" stroke-width="1.5"/>
-            <text x="360" y="384" text-anchor="middle" font-size="11" font-weight="800" fill="#1D1D1F">Level</text>
-            <text x="360" y="398" text-anchor="middle" font-size="11" font-weight="800" fill="#1D1D1F">shift</text>
+          <!-- ===== USB-C in ===== -->
+          <g class="zw" data-step="1">
+            <rect x="40" y="104" width="70" height="32" rx="9" fill="#1D1D1F"/>
+            <rect x="52" y="114" width="46" height="12" rx="6" fill="#3A3A3D"/>
+            <text x="75" y="156" text-anchor="middle" font-size="14" fill="#6E6E73" font-weight="600">USB-C</text>
+            <line x1="110" y1="120" x2="124" y2="120" stroke="#1D1D1F" stroke-width="6"/>
           </g>
 
-          <!-- ============= COMPUTE (step 2) ============= -->
-          <g class="arch-zone" data-step="2">
-            <rect x="400" y="310" width="440" height="180" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2.5"/>
-            <text x="428" y="342" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">COMPUTE</text>
-
-            <!-- Pi sub-box -->
-            <rect x="430" y="356" width="180" height="64" rx="8" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.2"/>
-            <text x="520" y="384" text-anchor="middle" font-size="15" font-weight="800" fill="#1D1D1F">Raspberry Pi 3B</text>
-            <text x="520" y="406" text-anchor="middle" font-size="12" fill="#6E6E73" font-weight="600">Python + SuperCollider</text>
-
-            <!-- ESP32 sub-box -->
-            <rect x="630" y="356" width="180" height="64" rx="8" fill="#1D1D1F"/>
-            <text x="720" y="384" text-anchor="middle" font-size="15" font-weight="800" fill="#F5A623">ESP32</text>
-            <text x="720" y="406" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">ADC + LED ctl</text>
-
-            <!-- Pi <-> ESP32 link -->
-            <line x1="610" y1="388" x2="630" y2="388" stroke="#86868B" stroke-width="1.8" stroke-dasharray="3 3"/>
-            <text x="620" y="378" text-anchor="middle" font-size="10" fill="#86868B" font-weight="700">USB</text>
-
-            <text x="620" y="464" text-anchor="middle" font-size="12" fill="#6E6E73" font-weight="600">SBC for software · MCU for every GPIO</text>
+          <!-- ===== POWER module ===== -->
+          <g class="zw" data-step="1">
+            <rect x="124" y="60" width="256" height="150" rx="16" fill="#FAF6EE" stroke="#E89318" stroke-width="2"/>
+            <text x="252" y="100" text-anchor="middle" font-size="24" font-weight="800" fill="#1D1D1F">POWER</text>
+            <text x="252" y="132" text-anchor="middle" font-size="16" font-weight="600" fill="#A65E00">PD 20 V &rarr; Buck</text>
+            <rect x="176" y="150" width="152" height="38" rx="8" fill="#fff" stroke="#E89318" stroke-width="1.5"/>
+            <text x="252" y="175" text-anchor="middle" font-size="17" font-weight="800" fill="#E89318">5 V rail</text>
           </g>
 
-          <!-- ESP32 → Level shifter → LED (step 3) -->
-          <g class="arch-conn" data-step="3">
-            <path d="M 660 420 L 660 460 L 360 460 L 360 410"
-                  stroke="#6E6E73" stroke-width="1.8" fill="none" marker-end="url(#archArr)"/>
-            <text x="500" y="454" text-anchor="middle" font-size="12" fill="#6E6E73" font-weight="700">DIN · 3.3V → 5V</text>
+          <!-- ===== COMPUTE module ===== -->
+          <g class="zw" data-step="2">
+            <rect x="470" y="228" width="362" height="224" rx="16" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="651" y="262" text-anchor="middle" font-size="22" font-weight="800" fill="#1D1D1F">COMPUTE</text>
+            <rect x="500" y="284" width="150" height="120" rx="11" fill="#fff" stroke="#1D1D1F" stroke-width="1.5"/>
+            <text x="575" y="332" text-anchor="middle" font-size="18" font-weight="800" fill="#1D1D1F">Pi 3B</text>
+            <text x="575" y="358" text-anchor="middle" font-size="14" font-weight="600" fill="#6E6E73">brain</text>
+            <rect x="660" y="284" width="150" height="120" rx="11" fill="#1D1D1F"/>
+            <text x="735" y="332" text-anchor="middle" font-size="18" font-weight="800" fill="#F5A623">ESP32</text>
+            <text x="735" y="358" text-anchor="middle" font-size="14" font-weight="600" fill="rgba(255,255,255,0.7)">ADC + GPIO</text>
           </g>
 
-          <!-- ============= SENSOR (step 3) ============= -->
-          <g class="arch-zone" data-step="3">
-            <rect x="880" y="310" width="240" height="130" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
-            <text x="908" y="342" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">SENSOR</text>
-            <!-- mini polar mat -->
-            <g transform="translate(1000 388)">
-              <circle cx="0" cy="0" r="32" fill="#FAF6EE" stroke="#2A2724" stroke-width="1.5"/>
-              <circle cx="0" cy="0" r="10" fill="none" stroke="#86868B" stroke-width="0.6" opacity="0.6"/>
-              <circle cx="0" cy="0" r="21" fill="none" stroke="#86868B" stroke-width="0.6" opacity="0.6"/>
-              <line x1="0" y1="-32" x2="0" y2="32" stroke="#86868B" stroke-width="0.5" opacity="0.5"/>
-              <line x1="-32" y1="0" x2="32" y2="0" stroke="#86868B" stroke-width="0.5" opacity="0.5"/>
-              <line x1="-23" y1="-23" x2="23" y2="23" stroke="#86868B" stroke-width="0.4" opacity="0.4"/>
-              <line x1="-23" y1="23" x2="23" y2="-23" stroke="#86868B" stroke-width="0.4" opacity="0.4"/>
-            </g>
-            <text x="1000" y="426" text-anchor="middle" font-size="13" fill="#86868B" font-weight="700">Velostat + 2× CD4067 mux</text>
+          <!-- ===== SENSOR module ===== -->
+          <g class="zw" data-step="3">
+            <rect x="900" y="230" width="420" height="96" rx="14" fill="#FAF6EE" stroke="#2B6CB0" stroke-width="2"/>
+            <text x="1110" y="270" text-anchor="middle" font-size="22" font-weight="800" fill="#1D1D1F">SENSOR</text>
+            <text x="1110" y="300" text-anchor="middle" font-size="16" font-weight="600" fill="#2B6CB0">224 zones &middot; dual 16:1 MUX</text>
           </g>
 
-          <!-- ESP32 ↔ SENSOR (step 3) -->
-          <g class="arch-conn" data-step="3">
-            <line x1="840" y1="384" x2="876" y2="384" stroke="#6E6E73" stroke-width="2" marker-end="url(#archArr)"/>
-            <line x1="876" y1="394" x2="840" y2="394" stroke="#6E6E73" stroke-width="2" marker-end="url(#archArr)"/>
-            <text x="858" y="376" text-anchor="middle" font-size="11" fill="#6E6E73" font-weight="700">ctl · ADC</text>
+          <!-- ===== LED module ===== -->
+          <g class="zw" data-step="3">
+            <rect x="900" y="360" width="420" height="92" rx="14" fill="#FAF6EE" stroke="#E89318" stroke-width="2"/>
+            <text x="1110" y="398" text-anchor="middle" font-size="22" font-weight="800" fill="#1D1D1F">LED</text>
+            <text x="1110" y="427" text-anchor="middle" font-size="16" font-weight="600" fill="#A65E00">WS2812B &times;108 &middot; level shifter</text>
           </g>
 
-          <!-- ============= AUDIO (step 3) ============= -->
-          <g class="arch-zone" data-step="3">
-            <rect x="400" y="510" width="440" height="110" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
-            <text x="428" y="542" font-size="16" font-weight="800" fill="#1D1D1F" letter-spacing="2.5">AUDIO</text>
-            <rect x="500" y="554" width="160" height="48" rx="8" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.2"/>
-            <text x="580" y="585" text-anchor="middle" font-size="16" font-weight="800" fill="#1D1D1F">USB DAC</text>
-            <line x1="660" y1="578" x2="740" y2="578" stroke="#1D1D1F" stroke-width="2.5" marker-end="url(#archArr)"/>
-            <text x="760" y="582" font-size="14" fill="#1D1D1F" font-weight="700">3.5 mm out</text>
+          <!-- ===== AUDIO module + speaker ===== -->
+          <g class="zw" data-step="4">
+            <rect x="470" y="474" width="360" height="72" rx="14" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="560" y="506" text-anchor="middle" font-size="21" font-weight="800" fill="#1D1D1F">AUDIO</text>
+            <text x="560" y="530" text-anchor="middle" font-size="15" font-weight="600" fill="#6E6E73">USB DAC</text>
+            <rect x="1050" y="488" width="64" height="44" rx="6" fill="#1D1D1F"/>
+            <circle cx="1082" cy="510" r="13" fill="#2D2D30" stroke="#555" stroke-width="1.5"/>
+            <text x="1082" y="552" text-anchor="middle" font-size="14" fill="#6E6E73" font-weight="600">Speaker</text>
           </g>
 
-          <!-- Pi → AUDIO (step 3) -->
-          <g class="arch-conn" data-step="3">
-            <line x1="480" y1="420" x2="480" y2="510" stroke="#6E6E73" stroke-width="1.8" stroke-dasharray="3 3" marker-end="url(#archArr)"/>
-            <text x="490" y="466" font-size="12" fill="#6E6E73" font-weight="700">USB</text>
+          <!-- ===== legend (always visible) ===== -->
+          <g class="zw-static">
+            <rect x="56" y="372" width="320" height="120" rx="12" fill="#fff" stroke="#E6E2DA" stroke-width="1.5"/>
+            <line x1="78" y1="404" x2="118" y2="404" stroke="#1D1D1F" stroke-width="6"/>
+            <text x="132" y="409" font-size="16" fill="#1D1D1F" font-weight="700">Power</text>
+            <line x1="78" y1="436" x2="118" y2="436" stroke="#2B6CB0" stroke-width="3.5"/>
+            <text x="132" y="441" font-size="16" fill="#1D1D1F" font-weight="700">Data</text>
+            <line x1="78" y1="468" x2="118" y2="468" stroke="#E89318" stroke-width="3.5"/>
+            <text x="132" y="473" font-size="16" fill="#1D1D1F" font-weight="700">Control</text>
           </g>
-
-          <!-- Legend -->
-          <text x="1180" y="624" text-anchor="end" font-family="-apple-system, sans-serif"
-                font-size="12" font-weight="700" fill="#86868B">
-            ━ power  ·  → control  ·  ⇄ data
-          </text>
 
         </g>
       </svg>
@@ -786,52 +631,92 @@
       <span data-dot></span>
       <span data-dot></span>
       <span data-dot></span>
+      <span data-dot></span>
     </div>
   </div>
 </section>
 
-<section class="slide bento s-electronics-power" id="slide-9">
+<section class="slide bento s-power-module" id="slide-9">
   <div class="slide-header">
     <div>
-      <div class="slide-eyebrow">Power module</div>
-      <h2 class="slide-title">One USB-C, 45 W peak, no outlet required</h2>
+      <div class="slide-eyebrow">Power</div>
+      <h2 class="slide-title">The hardest part is feeding it</h2>
     </div>
     <div class="slide-index">09</div>
   </div>
   <div class="bento-grid">
 
-    <!-- ======== HERO · hand-drawn power schematic ======== -->
-    <div class="bento-card c-hero image-card flush">
-      <img class="cover-img"
-           src="soundmat/electronics-power-module.png"
-           alt="Hand-drawn power module schematic: USB-C PD trigger, DC buck converter, star grounding, 1000µF decoupling, dual-feed LED."
-           loading="lazy">
-      <div class="card-overlay-label">Hand-drawn schematic · actual boards beneath</div>
-    </div>
-
-    <!-- ======== c1 · 20V accent ======== -->
-    <div class="bento-card c1 accent">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">USB-C PD trigger</div>
-      <div class="card-stretch">
-        <div>
-          <div class="card-big-num"><span data-countup="20">20</span><span class="num-unit">V</span></div>
-          <div style="font-size:18px; opacity:0.92; margin-top:8px; font-weight:600">From any laptop brick or power bank</div>
-        </div>
+    <div class="bento-card c-hero">
+      <div class="card-label">One cable, two rails, one ground</div>
+      <div class="diagram-wrap" style="margin-top:6px">
+        <svg class="diagram" viewBox="0 0 400 470" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="pArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#86868B"/></marker></defs>
+          <g font-family="-apple-system, 'SF Pro Text', sans-serif" text-anchor="middle">
+            <rect x="118" y="20" width="164" height="48" rx="11" fill="#1D1D1F"/>
+            <text x="200" y="42" font-size="15" font-weight="700" fill="#fff">USB-C PD</text>
+            <text x="200" y="60" font-size="15" font-weight="800" fill="#F5A623">20 V</text>
+            <line x1="200" y1="68" x2="200" y2="92" stroke="#86868B" stroke-width="2" marker-end="url(#pArr)"/>
+            <rect x="108" y="94" width="184" height="46" rx="11" fill="#FAF6EE" stroke="#E89318" stroke-width="1.6"/>
+            <text x="200" y="115" font-size="14" font-weight="700" fill="#A65E00">Buck converter</text>
+            <text x="200" y="132" font-size="13" font-weight="600" fill="#1D1D1F">20 V &rarr; 5 V</text>
+            <path d="M 200 140 L 200 168 L 96 168 L 96 196" stroke="#86868B" stroke-width="2" fill="none" marker-end="url(#pArr)"/>
+            <path d="M 200 140 L 200 168 L 304 168 L 304 196" stroke="#86868B" stroke-width="2" fill="none" marker-end="url(#pArr)"/>
+            <text x="148" y="162" font-size="12" font-weight="700" fill="#E89318">5 V</text>
+            <text x="252" y="162" font-size="12" font-weight="700" fill="#E89318">5 V</text>
+            <rect x="36" y="198" width="120" height="58" rx="11" fill="#F5F5F7" stroke="#D2D2D7" stroke-width="1.4"/>
+            <text x="96" y="222" font-size="15" font-weight="700" fill="#1D1D1F">LED strip</text>
+            <text x="96" y="242" font-size="12" font-weight="600" fill="#6E6E73">spiky load</text>
+            <rect x="244" y="198" width="120" height="58" rx="11" fill="#F5F5F7" stroke="#D2D2D7" stroke-width="1.4"/>
+            <text x="304" y="222" font-size="15" font-weight="700" fill="#1D1D1F">Raspberry Pi</text>
+            <text x="304" y="242" font-size="12" font-weight="600" fill="#6E6E73">brown-out risk</text>
+            <g>
+              <line x1="170" y1="210" x2="170" y2="250" stroke="#E89318" stroke-width="3"/>
+              <line x1="158" y1="210" x2="182" y2="210" stroke="#E89318" stroke-width="3"/>
+              <path d="M 158 250 Q 170 262 182 250" stroke="#E89318" stroke-width="3" fill="none"/>
+              <text x="170" y="284" font-size="12.5" font-weight="700" fill="#A65E00">1000&micro;F</text>
+              <line x1="156" y1="227" x2="120" y2="227" stroke="#E89318" stroke-width="1.6" stroke-dasharray="3 3"/>
+            </g>
+            <path d="M 96 256 L 96 350 L 200 386" stroke="#1D1D1F" stroke-width="2" fill="none"/>
+            <path d="M 304 256 L 304 350 L 200 386" stroke="#1D1D1F" stroke-width="2" fill="none"/>
+            <path d="M 200 140 L 200 386" stroke="#1D1D1F" stroke-width="0" fill="none"/>
+            <circle cx="200" cy="388" r="5" fill="#1D1D1F"/>
+            <g stroke="#1D1D1F" stroke-width="2.4" stroke-linecap="round">
+              <line x1="200" y1="388" x2="200" y2="404"/>
+              <line x1="176" y1="404" x2="224" y2="404"/>
+              <line x1="184" y1="414" x2="216" y2="414"/>
+              <line x1="192" y1="424" x2="208" y2="424"/>
+            </g>
+            <text x="200" y="448" font-size="13" font-weight="800" fill="#1D1D1F">Star ground</text>
+          </g>
+        </svg>
       </div>
     </div>
 
-    <!-- ======== c2 · Why 20V then buck ======== -->
-    <div class="bento-card c2">
-      <div class="card-label">Why high then low</div>
-      <div class="card-title" style="font-size:22px">20V down the cable. 5V at the load.</div>
-      <div class="card-body sm">45 W at 5V draws 9 A — wires get fat and voltage sags. At 20V it's 2.3 A; the buck steps down close to the loads. Same wall plug, half the copper.</div>
+    <div class="bento-card c1 accent">
+      <div class="card-label">Peak load</div>
+      <div class="card-mid-num"><span data-countup="45">45</span><span class="num-unit">W</span></div>
+      <div class="card-body sm" style="margin-top:8px">All 108 LEDs full white + Pi under load. Typically ~22 W at 30 % brightness.</div>
     </div>
 
-    <!-- ======== c3 · Protect the data line ======== -->
+    <div class="bento-card c2 cream">
+      <div class="card-label">Why 20 V on the wire</div>
+      <div class="card-title">High voltage, thin cable, low loss</div>
+      <div class="card-body sm" style="margin-top:8px">5 V at 9 A over a long run sags badly. Send 20 V, step down at the device — and any USB-C power bank runs it outdoors.</div>
+    </div>
+
     <div class="bento-card c3 dark">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">Protect the data line</div>
-      <div class="card-title" style="color:white; font-size:22px">Star GND · 1000µF · 330Ω</div>
-      <div class="card-body sm" style="color: rgba(255,255,255,0.78)">WS2812B blinks burn through 6 A of inrush. Star-grounding stops shared returns from talking to the Pi; the bulk cap absorbs the spike at the strip; a 330Ω damper at the first LED kills DIN ringing.</div>
+      <div class="card-label">The real bug we designed out</div>
+      <div class="card-title" style="font-size:21px">LED current spikes browning out the Pi</div>
+      <div class="card-body sm" style="margin-top:8px; color:rgba(255,255,255,0.72)">WS2812B switching draws sharp transients. A 1000&micro;F cap absorbs them; star grounding stops the Pi from riding the LED's voltage swings.</div>
+    </div>
+
+    <div class="bento-card c4 image-card">
+      <figure class="bento-photo">
+        <img src="soundmat/electronics-power-module.png"
+             alt="Hand-drawn power module schematic: USB-C PD trigger, buck converter, star grounding, LED strip and Pi"
+             loading="eager" decoding="async">
+        <figcaption>Power module &middot; design schematic</figcaption>
+      </figure>
     </div>
 
   </div>
@@ -841,47 +726,65 @@
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Firmware</div>
-      <h2 class="slide-title">The whole ESP32 program, in four lines</h2>
+      <h2 class="slide-title">One tight loop on the ESP32</h2>
     </div>
     <div class="slide-index">10</div>
   </div>
   <div class="bento-grid">
 
-    <!-- ======== HERO · the four-line loop ======== -->
-    <div class="bento-card c-hero dark">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">Main loop</div>
-      <div class="code-block">
-<span class="kw">loop</span>() {
-  <span class="fn">scan_sensors</span>();      <span class="cmt">// drive ring HIGH, sweep two muxes, ADC × 256</span>
-  <span class="fn">send_sensor_data</span>();  <span class="cmt">// S frame  →  Pi</span>
-  <span class="fn">receive_led_data</span>();  <span class="cmt">// L frame  ←  Pi   (non-blocking)</span>
-  <span class="fn">update_leds</span>();       <span class="cmt">// WS2812B via RMT</span>
-}
-      </div>
-      <div class="card-body" style="color: rgba(255,255,255,0.82); margin-top: 18px">
-        No threads. No acks. No retries.
-        A scan finishes, the frame ships. The Pi answers when it can; the buffer is sipped at the top of each tick. A bad checksum just drops — environmental music never notices a missing frame.
+    <div class="bento-card c-hero">
+      <div class="card-label">The whole firmware</div>
+      <div class="card-title">Scan &rarr; send &rarr; receive &rarr; light, forever</div>
+      <div class="diagram-wrap" style="margin-top:14px">
+        <svg class="diagram" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="fArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E89318"/></marker></defs>
+          <g font-family="-apple-system, 'SF Pro Text', sans-serif" text-anchor="middle">
+            <g>
+              <rect x="60" y="40" width="180" height="78" rx="14" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.6"/>
+              <text x="150" y="76" font-size="20" font-weight="800" fill="#1D1D1F">Scan</text>
+              <text x="150" y="100" font-size="14" font-weight="600" fill="#6E6E73">8 rings &times; 32</text>
+            </g>
+            <g>
+              <rect x="320" y="40" width="180" height="78" rx="14" fill="#1D1D1F"/>
+              <text x="410" y="76" font-size="20" font-weight="800" fill="#fff">Send</text>
+              <text x="410" y="100" font-size="14" font-weight="600" fill="rgba(255,255,255,0.7)">S-frame &rarr; Pi</text>
+            </g>
+            <g>
+              <rect x="320" y="200" width="180" height="78" rx="14" fill="#1D1D1F"/>
+              <text x="410" y="236" font-size="20" font-weight="800" fill="#fff">Receive</text>
+              <text x="410" y="260" font-size="14" font-weight="600" fill="rgba(255,255,255,0.7)">L-frame, if any</text>
+            </g>
+            <g>
+              <rect x="60" y="200" width="180" height="78" rx="14" fill="#FAF6EE" stroke="#E89318" stroke-width="1.6"/>
+              <text x="150" y="236" font-size="20" font-weight="800" fill="#1D1D1F">Light</text>
+              <text x="150" y="260" font-size="14" font-weight="600" fill="#A65E00">108 LEDs</text>
+            </g>
+            <line x1="240" y1="79" x2="320" y2="79" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <line x1="410" y1="118" x2="410" y2="200" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <line x1="320" y1="239" x2="240" y2="239" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <line x1="150" y1="200" x2="150" y2="118" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
+            <text x="280" y="165" text-anchor="middle" font-size="15" font-weight="800" fill="#1D1D1F">~20 Hz</text>
+            <text x="280" y="186" text-anchor="middle" font-size="12.5" font-weight="600" fill="#86868B">non-blocking</text>
+          </g>
+        </svg>
       </div>
     </div>
 
-    <!-- ======== c1 · S frame ======== -->
-    <div class="bento-card c1">
-      <div class="card-label">ESP32 → Pi</div>
-      <div class="card-title" style="font-size:22px">S frame · 256 raw ADC reads</div>
-      <div class="frame-block">
-        <span class="ftype">S</span><span class="fpunct">:</span><span class="fdata">4095,4093,4090,2031,&hellip;,3498</span><span class="fpunct">*</span><span class="ftype">A7</span><span class="fpunct">\n</span>
+    <div class="bento-card c1 dark">
+      <div class="card-label">The one real subtlety</div>
+      <div class="card-title">Ghost-path suppression</div>
+      <div class="card-body" style="color:rgba(255,255,255,0.72)">Drive one ring HIGH, force every other ring to GND &mdash; not floating. Floating rings leak current through pressed neighbours and invent presses that never happened.</div>
+      <div class="protocol-frame" style="margin-top:14px">
+<span class="punct">for</span> ring <span class="punct">in</span> 0..7<span class="punct">:</span><br>
+&nbsp;&nbsp;rings = <span class="data">GND</span><span class="punct">;</span> ring = <span class="type">HIGH</span><br>
+&nbsp;&nbsp;read 32 slices <span class="punct">via</span> MUX
       </div>
-      <div class="card-body sm">ASCII, comma-separated, XOR-checksum. Inner rings ship 32 values too — the Pi folds them down. Tail it in any serial monitor.</div>
     </div>
 
-    <!-- ======== c2 · L frame ======== -->
     <div class="bento-card c2 cream">
-      <div class="card-label">Pi → ESP32</div>
-      <div class="card-title" style="font-size:22px">L frame · 108 RGB triplets</div>
-      <div class="frame-block">
-        <span class="ftype">L</span><span class="fpunct">:</span><span class="fdata">000000,0A0500,1A0F00,&hellip;,000000</span><span class="fpunct">*</span><span class="ftype">3E</span><span class="fpunct">\n</span>
-      </div>
-      <div class="card-body sm">Same envelope, hex payload. No L frame this tick? Repeat the last buffer. The light always has something to do.</div>
+      <div class="card-label">Robust because it's simple</div>
+      <div class="card-title">Drop a bad frame. Never retransmit.</div>
+      <div class="card-body sm" style="margin-top:8px">Both ends stream freely. Each frame carries an XOR checksum; if it fails, throw it away. In ambient music a single lost frame is imperceptible &mdash; and retries would only add latency.</div>
     </div>
 
   </div>
@@ -986,148 +889,273 @@
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Sonification · Jam mode</div>
-      <h2 class="slide-title">Eight rings, each with a musical role</h2>
+      <h2 class="slide-title">Place a stone in time &mdash; it's always in key</h2>
     </div>
     <div class="slide-index">13</div>
   </div>
   <div class="bento-grid">
+
     <div class="bento-card c-hero">
-      <div class="card-label">Ring assignment</div>
-      <div class="card-title">A rotating scan line · 16th-note quantized</div>
-      <div class="diagram-wrap" style="margin-top: 12px; flex: 1; min-height: 0">
-        <svg class="diagram" viewBox="-180 -180 360 360" xmlns="http://www.w3.org/2000/svg">
-          <g>
-            <circle cx="0" cy="0" r="32" fill="#6E6E73" opacity="0.22"/>
-            <circle cx="0" cy="0" r="32" fill="none" stroke="#6E6E73" stroke-width="1"/>
-            <path d="M 32,0 A 32,32 0 1,1 -32,0 A 32,32 0 1,1 32,0 M 64,0 A 64,64 0 1,0 -64,0 A 64,64 0 1,0 64,0 Z" fill="#5856D6" opacity="0.18" fill-rule="evenodd"/>
-            <circle cx="0" cy="0" r="64" fill="none" stroke="#5856D6" stroke-width="0.8"/>
-            <path d="M 64,0 A 64,64 0 1,1 -64,0 A 64,64 0 1,1 64,0 M 112,0 A 112,112 0 1,0 -112,0 A 112,112 0 1,0 112,0 Z" fill="#007AFF" opacity="0.16" fill-rule="evenodd"/>
-            <circle cx="0" cy="0" r="112" fill="none" stroke="#007AFF" stroke-width="0.8"/>
-            <path d="M 112,0 A 112,112 0 1,1 -112,0 A 112,112 0 1,1 112,0 M 168,0 A 168,168 0 1,0 -168,0 A 168,168 0 1,0 168,0 Z" fill="#E89318" opacity="0.18" fill-rule="evenodd"/>
-            <circle cx="0" cy="0" r="168" fill="none" stroke="#E89318" stroke-width="0.8"/>
-            <g stroke="#1D1D1F" stroke-width="0.5" opacity="0.4" id="ringTicks"></g>
-            <g fill="#1D1D1F" opacity="0.85">
-              <circle cx="14" cy="-6" r="6"/>
-              <circle cx="-12" cy="-50" r="7"/>
-              <circle cx="90" cy="-22" r="8"/>
-              <circle cx="-130" cy="50" r="9"/>
-              <circle cx="42" cy="130" r="7"/>
-            </g>
-            <g transform="rotate(45)">
-              <line x1="0" y1="0" x2="170" y2="0" stroke="#F5A623" stroke-width="2.5" opacity="0.95"/>
-              <circle cx="170" cy="0" r="4" fill="#F5A623"/>
-            </g>
-            <g font-family="-apple-system, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">
-              <text x="0" y="-150" text-anchor="middle" fill="#E89318">R6 R7 · MELODY HIGH</text>
-              <text x="0" y="-94" text-anchor="middle" fill="#007AFF">R4 R5 · MELODY</text>
-              <text x="0" y="-46" text-anchor="middle" fill="#5856D6">R2 R3 · BASS</text>
-              <text x="0" y="3" text-anchor="middle" fill="#6E6E73">R0/R1</text>
-              <text x="0" y="14" text-anchor="middle" font-size="6" fill="#6E6E73" font-weight="500">CONTROL + LO-FI</text>
-            </g>
+      <div class="card-label">The scan line is a playhead</div>
+      <div class="card-title" style="font-size:22px">Angle is time. Ring is instrument.</div>
+      <div class="diagram-wrap" style="margin-top:6px">
+        <svg class="diagram" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="jamGlow" cx="0" cy="0" r="190" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFFDF8"/><stop offset="100%" stop-color="#F6F4EF"/>
+            </radialGradient>
+          </defs>
+          <circle cx="0" cy="0" r="190" fill="url(#jamGlow)"/>
+
+          <!-- role bands -->
+          <circle cx="0" cy="0" r="84"  fill="#5856D6" opacity="0.06"/>
+          <circle cx="0" cy="0" r="132" fill="#2B6CB0" opacity="0.05"/>
+          <circle cx="0" cy="0" r="184" fill="#E89318" opacity="0.06"/>
+
+          <!-- ring circles -->
+          <g stroke="#1D1D1F" stroke-width="0.7" fill="none" opacity="0.34">
+            <circle r="40"/><circle r="58"/><circle r="84"/><circle r="108"/>
+            <circle r="132"/><circle r="158"/><circle r="184"/>
           </g>
+
+          <!-- 16 sector ticks (filled by JS) -->
+          <g id="ringTicks" stroke="#1D1D1F" stroke-width="0.6" opacity="0.3"></g>
+
+          <!-- cardinal beat markers -->
+          <g>
+            <circle cx="0" cy="-184" r="5.5" fill="#FF3030"/>
+            <circle cx="184" cy="0" r="4" fill="#FF8C8C"/>
+            <circle cx="0" cy="184" r="4" fill="#FF8C8C"/>
+            <circle cx="-184" cy="0" r="4" fill="#FF8C8C"/>
+            <text x="0" y="-196" text-anchor="middle" font-size="9" font-weight="700" fill="#FF3030">DOWNBEAT</text>
+          </g>
+
+          <!-- comet trail behind playhead -->
+          <g>
+            <g transform="rotate(-40)"><line x1="0" y1="0" x2="184" y2="0" stroke="#F5A623" stroke-width="9" opacity="0.05"/></g>
+            <g transform="rotate(-46)"><line x1="0" y1="0" x2="184" y2="0" stroke="#F5A623" stroke-width="8" opacity="0.08"/></g>
+            <g transform="rotate(-52)"><line x1="0" y1="0" x2="184" y2="0" stroke="#F5A623" stroke-width="7" opacity="0.12"/></g>
+            <g transform="rotate(-58)"><line x1="0" y1="0" x2="184" y2="0" stroke="#F5A623" stroke-width="6" opacity="0.2"/></g>
+          </g>
+
+          <!-- stones -->
+          <g transform="rotate(120)"><circle cx="158" cy="0" r="9" fill="#E89318" opacity="0.2"/><circle cx="158" cy="0" r="4.5" fill="#1D1D1F"/></g>
+          <g transform="rotate(205)"><circle cx="72" cy="0" r="9" fill="#5856D6" opacity="0.2"/><circle cx="72" cy="0" r="4.5" fill="#1D1D1F"/></g>
+          <g transform="rotate(-120)"><circle cx="132" cy="0" r="9" fill="#2B6CB0" opacity="0.2"/><circle cx="132" cy="0" r="4.5" fill="#1D1D1F"/></g>
+          <g transform="rotate(50)"><circle cx="108" cy="0" r="9" fill="#2B6CB0" opacity="0.2"/><circle cx="108" cy="0" r="4.5" fill="#1D1D1F"/></g>
+
+          <!-- stone being triggered (on the playhead) -->
+          <g transform="rotate(-64)">
+            <circle cx="108" cy="0" r="16" fill="#F5A623" opacity="0.3" class="pulse-on-active"/>
+            <circle cx="108" cy="0" r="6" fill="#E89318"/>
+          </g>
+
+          <!-- playhead -->
+          <g transform="rotate(-64)">
+            <line x1="0" y1="0" x2="184" y2="0" stroke="#F5A623" stroke-width="2.6"/>
+            <circle cx="184" cy="0" r="4.5" fill="#F5A623"/>
+          </g>
+
+          <!-- control hub -->
+          <circle cx="0" cy="0" r="40" fill="#1D1D1F"/>
+          <text x="0" y="-3" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">R0·R1</text>
+          <text x="0" y="13" text-anchor="middle" font-size="8.5" font-weight="600" fill="rgba(255,255,255,0.6)">CONTROL</text>
         </svg>
       </div>
-    </div>
-    <div class="bento-card c1 dark">
-      <div class="card-label">Chord progression</div>
-      <div class="card-title" style="color:white; font-size:22px">8-bar loop, in scale degrees</div>
-      <div style="display:flex; gap:8px; margin-top:14px; align-items:center; flex-wrap:wrap">
-        <div style="background:#F5A623; color:white; padding:8px 12px; border-radius:8px; font-weight:700; font-size:13px">2m9</div>
-        <div style="color:#86868B">→</div>
-        <div style="background:#2D2D30; color:white; padding:8px 12px; border-radius:8px; font-weight:700; font-size:13px">513</div>
-        <div style="color:#86868B">→</div>
-        <div style="background:#2D2D30; color:white; padding:8px 12px; border-radius:8px; font-weight:700; font-size:13px">1maj9</div>
-        <div style="color:#86868B">→</div>
-        <div style="background:#2D2D30; color:white; padding:8px 12px; border-radius:8px; font-weight:700; font-size:13px">69</div>
+      <div class="ring-legend">
+        <span><i style="background:#5856D6"></i>R2&ndash;3 Bass</span>
+        <span><i style="background:#2B6CB0"></i>R4&ndash;5 Melody</span>
+        <span><i style="background:#E89318"></i>R6&ndash;7 Lead</span>
       </div>
-      <div class="card-body sm" style="margin-top:14px">Key-relative notation. Change <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">key = "G"</code> in the manifest — entire song transposes.</div>
     </div>
+
+    <div class="bento-card c1 accent">
+      <div class="card-label">The core idea</div>
+      <div class="card-title" style="color:white; font-size:32px">You choose <em>when</em>.<br>It guarantees <em>what</em>.</div>
+      <div class="card-body" style="color:rgba(255,255,255,0.9); margin-top:12px">"Always sounds good" and "feels like I did it" usually fight. We split them: where you place a stone controls rhythm and texture &mdash; harmony is never left to chance.</div>
+    </div>
+
     <div class="bento-card c2 cream">
-      <div class="card-label">Lo-Fi control</div>
-      <div class="card-title" style="font-size:19px">R0/R1 pressure → master filter + drive</div>
-      <div class="card-body sm">Continuous real-time, no quantization.</div>
+      <div class="card-label">Harmony on rails</div>
+      <div class="card-title" style="font-size:21px">2m9 &rarr; 513 &rarr; 1maj9 &rarr; 69</div>
+      <div class="card-body sm" style="margin-top:10px">An 8-bar chord loop written in key-relative degrees. Change <code class="kbd">key</code> once and the whole piece &mdash; melody, bass, voicings &mdash; transposes together.</div>
     </div>
+
     <div class="bento-card c3">
-      <div class="card-label">Quantization</div>
-      <div class="card-mid-num">16<span class="num-unit">th</span></div>
-      <div class="card-body sm">16 slots per bar × 2 bars per chord = 32 sectors mapped to time.</div>
+      <div class="card-label">Lo-Fi, by hand</div>
+      <div class="card-title" style="font-size:21px">More stones, warmer sound</div>
+      <div class="card-body sm" style="margin-top:10px">Total pressure on the center rings drives a master filter and tape drive &mdash; continuous, real-time. The room's mood knob.</div>
     </div>
-    <div class="bento-card c4 accent">
-      <div class="card-label" style="color: rgba(255,255,255,0.7)">Why it always sounds good</div>
-      <div class="card-title" style="color:white; font-size:20px">Pre-defined trigger notes per chord, per ring, per 16th</div>
-      <div class="card-body sm" style="color: rgba(255,255,255,0.85); margin-top:8px">User controls <em>when</em>, not <em>what</em>. Placement = rhythm + texture. Harmony is guaranteed.</div>
-    </div>
+
   </div>
 </section>
 
-<section class="slide zoom s-ambient-zoom" id="slide-14">
-  <div class="zoom-content">
-    <div class="zoom-eyebrow">Ambient mode · WIP</div>
-    <h2 class="zoom-title">Another mode. Still iterating.</h2>
-    <div style="display:flex; gap:24px; align-items:stretch; max-width:1100px; margin:0 auto">
-      <div class="image-placeholder" style="height: 360px; flex: 1.4">
-        <div class="ph-tag">Replace with image</div>
-        <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <div class="ph-name">Kyoto Arashiyama mood board</div>
-        <div class="ph-desc">Bamboo forest, distant temple bell, train passing. The visual reference for the ambient soundscape.</div>
-      </div>
-      <div style="flex: 1; display: flex; flex-direction: column; gap: 16px; text-align: left">
-        <div style="background: var(--card); border-radius: var(--radius-lg); padding: 28px; flex: 1">
-          <div class="card-label">Concept</div>
-          <div class="card-title" style="font-size:22px; margin-top:8px">Narrative soundscape, not parameter knobs</div>
-          <div class="card-body" style="margin-top:12px">8 rings = 8 narrative layers. Drone, bell, bamboo wind, rain, marimba, melodic loop, events. Stones don't trigger notes — they invite layers of the scene.</div>
-        </div>
-        <div style="background: var(--card-dark); color: white; border-radius: var(--radius-lg); padding: 24px">
-          <div class="card-label" style="color: rgba(255,255,255,0.5)">Status</div>
-          <div style="font-size:18px; font-weight:600; margin-top:6px">Sound design 60% · not demoed today</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="slide bento s-lessons-bento" id="slide-15">
+<section class="slide bento s-jam-play" id="slide-14">
   <div class="slide-header">
     <div>
-      <div class="slide-eyebrow">Lessons</div>
-      <h2 class="slide-title">Three things that didn't work the first time</h2>
+      <div class="slide-eyebrow">Interaction</div>
+      <h2 class="slide-title">How you actually play it</h2>
+    </div>
+    <div class="slide-index">14</div>
+  </div>
+  <div class="bento-grid">
+
+    <div class="bento-card c-hero">
+      <div class="card-label">Three moves, no manual</div>
+      <div class="play-steps">
+
+        <div class="play-step">
+          <div class="play-mini">
+            <svg viewBox="-60 -60 120 120" xmlns="http://www.w3.org/2000/svg">
+              <circle r="54" fill="none" stroke="#D8D2C6" stroke-width="1.4"/>
+              <circle r="22" fill="#1D1D1F"/>
+              <circle cx="0" cy="0" r="7" fill="#F5A623"/>
+            </svg>
+          </div>
+          <div class="play-text">
+            <div class="play-n">1</div>
+            <div class="play-h">Drop a stone in the center</div>
+            <div class="play-d">The loop wakes up and the scan line starts sweeping. The center is the play button.</div>
+          </div>
+        </div>
+
+        <div class="play-step">
+          <div class="play-mini">
+            <svg viewBox="-60 -60 120 120" xmlns="http://www.w3.org/2000/svg">
+              <circle r="54" fill="none" stroke="#D8D2C6" stroke-width="1.4"/>
+              <circle r="22" fill="#1D1D1F"/>
+              <g transform="rotate(-50)"><line x1="0" y1="0" x2="54" y2="0" stroke="#F5A623" stroke-width="2.4"/></g>
+              <circle cx="36" cy="-14" r="6" fill="#2B6CB0"/>
+              <circle cx="-30" cy="22" r="6" fill="#E89318"/>
+              <circle cx="10" cy="40" r="6" fill="#5856D6"/>
+            </svg>
+          </div>
+          <div class="play-text">
+            <div class="play-n">2</div>
+            <div class="play-h">Place stones around the rings</div>
+            <div class="play-d">As the line sweeps past each stone, it plays a note &mdash; the outer ring sets the instrument, the angle sets the timing.</div>
+          </div>
+        </div>
+
+        <div class="play-step">
+          <div class="play-mini">
+            <svg viewBox="-60 -60 120 120" xmlns="http://www.w3.org/2000/svg">
+              <circle r="54" fill="none" stroke="#D8D2C6" stroke-width="1.4"/>
+              <circle r="22" fill="#1D1D1F"/>
+              <path d="M -16 6 q 16 -22 32 0" fill="none" stroke="#F5A623" stroke-width="2.2"/>
+              <circle cx="40" cy="-8" r="6" fill="#2B6CB0" opacity="0.35"/>
+              <text x="0" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#86868B">add · remove</text>
+            </svg>
+          </div>
+          <div class="play-text">
+            <div class="play-n">3</div>
+            <div class="play-h">Add, move, take away &mdash; together</div>
+            <div class="play-d">The loop keeps playing while strangers edit it live. Remove a stone and its part simply drops out.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bento-card c1 accent">
+      <div class="card-label">No screen, no start menu</div>
+      <div class="card-title" style="color:white; font-size:26px">The first stone is the only instruction</div>
+      <div class="card-body" style="color:rgba(255,255,255,0.9); margin-top:10px">Remove every stone and it falls quiet and resets. Nothing to read, nothing to press &mdash; you learn it by watching one other person.</div>
+    </div>
+
+    <div class="bento-card c2 dark">
+      <div class="card-label">The ring of light tells you everything</div>
+      <div class="led-legend">
+        <div class="led-row"><span class="led-dot" style="background:#FF3030"></span><span class="led-k">Red at 12 o'clock</span><span class="led-v">the downbeat &mdash; where the loop turns over</span></div>
+        <div class="led-row"><span class="led-dot" style="background:linear-gradient(90deg,#fff,rgba(255,255,255,0.1))"></span><span class="led-k">White comet</span><span class="led-v">the playhead sweeping clockwise</span></div>
+        <div class="led-row"><span class="led-dot" style="background:#2B6CB0"></span><span class="led-k">Colored glow</span><span class="led-v">your stone, tinted by its instrument</span></div>
+        <div class="led-row"><span class="led-dot" style="background:#F5A623"></span><span class="led-k">Bright flash</span><span class="led-v">a note firing the moment it's hit</span></div>
+        <div class="led-row"><span class="led-dot" style="background:rgba(255,255,255,0.35)"></span><span class="led-k">Soft breathing</span><span class="led-v">idle &mdash; waiting for someone</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="slide bento s-jam-craft" id="slide-15">
+  <div class="slide-header">
+    <div>
+      <div class="slide-eyebrow">Under the hood</div>
+      <h2 class="slide-title">A whole arrangement, hand-composed</h2>
     </div>
     <div class="slide-index">15</div>
   </div>
   <div class="bento-grid">
+
+    <div class="bento-card c-hero dark">
+      <div class="card-label">Trigger map &middot; chord 1 of 4 (2m9) &middot; every cell is a pre-written note</div>
+      <div class="note-grid">
+        <div class="ng-h">beat</div>
+        <div class="ng-h">1</div><div class="ng-h">&amp;</div><div class="ng-h">2</div><div class="ng-h">&amp;</div>
+        <div class="ng-h">3</div><div class="ng-h">&amp;</div><div class="ng-h">4</div><div class="ng-h">&amp;</div>
+
+        <div class="ng-rl">R7</div>
+        <div class="ng-c">3^</div><div class="ng-c">1^</div><div class="ng-c">2^</div><div class="ng-c">3^</div>
+        <div class="ng-c">3^</div><div class="ng-c">2^</div><div class="ng-c">1^</div><div class="ng-c">6</div>
+
+        <div class="ng-rl">R6</div>
+        <div class="ng-c">1^</div><div class="ng-c">5</div><div class="ng-c">6</div><div class="ng-c">1^</div>
+        <div class="ng-c">1^</div><div class="ng-c">5</div><div class="ng-c">6</div><div class="ng-c">3^</div>
+
+        <div class="ng-rl">R5</div>
+        <div class="ng-c">6</div><div class="ng-c">3</div><div class="ng-c">4</div><div class="ng-c">6</div>
+        <div class="ng-c">6</div><div class="ng-c">4</div><div class="ng-c">3</div><div class="ng-c">2</div>
+
+        <div class="ng-rl">R4</div>
+        <div class="ng-c">4</div><div class="ng-c">3</div><div class="ng-c">2</div><div class="ng-c">3</div>
+        <div class="ng-c">4</div><div class="ng-c">3</div><div class="ng-c">2</div><div class="ng-c">3</div>
+
+        <div class="ng-rl">R3</div>
+        <div class="ng-c">4_</div><div class="ng-c">4_</div><div class="ng-c">6_</div><div class="ng-c">6_</div>
+        <div class="ng-c">4_</div><div class="ng-c">4_</div><div class="ng-c">6_</div><div class="ng-c">6_</div>
+
+        <div class="ng-rl">R2</div>
+        <div class="ng-c">2_</div><div class="ng-c">2_</div><div class="ng-c">2_</div><div class="ng-c">2_</div>
+        <div class="ng-c">2_</div><div class="ng-c">2_</div><div class="ng-c">2_</div><div class="ng-c">2_</div>
+      </div>
+    </div>
+
     <div class="bento-card c1">
-      <div class="card-label">Hardware</div>
-      <div class="card-title lg" style="margin-bottom:14px">PD Trigger v1 → v2</div>
-      <div class="card-body">First PD trigger board refused to negotiate 20V no matter what we tried — locked at 5V. Replacement board worked first try. Lesson: read the PD chip datasheet before buying. Not all "PD Trigger" boards actually negotiate.</div>
-      <div class="card-bottom" style="margin-top: 24px">
-        <div class="pill-row">
-          <div class="pill">USB PD</div>
-          <div class="pill">Multimeter debug</div>
+      <div class="card-label">Drum arrangement &middot; built, not looped flat</div>
+      <div class="drum-block">
+        <div class="drum-grid">
+          <div class="dg-l">Kick</div>
+          <span class="dg on"></span><span class="dg"></span><span class="dg"></span><span class="dg gh"></span>
+          <span class="dg"></span><span class="dg"></span><span class="dg"></span><span class="dg gh"></span>
+          <span class="dg"></span><span class="dg"></span><span class="dg on"></span><span class="dg"></span>
+          <span class="dg"></span><span class="dg"></span><span class="dg"></span><span class="dg"></span>
+          <div class="dg-l">Snare</div>
+          <span class="dg"></span><span class="dg"></span><span class="dg"></span><span class="dg"></span>
+          <span class="dg on"></span><span class="dg"></span><span class="dg"></span><span class="dg"></span>
+          <span class="dg"></span><span class="dg"></span><span class="dg"></span><span class="dg"></span>
+          <span class="dg on"></span><span class="dg"></span><span class="dg"></span><span class="dg"></span>
+          <div class="dg-l">Hat</div>
+          <span class="dg on"></span><span class="dg"></span><span class="dg on"></span><span class="dg"></span>
+          <span class="dg on"></span><span class="dg"></span><span class="dg on"></span><span class="dg"></span>
+          <span class="dg on"></span><span class="dg gh"></span><span class="dg on"></span><span class="dg"></span>
+          <span class="dg on"></span><span class="dg"></span><span class="dg on"></span><span class="dg gh"></span>
         </div>
       </div>
+      <div class="card-body sm" style="margin-top:12px">Four patterns sequenced A&middot;B&middot;C&middot;C&middot;A&middot;D&middot;D&middot;A &mdash; an intro, a build, a drop, a breath.</div>
     </div>
-    <div class="bento-card c2 dark">
-      <div class="card-label">Reliability</div>
-      <div class="card-title lg" style="color:white; margin-bottom:14px">Flying wires → breakout board</div>
-      <div class="card-body">First attempt: cut a Micro-USB cable, solder bare 28 AWG wires directly to the buck output. They snapped every time we moved the device. Replaced with a breakout board with screw terminals — sturdy, swappable, demo-ready.</div>
-      <div class="card-bottom" style="margin-top: 24px">
-        <div class="pill-row">
-          <div class="pill" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85)">28 AWG too thin</div>
-          <div class="pill" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85)">Mechanical fatigue</div>
-        </div>
+
+    <div class="bento-card c2 cream">
+      <div class="card-label">One voice per ring</div>
+      <div class="voice-list">
+        <div class="voice-row"><span class="vr-r" style="color:#E89318">R7</span><span class="vr-n">Marimba</span></div>
+        <div class="voice-row"><span class="vr-r" style="color:#E89318">R6&middot;R5</span><span class="vr-n">Lo-Fi e-piano</span></div>
+        <div class="voice-row"><span class="vr-r" style="color:#2B6CB0">R4</span><span class="vr-n">Pad-pluck</span></div>
+        <div class="voice-row"><span class="vr-r" style="color:#5856D6">R3</span><span class="vr-n">Pluck bass</span></div>
+        <div class="voice-row"><span class="vr-r" style="color:#5856D6">R2</span><span class="vr-n">Sub bass</span></div>
       </div>
+      <div class="card-body sm" style="margin-top:10px">All synthesized live in SuperCollider &mdash; no samples.</div>
     </div>
-    <div class="bento-card c3 accent">
-      <div class="card-label" style="color: rgba(255,255,255,0.7)">Design</div>
-      <div class="card-title lg" style="color:white; margin-bottom:14px">The Lo-Fi paradox</div>
-      <div class="card-body" style="color: rgba(255,255,255,0.92)">"Sounds good no matter how you place it" fights "I can feel my placement affecting the music." We split the answer across two modes — and gave Jam its R0/R1 control stones as a deliberate skill-floor that pays off in tactile feedback.</div>
-      <div class="card-bottom" style="margin-top: 24px">
-        <div class="pill-row">
-          <div class="pill" style="background: rgba(255,255,255,0.18); color: white">Freedom vs. control</div>
-          <div class="pill" style="background: rgba(255,255,255,0.18); color: white">Two-mode answer</div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </section>
 

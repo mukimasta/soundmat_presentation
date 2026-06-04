@@ -88,20 +88,19 @@
     return stepperCache.get(slide);
   }
 
-  // ----- generic stage pan/zoom: SVG <g> moves to focus on a zone per step -----
-  function setupStageZoom(stageId, vw, vh, zones, dur = 720) {
-    const stage = document.getElementById(stageId);
-    if (!stage) return;
+  // ----- generic interactive pan + zoom stage (svg <g data-zoom-stage>) -----
+  function setupZoomStage(stage) {
     const slide = stage.closest('.slide');
-    if (!slide) return;
+    const svg = stage.closest('svg');
+    if (!slide || !svg) return;
+
+    const vb = (svg.getAttribute('viewBox') || '0 0 1400 480').split(/\s+/).map(Number);
+    const vw = vb[2] || 1400, vh = vb[3] || 480;
+    const zones = parseJsonAttr(stage.dataset.zones, [{ s: 1, cx: vw / 2, cy: vh / 2 }]);
 
     function target(step) {
       const z = zones[step] || zones[0];
-      return {
-        s: z.s,
-        tx: vw / 2 - z.cx * z.s,
-        ty: vh / 2 - z.cy * z.s,
-      };
+      return { s: z.s, tx: vw / 2 - z.cx * z.s, ty: vh / 2 - z.cy * z.s };
     }
     function apply(t) {
       stage.setAttribute(
@@ -115,7 +114,9 @@
       if (m) return { tx: +m[1], ty: +m[2], s: +m[3] };
       return { s: 1, tx: 0, ty: 0 };
     }
+
     let from = target(0), to = target(0), animStart = 0, rafId = null;
+    const dur = 720;
     function easeOutCubic(p) { return 1 - Math.pow(1 - p, 3); }
     function tick(now) {
       const p = Math.min(1, (now - animStart) / dur);
@@ -134,26 +135,9 @@
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
     }
+
     apply(target(0));
     slide.addEventListener('stepchange', (e) => goTo(e.detail.step));
-  }
-
-  function setupAllStageZooms() {
-    // 06 System overview — Touch / Scan / Synth / Output
-    setupStageZoom('systemStage', 1400, 480, {
-      0: { s: 1.00, cx: 700,  cy: 240 },
-      1: { s: 1.85, cx: 200,  cy: 240 },
-      2: { s: 1.85, cx: 540,  cy: 270 },
-      3: { s: 1.85, cx: 870,  cy: 240 },
-      4: { s: 1.85, cx: 1190, cy: 240 },
-    });
-    // 08 Electronics architecture — Power / Compute / I/O
-    setupStageZoom('archStage', 1200, 640, {
-      0: { s: 1.00, cx: 600, cy: 320 },
-      1: { s: 1.55, cx: 600, cy: 145 },
-      2: { s: 1.45, cx: 600, cy: 360 },
-      3: { s: 1.15, cx: 600, cy: 460 },
-    });
   }
 
   // ----- hash + navigation -----
@@ -225,6 +209,6 @@
     if (Math.abs(dx) > 50) (dx < 0 ? next() : prev());
   });
 
-  setupAllStageZooms();
+  document.querySelectorAll('[data-zoom-stage]').forEach(setupZoomStage);
   showSlide(current);
 })();

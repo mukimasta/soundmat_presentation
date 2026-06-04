@@ -2,189 +2,76 @@
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Sensor</div>
-      <h2 class="slide-title">A 224-zone polar pressure mat — without the phantoms</h2>
+      <h2 class="slide-title">A pressure grid in polar coordinates</h2>
     </div>
     <div class="slide-index">07</div>
   </div>
   <div class="bento-grid">
 
-    <!-- ======== HERO · ghost-path comparison ======== -->
     <div class="bento-card c-hero">
-      <div class="card-label">Ghost path</div>
-      <div class="card-title">Pull idle rows to GND, not float.</div>
-      <div class="ghost-diagram-wrap">
-        <svg class="ghost-diagram" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="cellHatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="6" stroke="#1D1D1F" stroke-width="0.5" opacity="0.18"/>
-            </pattern>
-          </defs>
-
-          <!-- ===== LEFT panel: FLOAT (with phantom) ===== -->
-          <g transform="translate(20 30)">
-            <!-- background -->
-            <rect x="-2" y="-2" width="244" height="204" rx="6" fill="white" stroke="#D2D2D7" stroke-width="1"/>
-            <!-- row labels -->
-            <g font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#86868B">
-              <text x="-12" y="25"  text-anchor="end">R0</text>
-              <text x="-12" y="75"  text-anchor="end">R1</text>
-              <text x="-12" y="125" text-anchor="end">R2</text>
-              <text x="-12" y="175" text-anchor="end">R3</text>
-            </g>
-            <text x="-12" y="22" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#E89318" font-weight="700">HIGH</text>
-            <text x="-12" y="72" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
-            <text x="-12" y="122" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
-            <text x="-12" y="172" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#86868B" font-weight="700">~</text>
-
-            <!-- 4x4 grid base -->
-            <g>
-              <!-- background cells -->
-              <g fill="url(#cellHatch)">
-                <rect x="0"   y="0"   width="60" height="50"/>
-                <rect x="60"  y="0"   width="60" height="50"/>
-                <rect x="120" y="0"   width="60" height="50"/>
-                <rect x="180" y="0"   width="60" height="50"/>
-                <rect x="0"   y="50"  width="60" height="50"/>
-                <rect x="60"  y="50"  width="60" height="50"/>
-                <rect x="120" y="50"  width="60" height="50"/>
-                <rect x="180" y="50"  width="60" height="50"/>
-                <rect x="0"   y="100" width="60" height="50"/>
-                <rect x="60"  y="100" width="60" height="50"/>
-                <rect x="120" y="100" width="60" height="50"/>
-                <rect x="180" y="100" width="60" height="50"/>
-                <rect x="0"   y="150" width="60" height="50"/>
-                <rect x="60"  y="150" width="60" height="50"/>
-                <rect x="120" y="150" width="60" height="50"/>
-                <rect x="180" y="150" width="60" height="50"/>
-              </g>
-              <!-- lit cells (real reads, orange) -->
-              <rect x="0"   y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="180" y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="0"   y="100" width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <!-- PHANTOM cell (ghost, dashed outline) -->
-              <rect x="180" y="100" width="60" height="50" fill="#FF3B30" fill-opacity="0.32"
-                    stroke="#FF3B30" stroke-width="2" stroke-dasharray="5 3"/>
-              <!-- grid lines on top -->
-              <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.6">
-                <line x1="0" y1="0"   x2="240" y2="0"/>
-                <line x1="0" y1="50"  x2="240" y2="50"/>
-                <line x1="0" y1="100" x2="240" y2="100"/>
-                <line x1="0" y1="150" x2="240" y2="150"/>
-                <line x1="0" y1="200" x2="240" y2="200"/>
-                <line x1="0"   y1="0" x2="0"   y2="200"/>
-                <line x1="60"  y1="0" x2="60"  y2="200"/>
-                <line x1="120" y1="0" x2="120" y2="200"/>
-                <line x1="180" y1="0" x2="180" y2="200"/>
-                <line x1="240" y1="0" x2="240" y2="200"/>
-              </g>
-              <!-- stones on (R0,C0), (R0,C3), (R2,C0) -->
-              <ellipse cx="30"  cy="25"  rx="14" ry="9"  fill="#3D2E1F"/>
-              <ellipse cx="210" cy="25"  rx="16" ry="10" fill="#3D2E1F"/>
-              <ellipse cx="30"  cy="125" rx="14" ry="9"  fill="#3D2E1F"/>
-              <!-- "?" mark on phantom -->
-              <text x="210" y="132" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="22" font-weight="800" fill="#FF3B30">?</text>
-            </g>
-
-            <!-- panel label -->
-            <text x="120" y="232" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#1D1D1F" letter-spacing="3">FLOAT</text>
-            <text x="120" y="254" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#FF3B30">3 presses → 4 reads (1 phantom)</text>
+      <div class="card-label">Geometry</div>
+      <div class="card-title">Rings &times; slices on Velostat</div>
+      <div class="card-body sm">Concentric rings as one electrode axis, radial slices as the other, with piezoresistive Velostat sandwiched between. A circular sensor for a circular device.</div>
+      <div class="diagram-wrap" style="margin-top:10px">
+        <svg class="diagram" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="matGlow" cx="0" cy="0" r="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFFAF0"/><stop offset="100%" stop-color="#F5F5F7"/></radialGradient></defs>
+          <circle cx="0" cy="0" r="180" fill="url(#matGlow)"/>
+          <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.55">
+            <circle cx="0" cy="0" r="22"/><circle cx="0" cy="0" r="44"/><circle cx="0" cy="0" r="66"/><circle cx="0" cy="0" r="88"/>
+            <circle cx="0" cy="0" r="110"/><circle cx="0" cy="0" r="132"/><circle cx="0" cy="0" r="154"/><circle cx="0" cy="0" r="176"/>
           </g>
-
-          <!-- divider -->
-          <line x1="296" y1="20" x2="296" y2="280" stroke="#D2D2D7" stroke-width="1" stroke-dasharray="3 4"/>
-
-          <!-- ===== RIGHT panel: GND (clean) ===== -->
-          <g transform="translate(320 30)">
-            <rect x="-2" y="-2" width="244" height="204" rx="6" fill="white" stroke="#D2D2D7" stroke-width="1"/>
-            <g font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#86868B">
-              <text x="-12" y="25"  text-anchor="end">R0</text>
-              <text x="-12" y="75"  text-anchor="end">R1</text>
-              <text x="-12" y="125" text-anchor="end">R2</text>
-              <text x="-12" y="175" text-anchor="end">R3</text>
-            </g>
-            <text x="-12" y="22" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#E89318" font-weight="700">HIGH</text>
-            <text x="-12" y="72" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
-            <text x="-12" y="122" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
-            <text x="-12" y="172" text-anchor="end" font-family="-apple-system, sans-serif" font-size="9" fill="#2D7A2D" font-weight="700">GND</text>
-
-            <g>
-              <g fill="url(#cellHatch)">
-                <rect x="0"   y="0"   width="60" height="50"/>
-                <rect x="60"  y="0"   width="60" height="50"/>
-                <rect x="120" y="0"   width="60" height="50"/>
-                <rect x="180" y="0"   width="60" height="50"/>
-                <rect x="0"   y="50"  width="60" height="50"/>
-                <rect x="60"  y="50"  width="60" height="50"/>
-                <rect x="120" y="50"  width="60" height="50"/>
-                <rect x="180" y="50"  width="60" height="50"/>
-                <rect x="0"   y="100" width="60" height="50"/>
-                <rect x="60"  y="100" width="60" height="50"/>
-                <rect x="120" y="100" width="60" height="50"/>
-                <rect x="180" y="100" width="60" height="50"/>
-                <rect x="0"   y="150" width="60" height="50"/>
-                <rect x="60"  y="150" width="60" height="50"/>
-                <rect x="120" y="150" width="60" height="50"/>
-                <rect x="180" y="150" width="60" height="50"/>
-              </g>
-              <!-- lit cells (real reads only) -->
-              <rect x="0"   y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="180" y="0"   width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <rect x="0"   y="100" width="60" height="50" fill="#F5A623" opacity="0.85"/>
-              <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.6">
-                <line x1="0" y1="0"   x2="240" y2="0"/>
-                <line x1="0" y1="50"  x2="240" y2="50"/>
-                <line x1="0" y1="100" x2="240" y2="100"/>
-                <line x1="0" y1="150" x2="240" y2="150"/>
-                <line x1="0" y1="200" x2="240" y2="200"/>
-                <line x1="0"   y1="0" x2="0"   y2="200"/>
-                <line x1="60"  y1="0" x2="60"  y2="200"/>
-                <line x1="120" y1="0" x2="120" y2="200"/>
-                <line x1="180" y1="0" x2="180" y2="200"/>
-                <line x1="240" y1="0" x2="240" y2="200"/>
-              </g>
-              <ellipse cx="30"  cy="25"  rx="14" ry="9"  fill="#3D2E1F"/>
-              <ellipse cx="210" cy="25"  rx="16" ry="10" fill="#3D2E1F"/>
-              <ellipse cx="30"  cy="125" rx="14" ry="9"  fill="#3D2E1F"/>
-            </g>
-
-            <text x="120" y="232" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#1D1D1F" letter-spacing="3">GND</text>
-            <text x="120" y="254" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#2D7A2D">3 presses → 3 reads</text>
+          <g id="sliceLines32" stroke="#1D1D1F" stroke-width="0.4" opacity="0.4"></g>
+          <g id="sliceLines16" stroke="#1D1D1F" stroke-width="0.4" opacity="0.4"></g>
+          <g fill="#F5A623" opacity="0.92" class="pulse-on-active">
+            <path d="M 110,0 A 110,110 0 0,1 105.46,32.30 L 89.83,27.51 A 88,88 0 0,0 88,0 Z" transform="rotate(56.25)"/>
+            <path d="M 132,0 A 132,132 0 0,1 125.55,38.46 L 109.92,33.67 A 110,110 0 0,0 110,0 Z" transform="rotate(270)"/>
+            <path d="M 154,0 A 154,154 0 0,1 145.65,44.61 L 130.02,39.82 A 132,132 0 0,0 132,0 Z" transform="rotate(157.5)"/>
           </g>
+          <circle cx="0" cy="0" r="3" fill="#1D1D1F"/>
         </svg>
       </div>
-      <div class="card-body sm">When you scan one ring, current sneaks back through any pressed cells on idle rings — every L-shaped trio fakes a fourth read. Clamping idle rings to ground kills the return path.</div>
     </div>
 
-    <!-- ======== c1 · 224 zones (accent number) ======== -->
     <div class="bento-card c1 accent">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">Sensing zones</div>
-      <div class="card-stretch">
+      <div class="card-label">Sensing zones</div>
+      <div class="card-stretch" style="justify-content:flex-start; align-items:flex-start">
         <div>
           <div class="card-big-num" data-countup="224">224</div>
-          <div style="font-size:18px; opacity:0.92; margin-top:8px; font-weight:600">8 rings · 32 slices · polar</div>
+          <div style="font-size:16px; opacity:0.92; margin-top:10px; font-weight:600">6&nbsp;rings &times; 32 + 2 inner &times; 16</div>
+          <div style="font-size:14px; opacity:0.82; margin-top:4px; line-height:1.4">Inner rings drop to 16 slices &mdash; near the center, 32 would crowd into noise.</div>
         </div>
       </div>
     </div>
 
-    <!-- ======== c2 · Crosstalk acknowledged ======== -->
     <div class="bento-card c2">
-      <div class="card-label">Crosstalk</div>
-      <div class="card-title" style="font-size:22px">Accepted by design.</div>
-      <div class="card-body sm">Multi-press still drags column voltage — physics, not bugs. Inner two rings use 16 slices instead of 32 to keep cell area honest, and gaps stay at 3.5 mm.</div>
+      <div class="card-label">Why polar, not a grid</div>
+      <div class="compare">
+        <div class="col-head"></div>
+        <div class="col-head">Grid</div>
+        <div class="col-head">Polar</div>
+        <div class="row-label">Circle fit</div>
+        <div class="no">corners wasted</div>
+        <div class="yes">native</div>
+        <div class="row-label">Meaning</div>
+        <div class="row-label">x, y</div>
+        <div class="yes">radius, angle</div>
+        <div class="row-label">Zones for same feel</div>
+        <div class="no">dense grid</div>
+        <div class="yes">far fewer</div>
+      </div>
     </div>
 
-    <!-- ======== c3 · Auto design tool ======== -->
     <div class="bento-card c3 dark">
-      <div class="card-label" style="color: rgba(255,255,255,0.78)">Tooling</div>
-      <div class="card-title" style="color:white; font-size:22px"><span style="font-family: var(--font-mono); font-size:0.85em; color:#F5A623">sensor_design_tool</span></div>
-      <div class="card-body sm" style="color: rgba(255,255,255,0.78)">Vibe-coded in Cursor. Type ring count, slice count, diameter — get a laser-ready SVG / PDF. We re-cut the whole mat in an afternoon.</div>
+      <div class="card-label">Automated design tool</div>
+      <div class="card-title" style="font-size:22px">Parameters in, laser-cut files out</div>
       <div class="tool-pipeline">
-        <span>params</span>
-        <span class="arr">→</span>
-        <span>geometry</span>
-        <span class="arr">→</span>
-        <span>SVG / PDF</span>
+        <span class="tool-step">params</span>
+        <span class="tool-arrow">&rarr;</span>
+        <span class="tool-step">geometry</span>
+        <span class="tool-arrow">&rarr;</span>
+        <span class="tool-step accent">SVG / PDF</span>
       </div>
+      <div class="card-body sm" style="margin-top:14px; color:rgba(255,255,255,0.72)">A small tool we vibe-coded in Cursor: change 8 numbers, regenerate the whole cut pattern in seconds. Open-sourced as <span style="color:#FFD89A; font-weight:600">sensor_design_tool</span>.</div>
     </div>
 
   </div>
