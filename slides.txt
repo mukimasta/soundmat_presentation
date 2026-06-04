@@ -111,7 +111,17 @@ Sensor fabrication
 Laser-cut sensor disc
 Laser-cut circular sensor disc with radial slice pattern and copper tabs around the perimeter
 
-16 · 08-spine-electronics
+16 · 08-sensor-challenge-1
+────────────────────────────────────────
+CHALLENGE
+Challenges with Multi-touch — Ghost touch, Pre-load
+
+17 · 08-sensor-challenge-2
+────────────────────────────────────────
+CHALLENGE
+Challenges with Multi-touch — Mechanical and electrical cross-talk
+
+18 · 08-spine-electronics
 ────────────────────────────────────────
 System overview
 Sensor
@@ -121,7 +131,7 @@ Touch captured. Next — the analog front-end that reads every zone.
   2. Electronics
      Dual 16:1 multiplexers — pressure becomes voltage across 224 zones. USB-C PD feeds the stack.
 
-17 · 09-electronics-arch
+19 · 09-electronics-arch
 ────────────────────────────────────────
 Electronics architecture
 Five modules, three kinds of wire
@@ -137,34 +147,34 @@ Power in, data up, control out, sound out — every connection is power, data, o
   5. Audio
      The Pi streams over USB to an external DAC — clean 3.5 mm line-out to the room.
 
-18 · 10-power-module
+20 · 10-power-module
 ────────────────────────────────────────
 Power
 The hardest part is feeding it
 Hand-drawn power module schematic: USB-C PD trigger, buck converter, star grounding, LED strip and Pi
 
-19 · 10-power-outdoor
+21 · 10-power-outdoor
 ────────────────────────────────────────
 Power
 USB-C power
 An elegant power solution
 
-20 · 10-audio-output
+22 · 10-audio-output
 ────────────────────────────────────────
 Audio
 USB-C audio
 Hardware DAC to the room
 
-21 · 10-audio-prototype
+23 · 10-audio-prototype
 ────────────────────────────────────────
 Electronics
 Schematic — ESP32 with dual CD4067 multiplexers and sensor ring connections
 
-22 · 10-electronics-prototype-photo
+24 · 10-electronics-prototype-photo
 ────────────────────────────────────────
 Electronics prototype assembly on perfboard
 
-23 · 09-spine-firmware
+25 · 09-spine-firmware
 ────────────────────────────────────────
 System overview
 Electronics
@@ -174,7 +184,7 @@ Analog captured. Next — the edge loop that turns readings into frames.
   2. Firmware
      ESP32 scans all zones ~20× per second — S-frame up, L-frame down, forever.
 
-24 · 11-firmware-bento
+26 · 11-firmware-bento
 ────────────────────────────────────────
 FIRMWARE
 The edge bridge
@@ -185,14 +195,14 @@ The edge bridge
   3. On the wire
      Two frame types: S sends pressure, L sends colour — plain text, no handshake.
 
-25 · 11-firmware-video
+27 · 11-firmware-video
 ────────────────────────────────────────
 Firmware
 Stones on the mat
 Place stones on the felt – Visualization
 [Placing stones on the sensor mat with live pressure heatmap visualization]
 
-26 · 12-spine-software
+28 · 12-spine-software
 ────────────────────────────────────────
 System overview
 Firmware
@@ -202,22 +212,22 @@ Digitized and streaming. Next — what turns numbers into music.
   2. Software
      UART frames land on a Raspberry Pi — Python runs the logic, SuperCollider renders the sound.
 
-27 · 13-python-sc-hero
+29 · 13-python-sc-hero
 ────────────────────────────────────────
 Software makes them music.
 
-28 · 14-software-bento
+30 · 14-software-bento
 ────────────────────────────────────────
 Software
 The music is data, not code
 
-29 · 14-software-web-console
+31 · 14-software-web-console
 ────────────────────────────────────────
 Software
 Web console
 SoundMat web control console — presets, mix, and developer panel
 
-30 · 15-software-challenge
+32 · 15-software-challenge
 ────────────────────────────────────────
 Challenge
 Making it run on the Raspberry Pi
@@ -228,13 +238,13 @@ Making it run on the Raspberry Pi
   3. Result
      scsynth 99.9% → 79%, jam loop 90% → 60%. Fifty stones now play stable on the Pi.
 
-31 · 15-software-codebase
+33 · 15-software-codebase
 ────────────────────────────────────────
 Software
 The SoundMat codebase
 Python, SuperCollider, and declarative manifests
 
-32 · 15-spine-sound
+34 · 15-spine-sound
 ────────────────────────────────────────
 System overview
 Software
@@ -244,23 +254,23 @@ Music computed. Next — how it reaches your ears and eyes.
   2. Output
      USB DAC drives the speaker; L-frames travel back to light the LED ring.
 
-33 · 15-sonification-hero
+35 · 15-sonification-hero
 ────────────────────────────────────────
 Sonification
 
-34 · 15-music-background
+36 · 15-music-background
 ────────────────────────────────────────
 Sonification
 Where the music comes from
 Years of playing and writing before SoundMat.
 
-35 · 16-sound-modes
+37 · 16-sound-modes
 ────────────────────────────────────────
 Sonification
 Two modes for two situations
 Anyone should make it sound good — and still feel they did it.
 
-36 · 17-jam-sonification
+38 · 17-jam-sonification
 ────────────────────────────────────────
 Sonification
 Jam mode — how stones become music
@@ -277,7 +287,7 @@ Jam mode — how stones become music
   6. Melody layer
      Six rings, eight sectors — every cell is a pre-written note; scan = when you trigger.
 
-37 · 18-jam-interaction
+39 · 18-jam-interaction
 ────────────────────────────────────────
 Interaction
 How you read and play the mat
@@ -286,18 +296,18 @@ How you read and play the mat
   2. LED ring
      Red downbeat, white comet, colored stones, bright flash — the ring is the UI.
 
-38 · 18-system-recap
+40 · 18-system-recap
 ────────────────────────────────────────
 System overview
 End-to-end, one more time
 Sensor → analog → firmware → software → sound and light — one sculpture, one USB-C cable. Next: we play it live.
 
-39 · 18-timeline
+41 · 18-timeline
 ────────────────────────────────────────
 Timeline
 Eight weeks, idea to presentation
 
-40 · 19-acknowledgments
+42 · 19-acknowledgments
 ────────────────────────────────────────
 Acknowledgments
 Thank you
@@ -308,13 +318,13 @@ Support: Prof. Meichun Liu
 Cover mat design: Po-Yu Chen & Chenfei Ma
   Design Students · School of Art + Art History + Design
 
-41 · 19-live-demo
+43 · 19-live-demo
 ────────────────────────────────────────
 Next
 Live Demo
 Five minutes. From silence, to a control stone, to a full Lo-Fi loop, and back to silence.
 
-42 · 20-closing
+44 · 20-closing
 ────────────────────────────────────────
 Thank you
 Questions?
