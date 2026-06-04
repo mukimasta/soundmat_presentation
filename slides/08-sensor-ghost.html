@@ -1,0 +1,164 @@
+<section class="slide zoom zwalk" id="slide-8" data-step="0"
+  data-step-titles='["Scanning a grid of stones","The ghost touch","Ground every idle row"]'
+  data-step-subs='["224 zones are far too many to wire one-by-one, so we scan: one row goes live at a time and each column is read through a resistor. A pressed stone bridges its row to its column — and that column’s meter lights up.","Press three stones in an L and the current finds a back door: it sneaks through the pressed stones into a column we never touched. An empty cell now reads as pressed — and a phantom note plays.","The fix is simple — tie every row we are not reading to ground. The sneak current drains straight to ground instead of crossing over. The back door is closed and the ghost is gone."]'>
+  <div class="zoom-content zoom-walk-content">
+    <div class="zoom-header">
+      <div class="zoom-eyebrow">Sensor read-out</div>
+      <h2 class="zoom-title" data-step-title>Scanning a grid of stones</h2>
+      <p class="zoom-caption" data-step-sub>224 zones are far too many to wire one-by-one, so we scan: one row goes live at a time and each column is read through a resistor. A pressed stone bridges its row to its column — and that column’s meter lights up.</p>
+    </div>
+
+    <div class="zoom-stage-wrap">
+      <svg class="ghost-svg" viewBox="0 0 1240 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="pebble" cx="38%" cy="32%" r="80%">
+            <stop offset="0%" stop-color="#6A6A70"/>
+            <stop offset="55%" stop-color="#3A3A3D"/>
+            <stop offset="100%" stop-color="#26262A"/>
+          </radialGradient>
+          <marker id="ahR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E74C3C"/></marker>
+          <marker id="ahG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E9E4F"/></marker>
+          <marker id="ahO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E89318"/></marker>
+        </defs>
+
+        <!-- ============ ALWAYS-ON SCENE ============ -->
+        <g class="always">
+          <!-- legend -->
+          <g transform="translate(70 56)">
+            <circle cx="10" cy="0" r="11" fill="url(#pebble)"/>
+            <text x="30" y="5" font-size="17" fill="#6E6E73" font-weight="600">stone pressed</text>
+            <circle cx="182" cy="0" r="11" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <text x="202" y="5" font-size="17" fill="#6E6E73" font-weight="600">empty</text>
+            <text x="0" y="34" font-size="16" fill="#9b958a" font-weight="600">rows drive  ·  columns are read</text>
+          </g>
+
+          <!-- column captions -->
+          <text x="580" y="138" text-anchor="middle" font-size="17" fill="#86868B" font-weight="700" letter-spacing="0.04em">COLUMN 1</text>
+          <text x="860" y="138" text-anchor="middle" font-size="17" fill="#86868B" font-weight="700" letter-spacing="0.04em">COLUMN 2</text>
+
+          <!-- rails -->
+          <line x1="360" y1="200" x2="1010" y2="200" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+          <line x1="360" y1="380" x2="1010" y2="380" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+          <line x1="580" y1="158" x2="580" y2="472" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+          <line x1="860" y1="158" x2="860" y2="472" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+
+          <!-- VCC source on the live row -->
+          <rect x="190" y="176" width="120" height="48" rx="11" fill="#E89318"/>
+          <text x="250" y="208" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">5 V</text>
+          <text x="250" y="248" text-anchor="middle" font-size="15" font-weight="700" fill="#A65E00">ROW 1 · live</text>
+
+          <!-- junction sites (white halo breaks the crossing; ring = sensor) -->
+          <g>
+            <circle cx="580" cy="200" r="30" fill="#FBFAF7"/><circle cx="860" cy="200" r="30" fill="#FBFAF7"/>
+            <circle cx="580" cy="380" r="30" fill="#FBFAF7"/><circle cx="860" cy="380" r="30" fill="#FBFAF7"/>
+            <circle cx="580" cy="200" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <circle cx="860" cy="200" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <circle cx="580" cy="380" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <circle cx="860" cy="380" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+          </g>
+
+          <!-- meter frames at the foot of each column -->
+          <line x1="580" y1="472" x2="580" y2="496" stroke="#C2BBAD" stroke-width="7"/>
+          <line x1="860" y1="472" x2="860" y2="496" stroke="#C2BBAD" stroke-width="7"/>
+          <text x="580" y="582" text-anchor="middle" font-size="15" fill="#9b958a" font-weight="600">meter</text>
+          <text x="860" y="582" text-anchor="middle" font-size="15" fill="#9b958a" font-weight="600">meter</text>
+        </g>
+
+        <!-- ============ STEP 0 — baseline ============ -->
+        <g class="gstep gstep0" data-step="0">
+          <!-- energized path: VCC -> row1 -> A -> down col1 -> meter1 -->
+          <path class="flow flow-o" d="M 310 200 L 580 200 L 580 496" fill="none" stroke="#E89318" stroke-width="7" stroke-linecap="round"/>
+          <!-- stone A -->
+          <circle cx="580" cy="200" r="26" fill="url(#pebble)"/>
+          <!-- idle row 2 -->
+          <rect x="184" y="356" width="132" height="48" rx="11" fill="#ECECEE"/>
+          <text x="250" y="386" text-anchor="middle" font-size="18" font-weight="700" fill="#6E6E73">idle</text>
+          <!-- meters -->
+          <g><rect x="492" y="497" width="176" height="56" rx="12" fill="#34C759"/>
+             <text x="580" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">PRESSED ✓</text></g>
+          <g><rect x="772" y="497" width="176" height="56" rx="12" fill="#ECECEE"/>
+             <text x="860" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#86868B">silent</text></g>
+          <!-- annotation -->
+          <text x="640" y="180" font-size="17" fill="#A65E00" font-weight="700">a stone connects its row to its column</text>
+        </g>
+
+        <!-- ============ STEP 1 — the ghost ============ -->
+        <g class="gstep gstep1" data-step="1">
+          <!-- floating idle row -->
+          <rect x="176" y="356" width="148" height="48" rx="11" fill="#fff" stroke="#E74C3C" stroke-width="2.5" stroke-dasharray="6 5"/>
+          <text x="250" y="386" text-anchor="middle" font-size="18" font-weight="800" fill="#E74C3C">floating</text>
+          <!-- sneak path: VCC -> row1 -> A -> col1 down -> C -> row2 right -> D -> col2 down -> meter2 -->
+          <path class="flow flow-r" d="M 310 200 L 580 200 L 580 380 L 860 380 L 860 496" fill="none" stroke="#E74C3C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahR)"/>
+          <!-- pressed stones A, C, D -->
+          <circle cx="580" cy="200" r="26" fill="url(#pebble)"/>
+          <circle cx="580" cy="380" r="26" fill="url(#pebble)"/>
+          <circle cx="860" cy="380" r="26" fill="url(#pebble)"/>
+          <!-- empty cell B highlighted -->
+          <circle cx="860" cy="200" r="27" fill="#fff" stroke="#E74C3C" stroke-width="3" stroke-dasharray="5 5"/>
+          <!-- ghost callout -->
+          <g transform="translate(948 150)">
+            <rect x="0" y="0" width="244" height="92" rx="14" fill="#FDECEA" stroke="#E74C3C" stroke-width="2"/>
+            <text x="20" y="34" font-size="22" font-weight="800" fill="#E74C3C">GHOST</text>
+            <text x="20" y="62" font-size="15.5" font-weight="600" fill="#9a3b30">empty cell reads as</text>
+            <text x="20" y="82" font-size="15.5" font-weight="600" fill="#9a3b30">pressed — a false note</text>
+          </g>
+          <line x1="887" y1="200" x2="946" y2="196" stroke="#E74C3C" stroke-width="2" stroke-dasharray="4 4"/>
+          <!-- meters -->
+          <g><rect x="492" y="497" width="176" height="56" rx="12" fill="#34C759"/>
+             <text x="580" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">PRESSED ✓</text></g>
+          <g><rect x="772" y="497" width="176" height="56" rx="12" fill="#E74C3C"/>
+             <text x="860" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">HIGH ✗</text></g>
+        </g>
+
+        <!-- ============ STEP 2 — the fix ============ -->
+        <g class="gstep gstep2" data-step="2">
+          <!-- grounded idle row -->
+          <rect x="184" y="356" width="132" height="48" rx="11" fill="#1D1D1F"/>
+          <text x="250" y="386" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">GND</text>
+          <g stroke="#1D1D1F" stroke-width="3" stroke-linecap="round">
+            <line x1="338" y1="380" x2="360" y2="380"/>
+            <line x1="349" y1="368" x2="349" y2="392"/>
+            <line x1="343" y1="398" x2="355" y2="398"/>
+            <line x1="346" y1="404" x2="352" y2="404"/>
+          </g>
+          <!-- live part of path still works: VCC -> A -> col1 -> meter1 -->
+          <path class="flow flow-o" d="M 310 200 L 580 200 L 580 496" fill="none" stroke="#E89318" stroke-width="7" stroke-linecap="round"/>
+          <!-- sneak current now drains LEFT to ground at row 2 -->
+          <path class="flow flow-g" d="M 580 200 L 580 380 L 338 380" fill="none" stroke="#2E9E4F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahG)"/>
+          <!-- back door (C->D->col2) is cut -->
+          <path d="M 580 380 L 860 380 L 860 472" fill="none" stroke="#C7C7CC" stroke-width="6" stroke-linecap="round" stroke-dasharray="3 12"/>
+          <g stroke="#E74C3C" stroke-width="4" stroke-linecap="round">
+            <line x1="706" y1="366" x2="734" y2="394"/><line x1="734" y1="366" x2="706" y2="394"/>
+          </g>
+          <text x="720" y="430" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3b30">back door closed</text>
+          <!-- pressed stones A, C, D -->
+          <circle cx="580" cy="200" r="26" fill="url(#pebble)"/>
+          <circle cx="580" cy="380" r="26" fill="url(#pebble)"/>
+          <circle cx="860" cy="380" r="26" fill="url(#pebble)"/>
+          <!-- empty cell B now correct -->
+          <circle cx="860" cy="200" r="27" fill="#fff" stroke="#34C759" stroke-width="3"/>
+          <!-- fix callout -->
+          <g transform="translate(948 150)">
+            <rect x="0" y="0" width="244" height="92" rx="14" fill="#E9F8EE" stroke="#34C759" stroke-width="2"/>
+            <text x="20" y="34" font-size="22" font-weight="800" fill="#1B7A3D">FIXED ✓</text>
+            <text x="20" y="62" font-size="15.5" font-weight="600" fill="#2c6e44">empty cell stays</text>
+            <text x="20" y="82" font-size="15.5" font-weight="600" fill="#2c6e44">silent — no ghost</text>
+          </g>
+          <line x1="887" y1="200" x2="946" y2="196" stroke="#34C759" stroke-width="2" stroke-dasharray="4 4"/>
+          <!-- meters -->
+          <g><rect x="492" y="497" width="176" height="56" rx="12" fill="#34C759"/>
+             <text x="580" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">PRESSED ✓</text></g>
+          <g><rect x="772" y="497" width="176" height="56" rx="12" fill="#ECECEE"/>
+             <text x="860" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#2E9E4F">silent ✓</text></g>
+        </g>
+
+      </svg>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+  </div>
+</section>

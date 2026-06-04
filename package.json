@@ -4,6 +4,11 @@
   "scripts": {
     "extract": "node scripts/extract.mjs",
     "build": "node scripts/build.mjs",
-    "rebuild": "node scripts/extract.mjs && node scripts/build.mjs"
+    "rebuild": "node scripts/extract.mjs && node scripts/build.mjs",
+    "pdf": "node scripts/export-pdf.mjs",
+    "slides-txt": "node scripts/export-slides-txt.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
   }
 }

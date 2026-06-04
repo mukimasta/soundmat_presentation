@@ -1,0 +1,324 @@
+01 · 01-title
+────────────────────────────────────────
+UW ECE 546C · Spring 2026
+SoundMat
+A tangible interface for collaborative ambient music
+place stones, make music together.
+Hanlin Xue, Sora Kim
+
+Advisor · Prof. Yiyue Luo
+
+02 · 02-tagline
+────────────────────────────────────────
+Place stones.
+Make music.
+SoundMat installation under a single spotlight, stones placed on the felt surface
+
+03 · 03-idea-origin
+────────────────────────────────────────
+IDEA
+How the idea was born
+  1. Course
+     ECE 546C tactile sensing + music became the lane.
+  2. The spark
+     Dynamicland: move real objects on a table — the program changes. No screen.
+  3. SoundMat sketch
+     Turn what you place in the space into music.
+
+04 · 04-philosophy-bento
+────────────────────────────────────────
+PHILOSOPHY
+Public ambient music, made by passers-by
+  1. This is SoundMat
+     Strangers in a shared space make ambient music—just by placing stones on felt.
+  2. Design goal
+     Five keywords for a good public installation.
+  3. Ambient
+     Listen closely — or tune it out.
+  4. Room-scale sound
+     Sound from the room around you—not a box sitting on the mat.
+  5. In the wild
+     Airport · hotel lobby · art exhibition · museum.
+
+05 · 04-exterior-bento
+────────────────────────────────────────
+EXTERIOR DESIGN
+Exterior
+SoundMat as a lit cone installation with felt top and river pebbles in a quiet lobby
+
+06 · 05-structure-bento
+────────────────────────────────────────
+STRUCTURAL DESIGN
+An artistic shell, an engineer's stack
+Veradek 24-inch round planter bowl, black, used as the cavity
+
+07 · 05-structure-photos
+────────────────────────────────────────
+STRUCTURAL DESIGN
+Inside the cavity, on the felt
+Electronics mounted inside the planter bowl — Raspberry Pi, power module, LED ring on the rim
+
+08 · 06-system-zoom
+────────────────────────────────────────
+System overview
+End-to-end signal flow
+  1. End-to-end signal flow
+  2. Sensor
+     Pressure on the felt deforms Velostat — 224 polar zones become analog readings.
+
+09 · 07-sensor-bento
+────────────────────────────────────────
+SENSOR DESIGN
+224 zones on a polar grid
+
+10 · 08-sensor-fabrication-hero
+────────────────────────────────────────
+Sensor fabrication
+Laser Cutting
+
+11 · 08-sensor-layers
+────────────────────────────────────────
+SENSOR FABRICATION
+Layer stack — bottom to top
+
+12 · 08-sensor-routing
+────────────────────────────────────────
+SENSOR FABRICATION
+Routing & connections
+  1. Ring tails
+     Each ring is laser-cut with a tail—conductive fabric passes through a matching hole in the board to the circuit in the cavity below.
+  2. Copper tape
+     Copper foil at each slice rim folds under the board—routing the signal and pinning the upper sensor stack.
+  3. Board holes
+     Holes in the hardwood align with every ring tail so leads reach the cavity without a via per slice.
+Laser-cut concentric rings with fabric tails on the cutter bed
+
+13 · 08-sensor-design-tool
+────────────────────────────────────────
+SENSOR FABRICATION
+Fabric Pattern Generator
+Fabric Pattern Generator GUI
+
+14 · 08-sensor-laser-patterns
+────────────────────────────────────────
+SENSOR FABRICATION
+Laser cut patterns
+Laser cut patterns — concentric ring traces and radial slice segments
+
+15 · 08-sensor-laser-cut-photo
+────────────────────────────────────────
+Sensor fabrication
+Laser-cut sensor disc
+Laser-cut circular sensor disc with radial slice pattern and copper tabs around the perimeter
+
+16 · 08-spine-electronics
+────────────────────────────────────────
+System overview
+Sensor
+Touch captured. Next — the analog front-end that reads every zone.
+  1. Sensor
+     Touch captured. Next — the analog front-end that reads every zone.
+  2. Electronics
+     Dual 16:1 multiplexers — pressure becomes voltage across 224 zones. USB-C PD feeds the stack.
+
+17 · 09-electronics-arch
+────────────────────────────────────────
+Electronics architecture
+Five modules, three kinds of wire
+Power in, data up, control out, sound out — every connection is power, data, or control.
+  1. Five modules, three kinds of wire
+     Power in, data up, control out, sound out — every connection is power, data, or control.
+  2. Power
+     One USB-C cable. PD negotiates 20 V; a buck converter drops it to 5 V for the whole device.
+  3. Compute
+     Raspberry Pi is the brain. ESP32 is its senses and nerves — analog in, GPIO out.
+  4. Sensor & LED
+     224 analog zones read through two cascaded multiplexers; 108 LEDs driven via a level shifter.
+  5. Audio
+     The Pi streams over USB to an external DAC — clean 3.5 mm line-out to the room.
+
+18 · 10-power-module
+────────────────────────────────────────
+Power
+The hardest part is feeding it
+Hand-drawn power module schematic: USB-C PD trigger, buck converter, star grounding, LED strip and Pi
+
+19 · 10-power-outdoor
+────────────────────────────────────────
+Power
+USB-C power
+An elegant power solution
+
+20 · 10-audio-output
+────────────────────────────────────────
+Audio
+USB-C audio
+Hardware DAC to the room
+
+21 · 10-audio-prototype
+────────────────────────────────────────
+Electronics
+Schematic — ESP32 with dual CD4067 multiplexers and sensor ring connections
+
+22 · 10-electronics-prototype-photo
+────────────────────────────────────────
+Electronics prototype assembly on perfboard
+
+23 · 09-spine-firmware
+────────────────────────────────────────
+System overview
+Electronics
+Analog captured. Next — the edge loop that turns readings into frames.
+  1. Electronics
+     Analog captured. Next — the edge loop that turns readings into frames.
+  2. Firmware
+     ESP32 scans all zones ~20× per second — S-frame up, L-frame down, forever.
+
+24 · 11-firmware-bento
+────────────────────────────────────────
+FIRMWARE
+The edge bridge
+  1. What it does
+     ESP32 on the mat reads every zone and drives the LEDs; the Pi turns pressure into music.
+  2. How it connects
+     One UART cable between Pi and ESP32 — sensor frames up, LED frames down, both at once.
+  3. On the wire
+     Two frame types: S sends pressure, L sends colour — plain text, no handshake.
+
+25 · 11-firmware-video
+────────────────────────────────────────
+Firmware
+Stones on the mat
+Place stones on the felt – Visualization
+[Placing stones on the sensor mat with live pressure heatmap visualization]
+
+26 · 12-spine-software
+────────────────────────────────────────
+System overview
+Firmware
+Digitized and streaming. Next — what turns numbers into music.
+  1. Firmware
+     Digitized and streaming. Next — what turns numbers into music.
+  2. Software
+     UART frames land on a Raspberry Pi — Python runs the logic, SuperCollider renders the sound.
+
+27 · 13-python-sc-hero
+────────────────────────────────────────
+Software makes them music.
+
+28 · 14-software-bento
+────────────────────────────────────────
+Software
+The music is data, not code
+
+29 · 14-software-web-console
+────────────────────────────────────────
+Software
+Web console
+SoundMat web control console — presets, mix, and developer panel
+
+30 · 15-software-challenge
+────────────────────────────────────────
+Challenge
+Making it run on the Raspberry Pi
+  1. Problem
+     Same Jam, 50 stones: Mac cruises with 5–10× headroom; the Pi pegs scsynth at 99.9% and the XRuns never stop.
+  2. Solve
+     Five layers of profile-guided work — frontend, jam loop, SuperCollider, polyphony, then a cProfile pass. Sound stays identical.
+  3. Result
+     scsynth 99.9% → 79%, jam loop 90% → 60%. Fifty stones now play stable on the Pi.
+
+31 · 15-software-codebase
+────────────────────────────────────────
+Software
+The SoundMat codebase
+Python, SuperCollider, and declarative manifests
+
+32 · 15-spine-sound
+────────────────────────────────────────
+System overview
+Software
+Music computed. Next — how it reaches your ears and eyes.
+  1. Software
+     Music computed. Next — how it reaches your ears and eyes.
+  2. Output
+     USB DAC drives the speaker; L-frames travel back to light the LED ring.
+
+33 · 15-sonification-hero
+────────────────────────────────────────
+Sonification
+
+34 · 15-music-background
+────────────────────────────────────────
+Sonification
+Where the music comes from
+Years of playing and writing before SoundMat.
+
+35 · 16-sound-modes
+────────────────────────────────────────
+Sonification
+Two modes for two situations
+Anyone should make it sound good — and still feel they did it.
+
+36 · 17-jam-sonification
+────────────────────────────────────────
+Sonification
+Jam mode — how stones become music
+  1. The tension
+     Two pulls on every music interface — we built Ambient and Jam instead of choosing one side.
+  2. Why Lo-Fi
+     Warm, loop-based, forgiving — made for a round mat and strangers playing together.
+  3. Harmony
+     8-bar chord loop always running — live synth, not samples. You never place harmony.
+  4. Drums
+     Fixed play count A×1→B×1→C×2→A×1→D×2→A×1 — loops B–D add kick, snare, and hat.
+  5. Beat & loop
+     4/4 at ~120 BPM. One turn of the mat = two bars — angle is time on the beat grid.
+  6. Melody layer
+     Six rings, eight sectors — every cell is a pre-written note; scan = when you trigger.
+
+37 · 18-jam-interaction
+────────────────────────────────────────
+Interaction
+How you read and play the mat
+  1. Control hub
+     The two center rings are the on/off switch: add stones to start the music, clear them to stop.
+  2. LED ring
+     Red downbeat, white comet, colored stones, bright flash — the ring is the UI.
+
+38 · 18-system-recap
+────────────────────────────────────────
+System overview
+End-to-end, one more time
+Sensor → analog → firmware → software → sound and light — one sculpture, one USB-C cable. Next: we play it live.
+
+39 · 18-timeline
+────────────────────────────────────────
+Timeline
+Eight weeks, idea to presentation
+
+40 · 19-acknowledgments
+────────────────────────────────────────
+Acknowledgments
+Thank you
+Advisor: Prof. Yiyue Luo
+  For guidance throughout the project.
+Support: Prof. Meichun Liu
+  Division of Design · School of Art + Art History + Design
+Cover mat design: Po-Yu Chen & Chenfei Ma
+  Design Students · School of Art + Art History + Design
+
+41 · 19-live-demo
+────────────────────────────────────────
+Next
+Live Demo
+Five minutes. From silence, to a control stone, to a full Lo-Fi loop, and back to silence.
+
+42 · 20-closing
+────────────────────────────────────────
+Thank you
+Questions?
+Hanlin Xue, Sora Kim
+Advisor · Prof. Yiyue Luo · UW ECE 546C · Spring 2026
+QR code for SoundMat web demo
+https://mukimasta.github.io/soundmat_web/

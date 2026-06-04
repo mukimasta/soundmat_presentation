@@ -18,7 +18,47 @@
   const progressTrack = document.getElementById('progressTrack');
   const chapterRail = document.getElementById('chapterRail');
   const counter = document.getElementById('slideCounter');
+  const timerEl = document.getElementById('deckTimer');
   let current = 0;
+  let timerStart = null;
+  let timerRaf = null;
+
+  function formatElapsed(ms) {
+    const sec = Math.floor(ms / 1000);
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  function stopTimerLoop() {
+    if (timerRaf) cancelAnimationFrame(timerRaf);
+    timerRaf = null;
+  }
+
+  function startTimerLoop() {
+    stopTimerLoop();
+    function tick() {
+      if (timerStart == null || !timerEl) return;
+      timerEl.textContent = formatElapsed(performance.now() - timerStart);
+      timerRaf = requestAnimationFrame(tick);
+    }
+    timerRaf = requestAnimationFrame(tick);
+  }
+
+  function updateTimer(idx) {
+    if (!timerEl) return;
+    if (idx === 0) {
+      timerStart = null;
+      stopTimerLoop();
+      timerEl.hidden = true;
+      timerEl.textContent = '0:00';
+      return;
+    }
+    if (timerStart == null) timerStart = performance.now();
+    timerEl.hidden = false;
+    timerEl.textContent = formatElapsed(performance.now() - timerStart);
+    startTimerLoop();
+  }
 
   function chapterStartIndex(at) {
     const cls = 's-' + at;
@@ -297,6 +337,7 @@
     });
 
     syncDeckVideos(active);
+    updateTimer(idx);
   }
 
   function next() {
@@ -311,6 +352,13 @@
     if (s && s.prev()) return;
     if (current > 0) showSlide(current - 1, true);
   }
+
+  /* Let in-slide links open without the deck swallowing the click */
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link || !link.closest('.slide.active')) return;
+    e.stopPropagation();
+  });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Enter') {

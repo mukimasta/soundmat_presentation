@@ -121,27 +121,30 @@
     </div>
 
     <div class="bento-card c4 accent zw" data-step="2">
-      <div class="card-label" style="color:rgba(255,255,255,0.85)">SoundMat sketch</div>
-      <div class="sketch-stage">
-        <svg class="sketch-hero" viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="0" cy="0" r="100" fill="rgba(255,255,255,0.1)" stroke="#fff" stroke-width="2"/>
-          <g stroke="rgba(255,255,255,0.45)" stroke-width="0.8" fill="none">
-            <circle r="32"/><circle r="60"/><circle r="88"/>
-          </g>
-          <g transform="rotate(-40)">
-            <line x1="0" y1="0" x2="92" y2="0" stroke="#fff" stroke-width="2.6"/>
-            <circle cx="92" cy="0" r="5" fill="#fff"/>
-          </g>
-          <ellipse cx="-28" cy="-20" rx="12" ry="7" fill="#3a2c1c"/>
-          <ellipse cx="38" cy="12" rx="15" ry="9" fill="#4a3826"/>
-          <ellipse cx="-8" cy="48" rx="10" ry="6" fill="#5a4632"/>
-        </svg>
-        <div class="sketch-copy">
-          <p class="sketch-line">Turn what you place in the space into music.</p>
-          <div class="pill-row">
-            <span class="pill" style="background:rgba(255,255,255,0.16); color:#fff">Simple</span>
-            <span class="pill" style="background:rgba(255,255,255,0.16); color:#fff">Musical</span>
-            <span class="pill" style="background:rgba(255,255,255,0.16); color:#fff">Instant</span>
+      <div class="sketch-panel">
+        <div class="sketch-label">SoundMat sketch</div>
+        <div class="sketch-stage">
+          <svg class="sketch-hero" viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="0" cy="0" r="100" fill="rgba(255,255,255,0.1)" stroke="#fff" stroke-width="2"/>
+            <g stroke="rgba(255,255,255,0.45)" stroke-width="0.8" fill="none">
+              <circle r="32"/><circle r="60"/><circle r="88"/>
+            </g>
+            <g transform="rotate(-40)">
+              <line x1="0" y1="0" x2="92" y2="0" stroke="#fff" stroke-width="2.6"/>
+              <circle cx="92" cy="0" r="5" fill="#fff"/>
+            </g>
+            <ellipse cx="-28" cy="-20" rx="12" ry="7" fill="#3a2c1c"/>
+            <ellipse cx="38" cy="12" rx="15" ry="9" fill="#4a3826"/>
+            <ellipse cx="-8" cy="48" rx="10" ry="6" fill="#5a4632"/>
+          </svg>
+          <div class="sketch-copy">
+            <p class="sketch-lead">Turn what you place in the space into <span class="sketch-accent">music</span>.</p>
+            <p class="sketch-sub">Simple &middot; musical &middot; instant feedback</p>
+            <div class="sketch-tags" aria-label="Design goals">
+              <span class="sketch-tag">Simple</span>
+              <span class="sketch-tag">Musical</span>
+              <span class="sketch-tag">Instant</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1024,7 +1027,292 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk spine s-spine-electronics" id="slide-16"
+<section class="slide zoom zwalk s-sensor-ghost" id="slide-16" data-step="0"
+  data-step-titles='["Scanning a grid of stones","The ghost touch","Ground every idle row"]'
+  data-step-subs='["224 zones are far too many to wire one-by-one, so we scan: one row goes live at a time and each column is read through a resistor. A pressed stone bridges its row to its column — and that column’s meter lights up.","Press three stones in an L and the current finds a back door: it sneaks through the pressed stones into a column we never touched. An empty cell now reads as pressed — and a phantom note plays.","The fix is simple — tie every row we are not reading to ground. The sneak current drains straight to ground instead of crossing over. The back door is closed and the ghost is gone."]'>
+  <div class="zoom-content zoom-walk-content">
+    <div class="zoom-header">
+      <div class="zoom-eyebrow">Sensor read-out</div>
+      <h2 class="zoom-title" data-step-title>Scanning a grid of stones</h2>
+      <p class="zoom-caption" data-step-sub>224 zones are far too many to wire one-by-one, so we scan: one row goes live at a time and each column is read through a resistor. A pressed stone bridges its row to its column — and that column’s meter lights up.</p>
+    </div>
+
+    <div class="zoom-stage-wrap">
+      <svg class="ghost-svg" viewBox="0 0 1240 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="pebble" cx="38%" cy="32%" r="80%">
+            <stop offset="0%" stop-color="#6A6A70"/>
+            <stop offset="55%" stop-color="#3A3A3D"/>
+            <stop offset="100%" stop-color="#26262A"/>
+          </radialGradient>
+          <marker id="ahR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E74C3C"/></marker>
+          <marker id="ahG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E9E4F"/></marker>
+          <marker id="ahO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E89318"/></marker>
+        </defs>
+
+        <!-- ============ ALWAYS-ON SCENE ============ -->
+        <g class="always">
+          <!-- legend -->
+          <g transform="translate(70 56)">
+            <circle cx="10" cy="0" r="11" fill="url(#pebble)"/>
+            <text x="30" y="5" font-size="17" fill="#6E6E73" font-weight="600">stone pressed</text>
+            <circle cx="182" cy="0" r="11" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <text x="202" y="5" font-size="17" fill="#6E6E73" font-weight="600">empty</text>
+            <text x="0" y="34" font-size="16" fill="#9b958a" font-weight="600">rows drive  ·  columns are read</text>
+          </g>
+
+          <!-- column captions -->
+          <text x="580" y="138" text-anchor="middle" font-size="17" fill="#86868B" font-weight="700" letter-spacing="0.04em">COLUMN 1</text>
+          <text x="860" y="138" text-anchor="middle" font-size="17" fill="#86868B" font-weight="700" letter-spacing="0.04em">COLUMN 2</text>
+
+          <!-- rails -->
+          <line x1="360" y1="200" x2="1010" y2="200" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+          <line x1="360" y1="380" x2="1010" y2="380" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+          <line x1="580" y1="158" x2="580" y2="472" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+          <line x1="860" y1="158" x2="860" y2="472" stroke="#C2BBAD" stroke-width="7" stroke-linecap="round"/>
+
+          <!-- VCC source on the live row -->
+          <rect x="190" y="176" width="120" height="48" rx="11" fill="#E89318"/>
+          <text x="250" y="208" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">5 V</text>
+          <text x="250" y="248" text-anchor="middle" font-size="15" font-weight="700" fill="#A65E00">ROW 1 · live</text>
+
+          <!-- junction sites (white halo breaks the crossing; ring = sensor) -->
+          <g>
+            <circle cx="580" cy="200" r="30" fill="#FBFAF7"/><circle cx="860" cy="200" r="30" fill="#FBFAF7"/>
+            <circle cx="580" cy="380" r="30" fill="#FBFAF7"/><circle cx="860" cy="380" r="30" fill="#FBFAF7"/>
+            <circle cx="580" cy="200" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <circle cx="860" cy="200" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <circle cx="580" cy="380" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+            <circle cx="860" cy="380" r="27" fill="#fff" stroke="#C2BBAD" stroke-width="2.5"/>
+          </g>
+
+          <!-- meter frames at the foot of each column -->
+          <line x1="580" y1="472" x2="580" y2="496" stroke="#C2BBAD" stroke-width="7"/>
+          <line x1="860" y1="472" x2="860" y2="496" stroke="#C2BBAD" stroke-width="7"/>
+          <text x="580" y="582" text-anchor="middle" font-size="15" fill="#9b958a" font-weight="600">meter</text>
+          <text x="860" y="582" text-anchor="middle" font-size="15" fill="#9b958a" font-weight="600">meter</text>
+        </g>
+
+        <!-- ============ STEP 0 — baseline ============ -->
+        <g class="gstep gstep0" data-step="0">
+          <!-- energized path: VCC -> row1 -> A -> down col1 -> meter1 -->
+          <path class="flow flow-o" d="M 310 200 L 580 200 L 580 496" fill="none" stroke="#E89318" stroke-width="7" stroke-linecap="round"/>
+          <!-- stone A -->
+          <circle cx="580" cy="200" r="26" fill="url(#pebble)"/>
+          <!-- idle row 2 -->
+          <rect x="184" y="356" width="132" height="48" rx="11" fill="#ECECEE"/>
+          <text x="250" y="386" text-anchor="middle" font-size="18" font-weight="700" fill="#6E6E73">idle</text>
+          <!-- meters -->
+          <g><rect x="492" y="497" width="176" height="56" rx="12" fill="#34C759"/>
+             <text x="580" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">PRESSED ✓</text></g>
+          <g><rect x="772" y="497" width="176" height="56" rx="12" fill="#ECECEE"/>
+             <text x="860" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#86868B">silent</text></g>
+          <!-- annotation -->
+          <text x="640" y="180" font-size="17" fill="#A65E00" font-weight="700">a stone connects its row to its column</text>
+        </g>
+
+        <!-- ============ STEP 1 — the ghost ============ -->
+        <g class="gstep gstep1" data-step="1">
+          <!-- floating idle row -->
+          <rect x="176" y="356" width="148" height="48" rx="11" fill="#fff" stroke="#E74C3C" stroke-width="2.5" stroke-dasharray="6 5"/>
+          <text x="250" y="386" text-anchor="middle" font-size="18" font-weight="800" fill="#E74C3C">floating</text>
+          <!-- sneak path: VCC -> row1 -> A -> col1 down -> C -> row2 right -> D -> col2 down -> meter2 -->
+          <path class="flow flow-r" d="M 310 200 L 580 200 L 580 380 L 860 380 L 860 496" fill="none" stroke="#E74C3C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahR)"/>
+          <!-- pressed stones A, C, D -->
+          <circle cx="580" cy="200" r="26" fill="url(#pebble)"/>
+          <circle cx="580" cy="380" r="26" fill="url(#pebble)"/>
+          <circle cx="860" cy="380" r="26" fill="url(#pebble)"/>
+          <!-- empty cell B highlighted -->
+          <circle cx="860" cy="200" r="27" fill="#fff" stroke="#E74C3C" stroke-width="3" stroke-dasharray="5 5"/>
+          <!-- ghost callout -->
+          <g transform="translate(948 150)">
+            <rect x="0" y="0" width="244" height="92" rx="14" fill="#FDECEA" stroke="#E74C3C" stroke-width="2"/>
+            <text x="20" y="34" font-size="22" font-weight="800" fill="#E74C3C">GHOST</text>
+            <text x="20" y="62" font-size="15.5" font-weight="600" fill="#9a3b30">empty cell reads as</text>
+            <text x="20" y="82" font-size="15.5" font-weight="600" fill="#9a3b30">pressed — a false note</text>
+          </g>
+          <line x1="887" y1="200" x2="946" y2="196" stroke="#E74C3C" stroke-width="2" stroke-dasharray="4 4"/>
+          <!-- meters -->
+          <g><rect x="492" y="497" width="176" height="56" rx="12" fill="#34C759"/>
+             <text x="580" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">PRESSED ✓</text></g>
+          <g><rect x="772" y="497" width="176" height="56" rx="12" fill="#E74C3C"/>
+             <text x="860" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">HIGH ✗</text></g>
+        </g>
+
+        <!-- ============ STEP 2 — the fix ============ -->
+        <g class="gstep gstep2" data-step="2">
+          <!-- grounded idle row -->
+          <rect x="184" y="356" width="132" height="48" rx="11" fill="#1D1D1F"/>
+          <text x="250" y="386" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">GND</text>
+          <g stroke="#1D1D1F" stroke-width="3" stroke-linecap="round">
+            <line x1="338" y1="380" x2="360" y2="380"/>
+            <line x1="349" y1="368" x2="349" y2="392"/>
+            <line x1="343" y1="398" x2="355" y2="398"/>
+            <line x1="346" y1="404" x2="352" y2="404"/>
+          </g>
+          <!-- live part of path still works: VCC -> A -> col1 -> meter1 -->
+          <path class="flow flow-o" d="M 310 200 L 580 200 L 580 496" fill="none" stroke="#E89318" stroke-width="7" stroke-linecap="round"/>
+          <!-- sneak current now drains LEFT to ground at row 2 -->
+          <path class="flow flow-g" d="M 580 200 L 580 380 L 338 380" fill="none" stroke="#2E9E4F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahG)"/>
+          <!-- back door (C->D->col2) is cut -->
+          <path d="M 580 380 L 860 380 L 860 472" fill="none" stroke="#C7C7CC" stroke-width="6" stroke-linecap="round" stroke-dasharray="3 12"/>
+          <g stroke="#E74C3C" stroke-width="4" stroke-linecap="round">
+            <line x1="706" y1="366" x2="734" y2="394"/><line x1="734" y1="366" x2="706" y2="394"/>
+          </g>
+          <text x="720" y="430" text-anchor="middle" font-size="15" font-weight="700" fill="#9a3b30">back door closed</text>
+          <!-- pressed stones A, C, D -->
+          <circle cx="580" cy="200" r="26" fill="url(#pebble)"/>
+          <circle cx="580" cy="380" r="26" fill="url(#pebble)"/>
+          <circle cx="860" cy="380" r="26" fill="url(#pebble)"/>
+          <!-- empty cell B now correct -->
+          <circle cx="860" cy="200" r="27" fill="#fff" stroke="#34C759" stroke-width="3"/>
+          <!-- fix callout -->
+          <g transform="translate(948 150)">
+            <rect x="0" y="0" width="244" height="92" rx="14" fill="#E9F8EE" stroke="#34C759" stroke-width="2"/>
+            <text x="20" y="34" font-size="22" font-weight="800" fill="#1B7A3D">FIXED ✓</text>
+            <text x="20" y="62" font-size="15.5" font-weight="600" fill="#2c6e44">empty cell stays</text>
+            <text x="20" y="82" font-size="15.5" font-weight="600" fill="#2c6e44">silent — no ghost</text>
+          </g>
+          <line x1="887" y1="200" x2="946" y2="196" stroke="#34C759" stroke-width="2" stroke-dasharray="4 4"/>
+          <!-- meters -->
+          <g><rect x="492" y="497" width="176" height="56" rx="12" fill="#34C759"/>
+             <text x="580" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">PRESSED ✓</text></g>
+          <g><rect x="772" y="497" width="176" height="56" rx="12" fill="#ECECEE"/>
+             <text x="860" y="532" text-anchor="middle" font-size="21" font-weight="800" fill="#2E9E4F">silent ✓</text></g>
+        </g>
+
+      </svg>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+  </div>
+</section>
+
+<section class="slide zoom zwalk s-sensor-readout" id="slide-17" data-step="0"
+  data-step-titles='["How loud is one press?","Neighbours bleed it down","Why a tiny resistor wins"]'
+  data-step-subs='["Reading a column is just a voltage divider: the pressed stone on top, a fixed reference resistor below. We sized it so one stone reads about a third of full scale, while an empty cell sits near zero — easy to tell apart.","Stones sharing a column open extra paths to ground, so each neighbour drags the reading lower. The crucial part: crosstalk only ever pulls the voltage down, never up. It can hide a press, but it can never invent one.","A bigger resistor would shout louder — but bleed far more. We only need yes / no, not pressure, so we pick a small one (R_ref ≈ 200 Ω) and set the trigger low, at 10%. Every real press stays above it; every empty cell stays below. A miss is possible; a false note is not."]'>
+  <div class="zoom-content zoom-walk-content">
+    <div class="zoom-header">
+      <div class="zoom-eyebrow">Sensor read-out</div>
+      <h2 class="zoom-title" data-step-title>How loud is one press?</h2>
+      <p class="zoom-caption" data-step-sub>Reading a column is just a voltage divider: the pressed stone on top, a fixed reference resistor below. We sized it so one stone reads about a third of full scale, while an empty cell sits near zero — easy to tell apart.</p>
+    </div>
+
+    <div class="zoom-stage-wrap">
+      <svg class="readout-svg" viewBox="0 0 1280 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="barGreen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#46D06B"/><stop offset="100%" stop-color="#2BA84A"/>
+          </linearGradient>
+          <marker id="rDown" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,0 L5,10 z" fill="#E89318"/></marker>
+        </defs>
+
+        <!-- ============ ALWAYS-ON: divider schematic + axes ============ -->
+        <g class="always">
+          <!-- divider schematic -->
+          <text x="170" y="50" text-anchor="middle" font-size="16" font-weight="700" fill="#86868B" letter-spacing="0.04em">THE READ CIRCUIT</text>
+          <rect x="120" y="72" width="100" height="44" rx="10" fill="#E89318"/>
+          <text x="170" y="101" text-anchor="middle" font-size="20" font-weight="800" fill="#fff">5 V</text>
+          <line x1="170" y1="116" x2="170" y2="150" stroke="#1D1D1F" stroke-width="3"/>
+          <rect x="108" y="150" width="124" height="64" rx="10" fill="#FAF6EE" stroke="#1D1D1F" stroke-width="2"/>
+          <text x="170" y="180" text-anchor="middle" font-size="18" font-weight="800" fill="#1D1D1F">stone</text>
+          <text x="170" y="201" text-anchor="middle" font-size="13.5" font-weight="600" fill="#6E6E73">pressed</text>
+          <line x1="170" y1="214" x2="170" y2="250" stroke="#1D1D1F" stroke-width="3"/>
+          <circle cx="170" cy="250" r="8" fill="#2B6CB0"/>
+          <text x="196" y="246" font-size="14.5" font-weight="700" fill="#2B6CB0">read</text>
+          <line x1="170" y1="250" x2="170" y2="284" stroke="#1D1D1F" stroke-width="3"/>
+          <rect x="108" y="284" width="124" height="64" rx="10" fill="#fff" stroke="#2B6CB0" stroke-width="2"/>
+          <text x="170" y="314" text-anchor="middle" font-size="18" font-weight="800" fill="#2B6CB0">R_ref</text>
+          <text x="170" y="335" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1D1D1F">200 Ω</text>
+          <line x1="170" y1="348" x2="170" y2="380" stroke="#1D1D1F" stroke-width="3"/>
+          <g stroke="#1D1D1F" stroke-width="3" stroke-linecap="round">
+            <line x1="150" y1="380" x2="190" y2="380"/>
+            <line x1="158" y1="389" x2="182" y2="389"/>
+            <line x1="164" y1="397" x2="176" y2="397"/>
+          </g>
+          <text x="170" y="430" text-anchor="middle" font-size="14.5" font-weight="600" fill="#9b958a">node voltage =</text>
+          <text x="170" y="450" text-anchor="middle" font-size="14.5" font-weight="700" fill="#6E6E73">column reading →</text>
+
+          <!-- chart axes -->
+          <line x1="360" y1="110" x2="360" y2="505" stroke="#D2D2D7" stroke-width="2"/>
+          <line x1="360" y1="505" x2="1230" y2="505" stroke="#C2BBAD" stroke-width="3" stroke-linecap="round"/>
+          <text x="345" y="116" text-anchor="end" font-size="14" fill="#9b958a" font-weight="600">100%</text>
+          <text x="345" y="510" text-anchor="end" font-size="14" fill="#9b958a" font-weight="600">0</text>
+          <text x="312" y="305" text-anchor="middle" font-size="14" fill="#9b958a" font-weight="700" transform="rotate(-90 312 305)">column voltage</text>
+        </g>
+
+        <!-- ============ STEP 0 — one stone vs empty ============ -->
+        <g class="rstep rstep0" data-step="0">
+          <!-- 1/3 reference gridline -->
+          <line x1="360" y1="375" x2="1230" y2="375" stroke="#D2D2D7" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <text x="345" y="380" text-anchor="end" font-size="13.5" fill="#86868B" font-weight="700">≈ ⅓</text>
+          <!-- empty bar -->
+          <rect x="412" y="493" width="116" height="12" rx="5" fill="#C7C7CC"/>
+          <text x="470" y="482" text-anchor="middle" font-size="18" font-weight="800" fill="#86868B">≈3%</text>
+          <text x="470" y="535" text-anchor="middle" font-size="16.5" font-weight="700" fill="#6E6E73">empty cell</text>
+          <!-- one-stone bar -->
+          <rect x="602" y="375" width="116" height="130" rx="8" fill="url(#barGreen)"/>
+          <text x="660" y="363" text-anchor="middle" font-size="20" font-weight="800" fill="#2BA84A">33%</text>
+          <text x="660" y="535" text-anchor="middle" font-size="16.5" font-weight="700" fill="#1D1D1F">1 stone</text>
+        </g>
+
+        <!-- ============ STEP 1 — neighbours bleed it down ============ -->
+        <g class="rstep rstep1" data-step="1">
+          <!-- two-stone bar -->
+          <rect x="792" y="426" width="116" height="79" rx="8" fill="url(#barGreen)"/>
+          <text x="850" y="414" text-anchor="middle" font-size="20" font-weight="800" fill="#2BA84A">20%</text>
+          <text x="850" y="532" text-anchor="middle" font-size="16.5" font-weight="700" fill="#1D1D1F">2 stones</text>
+          <text x="850" y="552" text-anchor="middle" font-size="13.5" font-weight="600" fill="#86868B">same column</text>
+          <!-- three-stone bar -->
+          <rect x="982" y="442" width="116" height="63" rx="8" fill="url(#barGreen)"/>
+          <text x="1040" y="430" text-anchor="middle" font-size="20" font-weight="800" fill="#2BA84A">16%</text>
+          <text x="1040" y="532" text-anchor="middle" font-size="16.5" font-weight="700" fill="#1D1D1F">3 stones</text>
+          <text x="1040" y="552" text-anchor="middle" font-size="13.5" font-weight="600" fill="#86868B">same column</text>
+          <!-- only-down annotation -->
+          <path d="M 700 360 Q 855 372 1035 428" fill="none" stroke="#E89318" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round" marker-end="url(#rDown)"/>
+          <text x="858" y="318" text-anchor="middle" font-size="17" font-weight="800" fill="#A65E00">each neighbour drags it DOWN</text>
+          <text x="858" y="340" text-anchor="middle" font-size="15" font-weight="600" fill="#A65E00">— only ever down, never up</text>
+        </g>
+
+        <!-- ============ STEP 2 — the trigger line ============ -->
+        <g class="rstep rstep2" data-step="2">
+          <!-- detected / ignored zone divider -->
+          <line x1="360" y1="466" x2="1150" y2="466" stroke="#E74C3C" stroke-width="3" stroke-dasharray="10 7"/>
+          <rect x="1150" y="448" width="118" height="36" rx="9" fill="#E74C3C"/>
+          <text x="1209" y="472" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">TRIGGER 10%</text>
+          <!-- verdict ticks -->
+          <text x="660" y="395" text-anchor="middle" font-size="22" font-weight="800" fill="#1B7A3D">✓</text>
+          <text x="850" y="446" text-anchor="middle" font-size="22" font-weight="800" fill="#1B7A3D">✓</text>
+          <text x="1040" y="462" text-anchor="middle" font-size="22" font-weight="800" fill="#1B7A3D">✓</text>
+          <!-- zone labels at far right -->
+          <text x="1209" y="300" text-anchor="middle" font-size="15" font-weight="800" fill="#2BA84A">↑ detected</text>
+          <text x="1209" y="502" text-anchor="middle" font-size="15" font-weight="700" fill="#9b958a">↓ ignored</text>
+          <!-- worst-case note -->
+          <text x="660" y="155" text-anchor="middle" font-size="17.5" font-weight="800" fill="#1D1D1F">We only need YES / NO — not pressure.</text>
+          <text x="660" y="180" text-anchor="middle" font-size="15.5" font-weight="600" fill="#6E6E73">Worst real press (16%) still clears the line; an empty cell never reaches it.</text>
+          <!-- decision chip -->
+          <g transform="translate(986 120)">
+            <rect x="0" y="0" width="240" height="50" rx="12" fill="#FAF6EE" stroke="#E89318" stroke-width="2"/>
+            <text x="120" y="32" text-anchor="middle" font-size="17" font-weight="800" fill="#A65E00">R_ref = 200 Ω · binary</text>
+          </g>
+        </g>
+
+      </svg>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+  </div>
+</section>
+
+<section class="slide zoom zwalk spine s-spine-electronics" id="slide-18"
   data-step-titles='["Sensor","Electronics"]'
   data-step-subs='["Touch captured. Next — the analog front-end that reads every zone.","Dual 16:1 multiplexers — pressure becomes voltage across 224 zones. USB-C PD feeds the stack."]'>
   <div class="zoom-content zoom-walk-content">
@@ -1160,7 +1448,7 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk s-electronics-arch" id="slide-17"
+<section class="slide zoom zwalk s-electronics-arch" id="slide-19"
   data-step-titles='["Five modules, three kinds of wire","Power","Compute","Sensor &amp; LED","Audio"]'
   data-step-subs='["Power in, data up, control out, sound out — every connection is power, data, or control.","One USB-C cable. PD negotiates 20 V; a buck converter drops it to 5 V for the whole device.","Raspberry Pi is the brain. ESP32 is its senses and nerves — analog in, GPIO out.","224 analog zones read through two cascaded multiplexers; 108 LEDs driven via a level shifter.","The Pi streams over USB to an external DAC — clean 3.5 mm line-out to the room."]'>
   <div class="zoom-content zoom-walk-content">
@@ -1295,13 +1583,13 @@
   </div>
 </section>
 
-<section class="slide bento s-power-module" id="slide-18">
+<section class="slide bento s-power-module" id="slide-20">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Power</div>
       <h2 class="slide-title">The hardest part is feeding it</h2>
     </div>
-    <div class="slide-index">18</div>
+    <div class="slide-index">20</div>
   </div>
   <div class="bento-grid">
 
@@ -1375,14 +1663,14 @@
   </div>
 </section>
 
-<section class="slide bento s-power-outdoor" id="slide-19">
+<section class="slide bento s-power-outdoor" id="slide-21">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Power</div>
       <h2 class="slide-title">USB-C power</h2>
       <p class="slide-subtitle">An elegant power solution</p>
     </div>
-    <div class="slide-index">19</div>
+    <div class="slide-index">21</div>
   </div>
   <div class="bento-grid power-outdoor-stage">
 
@@ -1459,7 +1747,7 @@
       <h2 class="slide-title">USB-C audio</h2>
       <p class="slide-subtitle">Hardware DAC to the room</p>
     </div>
-    <div class="slide-index">20</div>
+    <div class="slide-index">22</div>
   </div>
   <div class="bento-grid audio-output-stage">
 
@@ -1542,7 +1830,7 @@
         <span class="audio-proto-to">Perfboard</span>
       </h2>
     </div>
-    <div class="slide-index">21</div>
+    <div class="slide-index">23</div>
   </div>
   <div class="bento-grid audio-prototype-stage">
 
@@ -1579,7 +1867,7 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk spine s-spine-firmware" id="slide-23"
+<section class="slide zoom zwalk spine s-spine-firmware" id="slide-25"
   data-step-titles='["Electronics","Firmware"]'
   data-step-subs='["Analog captured. Next — the edge loop that turns readings into frames.","ESP32 scans all zones ~20× per second — S-frame up, L-frame down, forever."]'>
   <div class="zoom-content zoom-walk-content">
@@ -1715,7 +2003,7 @@
   </div>
 </section>
 
-<section class="slide bento zwalk s-firmware-bento" id="slide-24" data-step="0"
+<section class="slide bento zwalk s-firmware-bento" id="slide-26" data-step="0"
   data-step-titles='["What it does","How it connects","On the wire"]'
   data-step-subs='["ESP32 on the mat reads every zone and drives the LEDs; the Pi turns pressure into music.","One UART cable between Pi and ESP32 — sensor frames up, LED frames down, both at once.","Two frame types: S sends pressure, L sends colour — plain text, no handshake."]'>
   <div class="slide-header">
@@ -1725,7 +2013,7 @@
       <p class="beat-title" data-step-title>What it does</p>
       <p class="slide-step-caption" data-step-sub>ESP32 on the mat reads every zone and drives the LEDs; the Pi turns pressure into music.</p>
     </div>
-    <div class="slide-index">24</div>
+    <div class="slide-index">26</div>
   </div>
   <nav class="fw-rail" aria-label="Firmware story">
     <div class="route-chip" data-for="0">
@@ -1891,7 +2179,7 @@
       <h2 class="slide-title">Stones on the mat</h2>
       <p class="slide-subtitle">Place stones on the felt – Visualization</p>
     </div>
-    <div class="slide-index">25</div>
+    <div class="slide-index">27</div>
   </div>
   <div class="bento-grid firmware-video-stage">
 
@@ -1908,7 +2196,7 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk spine s-spine-software" id="slide-26"
+<section class="slide zoom zwalk spine s-spine-software" id="slide-28"
   data-step-titles='["Firmware","Software"]'
   data-step-subs='["Digitized and streaming. Next — what turns numbers into music.","UART frames land on a Raspberry Pi — Python runs the logic, SuperCollider renders the sound."]'>
   <div class="zoom-content zoom-walk-content">
@@ -2044,7 +2332,7 @@
   </div>
 </section>
 
-<section class="slide hero s-python-sc-hero" id="slide-27">
+<section class="slide hero s-python-sc-hero" id="slide-29">
   <p class="hero-kicker">Pressure is already numbers.</p>
   <h1 class="hero-title">
     <span class="hero-title-line"><span class="accent">Software makes them music.</span></span>
@@ -2052,13 +2340,13 @@
   <p class="hero-subtitle hero-subtitle-desc">Runs on the Raspberry Pi inside the device.</p>
 </section>
 
-<section class="slide bento s-software-bento" id="slide-28">
+<section class="slide bento s-software-bento" id="slide-30">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Software</div>
       <h2 class="slide-title">The music is data, not code</h2>
     </div>
-    <div class="slide-index">28</div>
+    <div class="slide-index">30</div>
   </div>
   <div class="bento-grid">
 
@@ -2138,7 +2426,7 @@ drums        = "lofi"</pre>
   <div class="bento-grid software-web-console-stage">
 
     <div class="bento-card c-left cream">
-      <div class="slide-index">29</div>
+      <div class="slide-index">31</div>
       <div class="software-web-copy">
         <div class="slide-eyebrow">Software</div>
         <h2 class="slide-title">Web console</h2>
@@ -2157,7 +2445,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento zwalk s-software-challenge" id="slide-30" data-step="0"
+<section class="slide bento zwalk s-software-challenge" id="slide-32" data-step="0"
   data-step-titles='["Problem","Solve","Result"]'
   data-step-subs='["Same Jam, 50 stones: Mac cruises with 5–10× headroom; the Pi pegs scsynth at 99.9% and the XRuns never stop.","Five layers of profile-guided work — frontend, jam loop, SuperCollider, polyphony, then a cProfile pass. Sound stays identical.","scsynth 99.9% → 79%, jam loop 90% → 60%. Fifty stones now play stable on the Pi."]'>
   <div class="slide-header">
@@ -2167,7 +2455,7 @@ drums        = "lofi"</pre>
       <p class="beat-title" data-step-title>Problem</p>
       <p class="slide-step-caption" data-step-sub>Same Jam, 50 stones: Mac cruises with 5–10× headroom; the Pi pegs scsynth at 99.9% and the XRuns never stop.</p>
     </div>
-    <div class="slide-index">30</div>
+    <div class="slide-index">32</div>
   </div>
 
   <div class="bento-grid sw-pi-stage">
@@ -2318,7 +2606,7 @@ drums        = "lofi"</pre>
       <h2 class="slide-title">The SoundMat codebase</h2>
       <p class="slide-subtitle">Python, SuperCollider, and declarative manifests</p>
     </div>
-    <div class="slide-index">31</div>
+    <div class="slide-index">33</div>
   </div>
   <div class="bento-grid codebase-stage">
 
@@ -2516,7 +2804,7 @@ drums        = "lofi"</pre>
     <div class="bento-card c-stat accent">
       <div class="codebase-stat-panel">
         <div class="codebase-stat-block">
-          <div class="card-big-num codebase-loc-num">5000<span class="num-unit">+</span></div>
+          <div class="card-big-num codebase-loc-num"><span data-countup="5000">5000</span><span class="num-unit">+</span></div>
           <p class="codebase-stat-label">lines of code</p>
         </div>
         <ul class="codebase-stat-tags" aria-label="Stack">
@@ -2531,7 +2819,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide zoom zwalk spine s-spine-sound" id="slide-32"
+<section class="slide zoom zwalk spine s-spine-sound" id="slide-34"
   data-step-titles='["Software","Output"]'
   data-step-subs='["Music computed. Next — how it reaches your ears and eyes.","USB DAC drives the speaker; L-frames travel back to light the LED ring."]'>
   <div class="zoom-content zoom-walk-content">
@@ -2768,14 +3056,14 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento s-sound-modes" id="slide-35">
+<section class="slide bento s-sound-modes" id="slide-37">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Sonification</div>
       <h2 class="slide-title">Two modes for two situations</h2>
       <p class="slide-subtitle">Anyone should make it sound good &mdash; and still feel <em>they</em> did it.</p>
     </div>
-    <div class="slide-index">35</div>
+    <div class="slide-index">37</div>
   </div>
   <div class="bento-grid">
 
@@ -2861,7 +3149,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento zwalk s-jam-sonification" id="slide-36" data-step="0"
+<section class="slide bento zwalk s-jam-sonification" id="slide-38" data-step="0"
   data-step-titles='["The tension","Why Lo-Fi","Harmony","Drums","Beat &amp; loop","Melody layer"]'
   data-step-subs='["Two pulls on every music interface — we built Ambient and Jam instead of choosing one side.","Warm, loop-based, forgiving — made for a round mat and strangers playing together.","8-bar chord loop always running — live synth, not samples. You never place harmony.","Fixed play count A×1→B×1→C×2→A×1→D×2→A×1 — loops B–D add kick, snare, and hat.","4/4 at ~120 BPM. One turn of the mat = two bars — angle is time on the beat grid.","Six rings, eight sectors — every cell is a pre-written note; scan = when you trigger."]'>
   <div class="slide-header">
@@ -2871,7 +3159,7 @@ drums        = "lofi"</pre>
       <p class="beat-title" data-step-title>The tension</p>
       <p class="slide-step-caption" data-step-sub>Two pulls on every music interface — we built Ambient and Jam instead of choosing one side.</p>
     </div>
-    <div class="slide-index">36</div>
+    <div class="slide-index">38</div>
   </div>
 
   <nav class="jam-son-rail" aria-label="Jam sonification">
@@ -3295,7 +3583,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento zwalk s-jam-interaction" id="slide-37" data-step="0"
+<section class="slide bento zwalk s-jam-interaction" id="slide-39" data-step="0"
   data-step-titles='["Control hub","LED ring"]'
   data-step-subs='["The two center rings are the on/off switch: add stones to start the music, clear them to stop.","Red downbeat, white comet, colored stones, bright flash — the ring is the UI."]'>
   <div class="slide-header">
@@ -3305,7 +3593,7 @@ drums        = "lofi"</pre>
       <p class="beat-title" data-step-title>Control hub</p>
       <p class="slide-step-caption" data-step-sub>The two center rings are the on/off switch: add stones to start the music, clear them to stop.</p>
     </div>
-    <div class="slide-index">37</div>
+    <div class="slide-index">39</div>
   </div>
 
   <nav class="jam-int-rail" aria-label="Jam interaction">
@@ -3473,7 +3761,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide zoom s-system-recap" id="slide-38">
+<section class="slide zoom s-system-recap" id="slide-40">
   <div class="zoom-content zoom-walk-content">
     <div class="zoom-eyebrow">System overview</div>
     <h2 class="zoom-title">End-to-end, one more time</h2>
@@ -3601,17 +3889,17 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide s-timeline" id="slide-39">
+<section class="slide s-timeline" id="slide-41">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Timeline</div>
       <h2 class="slide-title">Eight weeks, idea to presentation</h2>
     </div>
-    <div class="slide-index">39</div>
+    <div class="slide-index">41</div>
   </div>
 
   <div class="timeline-gantt bento-card cream">
-    <svg class="timeline-svg" viewBox="0 0 1320 520" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-labelledby="timelineTitle">
+    <svg class="timeline-svg" viewBox="0 0 1320 568" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-labelledby="timelineTitle">
       <title id="timelineTitle">SoundMat project timeline</title>
 <defs>
           <linearGradient id="tlAxis" x1="0" y1="0" x2="1" y2="0">
@@ -3644,9 +3932,9 @@ drums        = "lofi"</pre>
         <text class="tl-month" x="780" y="36" text-anchor="middle">MAY</text>
         <text class="tl-month" x="1180" y="36" text-anchor="middle">JUNE</text>
         <g stroke="#E8E8ED" stroke-width="2">
-          <line x1="380" y1="44" x2="380" y2="500"/>
-          <line x1="780" y1="44" x2="780" y2="500"/>
-          <line x1="1180" y1="44" x2="1180" y2="500"/>
+          <line x1="380" y1="44" x2="380" y2="560"/>
+          <line x1="780" y1="44" x2="780" y2="560"/>
+          <line x1="1180" y1="44" x2="1180" y2="560"/>
         </g>
 
         <line x1="220" y1="56" x2="1280" y2="56" stroke="url(#tlAxis)" stroke-width="6" stroke-linecap="round"/>
@@ -3665,9 +3953,9 @@ drums        = "lofi"</pre>
         <g class="tl-lane" style="animation-delay:180ms">
           <text class="tl-label" x="8" y="162">Sensor</text>
           <rect x="447" y="138" width="136" height="34" rx="17" fill="url(#tlBarSoft)"/>
-          <text class="tl-range" x="593" y="162">Apr 16 &#8211; 25</text>
-          <text class="tl-range-sub" x="593" y="182">mini</text>
           <rect x="659" y="138" width="106" height="34" rx="17" fill="url(#tlBar)"/>
+          <text class="tl-range" x="515" y="160" text-anchor="middle">Apr 16 &#8211; 25</text>
+          <text class="tl-range-sub" x="515" y="188" text-anchor="middle">mini</text>
           <text class="tl-range" x="775" y="162">Apr 30 &#8211; May 7</text>
         </g>
 
@@ -3711,22 +3999,28 @@ drums        = "lofi"</pre>
         </g>
 
         <g class="tl-lane" style="animation-delay:600ms">
-          <text class="tl-label" x="8" y="498">Presentation</text>
-          <circle cx="1189" cy="488" r="15" fill="url(#tlBar)"/>
-          <circle cx="1189" cy="488" r="24" fill="none" stroke="#F5A623" stroke-width="3" opacity="0.45"/>
-          <text class="tl-range" x="1220" y="496">Jun 4</text>
+          <text class="tl-label" x="8" y="498">Pi deploy</text>
+          <rect x="1098" y="474" width="76" height="34" rx="17" fill="url(#tlBarDark)"/>
+          <text class="tl-range" x="1185" y="496">May 29 &#8211; Jun 3</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:660ms">
+          <text class="tl-label" x="8" y="546">Presentation</text>
+          <circle cx="1189" cy="536" r="15" fill="url(#tlBar)"/>
+          <circle cx="1189" cy="536" r="24" fill="none" stroke="#F5A623" stroke-width="3" opacity="0.45"/>
+          <text class="tl-range" x="1220" y="544">Jun 4</text>
         </g>
     </svg>
   </div>
 </section>
 
-<section class="slide s-acknowledgments" id="slide-40">
+<section class="slide s-acknowledgments" id="slide-42">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Acknowledgments</div>
       <h2 class="slide-title">Thank you</h2>
     </div>
-    <div class="slide-index">40</div>
+    <div class="slide-index">42</div>
   </div>
 
   <ul class="ack-list">
@@ -3748,7 +4042,7 @@ drums        = "lofi"</pre>
   </ul>
 </section>
 
-<section class="slide hero s-live-demo" id="slide-41">
+<section class="slide hero s-live-demo" id="slide-43">
   <div class="hero-eyebrow">Next</div>
   <h1 class="hero-title"><span class="accent">Live Demo</span></h1>
   <p class="hero-subtitle">Five minutes. From silence, to a control stone, to a full Lo-Fi loop, and back to silence.</p>
@@ -3779,7 +4073,10 @@ drums        = "lofi"</pre>
 </div>
 
 <div class="slide-counter" id="slideCounter">01 / 22</div>
-<div class="help-hint"><kbd>SPACE</kbd> next / step · <kbd>←</kbd><kbd>→</kbd> nav · <kbd>F</kbd> fullscreen</div>
+<div class="deck-hud-left">
+  <div class="deck-timer" id="deckTimer" hidden aria-live="off">0:00</div>
+  <div class="help-hint"><kbd>SPACE</kbd> next / step · <kbd>←</kbd><kbd>→</kbd> nav · <kbd>F</kbd> fullscreen</div>
+</div>
 
 <footer class="deck-bottom" id="deckBottom">
   <nav class="chapter-rail" id="chapterRail" aria-label="Presentation sections"></nav>

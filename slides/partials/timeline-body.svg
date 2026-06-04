@@ -29,9 +29,9 @@
         <text class="tl-month" x="780" y="36" text-anchor="middle">MAY</text>
         <text class="tl-month" x="1180" y="36" text-anchor="middle">JUNE</text>
         <g stroke="#E8E8ED" stroke-width="2">
-          <line x1="380" y1="44" x2="380" y2="500"/>
-          <line x1="780" y1="44" x2="780" y2="500"/>
-          <line x1="1180" y1="44" x2="1180" y2="500"/>
+          <line x1="380" y1="44" x2="380" y2="560"/>
+          <line x1="780" y1="44" x2="780" y2="560"/>
+          <line x1="1180" y1="44" x2="1180" y2="560"/>
         </g>
 
         <line x1="220" y1="56" x2="1280" y2="56" stroke="url(#tlAxis)" stroke-width="6" stroke-linecap="round"/>
@@ -50,9 +50,9 @@
         <g class="tl-lane" style="animation-delay:180ms">
           <text class="tl-label" x="8" y="162">Sensor</text>
           <rect x="447" y="138" width="136" height="34" rx="17" fill="url(#tlBarSoft)"/>
-          <text class="tl-range" x="593" y="162">Apr 16 &#8211; 25</text>
-          <text class="tl-range-sub" x="593" y="182">mini</text>
           <rect x="659" y="138" width="106" height="34" rx="17" fill="url(#tlBar)"/>
+          <text class="tl-range" x="515" y="160" text-anchor="middle">Apr 16 &#8211; 25</text>
+          <text class="tl-range-sub" x="515" y="188" text-anchor="middle">mini</text>
           <text class="tl-range" x="775" y="162">Apr 30 &#8211; May 7</text>
         </g>
 
@@ -96,8 +96,14 @@
         </g>
 
         <g class="tl-lane" style="animation-delay:600ms">
-          <text class="tl-label" x="8" y="498">Presentation</text>
-          <circle cx="1189" cy="488" r="15" fill="url(#tlBar)"/>
-          <circle cx="1189" cy="488" r="24" fill="none" stroke="#F5A623" stroke-width="3" opacity="0.45"/>
-          <text class="tl-range" x="1220" y="496">Jun 4</text>
+          <text class="tl-label" x="8" y="498">Pi deploy</text>
+          <rect x="1098" y="474" width="76" height="34" rx="17" fill="url(#tlBarDark)"/>
+          <text class="tl-range" x="1185" y="496">May 29 &#8211; Jun 3</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:660ms">
+          <text class="tl-label" x="8" y="546">Presentation</text>
+          <circle cx="1189" cy="536" r="15" fill="url(#tlBar)"/>
+          <circle cx="1189" cy="536" r="24" fill="none" stroke="#F5A623" stroke-width="3" opacity="0.45"/>
+          <text class="tl-range" x="1220" y="544">Jun 4</text>
         </g>

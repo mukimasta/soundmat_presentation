@@ -152,16 +152,41 @@ svg.diagram { width: 100%; height: 100%; display: block; }
 .s-idea-origin.zwalk[data-step="2"] .spark-diagram .diagram { max-height: min(42vh, 320px); }
 .s-idea-origin.zwalk[data-step="2"] .spark-def { font-size: clamp(16px, 1.45vw, 21px); }
 .s-idea-origin.zwalk[data-step="2"] .spark-pivot { font-size: clamp(14px, 1.25vw, 18px); }
+.s-idea-origin.zwalk[data-step="2"] .c4 .sketch-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
 .s-idea-origin.zwalk[data-step="2"] .c4 .sketch-stage {
+  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: clamp(20px, 2.5vw, 28px);
   text-align: left;
+  margin-top: 0;
 }
-.s-idea-origin.zwalk[data-step="2"] .sketch-hero { width: min(180px, 28vw); flex: none; }
-.s-idea-origin.zwalk[data-step="2"] .sketch-copy { text-align: left; max-width: none; flex: 1; min-width: 0; }
-.s-idea-origin.zwalk[data-step="2"] .sketch-line { font-size: clamp(18px, 1.55vw, 24px); }
+.s-idea-origin.zwalk[data-step="2"] .sketch-hero { width: min(200px, 30vw); flex: none; }
+.s-idea-origin.zwalk[data-step="2"] .sketch-copy {
+  text-align: left;
+  max-width: none;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vh, 14px);
+}
+.s-idea-origin.zwalk[data-step="2"] .sketch-lead {
+  font-size: clamp(18px, 1.65vw, 24px);
+}
+.s-idea-origin.zwalk[data-step="2"] .sketch-sub {
+  font-size: clamp(14px, 1.25vw, 17px);
+}
+.s-idea-origin.zwalk[data-step="2"] .sketch-tag {
+  font-size: clamp(13px, 1.1vw, 16px);
+  padding: 10px 16px;
+}
 
 /* Idea origin — course lane card */
 .s-idea-origin .course-lane {
@@ -248,6 +273,10 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 216, 154, 0.45);
   transition: color 200ms var(--ease), border-color 200ms var(--ease);
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: pointer;
 }
 .spark-link:hover {
   color: #fff;
@@ -283,6 +312,20 @@ svg.diagram { width: 100%; height: 100%; display: block; }
 }
 .sketch-mini { width: 84px; height: 84px; flex: none; }
 .sketch-text { min-width: 0; }
+.s-idea-origin .c4 .sketch-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.s-idea-origin .sketch-label {
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 4px;
+}
 .sketch-stage {
   flex: 1;
   display: flex;
@@ -293,13 +336,63 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   min-height: 0;
   margin-top: 8px;
 }
-.sketch-hero { width: min(220px, 42vw); height: auto; }
-.sketch-copy { text-align: center; max-width: 320px; }
-.sketch-line {
-  font-size: clamp(17px, 1.5vw, 21px);
+.sketch-hero { width: min(220px, 42vw); height: auto; flex: none; }
+.sketch-copy {
+  text-align: center;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.sketch-lead {
+  margin: 0;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: clamp(20px, 1.9vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.96);
+}
+.sketch-lead strong { font-weight: 800; }
+.sketch-accent {
+  background: linear-gradient(135deg, #fff 0%, #FFE8B8 45%, #FFD89A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+.sketch-sub {
+  margin: 0;
+  font-size: clamp(15px, 1.35vw, 19px);
   font-weight: 500;
+  letter-spacing: -0.015em;
   line-height: 1.35;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.72);
+}
+.sketch-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.sketch-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: clamp(10px, 1.1vh, 14px) clamp(16px, 1.4vw, 22px);
+  border-radius: 14px;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset;
+}
+.sketch-tag:nth-child(2) {
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.38);
 }
 .criteria-grid-lg .criteria-chip {
   padding: 14px 16px;
@@ -1418,6 +1511,10 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   word-break: break-all;
   max-width: min(92vw, 640px);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: pointer;
 }
 .s-closing .closing-web-url:hover {
   color: #fff;
@@ -1948,11 +2045,9 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   pointer-events: none;
 }
 .help-hint {
-  position: fixed;
-  bottom: calc(var(--deck-bar-h) + 10px);
-  left: 32px;
+  position: static;
   font-size: 10px; color: var(--text-3);
-  letter-spacing: 0.06em; z-index: 210;
+  letter-spacing: 0.06em;
   opacity: 0.55; font-weight: 500;
   pointer-events: none;
 }
