@@ -620,6 +620,40 @@
   letter-spacing: 0;
 }
 
+/* 10f — Electronics system design (8 diagrams from design doc) */
+.s-electronics-design .electronics-design-stage {
+  flex: 1;
+  min-height: 0;
+  gap: 10px;
+}
+.s-electronics-design.slide.bento { gap: 12px; }
+.s-electronics-design .slide-header { margin-bottom: 4px; }
+.s-electronics-design .slide-title { font-size: clamp(28px, 2.8vw, 40px); }
+.s-electronics-design .c1 { grid-column: 1 / 4;  grid-row: 1 / 5; padding: 6px; }
+.s-electronics-design .c2 { grid-column: 4 / 7;  grid-row: 1 / 5; padding: 6px; }
+.s-electronics-design .c3 { grid-column: 7 / 10; grid-row: 1 / 5; padding: 6px; }
+.s-electronics-design .c4 { grid-column: 10 / 13; grid-row: 1 / 5; padding: 6px; }
+.s-electronics-design .c5 { grid-column: 1 / 4;  grid-row: 5 / 9; padding: 6px; }
+.s-electronics-design .c6 { grid-column: 4 / 7;  grid-row: 5 / 9; padding: 6px; }
+.s-electronics-design .c7 { grid-column: 7 / 10; grid-row: 5 / 9; padding: 6px; }
+.s-electronics-design .c8 { grid-column: 10 / 13; grid-row: 5 / 9; padding: 6px; }
+.s-electronics-design .bento-card {
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.s-electronics-design .electronics-design-fig {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: #fff;
+}
+.s-electronics-design .electronics-design-fig img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
 /* 10e — Electronics prototype (full-bleed photo) */
 .s-electronics-prototype-photo {
   padding-top: calc(var(--pad-y) * 0.55);

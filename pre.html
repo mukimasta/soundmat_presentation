@@ -1608,6 +1608,76 @@
   </div>
 </section>
 
+<section class="slide bento s-electronics-design">
+  <div class="slide-header">
+    <div>
+      <div class="slide-eyebrow">Electronics</div>
+      <h2 class="slide-title">System design</h2>
+    </div>
+    <div class="slide-index">24</div>
+  </div>
+  <div class="bento-grid electronics-design-stage">
+
+    <div class="bento-card c1 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/electronics-arch-overview.png"
+             alt="Electronic system architecture overview"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="bento-card c2 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/electronics-arch-design.png"
+             alt="Electronic system architecture design"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="bento-card c3 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/electronics-power-module.png"
+             alt="Power module — USB-C PD and buck converter"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="bento-card c4 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/electronics-compute-module.png"
+             alt="Compute module — Raspberry Pi and ESP32"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="bento-card c5 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/electronics-sensor-module.png"
+             alt="Sensor module — rings, MUX, and ADC"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="bento-card c6 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/esp32-dual-cd4067-mux-with-rings-v3.svg"
+             alt="Dual CD4067 MUX cascade with sensor rings"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="bento-card c7 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/electronics-led-module.png"
+             alt="LED module — WS2812B and level shifter"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="bento-card c8 image-card">
+      <figure class="bento-photo electronics-design-fig">
+        <img src="soundmat/electronics-bom.png"
+             alt="Electronics bill of materials"
+             loading="lazy" decoding="async">
+      </figure>
+    </div>
+
+  </div>
+</section>
+
 <section class="slide bento s-electronics-prototype-photo">
   <div class="bento-grid electronics-prototype-photo-stage">
 
@@ -1622,7 +1692,7 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk spine s-spine-firmware" id="slide-25"
+<section class="slide zoom zwalk spine s-spine-firmware" id="slide-26"
   data-step-titles='["Electronics","Firmware"]'
   data-step-subs='["Analog captured. Next — the edge loop that turns readings into frames.","ESP32 scans all zones ~20× per second — S-frame up, L-frame down, forever."]'>
   <div class="zoom-content zoom-walk-content">
@@ -1758,7 +1828,7 @@
   </div>
 </section>
 
-<section class="slide bento zwalk s-firmware-bento" id="slide-26" data-step="0"
+<section class="slide bento zwalk s-firmware-bento" id="slide-27" data-step="0"
   data-step-titles='["What it does","How it connects","On the wire"]'
   data-step-subs='["ESP32 on the mat reads every zone and drives the LEDs; the Pi turns pressure into music.","One UART cable between Pi and ESP32 — sensor frames up, LED frames down, both at once.","Two frame types: S sends pressure, L sends colour — plain text, no handshake."]'>
   <div class="slide-header">
@@ -1768,7 +1838,7 @@
       <p class="beat-title" data-step-title>What it does</p>
       <p class="slide-step-caption" data-step-sub>ESP32 on the mat reads every zone and drives the LEDs; the Pi turns pressure into music.</p>
     </div>
-    <div class="slide-index">26</div>
+    <div class="slide-index">27</div>
   </div>
   <nav class="fw-rail" aria-label="Firmware story">
     <div class="route-chip" data-for="0">
@@ -1934,7 +2004,7 @@
       <h2 class="slide-title">Stones on the mat</h2>
       <p class="slide-subtitle">Place stones on the felt – Visualization</p>
     </div>
-    <div class="slide-index">27</div>
+    <div class="slide-index">28</div>
   </div>
   <div class="bento-grid firmware-video-stage">
 
@@ -1951,7 +2021,7 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk spine s-spine-software" id="slide-28"
+<section class="slide zoom zwalk spine s-spine-software" id="slide-29"
   data-step-titles='["Firmware","Software"]'
   data-step-subs='["Digitized and streaming. Next — what turns numbers into music.","UART frames land on a Raspberry Pi — Python runs the logic, SuperCollider renders the sound."]'>
   <div class="zoom-content zoom-walk-content">
@@ -2087,7 +2157,7 @@
   </div>
 </section>
 
-<section class="slide hero s-python-sc-hero" id="slide-29">
+<section class="slide hero s-python-sc-hero" id="slide-30">
   <p class="hero-kicker">Pressure is already numbers.</p>
   <h1 class="hero-title">
     <span class="hero-title-line"><span class="accent">Software makes them music.</span></span>
@@ -2095,13 +2165,13 @@
   <p class="hero-subtitle hero-subtitle-desc">Runs on the Raspberry Pi inside the device.</p>
 </section>
 
-<section class="slide bento s-software-bento" id="slide-30">
+<section class="slide bento s-software-bento" id="slide-31">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Software</div>
       <h2 class="slide-title">The music is data, not code</h2>
     </div>
-    <div class="slide-index">30</div>
+    <div class="slide-index">31</div>
   </div>
   <div class="bento-grid">
 
@@ -2181,7 +2251,7 @@ drums        = "lofi"</pre>
   <div class="bento-grid software-web-console-stage">
 
     <div class="bento-card c-left cream">
-      <div class="slide-index">31</div>
+      <div class="slide-index">32</div>
       <div class="software-web-copy">
         <div class="slide-eyebrow">Software</div>
         <h2 class="slide-title">Web console</h2>
@@ -2200,7 +2270,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento zwalk s-software-challenge" id="slide-32" data-step="0"
+<section class="slide bento zwalk s-software-challenge" id="slide-33" data-step="0"
   data-step-titles='["Problem","Solve","Result"]'
   data-step-subs='["Same Jam, 50 stones: Mac cruises with 5–10× headroom; the Pi pegs scsynth at 99.9% and the XRuns never stop.","Five layers of profile-guided work — frontend, jam loop, SuperCollider, polyphony, then a cProfile pass. Sound stays identical.","scsynth 99.9% → 79%, jam loop 90% → 60%. Fifty stones now play stable on the Pi."]'>
   <div class="slide-header">
@@ -2210,7 +2280,7 @@ drums        = "lofi"</pre>
       <p class="beat-title" data-step-title>Problem</p>
       <p class="slide-step-caption" data-step-sub>Same Jam, 50 stones: Mac cruises with 5–10× headroom; the Pi pegs scsynth at 99.9% and the XRuns never stop.</p>
     </div>
-    <div class="slide-index">32</div>
+    <div class="slide-index">33</div>
   </div>
 
   <div class="bento-grid sw-pi-stage">
@@ -2361,7 +2431,7 @@ drums        = "lofi"</pre>
       <h2 class="slide-title">The SoundMat codebase</h2>
       <p class="slide-subtitle">Python, SuperCollider, and declarative manifests</p>
     </div>
-    <div class="slide-index">33</div>
+    <div class="slide-index">34</div>
   </div>
   <div class="bento-grid codebase-stage">
 
@@ -2574,7 +2644,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide zoom zwalk spine s-spine-sound" id="slide-34"
+<section class="slide zoom zwalk spine s-spine-sound" id="slide-35"
   data-step-titles='["Software","Output"]'
   data-step-subs='["Music computed. Next — how it reaches your ears and eyes.","USB DAC drives the speaker; L-frames travel back to light the LED ring."]'>
   <div class="zoom-content zoom-walk-content">
@@ -2811,14 +2881,14 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento s-sound-modes" id="slide-37">
+<section class="slide bento s-sound-modes" id="slide-38">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Sonification</div>
       <h2 class="slide-title">Two modes for two situations</h2>
       <p class="slide-subtitle">Anyone should make it sound good &mdash; and still feel <em>they</em> did it.</p>
     </div>
-    <div class="slide-index">37</div>
+    <div class="slide-index">38</div>
   </div>
   <div class="bento-grid">
 
@@ -2904,7 +2974,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento zwalk s-jam-sonification" id="slide-38" data-step="0"
+<section class="slide bento zwalk s-jam-sonification" id="slide-39" data-step="0"
   data-step-titles='["The tension","Why Lo-Fi","Harmony","Drums","Beat &amp; loop","Melody layer"]'
   data-step-subs='["Two pulls on every music interface — we built Ambient and Jam instead of choosing one side.","Warm, loop-based, forgiving — made for a round mat and strangers playing together.","8-bar chord loop always running — live synth, not samples. You never place harmony.","Fixed play count A×1→B×1→C×2→A×1→D×2→A×1 — loops B–D add kick, snare, and hat.","4/4 at ~120 BPM. One turn of the mat = two bars — angle is time on the beat grid.","Six rings, eight sectors — every cell is a pre-written note; scan = when you trigger."]'>
   <div class="slide-header">
@@ -2914,7 +2984,7 @@ drums        = "lofi"</pre>
       <p class="beat-title" data-step-title>The tension</p>
       <p class="slide-step-caption" data-step-sub>Two pulls on every music interface — we built Ambient and Jam instead of choosing one side.</p>
     </div>
-    <div class="slide-index">38</div>
+    <div class="slide-index">39</div>
   </div>
 
   <nav class="jam-son-rail" aria-label="Jam sonification">
@@ -3338,7 +3408,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide bento zwalk s-jam-interaction" id="slide-39" data-step="0"
+<section class="slide bento zwalk s-jam-interaction" id="slide-40" data-step="0"
   data-step-titles='["Control hub","LED ring"]'
   data-step-subs='["The two center rings are the on/off switch: add stones to start the music, clear them to stop.","Red downbeat, white comet, colored stones, bright flash — the ring is the UI."]'>
   <div class="slide-header">
@@ -3348,7 +3418,7 @@ drums        = "lofi"</pre>
       <p class="beat-title" data-step-title>Control hub</p>
       <p class="slide-step-caption" data-step-sub>The two center rings are the on/off switch: add stones to start the music, clear them to stop.</p>
     </div>
-    <div class="slide-index">39</div>
+    <div class="slide-index">40</div>
   </div>
 
   <nav class="jam-int-rail" aria-label="Jam interaction">
@@ -3516,7 +3586,7 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide zoom s-system-recap" id="slide-40">
+<section class="slide zoom s-system-recap" id="slide-41">
   <div class="zoom-content zoom-walk-content">
     <div class="zoom-eyebrow">System overview</div>
     <h2 class="zoom-title">End-to-end, one more time</h2>
@@ -3644,13 +3714,13 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide s-timeline" id="slide-41">
+<section class="slide s-timeline" id="slide-42">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Timeline</div>
       <h2 class="slide-title">Eight weeks, idea to presentation</h2>
     </div>
-    <div class="slide-index">41</div>
+    <div class="slide-index">42</div>
   </div>
 
   <div class="timeline-gantt bento-card cream">
@@ -3769,13 +3839,13 @@ drums        = "lofi"</pre>
   </div>
 </section>
 
-<section class="slide s-acknowledgments" id="slide-42">
+<section class="slide s-acknowledgments" id="slide-43">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Acknowledgments</div>
       <h2 class="slide-title">Thank you</h2>
     </div>
-    <div class="slide-index">42</div>
+    <div class="slide-index">43</div>
   </div>
 
   <ul class="ack-list">
@@ -3797,7 +3867,7 @@ drums        = "lofi"</pre>
   </ul>
 </section>
 
-<section class="slide hero s-live-demo" id="slide-43">
+<section class="slide hero s-live-demo" id="slide-44">
   <div class="hero-eyebrow">Next</div>
   <h1 class="hero-title"><span class="accent">Live Demo</span></h1>
   <p class="hero-subtitle">Five minutes. From silence, to a control stone, to a full Lo-Fi loop, and back to silence.</p>

@@ -170,11 +170,17 @@ Hardware DAC to the room
 Electronics
 Schematic — ESP32 with dual CD4067 multiplexers and sensor ring connections
 
-24 · 10-electronics-prototype-photo
+24 · 10-electronics-design
+────────────────────────────────────────
+Electronics
+System design
+Electronic system architecture overview
+
+25 · 10-electronics-prototype-photo
 ────────────────────────────────────────
 Electronics prototype assembly on perfboard
 
-25 · 09-spine-firmware
+26 · 09-spine-firmware
 ────────────────────────────────────────
 System overview
 Electronics
@@ -184,7 +190,7 @@ Analog captured. Next — the edge loop that turns readings into frames.
   2. Firmware
      ESP32 scans all zones ~20× per second — S-frame up, L-frame down, forever.
 
-26 · 11-firmware-bento
+27 · 11-firmware-bento
 ────────────────────────────────────────
 FIRMWARE
 The edge bridge
@@ -195,14 +201,14 @@ The edge bridge
   3. On the wire
      Two frame types: S sends pressure, L sends colour — plain text, no handshake.
 
-27 · 11-firmware-video
+28 · 11-firmware-video
 ────────────────────────────────────────
 Firmware
 Stones on the mat
 Place stones on the felt – Visualization
 [Placing stones on the sensor mat with live pressure heatmap visualization]
 
-28 · 12-spine-software
+29 · 12-spine-software
 ────────────────────────────────────────
 System overview
 Firmware
@@ -212,22 +218,22 @@ Digitized and streaming. Next — what turns numbers into music.
   2. Software
      UART frames land on a Raspberry Pi — Python runs the logic, SuperCollider renders the sound.
 
-29 · 13-python-sc-hero
+30 · 13-python-sc-hero
 ────────────────────────────────────────
 Software makes them music.
 
-30 · 14-software-bento
+31 · 14-software-bento
 ────────────────────────────────────────
 Software
 The music is data, not code
 
-31 · 14-software-web-console
+32 · 14-software-web-console
 ────────────────────────────────────────
 Software
 Web console
 SoundMat web control console — presets, mix, and developer panel
 
-32 · 15-software-challenge
+33 · 15-software-challenge
 ────────────────────────────────────────
 Challenge
 Making it run on the Raspberry Pi
@@ -238,13 +244,13 @@ Making it run on the Raspberry Pi
   3. Result
      scsynth 99.9% → 79%, jam loop 90% → 60%. Fifty stones now play stable on the Pi.
 
-33 · 15-software-codebase
+34 · 15-software-codebase
 ────────────────────────────────────────
 Software
 The SoundMat codebase
 Python, SuperCollider, and declarative manifests
 
-34 · 15-spine-sound
+35 · 15-spine-sound
 ────────────────────────────────────────
 System overview
 Software
@@ -254,23 +260,23 @@ Music computed. Next — how it reaches your ears and eyes.
   2. Output
      USB DAC drives the speaker; L-frames travel back to light the LED ring.
 
-35 · 15-sonification-hero
+36 · 15-sonification-hero
 ────────────────────────────────────────
 Sonification
 
-36 · 15-music-background
+37 · 15-music-background
 ────────────────────────────────────────
 Sonification
 Where the music comes from
 Years of playing and writing before SoundMat.
 
-37 · 16-sound-modes
+38 · 16-sound-modes
 ────────────────────────────────────────
 Sonification
 Two modes for two situations
 Anyone should make it sound good — and still feel they did it.
 
-38 · 17-jam-sonification
+39 · 17-jam-sonification
 ────────────────────────────────────────
 Sonification
 Jam mode — how stones become music
@@ -287,7 +293,7 @@ Jam mode — how stones become music
   6. Melody layer
      Six rings, eight sectors — every cell is a pre-written note; scan = when you trigger.
 
-39 · 18-jam-interaction
+40 · 18-jam-interaction
 ────────────────────────────────────────
 Interaction
 How you read and play the mat
@@ -296,35 +302,35 @@ How you read and play the mat
   2. LED ring
      Red downbeat, white comet, colored stones, bright flash — the ring is the UI.
 
-40 · 18-system-recap
+41 · 18-system-recap
 ────────────────────────────────────────
 System overview
 End-to-end, one more time
 Sensor → analog → firmware → software → sound and light — one sculpture, one USB-C cable. Next: we play it live.
 
-41 · 18-timeline
+42 · 18-timeline
 ────────────────────────────────────────
 Timeline
 Eight weeks, idea to presentation
 
-42 · 19-acknowledgments
+43 · 19-acknowledgments
 ────────────────────────────────────────
 Acknowledgments
 Thank you
-Advisor: Prof. Yiyue Luo
+Course Advisor: Prof. Yiyue Luo
   For guidance throughout the project.
 Support: Prof. Meichun Liu
   Division of Design · School of Art + Art History + Design
 Cover mat design: Po-Yu Chen & Chenfei Ma
   Design Students · School of Art + Art History + Design
 
-43 · 19-live-demo
+44 · 19-live-demo
 ────────────────────────────────────────
 Next
 Live Demo
 Five minutes. From silence, to a control stone, to a full Lo-Fi loop, and back to silence.
 
-44 · 20-closing
+45 · 20-closing
 ────────────────────────────────────────
 Thank you
 Questions?
