@@ -68,7 +68,7 @@
         d.classList.toggle('active', i === step);
         d.classList.toggle('done',   i <  step);
       });
-      slide.dispatchEvent(new CustomEvent('stepchange', { detail: { step, max } }));
+      slide.dispatchEvent(new CustomEvent('stepchange', { bubbles: false, detail: { step, max } }));
     }
 
     return {
@@ -158,6 +158,19 @@
 
     const stepper = getStepper(active);
     if (stepper) stepper.reset(!!toEnd);
+
+    active.querySelectorAll('[data-zoom-stage]').forEach(stage => {
+      const svg = stage.closest('svg');
+      const vb = (svg?.getAttribute('viewBox') || '0 0 1400 480').split(/\s+/).map(Number);
+      const vw = vb[2] || 1400, vh = vb[3] || 480;
+      const zones = parseJsonAttr(stage.dataset.zones, [{ s: 1, cx: vw / 2, cy: vh / 2 }]);
+      const step = stepper ? stepper.step : 0;
+      const z = zones[step] || zones[0];
+      stage.setAttribute(
+        'transform',
+        `translate(${(vw / 2 - z.cx * z.s).toFixed(2)} ${(vh / 2 - z.cy * z.s).toFixed(2)}) scale(${z.s.toFixed(4)})`
+      );
+    });
 
     active.querySelectorAll('[data-countup]').forEach(el => {
       const target = parseInt(el.dataset.countup);

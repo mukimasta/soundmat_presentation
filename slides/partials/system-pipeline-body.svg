@@ -1,0 +1,102 @@
+          <!-- Pipeline centers: 200, 460, 720, 980, 1240 (span ~1520) -->
+          <g class="zw-static">
+            <circle cx="200" cy="198" r="82" fill="#FAF6EE" stroke="#2A2724" stroke-width="2"/>
+            <g stroke="#86868B" stroke-width="0.65" fill="none" opacity="0.5">
+              <circle cx="200" cy="198" r="22"/><circle cx="200" cy="198" r="42"/><circle cx="200" cy="198" r="62"/>
+            </g>
+            <g stroke="#86868B" stroke-width="0.45" opacity="0.38">
+              <line x1="200" y1="116" x2="200" y2="280"/>
+              <line x1="138" y1="198" x2="262" y2="198"/>
+            </g>
+            <ellipse cx="178" cy="176" rx="12" ry="7" fill="#7B6450"/>
+            <ellipse cx="224" cy="190" rx="15" ry="9" fill="#9B8268"/>
+            <ellipse cx="196" cy="232" rx="10" ry="6" fill="#A89478"/>
+            <text x="200" y="308" text-anchor="middle" font-size="24" font-weight="700" fill="#1D1D1F">Sensor</text>
+            <text x="200" y="328" text-anchor="middle" font-size="14" font-weight="500" fill="#86868B">Stones on the felt</text>
+          </g>
+
+          <g class="zw-static sys-flow-link">
+            <line x1="282" y1="198" x2="396" y2="198" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="339" y="172" text-anchor="middle" font-size="17" fill="#6E6E73" font-weight="800">analog</text>
+          </g>
+
+          <g class="zw-static">
+            <rect x="396" y="128" width="128" height="132" rx="12" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.6"/>
+            <rect x="412" y="148" width="46" height="22" rx="4" fill="#fff" stroke="#D2D2D7" stroke-width="1"/>
+            <text x="435" y="163" text-anchor="middle" font-size="10" fill="#1D1D1F" font-weight="700">CD4067</text>
+            <rect x="464" y="148" width="46" height="22" rx="4" fill="#fff" stroke="#D2D2D7" stroke-width="1"/>
+            <text x="487" y="163" text-anchor="middle" font-size="10" fill="#1D1D1F" font-weight="700">CD4067</text>
+            <text x="460" y="188" text-anchor="middle" font-size="10" fill="#A65E00" font-weight="700">8 rings / dual MUX</text>
+            <text x="460" y="202" text-anchor="middle" font-size="10" fill="#6E6E73" font-weight="600">224 zones</text>
+            <rect x="420" y="214" width="80" height="22" rx="6" fill="#FAF6EE" stroke="#E89318" stroke-width="1.2"/>
+            <text x="460" y="230" text-anchor="middle" font-size="10" fill="#E89318" font-weight="800">USB-C PD 20V</text>
+            <text x="460" y="308" text-anchor="middle" font-size="24" font-weight="700" fill="#1D1D1F">Electronics</text>
+            <text x="460" y="328" text-anchor="middle" font-size="14" font-weight="500" fill="#86868B">Analog front-end</text>
+          </g>
+
+          <g class="zw-static sys-flow-link">
+            <line x1="524" y1="198" x2="646" y2="198" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="585" y="172" text-anchor="middle" font-size="17" fill="#6E6E73" font-weight="800">ADC</text>
+          </g>
+
+          <g class="zw-static">
+            <rect x="646" y="118" width="148" height="152" rx="13" fill="#1D1D1F"/>
+            <rect x="668" y="142" width="64" height="38" rx="6" fill="#2D2D30"/>
+            <text x="700" y="166" text-anchor="middle" font-size="13" fill="#F5A623" font-weight="800">ESP32</text>
+            <g font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" font-weight="700">
+              <rect x="742" y="146" width="38" height="16" rx="4" fill="#2D2D30"/>
+              <text x="761" y="158" text-anchor="middle" fill="rgba(255,255,255,0.9)">Scan</text>
+              <rect x="742" y="166" width="38" height="16" rx="4" fill="#2D7A2D" fill-opacity="0.4"/>
+              <text x="761" y="178" text-anchor="middle" fill="#9AE6B4">S-frame</text>
+              <rect x="742" y="186" width="38" height="16" rx="4" fill="#E89318" fill-opacity="0.4"/>
+              <text x="761" y="198" text-anchor="middle" fill="#FFD89A">L-frame</text>
+            </g>
+            <path d="M 716 158 L 742 154 M 716 178 L 742 174 M 742 194 L 716 200 L 668 200 L 668 158 Z"
+                  stroke="#F5A623" stroke-width="0.8" fill="none" opacity="0.4"/>
+            <text x="720" y="308" text-anchor="middle" font-size="24" font-weight="700" fill="#1D1D1F">Firmware</text>
+            <text x="720" y="328" text-anchor="middle" font-size="14" font-weight="500" fill="#86868B">~20 Hz edge loop</text>
+          </g>
+
+          <g class="zw-static sys-flow-link">
+            <line x1="794" y1="198" x2="892" y2="198" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="843" y="172" text-anchor="middle" font-size="17" fill="#6E6E73" font-weight="800">UART</text>
+          </g>
+
+          <g class="zw-static">
+            <rect x="892" y="124" width="176" height="148" rx="13" fill="#fff" stroke="#1D1D1F" stroke-width="1.8"/>
+            <text x="980" y="152" text-anchor="middle" font-size="14" fill="#1D1D1F" font-weight="700">Raspberry Pi 3B</text>
+            <rect x="910" y="166" width="72" height="28" rx="14" fill="#2D7A2D" fill-opacity="0.14"/>
+            <text x="946" y="185" text-anchor="middle" font-size="12" fill="#1B5E20" font-weight="800">Python</text>
+            <rect x="990" y="166" width="72" height="28" rx="14" fill="#E89318" fill-opacity="0.2"/>
+            <text x="1026" y="185" text-anchor="middle" font-size="12" fill="#A65E00" font-weight="800">SC</text>
+            <text x="946" y="212" text-anchor="middle" font-size="10" fill="#86868B" font-weight="600">logic</text>
+            <text x="1026" y="212" text-anchor="middle" font-size="10" fill="#86868B" font-weight="600">sound</text>
+            <text x="980" y="238" text-anchor="middle" font-size="10" fill="#86868B">OSC bridge</text>
+            <text x="980" y="308" text-anchor="middle" font-size="24" font-weight="700" fill="#1D1D1F">Software</text>
+            <text x="980" y="328" text-anchor="middle" font-size="14" font-weight="500" fill="#86868B">Logic + sound</text>
+          </g>
+
+          <g class="zw-static sys-flow-link">
+            <line x1="1068" y1="198" x2="1202" y2="198" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="1135" y="172" text-anchor="middle" font-size="17" fill="#6E6E73" font-weight="800">USB audio</text>
+          </g>
+
+          <g class="zw-static">
+            <rect x="1202" y="134" width="76" height="128" rx="10" fill="#1D1D1F"/>
+            <circle cx="1240" cy="176" r="22" fill="#2D2D30" stroke="#555" stroke-width="1.8"/>
+            <circle cx="1240" cy="176" r="8" fill="#0A0A0B"/>
+            <circle cx="1240" cy="228" r="10" fill="#2D2D30" stroke="#555" stroke-width="1.4"/>
+            <g transform="translate(1352, 198)">
+              <circle cx="0" cy="0" r="46" fill="none" stroke="#F5A623" stroke-width="6" stroke-dasharray="3.2 3.6"/>
+              <circle cx="0" cy="0" r="36" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.35"/>
+            </g>
+            <text x="1240" y="308" text-anchor="middle" font-size="24" font-weight="700" fill="#1D1D1F">Output</text>
+            <text x="1240" y="328" text-anchor="middle" font-size="14" font-weight="500" fill="#86868B">Sound and light</text>
+          </g>
+
+          <g class="zw-static">
+            <path d="M 980 124 Q 980 48 1352 48 L 1352 150"
+                  stroke="#E89318" stroke-width="1.8" stroke-dasharray="5 4" fill="none"
+                  marker-end="url(#sysArrAccent)"/>
+            <text x="1166" y="38" text-anchor="middle" font-size="12" fill="#E89318" font-weight="800">L-frame LED back-channel</text>
+          </g>

@@ -1,0 +1,116 @@
+<svg class="diagram" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="isoWoodTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8D4B0"/>
+      <stop offset="100%" stop-color="#C9A57B"/>
+    </linearGradient>
+    <linearGradient id="isoWoodSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B8956E"/>
+      <stop offset="100%" stop-color="#8B6F47"/>
+    </linearGradient>
+    <linearGradient id="isoVeloSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A2A2E"/>
+      <stop offset="100%" stop-color="#121214"/>
+    </linearGradient>
+    <filter id="isoShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1D1D1F" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <g font-family="-apple-system, 'SF Pro Text', system-ui, sans-serif" fill="#1D1D1F">
+    <text x="36" y="118" font-size="10" font-weight="700" fill="#86868B" letter-spacing="0.08em">TOP</text>
+    <text x="36" y="318" font-size="10" font-weight="700" fill="#86868B" letter-spacing="0.08em">BOTTOM</text>
+    <path d="M 22 128 L 22 308" stroke="#D2D2D7" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.6"/>
+
+    <g filter="url(#isoShadow)">
+      <!-- ===== 1 · Hardwood board (bottom, thickest) ===== -->
+      <g id="iso-layer-board">
+        <path fill="url(#isoWoodSide)" stroke="#7A5F3A" stroke-width="0.6"
+          d="M 142 302 L 142 354 L 288 392 L 438 354 L 438 302 L 288 340 Z"/>
+        <ellipse cx="290" cy="302" rx="148" ry="68" fill="#8B6F47" opacity="0.35"/>
+        <ellipse cx="290" cy="302" rx="148" ry="68" fill="url(#isoWoodTop)" stroke="#8B6F47" stroke-width="1"/>
+        <ellipse cx="290" cy="302" rx="148" ry="68" fill="none" stroke="#A8845C" stroke-width="0.5" opacity="0.4"/>
+      </g>
+
+      <!-- gap -->
+      <path d="M 168 268 L 168 288" stroke="#C7C7CC" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+      <path d="M 412 268 L 412 288" stroke="#C7C7CC" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+
+      <!-- ===== 2 · Rings ===== -->
+      <g id="iso-layer-rings">
+        <path fill="#E8E2D6" stroke="#B8B8BE" stroke-width="0.6"
+          d="M 146 256 L 146 270 L 288 304 L 434 270 L 434 256 L 288 290 Z"/>
+        <ellipse cx="290" cy="256" rx="144" ry="66" fill="#D8D2C6" opacity="0.5"/>
+        <ellipse cx="290" cy="256" rx="144" ry="66" fill="#F5F0E6" stroke="#AEAEB2" stroke-width="0.8"/>
+        <g fill="none" stroke="#E89318" stroke-width="2.2" opacity="0.95">
+          <ellipse cx="290" cy="256" rx="128" ry="59"/>
+          <ellipse cx="290" cy="256" rx="96" ry="44"/>
+          <ellipse cx="290" cy="256" rx="64" ry="29"/>
+          <ellipse cx="290" cy="256" rx="32" ry="15"/>
+        </g>
+      </g>
+
+      <path d="M 168 224 L 168 244" stroke="#C7C7CC" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+      <path d="M 412 224 L 412 244" stroke="#C7C7CC" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+
+      <!-- ===== 3 · Velostat ===== -->
+      <g id="iso-layer-velo">
+        <path fill="url(#isoVeloSide)" stroke="#2A2A2E" stroke-width="0.6"
+          d="M 146 212 L 146 224 L 288 256 L 434 224 L 434 212 L 288 244 Z"/>
+        <ellipse cx="290" cy="212" rx="144" ry="66" fill="#0A0A0B" opacity="0.4"/>
+        <ellipse cx="290" cy="212" rx="144" ry="66" fill="#1A1A1C" stroke="#3A3A3C" stroke-width="0.8"/>
+      </g>
+
+      <path d="M 168 180 L 168 200" stroke="#C7C7CC" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+      <path d="M 412 180 L 412 200" stroke="#C7C7CC" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+
+      <!-- ===== 4 · Slices (top) ===== -->
+      <g id="iso-layer-slices">
+        <path fill="#E0D4C4" stroke="#B87333" stroke-width="0.6"
+          d="M 148 168 L 148 180 L 288 212 L 432 180 L 432 168 L 288 200 Z"/>
+        <ellipse cx="290" cy="168" rx="142" ry="65" fill="#C9B8A8" opacity="0.35"/>
+        <ellipse cx="290" cy="168" rx="142" ry="65" fill="#F8F4EC" stroke="#AEAEB2" stroke-width="0.8"/>
+        <g transform="translate(290 168) scale(1 0.48)">
+          <circle r="138" fill="#F5F3EE" stroke="none"/>
+          <g stroke="#1D1D1F" stroke-width="0.5" opacity="0.2">
+            <line x1="0" y1="0" x2="0" y2="-138"/><line x1="0" y1="0" x2="0" y2="138"/>
+            <line x1="0" y1="0" x2="-138" y2="0"/><line x1="0" y1="0" x2="138" y2="0"/>
+            <line x1="0" y1="0" x2="-98" y2="-98"/><line x1="0" y1="0" x2="98" y2="98"/>
+            <line x1="0" y1="0" x2="98" y2="-98"/><line x1="0" y1="0" x2="-98" y2="98"/>
+          </g>
+          <g fill="rgba(184,115,51,0.6)" stroke="#B87333" stroke-width="1">
+            <path d="M0,0 L0,-138 A138,138 0 0,1 97.6,-97.6 Z"/>
+            <path d="M0,0 L97.6,-97.6 A138,138 0 0,1 138,0 Z"/>
+            <path d="M0,0 L138,0 A138,138 0 0,1 97.6,97.6 Z"/>
+            <path d="M0,0 L97.6,97.6 A138,138 0 0,1 0,138 Z"/>
+            <path d="M0,0 L0,138 A138,138 0 0,1 -97.6,97.6 Z"/>
+            <path d="M0,0 L-97.6,97.6 A138,138 0 0,1 -138,0 Z"/>
+            <path d="M0,0 L-138,0 A138,138 0 0,1 -97.6,-97.6 Z"/>
+            <path d="M0,0 L-97.6,-97.6 A138,138 0 0,1 0,-138 Z"/>
+          </g>
+          <circle r="3" fill="#1D1D1F" opacity="0.25"/>
+        </g>
+        <ellipse cx="290" cy="168" rx="142" ry="65" fill="none" stroke="#AEAEB2" stroke-width="0.8"/>
+      </g>
+    </g>
+
+    <!-- Labels -->
+    <g font-size="13" font-weight="700">
+      <line x1="448" y1="168" x2="488" y2="168" stroke="#86868B" stroke-width="0.7"/>
+      <text x="496" y="172">4 · Slices</text>
+      <text x="496" y="186" font-size="10" font-weight="500" fill="#86868B">Sector electrodes</text>
+
+      <line x1="448" y1="212" x2="488" y2="212" stroke="#86868B" stroke-width="0.7"/>
+      <text x="496" y="216">3 · Velostat</text>
+      <text x="496" y="230" font-size="10" font-weight="500" fill="#86868B">Pressure-sensitive film</text>
+
+      <line x1="448" y1="256" x2="488" y2="256" stroke="#E89318" stroke-width="0.8"/>
+      <text x="496" y="260" fill="#B35C00">2 · Rings</text>
+      <text x="496" y="274" font-size="10" font-weight="500" fill="#86868B">Concentric ring electrodes</text>
+
+      <line x1="448" y1="302" x2="488" y2="302" stroke="#86868B" stroke-width="0.7"/>
+      <text x="496" y="306">1 · Hardwood board</text>
+      <text x="496" y="320" font-size="10" font-weight="500" fill="#86868B">Mounting plane</text>
+    </g>
+  </g>
+</svg>

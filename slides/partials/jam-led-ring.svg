@@ -1,0 +1,59 @@
+<svg class="diagram" viewBox="0 0 920 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="ledComet" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(460 150)">
+    <circle r="118" fill="none" stroke="#E8E6E1" stroke-width="2"/>
+    <!-- idle breathing hint -->
+    <circle r="118" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8" stroke-dasharray="4 8" opacity="0.4"/>
+
+    <!-- cardinal downbeat -->
+    <circle cx="0" cy="-118" r="8" fill="#FF3030"/>
+    <circle cx="118" cy="0" r="5" fill="#FF8C8C"/>
+    <circle cx="0" cy="118" r="5" fill="#FF8C8C"/>
+    <circle cx="-118" cy="0" r="5" fill="#FF8C8C"/>
+
+    <!-- stone markers -->
+    <circle cx="72" cy="-86" r="6" fill="#2B6CB0" opacity="0.55"/>
+    <circle cx="95" cy="35" r="6" fill="#E89318" opacity="0.55"/>
+    <circle cx="-60" cy="95" r="6" fill="#5856D6" opacity="0.55"/>
+
+    <!-- comet playhead -->
+    <g transform="rotate(-35)">
+      <line x1="0" y1="0" x2="118" y2="0" stroke="url(#ledComet)" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+      <line x1="0" y1="0" x2="118" y2="0" stroke="#F5A623" stroke-width="2.5"/>
+      <circle cx="118" cy="0" r="5" fill="#F5A623"/>
+    </g>
+    <!-- hit flash -->
+    <g transform="rotate(-35)"><circle cx="95" cy="0" r="14" fill="#F5A623" opacity="0.45"/></g>
+  </g>
+
+  <g font-family="system-ui,sans-serif" font-size="13" font-weight="600">
+    <rect x="40" y="40" width="200" height="56" rx="12" fill="#FAF6EE"/>
+    <circle cx="68" cy="68" r="8" fill="#FF3030"/>
+    <text x="88" y="64" font-size="12" font-weight="800" fill="#1D1D1F">Red at 12 o&rsquo;clock</text>
+    <text x="88" y="82" font-size="11" font-weight="500" fill="#6E6E73">Downbeat / loop reset</text>
+
+    <rect x="40" y="108" width="200" height="56" rx="12" fill="#FAF6EE"/>
+    <rect x="60" y="128" width="72" height="8" rx="4" fill="url(#ledComet)"/>
+    <text x="88" y="132" font-size="12" font-weight="800" fill="#1D1D1F">White comet</text>
+    <text x="88" y="150" font-size="11" font-weight="500" fill="#6E6E73">Playhead sweeping CW</text>
+
+    <rect x="40" y="176" width="200" height="56" rx="12" fill="#FAF6EE"/>
+    <circle cx="68" cy="204" r="8" fill="#2B6CB0" opacity="0.7"/>
+    <text x="88" y="200" font-size="12" font-weight="800" fill="#1D1D1F">Colored glow</text>
+    <text x="88" y="218" font-size="11" font-weight="500" fill="#6E6E73">Your stone &middot; ring color</text>
+
+    <rect x="680" y="40" width="200" height="56" rx="12" fill="#FAF6EE"/>
+    <circle cx="708" cy="68" r="10" fill="#F5A623" opacity="0.7"/>
+    <text x="728" y="64" font-size="12" font-weight="800" fill="#1D1D1F">Bright flash</text>
+    <text x="728" y="82" font-size="11" font-weight="500" fill="#6E6E73">Note fires on scan hit</text>
+
+    <rect x="680" y="108" width="200" height="56" rx="12" fill="#1D1D1F"/>
+    <text x="700" y="132" font-size="12" font-weight="800" fill="#fff">Cue + feedback</text>
+    <text x="700" y="150" font-size="11" font-weight="500" fill="rgba(255,255,255,0.55)">No screen required</text>
+  </g>
+</svg>

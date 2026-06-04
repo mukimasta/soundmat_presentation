@@ -1,0 +1,186 @@
+.
+├── README.md
+├── SETUP.md
+├── pyproject.toml
+├── uv.lock
+├── deploy
+│   └── pi
+├── manifest
+│   ├── ambient
+│   │   └── kyoto.toml
+│   └── jam
+│       ├── lofi_1.toml
+│       └── data
+│           ├── lofi_mapping.yaml
+│           ├── drums
+│           │   └── lofi_loop.yaml
+│           ├── melodies
+│           │   └── 1
+│           │       ├── 1maj9.yaml
+│           │       ├── 2m9.yaml
+│           │       ├── 513.yaml
+│           │       └── 69.yaml
+│           ├── progressions
+│           │   └── 1.yaml
+│           └── rings
+│               └── lofi.yaml
+├── sc
+│   ├── compile.scd
+│   ├── _dur.wav
+│   ├── synthdefs
+│   │   ├── ambient
+│   │   │   ├── diapason.scd
+│   │   │   └── marimba.scd
+│   │   ├── core
+│   │   │   ├── master.scd
+│   │   │   ├── players.scd
+│   │   │   └── reverb.scd
+│   │   └── jam
+│   │       ├── 00_common.scd
+│   │       ├── chord_pad.scd
+│   │       ├── marimba.scd
+│   │       ├── master.scd
+│   │       ├── pad_pluck.scd
+│   │       ├── pluck_bass.scd
+│   │       ├── reverb_bus.scd
+│   │       ├── rhodes.scd
+│   │       ├── sub_bass.scd
+│   │       └── drums
+│   │           ├── hihat.scd
+│   │           ├── kick.scd
+│   │           └── snare.scd
+│   ├── compiled
+│   │   ├── diapasonHold.scsyndef
+│   │   ├── diapasonNote.scsyndef
+│   │   ├── jam_chord_pad.scsyndef
+│   │   ├── jam_hihat.scsyndef
+│   │   ├── jam_kick.scsyndef
+│   │   ├── jam_marimba.scsyndef
+│   │   ├── jam_master.scsyndef
+│   │   ├── jam_pad_pluck.scsyndef
+│   │   ├── jam_pluck_bass.scsyndef
+│   │   ├── jam_reverb_bus.scsyndef
+│   │   ├── jam_rhodes.scsyndef
+│   │   ├── jam_snare.scsyndef
+│   │   ├── jam_sub_bass.scsyndef
+│   │   ├── marimbaNote.scsyndef
+│   │   ├── master.scsyndef
+│   │   ├── playMono.scsyndef
+│   │   ├── playMonoTune.scsyndef
+│   │   ├── playStereo.scsyndef
+│   │   ├── playStereoTune.scsyndef
+│   │   └── reverb.scsyndef
+│   └── assets
+│       └── samples
+│           └── kyoto
+│               ├── ring01
+│               │   ├── big-bell
+│               │   └── deep-boom
+│               ├── ring2
+│               │   └── mid-pad
+│               ├── ring3
+│               │   ├── stream
+│               │   ├── train
+│               │   ├── walk
+│               │   └── wind
+│               ├── ring4
+│               │   ├── rain
+│               │   └── thunder
+│               ├── ring5
+│               ├── ring6
+│               │   └── pieces
+│               └── ring7
+│                   └── incidents
+├── scripts
+│   ├── compile_synths.py
+│   ├── replay_test.py
+│   └── sync_samples_to_pi.sh
+├── soundmat
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── app.py
+│   ├── config.py
+│   ├── ambient
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   ├── buffers.py
+│   │   ├── led.py
+│   │   ├── mapping.py
+│   │   ├── state.py
+│   │   ├── tracker.py
+│   │   └── voices.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── esp32_serial.py
+│   │   ├── osc.py
+│   │   ├── sc_server.py
+│   │   ├── services.py
+│   │   ├── led
+│   │   │   ├── __init__.py
+│   │   │   ├── offset.py
+│   │   │   └── writer.py
+│   │   └── sensor
+│   │       ├── __init__.py
+│   │       ├── frame.py
+│   │       ├── map.py
+│   │       ├── mock_reader.py
+│   │       ├── normalize.py
+│   │       ├── reader.py
+│   │       └── serial_reader.py
+│   ├── jam
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   ├── config_loader.py
+│   │   ├── ring_config.py
+│   │   ├── types.py
+│   │   ├── bridge
+│   │   │   ├── __init__.py
+│   │   │   ├── master_fx.py
+│   │   │   └── synth_bridge.py
+│   │   ├── event
+│   │   │   ├── __init__.py
+│   │   │   ├── drum_engine.py
+│   │   │   ├── event_engine.py
+│   │   │   ├── harmony_engine.py
+│   │   │   └── sensor_state.py
+│   │   ├── led
+│   │   │   ├── __init__.py
+│   │   │   ├── layers.py
+│   │   │   └── renderer.py
+│   │   ├── scheduler
+│   │   │   ├── __init__.py
+│   │   │   ├── scanline.py
+│   │   │   ├── song_position.py
+│   │   │   ├── timing.py
+│   │   │   └── transport.py
+│   │   └── theory
+│   │       ├── __init__.py
+│   │       ├── degree.py
+│   │       ├── tempo.py
+│   │       └── tonality.py
+│   ├── modes
+│   │   ├── __init__.py
+│   │   └── base.py
+│   └── web
+│       ├── __init__.py
+│       ├── server.py
+│       └── static
+│           ├── debug.html
+│           ├── index.html
+│           ├── mat.html
+│           └── soundmat.css
+└── tests
+    ├── conftest.py
+    ├── test_control_debounce.py
+    ├── test_drums.py
+    ├── test_esp32_serial.py
+    ├── test_event_engine.py
+    ├── test_frame.py
+    ├── test_jam_integration.py
+    ├── test_led.py
+    ├── test_master_fx.py
+    ├── test_sensor_map.py
+    ├── test_sensor_state.py
+    ├── test_theory.py
+    ├── test_timing.py
+    └── test_wire_normalize.py

@@ -1,0 +1,21 @@
+<svg class="diagram" viewBox="-130 -130 260 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle r="120" fill="#FAF6EE" stroke="#E89318" stroke-width="1.2" opacity="0.9"/>
+  <g stroke="#1D1D1F" stroke-width="0.55" fill="none" opacity="0.28">
+    <circle r="36"/><circle r="54"/><circle r="72"/><circle r="90"/><circle r="108"/>
+  </g>
+  <g stroke="#1D1D1F" stroke-width="0.45" opacity="0.22">
+    <line x1="0" y1="-108" x2="0" y2="108"/><line x1="-108" y1="0" x2="108" y2="0"/>
+    <line x1="-76" y1="-76" x2="76" y2="76"/><line x1="76" y1="-76" x2="-76" y2="76"/>
+  </g>
+  <text x="0" y="-112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700" fill="#FF3B3B">12 o&rsquo;clock = beat 1</text>
+  <g transform="rotate(-55)">
+    <line x1="0" y1="0" x2="108" y2="0" stroke="#F5A623" stroke-width="2.2"/>
+    <circle cx="108" cy="0" r="4" fill="#F5A623"/>
+  </g>
+  <g fill="#1D1D1F">
+    <circle cx="68" cy="-42" r="5"/><circle cx="88" cy="18" r="5"/><circle cx="-52" cy="62" r="5"/>
+  </g>
+  <g transform="rotate(-55)"><circle cx="72" cy="0" r="9" fill="#F5A623" opacity="0.35"/><circle cx="72" cy="0" r="4.5" fill="#E89318"/></g>
+  <circle r="34" fill="#1D1D1F" opacity="0.15"/>
+  <text x="0" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1D1D1F">Your layer: pre-written notes on the grid</text>
+</svg>

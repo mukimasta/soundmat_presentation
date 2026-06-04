@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Final sensor cut pattern placeholder">
+  <rect width="640" height="400" fill="#F5F3EE"/>
+  <circle cx="320" cy="200" r="168" fill="#1A1A1C" opacity="0.92"/>
+  <g fill="none" stroke="#3D3D40" stroke-width="1.2">
+    <circle cx="320" cy="200" r="28"/><circle cx="320" cy="200" r="56"/><circle cx="320" cy="200" r="84"/>
+    <circle cx="320" cy="200" r="112"/><circle cx="320" cy="200" r="140"/><circle cx="320" cy="200" r="168"/>
+  </g>
+  <g stroke="#5C5C60" stroke-width="0.7" opacity="0.85">
+    <line x1="320" y1="32" x2="320" y2="368"/><line x1="152" y1="200" x2="488" y2="200"/>
+    <line x1="201" y1="81" x2="439" y2="319"/><line x1="201" y1="319" x2="439" y2="81"/>
+    <line x1="236" y1="52" x2="404" y2="348"/><line x1="236" y1="348" x2="404" y2="52"/>
+  </g>
+  <g fill="#E89318" opacity="0.35">
+    <path d="M 320 72 L 332 200 L 320 200 Z"/>
+    <path d="M 448 200 L 320 212 L 320 200 Z"/>
+  </g>
+  <text x="48" y="48" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#86868B">Rings (fabric)</text>
+  <text x="48" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#AEAEB2">Slices (copper tape)</text>
+  <text x="320" y="384" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#AEAEB2">Placeholder — replace with stitched cut photo</text>
+</svg>

@@ -1,77 +1,72 @@
-<section class="slide bento" id="slide-7">
+<section class="slide bento s-sensor-bento" id="slide-7">
   <div class="slide-header">
     <div>
-      <div class="slide-eyebrow">Sensor</div>
-      <h2 class="slide-title">A pressure grid in polar coordinates</h2>
+      <div class="slide-eyebrow">SENSOR DESIGN</div>
+      <h2 class="slide-title">224 zones on a polar grid</h2>
     </div>
     <div class="slide-index">07</div>
   </div>
-  <div class="bento-grid">
+  <div class="bento-grid sensor-spec-stage">
 
-    <div class="bento-card c-hero">
-      <div class="card-label">Geometry</div>
-      <div class="card-title">Rings &times; slices on Velostat</div>
-      <div class="card-body sm">Concentric rings as one electrode axis, radial slices as the other, with piezoresistive Velostat sandwiched between. A circular sensor for a circular device.</div>
-      <div class="diagram-wrap" style="margin-top:10px">
-        <svg class="diagram" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="matGlow" cx="0" cy="0" r="180" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFFAF0"/><stop offset="100%" stop-color="#F5F5F7"/></radialGradient></defs>
-          <circle cx="0" cy="0" r="180" fill="url(#matGlow)"/>
-          <g stroke="#1D1D1F" stroke-width="0.8" fill="none" opacity="0.55">
-            <circle cx="0" cy="0" r="22"/><circle cx="0" cy="0" r="44"/><circle cx="0" cy="0" r="66"/><circle cx="0" cy="0" r="88"/>
-            <circle cx="0" cy="0" r="110"/><circle cx="0" cy="0" r="132"/><circle cx="0" cy="0" r="154"/><circle cx="0" cy="0" r="176"/>
-          </g>
-          <g id="sliceLines32" stroke="#1D1D1F" stroke-width="0.4" opacity="0.4"></g>
-          <g id="sliceLines16" stroke="#1D1D1F" stroke-width="0.4" opacity="0.4"></g>
-          <g fill="#F5A623" opacity="0.92" class="pulse-on-active">
-            <path d="M 110,0 A 110,110 0 0,1 105.46,32.30 L 89.83,27.51 A 88,88 0 0,0 88,0 Z" transform="rotate(56.25)"/>
-            <path d="M 132,0 A 132,132 0 0,1 125.55,38.46 L 109.92,33.67 A 110,110 0 0,0 110,0 Z" transform="rotate(270)"/>
-            <path d="M 154,0 A 154,154 0 0,1 145.65,44.61 L 130.02,39.82 A 132,132 0 0,0 132,0 Z" transform="rotate(157.5)"/>
-          </g>
-          <circle cx="0" cy="0" r="3" fill="#1D1D1F"/>
-        </svg>
-      </div>
-    </div>
-
-    <div class="bento-card c1 accent">
-      <div class="card-label">Sensing zones</div>
-      <div class="card-stretch" style="justify-content:flex-start; align-items:flex-start">
-        <div>
-          <div class="card-big-num" data-countup="224">224</div>
-          <div style="font-size:16px; opacity:0.92; margin-top:10px; font-weight:600">6&nbsp;rings &times; 32 + 2 inner &times; 16</div>
-          <div style="font-size:14px; opacity:0.82; margin-top:4px; line-height:1.4">Inner rings drop to 16 slices &mdash; near the center, 32 would crowd into noise.</div>
+    <div class="bento-card c-hero cream">
+      <div class="sensor-polar-panel">
+        <div class="card-label">Polar geometry</div>
+        <div class="sensor-polar-stage">
+          <div class="sensor-polar-wrap">
+            <svg class="diagram sensor-polar-svg" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <radialGradient id="sensorMat" cx="0" cy="0" r="180" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FFFAF0"/>
+                  <stop offset="72%" stop-color="#F7F2E8"/>
+                  <stop offset="100%" stop-color="#F0EBE0"/>
+                </radialGradient>
+              </defs>
+              <circle cx="0" cy="0" r="180" fill="url(#sensorMat)" stroke="#1D1D1F" stroke-width="1.2" opacity="0.18"/>
+              <g stroke="#1D1D1F" stroke-width="0.9" fill="none" opacity="0.5">
+                <circle cx="0" cy="0" r="22"/><circle cx="0" cy="0" r="44"/><circle cx="0" cy="0" r="66"/><circle cx="0" cy="0" r="88"/>
+                <circle cx="0" cy="0" r="110"/><circle cx="0" cy="0" r="132"/><circle cx="0" cy="0" r="154"/><circle cx="0" cy="0" r="176"/>
+              </g>
+              <g id="sliceLines32" stroke="#1D1D1F" stroke-width="0.45" opacity="0.36"></g>
+              <g id="sliceLines16" stroke="#1D1D1F" stroke-width="0.45" opacity="0.3"></g>
+              <!-- Example zones: inner 2 rings = 16 slices (22.5°); outer rings = 32 slices (11.25°) -->
+              <g fill="#E89318" opacity="0.9">
+                <path d="M 22,0 L 44,0 A 44,44 0 0,1 40.65,16.84 L 20.33,8.42 A 22,22 0 0,0 22,0 Z"/>
+                <path d="M 88,0 L 110,0 A 110,110 0 0,1 107.89,21.46 L 86.31,17.17 A 88,88 0 0,0 88,0 Z" transform="rotate(45)"/>
+              </g>
+              <circle cx="0" cy="0" r="4" fill="#1D1D1F"/>
+            </svg>
+          </div>
+          <p class="sensor-polar-cap">8 rings &middot; 32 slices (16 in the inner 2 rings)</p>
         </div>
       </div>
     </div>
 
-    <div class="bento-card c2">
-      <div class="card-label">Why polar, not a grid</div>
-      <div class="compare">
-        <div class="col-head"></div>
-        <div class="col-head">Grid</div>
-        <div class="col-head">Polar</div>
-        <div class="row-label">Circle fit</div>
-        <div class="no">corners wasted</div>
-        <div class="yes">native</div>
-        <div class="row-label">Meaning</div>
-        <div class="row-label">x, y</div>
-        <div class="yes">radius, angle</div>
-        <div class="row-label">Zones for same feel</div>
-        <div class="no">dense grid</div>
-        <div class="yes">far fewer</div>
+    <div class="bento-card c-spec accent">
+      <div class="sensor-spec-panel">
+        <div class="sensor-224-block">
+          <div class="card-big-num sensor-224-num" data-countup="224">224</div>
+          <p class="sensor-224-label">sensing zones</p>
+        </div>
+        <div class="sensor-map-cards">
+          <div class="sensor-map-card">
+            <span class="sensor-map-num">8</span>
+            <div class="sensor-map-copy">
+              <span class="sensor-map-title">rings</span>
+              <span class="sensor-map-arrow" aria-hidden="true">&rarr;</span>
+              <span class="sensor-map-desc">8 music layers</span>
+            </div>
+          </div>
+          <div class="sensor-map-card">
+            <span class="sensor-map-num">32</span>
+            <div class="sensor-map-copy">
+              <span class="sensor-map-title">slices</span>
+              <span class="sensor-map-arrow" aria-hidden="true">&rarr;</span>
+              <span class="sensor-map-desc">32 beats per loop</span>
+            </div>
+          </div>
+        </div>
+        <p class="sensor-map-note sensor-map-note--emph">Inner 2 rings use 16 slices so the center does not crowd.</p>
       </div>
-    </div>
-
-    <div class="bento-card c3 dark">
-      <div class="card-label">Automated design tool</div>
-      <div class="card-title" style="font-size:22px">Parameters in, laser-cut files out</div>
-      <div class="tool-pipeline">
-        <span class="tool-step">params</span>
-        <span class="tool-arrow">&rarr;</span>
-        <span class="tool-step">geometry</span>
-        <span class="tool-arrow">&rarr;</span>
-        <span class="tool-step accent">SVG / PDF</span>
-      </div>
-      <div class="card-body sm" style="margin-top:14px; color:rgba(255,255,255,0.72)">A small tool we vibe-coded in Cursor: change 8 numbers, regenerate the whole cut pattern in seconds. Open-sourced as <span style="color:#FFD89A; font-weight:600">sensor_design_tool</span>.</div>
     </div>
 
   </div>

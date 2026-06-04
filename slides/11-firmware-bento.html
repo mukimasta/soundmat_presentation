@@ -1,67 +1,84 @@
-<section class="slide bento" id="slide-9">
+<section class="slide bento zwalk" id="slide-9" data-step="0"
+  data-step-titles='["What it does","How it connects","On the wire"]'
+  data-step-subs='["ESP32 on the mat reads every zone and drives the LEDs; the Pi turns pressure into music.","One UART cable between Pi and ESP32 — sensor frames up, LED frames down, both at once.","Two frame types: S sends pressure, L sends colour — plain text, no handshake."]'>
   <div class="slide-header">
     <div>
-      <div class="slide-eyebrow">Firmware</div>
-      <h2 class="slide-title">One tight loop on the ESP32</h2>
+      <div class="slide-eyebrow">FIRMWARE</div>
+      <h2 class="slide-title">The edge bridge</h2>
+      <p class="beat-title" data-step-title>What it does</p>
+      <p class="slide-step-caption" data-step-sub>ESP32 on the mat reads every zone and drives the LEDs; the Pi turns pressure into music.</p>
     </div>
     <div class="slide-index">09</div>
   </div>
-  <div class="bento-grid">
+  <nav class="fw-rail" aria-label="Firmware story">
+    <div class="route-chip" data-for="0">
+      <span class="route-chip-num">1</span>
+      <span class="route-chip-label">Role</span>
+    </div>
+    <div class="route-chip" data-for="1">
+      <span class="route-chip-num">2</span>
+      <span class="route-chip-label">Link</span>
+    </div>
+    <div class="route-chip" data-for="2">
+      <span class="route-chip-num">3</span>
+      <span class="route-chip-label">Protocol</span>
+    </div>
+  </nav>
 
-    <div class="bento-card c-hero">
-      <div class="card-label">The whole firmware</div>
-      <div class="card-title">Scan &rarr; send &rarr; receive &rarr; light, forever</div>
-      <div class="diagram-wrap" style="margin-top:14px">
-        <svg class="diagram" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
-          <defs><marker id="fArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E89318"/></marker></defs>
-          <g font-family="-apple-system, 'SF Pro Text', sans-serif" text-anchor="middle">
-            <g>
-              <rect x="60" y="40" width="180" height="78" rx="14" fill="#F5F5F7" stroke="#1D1D1F" stroke-width="1.6"/>
-              <text x="150" y="76" font-size="20" font-weight="800" fill="#1D1D1F">Scan</text>
-              <text x="150" y="100" font-size="14" font-weight="600" fill="#6E6E73">8 rings &times; 32</text>
-            </g>
-            <g>
-              <rect x="320" y="40" width="180" height="78" rx="14" fill="#1D1D1F"/>
-              <text x="410" y="76" font-size="20" font-weight="800" fill="#fff">Send</text>
-              <text x="410" y="100" font-size="14" font-weight="600" fill="rgba(255,255,255,0.7)">S-frame &rarr; Pi</text>
-            </g>
-            <g>
-              <rect x="320" y="200" width="180" height="78" rx="14" fill="#1D1D1F"/>
-              <text x="410" y="236" font-size="20" font-weight="800" fill="#fff">Receive</text>
-              <text x="410" y="260" font-size="14" font-weight="600" fill="rgba(255,255,255,0.7)">L-frame, if any</text>
-            </g>
-            <g>
-              <rect x="60" y="200" width="180" height="78" rx="14" fill="#FAF6EE" stroke="#E89318" stroke-width="1.6"/>
-              <text x="150" y="236" font-size="20" font-weight="800" fill="#1D1D1F">Light</text>
-              <text x="150" y="260" font-size="14" font-weight="600" fill="#A65E00">108 LEDs</text>
-            </g>
-            <line x1="240" y1="79" x2="320" y2="79" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
-            <line x1="410" y1="118" x2="410" y2="200" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
-            <line x1="320" y1="239" x2="240" y2="239" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
-            <line x1="150" y1="200" x2="150" y2="118" stroke="#E89318" stroke-width="3" marker-end="url(#fArr)"/>
-            <text x="280" y="165" text-anchor="middle" font-size="15" font-weight="800" fill="#1D1D1F">~20 Hz</text>
-            <text x="280" y="186" text-anchor="middle" font-size="12.5" font-weight="600" fill="#86868B">non-blocking</text>
-          </g>
-        </svg>
+  <div class="bento-grid fw-stage">
+
+    <div class="bento-card c-hero cream zw" data-step="0">
+      <div class="fw-role-panel">
+        <figure class="fw-role-viz">
+<!-- @include partials/firmware-role.svg -->
+        </figure>
+        <div class="fw-role-copy">
+          <p class="route-body">Firmware is the <strong>translator on the mat</strong> — not where music is made.</p>
+          <ul class="fw-steps" aria-label="Firmware loop">
+            <li><span class="fw-step-word">Signal</span><span class="fw-step-hint">read the grid</span></li>
+            <li><span class="fw-step-word">Send</span><span class="fw-step-hint">pressure to Pi</span></li>
+            <li><span class="fw-step-word">Receive</span><span class="fw-step-hint">LED colours</span></li>
+            <li><span class="fw-step-word">Light</span><span class="fw-step-hint">108 LEDs</span></li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="bento-card c1 dark">
-      <div class="card-label">The one real subtlety</div>
-      <div class="card-title">Ghost-path suppression</div>
-      <div class="card-body" style="color:rgba(255,255,255,0.72)">Drive one ring HIGH, force every other ring to GND &mdash; not floating. Floating rings leak current through pressed neighbours and invent presses that never happened.</div>
-      <div class="protocol-frame" style="margin-top:14px">
-<span class="punct">for</span> ring <span class="punct">in</span> 0..7<span class="punct">:</span><br>
-&nbsp;&nbsp;rings = <span class="data">GND</span><span class="punct">;</span> ring = <span class="type">HIGH</span><br>
-&nbsp;&nbsp;read 32 slices <span class="punct">via</span> MUX
+    <div class="bento-card c1 cream zw" data-step="1">
+      <div class="fw-link-panel">
+        <div class="diagram-wrap fw-link-viz">
+<!-- @include partials/firmware-link.svg -->
+        </div>
+        <p class="fw-link-lead"><strong>One UART cable</strong> · 921600 baud · S up, L down</p>
       </div>
     </div>
 
-    <div class="bento-card c2 cream">
-      <div class="card-label">Robust because it's simple</div>
-      <div class="card-title">Drop a bad frame. Never retransmit.</div>
-      <div class="card-body sm" style="margin-top:8px">Both ends stream freely. Each frame carries an XOR checksum; if it fails, throw it away. In ambient music a single lost frame is imperceptible &mdash; and retries would only add latency.</div>
+    <div class="bento-card c2 dark zw" data-step="2">
+      <div class="fw-proto-panel">
+        <div class="fw-proto-col fw-proto-up">
+          <div class="fw-proto-glyph" aria-hidden="true">S</div>
+          <p class="fw-proto-dir">ESP32 &rarr; Pi</p>
+          <p class="fw-proto-payload">256 pressure values</p>
+          <div class="protocol-frame fw-proto-line">
+<span class="type">S</span><span class="punct">:</span><span class="data">4095</span><span class="punct">,</span><span class="data">2031</span><span class="punct">,</span><span class="data">…</span><span class="punct">*</span><span class="data">A7</span>
+          </div>
+        </div>
+        <div class="fw-proto-col fw-proto-down">
+          <div class="fw-proto-glyph" aria-hidden="true">L</div>
+          <p class="fw-proto-dir">Pi &rarr; ESP32</p>
+          <p class="fw-proto-payload">108 RGB colours</p>
+          <div class="protocol-frame fw-proto-line">
+<span class="type">L</span><span class="punct">:</span><span class="data">0A0500</span><span class="punct">,</span><span class="data">1A0F00</span><span class="punct">,</span><span class="data">…</span><span class="punct">*</span><span class="data">3E</span>
+          </div>
+        </div>
+        <p class="fw-proto-foot">Plain ASCII &middot; XOR checksum &middot; drop bad lines</p>
+      </div>
     </div>
 
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
   </div>
 </section>

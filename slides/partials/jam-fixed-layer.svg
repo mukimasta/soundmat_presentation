@@ -1,0 +1,33 @@
+<svg class="diagram" viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+  <g font-family="system-ui,-apple-system,sans-serif">
+    <text x="400" y="32" text-anchor="middle" font-size="13" font-weight="800" fill="#6E6E73" letter-spacing="0.08em">ALWAYS RUNNING &mdash; YOU DON&rsquo;T TRIGGER THESE</text>
+
+    <rect x="40" y="52" width="340" height="180" rx="18" fill="#FAF6EE" stroke="#E89318" stroke-width="1.4"/>
+    <text x="60" y="84" font-size="12" font-weight="800" fill="#E89318">HARMONY</text>
+    <text x="60" y="112" font-size="20" font-weight="800" fill="#1D1D1F">8-bar chord loop</text>
+    <g font-size="15" font-weight="700" fill="#1D1D1F">
+      <text x="60" y="148">2m9</text>
+      <text x="120" y="148" fill="#86868B">&rarr;</text>
+      <text x="148" y="148">513</text>
+      <text x="200" y="148" fill="#86868B">&rarr;</text>
+      <text x="228" y="148">1maj9</text>
+      <text x="300" y="148" fill="#86868B">&rarr;</text>
+      <text x="328" y="148">69</text>
+    </g>
+    <text x="60" y="178" font-size="12" font-weight="500" fill="#6E6E73">Change key once &mdash; voicings follow</text>
+    <text x="60" y="200" font-size="12" font-weight="500" fill="#6E6E73">Live synth chords, not samples</text>
+
+    <rect x="420" y="52" width="340" height="180" rx="18" fill="#1D1D1F"/>
+    <text x="440" y="84" font-size="12" font-weight="800" fill="#F5A623">DRUMS</text>
+    <text x="440" y="112" font-size="20" font-weight="800" fill="#fff">Arranged loop</text>
+    <g font-size="11" font-weight="700" fill="rgba(255,255,255,0.75)">
+      <text x="440" y="142">Kick &middot; Snare &middot; Hi-hat</text>
+      <text x="440" y="164">A &rarr; B &rarr; C &rarr; D &mdash; builds over the set</text>
+      <text x="440" y="186">Stops when the song ends</text>
+    </g>
+    <rect x="440" y="200" width="280" height="22" rx="6" fill="#2D2D30"/>
+    <rect x="440" y="200" width="72" height="22" rx="6" fill="#F5A623" opacity="0.5"/>
+    <rect x="512" y="200" width="48" height="22" rx="0" fill="#F5A623" opacity="0.65"/>
+    <rect x="560" y="200" width="96" height="22" rx="0" fill="#F5A623" opacity="0.85"/>
+  </g>
+</svg>

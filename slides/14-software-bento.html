@@ -1,86 +1,81 @@
 <section class="slide bento" id="slide-9">
   <div class="slide-header">
     <div>
-      <div class="slide-eyebrow">Software architecture</div>
-      <h2 class="slide-title">Python orchestrates, SuperCollider sounds</h2>
+      <div class="slide-eyebrow">Software</div>
+      <h2 class="slide-title">The music is data, not code</h2>
     </div>
     <div class="slide-index">11</div>
   </div>
   <div class="bento-grid">
-    <div class="bento-card c-hero">
-      <div class="card-label">Process boundary</div>
-      <div class="card-title">Two processes, OSC over UDP</div>
-      <div class="diagram-wrap" style="margin-top: 16px; flex: 1; min-height: 0">
-        <svg class="diagram" viewBox="0 0 540 360" xmlns="http://www.w3.org/2000/svg">
-          <defs><marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#86868B"/></marker></defs>
-          <g font-family="-apple-system, sans-serif" fill="#1D1D1F">
-            <g>
-              <rect x="20" y="20" width="500" height="140" rx="16" fill="#FAF6EE" stroke="#E89318" stroke-width="1.5"/>
-              <text x="40" y="46" font-size="13" font-weight="700" fill="#E89318">PYTHON  ·  logic</text>
-              <g font-size="11" font-weight="600">
-                <rect x="40" y="60" width="100" height="38" rx="6" fill="white" stroke="#D2D2D7"/>
-                <text x="90" y="76" text-anchor="middle">Sensor reader</text>
-                <text x="90" y="90" text-anchor="middle" font-size="9" fill="#6E6E73" font-weight="500">serial → frames</text>
-                <rect x="156" y="60" width="100" height="38" rx="6" fill="white" stroke="#D2D2D7"/>
-                <text x="206" y="76" text-anchor="middle">Mode app</text>
-                <text x="206" y="90" text-anchor="middle" font-size="9" fill="#6E6E73" font-weight="500">jam | ambient</text>
-                <rect x="272" y="60" width="100" height="38" rx="6" fill="white" stroke="#D2D2D7"/>
-                <text x="322" y="76" text-anchor="middle">Sonification</text>
-                <text x="322" y="90" text-anchor="middle" font-size="9" fill="#6E6E73" font-weight="500">scan + harmony</text>
-                <rect x="388" y="60" width="100" height="38" rx="6" fill="white" stroke="#D2D2D7"/>
-                <text x="438" y="76" text-anchor="middle">LED writer</text>
-                <text x="438" y="90" text-anchor="middle" font-size="9" fill="#6E6E73" font-weight="500">render → serial</text>
-                <rect x="40" y="108" width="216" height="36" rx="6" fill="white" stroke="#D2D2D7"/>
-                <text x="148" y="124" text-anchor="middle">Mode manager · SC group isolation</text>
-                <text x="148" y="138" text-anchor="middle" font-size="9" fill="#6E6E73" font-weight="500">switch_to(manifest)</text>
-                <rect x="272" y="108" width="216" height="36" rx="6" fill="white" stroke="#D2D2D7"/>
-                <text x="380" y="124" text-anchor="middle">Web console (FastAPI)</text>
-                <text x="380" y="138" text-anchor="middle" font-size="9" fill="#6E6E73" font-weight="500">heatmap · calibration</text>
-              </g>
-            </g>
-            <g transform="translate(0, 174)">
-              <line x1="60" y1="0" x2="480" y2="0" stroke="#86868B" stroke-width="1" stroke-dasharray="4 3"/>
-              <rect x="220" y="-10" width="100" height="20" rx="10" fill="white" stroke="#86868B" stroke-width="1"/>
-              <text x="270" y="4" text-anchor="middle" font-size="10" font-weight="600" fill="#6E6E73">OSC / UDP</text>
-              <path d="M 200 -20 L 200 20" stroke="#86868B" stroke-width="0.8" marker-end="url(#arr3)"/>
-              <path d="M 340 20 L 340 -20" stroke="#86868B" stroke-width="0.8" marker-end="url(#arr3)" opacity="0.4"/>
-            </g>
-            <g transform="translate(0, 200)">
-              <rect x="20" y="20" width="500" height="120" rx="16" fill="#1D1D1F"/>
-              <text x="40" y="46" font-size="13" font-weight="700" fill="#F5A623">SUPERCOLLIDER  ·  sound</text>
-              <g font-size="11" font-weight="600" fill="white">
-                <rect x="40" y="60" width="140" height="64" rx="6" fill="#2D2D30"/>
-                <text x="110" y="80" text-anchor="middle">SynthDefs</text>
-                <text x="110" y="100" text-anchor="middle" font-size="9" opacity="0.6">marimba, rhodes, kick,</text>
-                <text x="110" y="112" text-anchor="middle" font-size="9" opacity="0.6">snare, hihat, sub_bass...</text>
-                <rect x="196" y="60" width="140" height="64" rx="6" fill="#2D2D30"/>
-                <text x="266" y="80" text-anchor="middle">Mixer bus + FX</text>
-                <text x="266" y="100" text-anchor="middle" font-size="9" opacity="0.6">lo-fi filter + drive</text>
-                <text x="266" y="112" text-anchor="middle" font-size="9" opacity="0.6">+ reverb</text>
-                <rect x="352" y="60" width="136" height="64" rx="6" fill="#F5A623"/>
-                <text x="420" y="80" text-anchor="middle" fill="white">scsynth</text>
-                <text x="420" y="100" text-anchor="middle" font-size="9" fill="white" opacity="0.85">audio out</text>
-                <text x="420" y="112" text-anchor="middle" font-size="9" fill="white" opacity="0.85">→ USB DAC</text>
-              </g>
-            </g>
-          </g>
-        </svg>
+
+    <!-- LEFT · music is data, not code -->
+    <div class="bento-card c-hero cream">
+      <div class="card-label">Declarative</div>
+      <p class="sw-lead">Every song is just config. Swap the files &mdash; get a new piece. The program never changes.</p>
+
+      <figure class="sw-manifest">
+        <figcaption class="sw-file-tab">manifest.toml</figcaption>
+        <pre class="sw-code">bpm          = 120
+<span class="sw-hl">key          = "C"</span>
+progression  = "1"
+melody       = "1"
+drums        = "lofi"</pre>
+      </figure>
+
+      <div class="sw-transpose">
+        Change one line &mdash; <code class="kbd">key&nbsp;"C"</code> <span class="sw-to">&rarr;</span> <code class="kbd">"G"</code> &mdash; and the whole piece transposes.
       </div>
     </div>
-    <div class="bento-card c1 cream">
-      <div class="card-label">Hot-swappable modes</div>
-      <div class="card-title" style="font-size:22px">Ambient ↔ Jam without restart</div>
-      <div class="card-body sm">Each mode runs in its own SC group. Switching = free one group, spawn another. ~100ms changeover, no audio glitches.</div>
+
+    <!-- RIGHT · web console -->
+    <div class="bento-card c1 dark">
+      <div class="card-label">No buttons on the device</div>
+      <div class="card-title lg" style="color:white">Tune it from your phone</div>
+
+      <div class="sw-web">
+        <figure class="sw-phone">
+          <svg viewBox="0 0 196 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="6" width="184" height="348" rx="30" fill="#050505" stroke="#48484A" stroke-width="1.4"/>
+            <rect x="18" y="22" width="160" height="316" rx="18" fill="#FAF6EE"/>
+            <rect x="30" y="36" width="136" height="24" rx="7" fill="#ECE7DC"/>
+            <text x="98" y="52" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="11" font-weight="700" fill="#6E6E73">soundmat.local</text>
+            <!-- mode toggle -->
+            <rect x="30" y="74" width="136" height="38" rx="10" fill="#EDE7DA"/>
+            <rect x="33" y="77" width="65" height="32" rx="8" fill="#E89318"/>
+            <text x="65" y="98" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Jam</text>
+            <text x="133" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#86868B">Amb</text>
+            <!-- sliders -->
+            <rect x="30" y="130" width="136" height="7" rx="3.5" fill="#E2DCCF"/>
+            <rect x="30" y="130" width="92" height="7" rx="3.5" fill="#1D1D1F"/>
+            <circle cx="122" cy="133.5" r="8" fill="#1D1D1F"/>
+            <rect x="30" y="156" width="136" height="7" rx="3.5" fill="#E2DCCF"/>
+            <rect x="30" y="156" width="58" height="7" rx="3.5" fill="#1D1D1F"/>
+            <circle cx="88" cy="159.5" r="8" fill="#1D1D1F"/>
+            <!-- heatmap -->
+            <g transform="translate(30 182)">
+              <rect width="136" height="134" rx="12" fill="#15110A"/>
+              <g transform="translate(68 67)">
+                <g stroke="#E89318" stroke-opacity="0.18" fill="none">
+                  <circle r="16"/><circle r="32"/><circle r="48"/><circle r="58"/>
+                </g>
+                <circle cx="-32" cy="-20" r="7" fill="#F5A623"/>
+                <circle cx="38" cy="12" r="8" fill="#FFD60A"/>
+                <circle cx="8" cy="38" r="6" fill="#E89318"/>
+                <circle cx="-14" cy="-44" r="5" fill="#FF8C42"/>
+                <circle cx="46" cy="-32" r="4.5" fill="#F5A623"/>
+              </g>
+            </g>
+          </svg>
+        </figure>
+
+        <ul class="sw-web-list">
+          <li>Scan to connect &mdash; no app</li>
+          <li>Switch mode, volume, tempo</li>
+          <li>Live heatmap to calibrate</li>
+          <li>Drop virtual stones to test</li>
+        </ul>
+      </div>
     </div>
-    <div class="bento-card c2">
-      <div class="card-label">Declarative</div>
-      <div class="card-title" style="font-size:20px">Manifests, not hard-coded songs</div>
-      <div class="code-mini">[music]<br>bpm = 120<br>key = "C"<br>progression = "1"</div>
-    </div>
-    <div class="bento-card c3 dark">
-      <div class="card-label">Operator UI</div>
-      <div class="card-title" style="font-size:18px; color:white">Phone-scannable web console</div>
-      <div class="card-body sm">No buttons on the device — calibration, mode switch, mock injection all over HTTP/WS.</div>
-    </div>
+
   </div>
 </section>

@@ -2,12 +2,14 @@
   data-step-titles='["Five modules, three kinds of wire","Power","Compute","Sensor &amp; LED","Audio"]'
   data-step-subs='["Power in, data up, control out, sound out — every connection is power, data, or control.","One USB-C cable. PD negotiates 20 V; a buck converter drops it to 5 V for the whole device.","Raspberry Pi is the brain. ESP32 is its senses and nerves — analog in, GPIO out.","224 analog zones read through two cascaded multiplexers; 108 LEDs driven via a level shifter.","The Pi streams over USB to an external DAC — clean 3.5 mm line-out to the room."]'>
   <div class="zoom-content zoom-walk-content">
-    <div class="zoom-eyebrow">Electronics architecture</div>
-    <h2 class="zoom-title" data-step-title>Five modules, three kinds of wire</h2>
-    <p class="zoom-caption" data-step-sub>Power in, data up, control out, sound out — every connection is power, data, or control.</p>
+    <div class="zoom-header">
+      <div class="zoom-eyebrow">Electronics architecture</div>
+      <h2 class="zoom-title" data-step-title>Five modules, three kinds of wire</h2>
+      <p class="zoom-caption" data-step-sub>Power in, data up, control out, sound out — every connection is power, data, or control.</p>
+    </div>
 
     <div class="zoom-stage-wrap">
-      <svg class="zoom-walk-svg" viewBox="0 0 1400 560" xmlns="http://www.w3.org/2000/svg">
+      <svg class="zoom-walk-svg" viewBox="0 0 1400 580" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="mPwr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D1D1F"/></marker>
           <marker id="mData" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B6CB0"/></marker>
@@ -22,35 +24,35 @@
           <!-- ===== connectors: POWER (thick dark) ===== -->
           <g class="zw" data-step="1">
             <path d="M 250 210 L 250 345 L 462 345" stroke="#1D1D1F" stroke-width="6" fill="none" marker-end="url(#mPwr)"/>
-            <text x="300" y="334" font-size="16" fill="#1D1D1F" font-weight="800">5 V</text>
+            <text x="268" y="282" text-anchor="middle" font-size="16" fill="#1D1D1F" font-weight="800">5 V</text>
           </g>
           <g class="zw" data-step="3">
             <path d="M 380 120 L 1360 120 L 1360 405 L 1328 405" stroke="#1D1D1F" stroke-width="6" fill="none" marker-end="url(#mPwr)"/>
-            <text x="1338" y="270" font-size="16" fill="#1D1D1F" font-weight="800" text-anchor="end">5 V</text>
+            <text x="1348" y="268" text-anchor="middle" font-size="16" fill="#1D1D1F" font-weight="800">5 V</text>
           </g>
 
           <!-- ===== connectors: DATA (blue) ===== -->
           <g class="zw" data-step="3">
             <path d="M 900 292 L 855 292 L 855 344 L 818 344" stroke="#2B6CB0" stroke-width="3.5" fill="none" marker-end="url(#mData)"/>
-            <text x="884" y="278" font-size="15" fill="#2B6CB0" font-weight="700" text-anchor="end">analog</text>
+            <text x="877" y="278" text-anchor="middle" font-size="15" fill="#2B6CB0" font-weight="700">analog</text>
           </g>
           <g class="zw" data-step="2">
-            <line x1="652" y1="344" x2="660" y2="344" stroke="#2B6CB0" stroke-width="3.5" marker-end="url(#mData)" marker-start="url(#mDataS)"/>
-            <text x="656" y="330" font-size="14" fill="#2B6CB0" font-weight="700" text-anchor="middle">UART</text>
+            <line x1="638" y1="318" x2="662" y2="318" stroke="#2B6CB0" stroke-width="3.5" marker-end="url(#mData)" marker-start="url(#mDataS)"/>
+            <text x="650" y="304" text-anchor="middle" font-size="15" fill="#2B6CB0" font-weight="700">UART</text>
           </g>
           <g class="zw" data-step="4">
             <path d="M 575 402 L 575 474" stroke="#2B6CB0" stroke-width="3.5" fill="none" marker-end="url(#mData)"/>
-            <text x="588" y="445" font-size="15" fill="#2B6CB0" font-weight="700">USB</text>
+            <text x="592" y="442" text-anchor="start" font-size="15" fill="#2B6CB0" font-weight="700">USB</text>
           </g>
           <g class="zw" data-step="4">
             <path d="M 830 510 L 1050 510" stroke="#2B6CB0" stroke-width="3.5" fill="none" marker-end="url(#mData)"/>
-            <text x="940" y="498" font-size="15" fill="#2B6CB0" font-weight="700" text-anchor="middle">3.5 mm</text>
+            <text x="940" y="498" text-anchor="middle" font-size="15" fill="#2B6CB0" font-weight="700">3.5 mm</text>
           </g>
 
           <!-- ===== connectors: CONTROL (orange) ===== -->
           <g class="zw" data-step="3">
             <path d="M 818 376 L 860 376 L 860 406 L 898 406" stroke="#E89318" stroke-width="3.5" fill="none" marker-end="url(#mCtrl)"/>
-            <text x="866" y="362" font-size="15" fill="#E89318" font-weight="700">GPIO</text>
+            <text x="839" y="362" text-anchor="middle" font-size="15" fill="#E89318" font-weight="700">GPIO</text>
           </g>
 
           <!-- ===== USB-C in ===== -->
@@ -108,13 +110,13 @@
 
           <!-- ===== legend (always visible) ===== -->
           <g class="zw-static">
-            <rect x="56" y="372" width="320" height="120" rx="12" fill="#fff" stroke="#E6E2DA" stroke-width="1.5"/>
-            <line x1="78" y1="404" x2="118" y2="404" stroke="#1D1D1F" stroke-width="6"/>
-            <text x="132" y="409" font-size="16" fill="#1D1D1F" font-weight="700">Power</text>
-            <line x1="78" y1="436" x2="118" y2="436" stroke="#2B6CB0" stroke-width="3.5"/>
-            <text x="132" y="441" font-size="16" fill="#1D1D1F" font-weight="700">Data</text>
-            <line x1="78" y1="468" x2="118" y2="468" stroke="#E89318" stroke-width="3.5"/>
-            <text x="132" y="473" font-size="16" fill="#1D1D1F" font-weight="700">Control</text>
+            <rect x="56" y="228" width="292" height="108" rx="12" fill="#fff" stroke="#E6E2DA" stroke-width="1.5"/>
+            <line x1="78" y1="258" x2="118" y2="258" stroke="#1D1D1F" stroke-width="6"/>
+            <text x="132" y="263" font-size="15" fill="#1D1D1F" font-weight="700">Power</text>
+            <line x1="78" y1="286" x2="118" y2="286" stroke="#2B6CB0" stroke-width="3.5"/>
+            <text x="132" y="291" font-size="15" fill="#1D1D1F" font-weight="700">Data</text>
+            <line x1="78" y1="314" x2="118" y2="314" stroke="#E89318" stroke-width="3.5"/>
+            <text x="132" y="319" font-size="15" fill="#1D1D1F" font-weight="700">Control</text>
           </g>
 
         </g>

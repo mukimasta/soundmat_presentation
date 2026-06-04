@@ -11,6 +11,15 @@ function read(path) {
   return readFileSync(path, 'utf8');
 }
 
+/** Inline slide partials: <!-- @include partials/foo.svg --> */
+function expandIncludes(html) {
+  return html.replace(/<!-- @include ([^\s]+) -->/g, (_, rel) => {
+    const p = join(root, 'slides', rel);
+    if (!existsSync(p)) throw new Error(`Missing slide partial: ${rel}`);
+    return read(p).trim();
+  });
+}
+
 const pad = n => String(n).padStart(2, '0');
 
 function processSlideRoot(html, name, index, isFirst) {
@@ -35,7 +44,7 @@ function processSlideRoot(html, name, index, isFirst) {
 const manifest = JSON.parse(read(manifestPath));
 const slidesHtml = manifest
   .map((name, i) => {
-    let html = read(join(root, 'slides', `${name}.html`)).trim();
+    let html = expandIncludes(read(join(root, 'slides', `${name}.html`)).trim());
     return processSlideRoot(html, name, i + 1, i === 0);
   })
   .join('\n\n');

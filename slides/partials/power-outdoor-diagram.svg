@@ -1,0 +1,49 @@
+<svg class="diagram" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="pbBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3A3A3C"/>
+      <stop offset="100%" stop-color="#1D1D1F"/>
+    </linearGradient>
+    <linearGradient id="chgBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E8E8ED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- SoundMat -->
+  <ellipse cx="478" cy="278" rx="88" ry="20" fill="#E8E4DC" opacity="0.5"/>
+  <circle cx="478" cy="168" r="64" fill="#F5F3EE" stroke="#1D1D1F" stroke-width="1.2"/>
+  <circle cx="478" cy="168" r="44" fill="none" stroke="#E89318" stroke-width="0.9" opacity="0.35"/>
+  <text x="478" y="272" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#1D1D1F">SoundMat</text>
+
+  <!-- merge hub -->
+  <circle cx="340" cy="168" r="26" fill="#FAF6EE" stroke="#E89318" stroke-width="1.4"/>
+  <text x="340" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="#B35C00">PD</text>
+  <text x="340" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#6E6E73">20V</text>
+  <path d="M 366 168 L 414 168" stroke="#E89318" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- cables (drawn before devices so lines stay behind labels) -->
+  <path d="M 128 72 L 228 118 L 314 168" stroke="#E89318" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M 128 258 L 228 218 L 314 168" stroke="#E89318" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+  <!-- PD wall charger (top) -->
+  <g transform="translate(44 36)">
+    <rect x="0" y="0" width="84" height="56" rx="14" fill="url(#chgBody)" stroke="#1D1D1F" stroke-width="1.2"/>
+    <rect x="14" y="14" width="56" height="28" rx="8" fill="#F5F5F7" stroke="#D2D2D7" stroke-width="0.8"/>
+    <rect x="82" y="22" width="14" height="12" rx="4" fill="#1D1D1F"/>
+    <ellipse cx="89" cy="28" rx="3" ry="2" fill="#86868B"/>
+    <text x="48" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#1D1D1F">PD charger</text>
+  </g>
+
+  <!-- or -->
+  <text x="86" y="152" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#86868B">or</text>
+
+  <!-- power bank (bottom, well separated) -->
+  <g transform="translate(44 188)">
+    <rect x="0" y="0" width="84" height="100" rx="16" fill="url(#pbBody)" stroke="#1D1D1F" stroke-width="1.2"/>
+    <rect x="12" y="14" width="60" height="62" rx="8" fill="#2D2D30"/>
+    <text x="42" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="#F5A623">PD</text>
+    <rect x="78" y="40" width="14" height="10" rx="3" fill="#1D1D1F" stroke="#86868B" stroke-width="0.8"/>
+    <text x="42" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#1D1D1F">Power bank</text>
+  </g>
+</svg>

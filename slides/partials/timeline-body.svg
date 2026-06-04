@@ -1,0 +1,103 @@
+        <defs>
+          <linearGradient id="tlAxis" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ECECEE"/>
+            <stop offset="100%" stop-color="#D2D2D7"/>
+          </linearGradient>
+          <linearGradient id="tlBar" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#F5A623"/>
+            <stop offset="100%" stop-color="#E89318"/>
+          </linearGradient>
+          <linearGradient id="tlBarSoft" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#FFD89A"/>
+            <stop offset="100%" stop-color="#F5A623"/>
+          </linearGradient>
+          <linearGradient id="tlBarDark" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3A3A3D"/>
+            <stop offset="100%" stop-color="#1D1D1F"/>
+          </linearGradient>
+        </defs>
+
+        <style>
+          .tl-label  { font: 700 22px system-ui, -apple-system, sans-serif; fill: #1D1D1F; }
+          .tl-month  { font: 700 20px system-ui, -apple-system, sans-serif; fill: #86868B; letter-spacing: 0.1em; }
+          .tl-axis   { font: 600 18px system-ui, -apple-system, sans-serif; fill: #6E6E73; }
+          .tl-range  { font: 600 20px system-ui, -apple-system, sans-serif; fill: #1D1D1F; }
+          .tl-range-sub { font: 500 17px system-ui, -apple-system, sans-serif; fill: #6E6E73; }
+        </style>
+
+        <text class="tl-month" x="380" y="36" text-anchor="middle">APRIL</text>
+        <text class="tl-month" x="780" y="36" text-anchor="middle">MAY</text>
+        <text class="tl-month" x="1180" y="36" text-anchor="middle">JUNE</text>
+        <g stroke="#E8E8ED" stroke-width="2">
+          <line x1="380" y1="44" x2="380" y2="500"/>
+          <line x1="780" y1="44" x2="780" y2="500"/>
+          <line x1="1180" y1="44" x2="1180" y2="500"/>
+        </g>
+
+        <line x1="220" y1="56" x2="1280" y2="56" stroke="url(#tlAxis)" stroke-width="6" stroke-linecap="round"/>
+        <text class="tl-axis" x="220" y="78">Apr 1</text>
+        <text class="tl-axis" x="1280" y="78" text-anchor="end">Jun 10</text>
+
+        <!-- x = 220 + day/70 * 1060 (day 0 = Apr 1) -->
+
+        <g class="tl-lane" style="animation-delay:120ms">
+          <text class="tl-label" x="8" y="114">Idea</text>
+          <circle cx="326" cy="104" r="14" fill="#1D1D1F"/>
+          <circle cx="326" cy="104" r="22" fill="none" stroke="#F5A623" stroke-width="3" opacity="0.5"/>
+          <text class="tl-range" x="358" y="112">Apr 8</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:180ms">
+          <text class="tl-label" x="8" y="162">Sensor</text>
+          <rect x="447" y="138" width="136" height="34" rx="17" fill="url(#tlBarSoft)"/>
+          <text class="tl-range" x="593" y="162">Apr 16 &#8211; 25</text>
+          <text class="tl-range-sub" x="593" y="182">mini</text>
+          <rect x="659" y="138" width="106" height="34" rx="17" fill="url(#tlBar)"/>
+          <text class="tl-range" x="775" y="162">Apr 30 &#8211; May 7</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:240ms">
+          <text class="tl-label" x="8" y="210">Electronics</text>
+          <rect x="841" y="186" width="91" height="34" rx="17" fill="url(#tlBar)"/>
+          <text class="tl-range" x="942" y="210">May 12 &#8211; 18</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:300ms">
+          <text class="tl-label" x="8" y="258">Firmware</text>
+          <circle cx="977" cy="248" r="14" fill="url(#tlBarDark)"/>
+          <circle cx="977" cy="248" r="8" fill="#F5A623"/>
+          <text class="tl-range" x="1002" y="256">May 21</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:360ms">
+          <text class="tl-label" x="8" y="306">Structure</text>
+          <rect x="674" y="282" width="424" height="34" rx="17" fill="#EFEDE8" stroke="#D8D6D0" stroke-width="1.5"/>
+          <rect x="674" y="282" width="424" height="34" rx="17" fill="url(#tlBarSoft)" opacity="0.35"/>
+          <text class="tl-range" x="886" y="306" text-anchor="middle">May 1 &#8211; 29</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:420ms">
+          <text class="tl-label" x="8" y="354">Cover mat</text>
+          <rect x="1098" y="330" width="46" height="34" rx="17" fill="url(#tlBarDark)"/>
+          <text class="tl-range" x="1154" y="348">May 29 &#8211; Jun 1</text>
+          <text class="tl-range-sub" x="1154" y="368">Po-Yu &amp; Fei</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:480ms">
+          <text class="tl-label" x="8" y="402">Sound</text>
+          <rect x="1037" y="378" width="76" height="34" rx="17" fill="url(#tlBar)"/>
+          <text class="tl-range" x="1123" y="402">May 25 &#8211; 30</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:540ms">
+          <text class="tl-label" x="8" y="450">Software</text>
+          <rect x="1083" y="426" width="61" height="34" rx="17" fill="url(#tlBar)"/>
+          <text class="tl-range" x="1154" y="450">May 28 &#8211; Jun 1</text>
+        </g>
+
+        <g class="tl-lane" style="animation-delay:600ms">
+          <text class="tl-label" x="8" y="498">Presentation</text>
+          <circle cx="1189" cy="488" r="15" fill="url(#tlBar)"/>
+          <circle cx="1189" cy="488" r="24" fill="none" stroke="#F5A623" stroke-width="3" opacity="0.45"/>
+          <text class="tl-range" x="1220" y="496">Jun 4</text>
+        </g>

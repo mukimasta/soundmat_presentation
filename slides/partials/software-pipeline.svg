@@ -1,0 +1,49 @@
+<svg class="diagram" viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="swPipeArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#86868B"/>
+    </marker>
+    <marker id="swPipeArrGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#34C759"/>
+    </marker>
+    <marker id="swPipeArrGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FFD60A"/>
+    </marker>
+  </defs>
+  <g font-family="system-ui,-apple-system,'SF Pro Display',sans-serif">
+    <rect x="24" y="88" width="100" height="88" rx="16" fill="#1D1D1F"/>
+    <text x="74" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#86868B">ESP32</text>
+    <text x="74" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="#9AE6B4">pressure up</text>
+
+    <path d="M 124 132 L 168 132" stroke="#34C759" stroke-width="3.5" marker-end="url(#swPipeArrGreen)"/>
+
+    <rect x="168" y="56" width="200" height="152" rx="20" fill="#FAF6EE" stroke="#E89318" stroke-width="1.6"/>
+    <text x="268" y="92" text-anchor="middle" font-size="14" font-weight="800" fill="#E89318">PI SOFTWARE</text>
+    <text x="268" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#1D1D1F">read the mat</text>
+    <text x="268" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="#1D1D1F">choose the music</text>
+    <text x="268" y="162" text-anchor="middle" font-size="13" font-weight="600" fill="#1D1D1F">set LED colours</text>
+
+    <path d="M 368 132 L 412 132" stroke="#86868B" stroke-width="3.5" marker-end="url(#swPipeArr)"/>
+
+    <rect x="412" y="72" width="168" height="120" rx="20" fill="#1D1D1F"/>
+    <text x="496" y="108" text-anchor="middle" font-size="13" font-weight="800" fill="#F5A623">SuperCollider</text>
+    <text x="496" y="132" text-anchor="middle" font-size="12" font-weight="600" fill="rgba(255,255,255,0.65)">makes it audible</text>
+    <text x="496" y="154" text-anchor="middle" font-size="12" font-weight="600" fill="rgba(255,255,255,0.65)">marimba, pads, drums</text>
+
+    <path d="M 580 132 L 624 132" stroke="#86868B" stroke-width="3.5" marker-end="url(#swPipeArr)"/>
+
+    <rect x="624" y="88" width="120" height="88" rx="16" fill="#F5F3EE" stroke="#1D1D1F" stroke-width="1.4"/>
+    <text x="684" y="128" text-anchor="middle" font-size="14" font-weight="800" fill="#1D1D1F">speaker</text>
+
+    <text x="460" y="52" text-anchor="middle" font-size="13" font-weight="800" fill="#248A3D">Pressure to music</text>
+
+    <path d="M 268 208 L 268 248 L 74 248 L 74 176" stroke="#FFD60A" stroke-width="3" stroke-dasharray="8 6" fill="none" marker-end="url(#swPipeArrGold)"/>
+    <text x="170" y="268" text-anchor="middle" font-size="12" font-weight="800" fill="#9A7B00">colours back to LEDs</text>
+
+    <rect x="760" y="200" width="136" height="100" rx="18" fill="#F5F3EE" stroke="#E89318" stroke-width="1.2" opacity="0.9"/>
+    <text x="828" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#1D1D1F">Jam or Ambient</text>
+    <text x="828" y="262" text-anchor="middle" font-size="11" font-weight="600" fill="#6E6E73">two personalities,</text>
+    <text x="828" y="280" text-anchor="middle" font-size="11" font-weight="600" fill="#6E6E73">swap without reboot</text>
+    <path d="M 368 240 L 760 240" stroke="#E89318" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.45"/>
+  </g>
+</svg>

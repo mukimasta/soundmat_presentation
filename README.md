@@ -1,6 +1,6 @@
 # SoundMat Presentation
 
-Apple Keynote–style deck for UW ECE 546C final presentation (~10 min, 14 slides).
+Apple Keynote–style deck for UW ECE 546C final presentation (~10 min, 22 slides). Chinese speaker notes live in `notes/zh/`.
 
 ## Structure
 

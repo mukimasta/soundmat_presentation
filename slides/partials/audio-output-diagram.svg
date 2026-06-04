@@ -1,0 +1,52 @@
+<svg class="diagram" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="aoDacBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E8E8ED"/>
+    </linearGradient>
+    <linearGradient id="aoSpkBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F5F7"/>
+      <stop offset="100%" stop-color="#E8E8ED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- cable chain (behind nodes) -->
+  <path d="M 152 168 L 548 168" stroke="#2B6CB0" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+  <!-- SoundMat / Pi (left) -->
+  <ellipse cx="82" cy="278" rx="72" ry="18" fill="#E8E4DC" opacity="0.5"/>
+  <circle cx="82" cy="168" r="58" fill="#F5F3EE" stroke="#1D1D1F" stroke-width="1.2"/>
+  <circle cx="82" cy="168" r="40" fill="none" stroke="#2B6CB0" stroke-width="0.9" opacity="0.35"/>
+  <text x="82" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="800" fill="#1D1D1F">Raspberry Pi 3B</text>
+  <text x="82" y="180" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#6E6E73">scsynth</text>
+  <text x="82" y="272" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#1D1D1F">SoundMat</text>
+
+  <text x="200" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#2B6CB0">USB-C cable</text>
+
+  <!-- USB DAC -->
+  <g transform="translate(248 132)">
+    <rect x="0" y="0" width="88" height="72" rx="14" fill="url(#aoDacBody)" stroke="#2B6CB0" stroke-width="1.4"/>
+    <circle cx="28" cy="36" r="12" fill="#2B6CB0" opacity="0.12"/>
+    <circle cx="60" cy="36" r="12" fill="#2B6CB0" opacity="0.12"/>
+    <rect x="74" y="30" width="12" height="12" rx="3" fill="#1D1D1F"/>
+    <text x="44" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#1D1D1F">USB DAC</text>
+  </g>
+
+  <!-- 3.5 mm -->
+  <g transform="translate(388 144)">
+    <circle cx="26" cy="24" r="22" fill="#F0F6FF" stroke="#2B6CB0" stroke-width="1.4"/>
+    <text x="26" y="20" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="#1E4A7A">3.5</text>
+    <text x="26" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#6E6E73">mm</text>
+    <text x="26" y="68" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#1D1D1F">Aux out</text>
+  </g>
+  <text x="448" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#2B6CB0">Aux</text>
+
+  <!-- External speakers (right) -->
+  <g transform="translate(488 118)">
+    <rect x="0" y="0" width="72" height="100" rx="16" fill="url(#aoSpkBody)" stroke="#1D1D1F" stroke-width="1.2"/>
+    <rect x="12" y="16" width="22" height="56" rx="4" fill="#C7C7CC"/>
+    <rect x="38" y="24" width="22" height="40" rx="4" fill="#D2D2D7"/>
+    <rect x="38" y="70" width="14" height="6" rx="2" fill="#86868B"/>
+    <text x="36" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#1D1D1F">Speakers</text>
+  </g>
+</svg>

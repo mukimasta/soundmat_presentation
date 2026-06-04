@@ -1,0 +1,24 @@
+<svg class="diagram" viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+  <g font-family="system-ui,-apple-system,sans-serif">
+    <rect x="24" y="24" width="672" height="192" rx="22" fill="#1D1D1F"/>
+    <rect x="44" y="44" width="200" height="152" rx="14" fill="#2D2D30"/>
+    <text x="144" y="88" text-anchor="middle" font-size="28" font-weight="800" fill="#F5A623">Lo-Fi</text>
+    <text x="144" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="rgba(255,255,255,0.55)">warm &middot; gritty</text>
+    <text x="144" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="rgba(255,255,255,0.55)">loop-driven</text>
+
+    <g transform="translate(280 52)" fill="none" stroke="#F5A623" stroke-width="2" opacity="0.85">
+      <rect x="0" y="80" width="28" height="48" rx="4" fill="#F5A623" opacity="0.5"/>
+      <rect x="44" y="56" width="28" height="72" rx="4"/>
+      <rect x="88" y="32" width="28" height="96" rx="4"/>
+      <rect x="132" y="64" width="28" height="64" rx="4" fill="#F5A623" opacity="0.35"/>
+      <rect x="176" y="48" width="28" height="80" rx="4"/>
+      <rect x="220" y="72" width="28" height="56" rx="4"/>
+      <rect x="264" y="40" width="28" height="88" rx="4"/>
+      <rect x="308" y="88" width="28" height="40" rx="4" fill="#F5A623" opacity="0.4"/>
+    </g>
+    <text x="424" y="88" font-size="15" font-weight="700" fill="#fff">Strong pulse</text>
+    <text x="424" y="114" font-size="13" font-weight="500" fill="rgba(255,255,255,0.6)">A circle loop = natural bar line</text>
+    <text x="424" y="140" font-size="13" font-weight="500" fill="rgba(255,255,255,0.6)">Public play &mdash; forgiving, immersive</text>
+    <text x="424" y="172" font-size="12" font-weight="600" fill="#F5A623">~120 BPM &middot; 4/4</text>
+  </g>
+</svg>

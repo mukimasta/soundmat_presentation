@@ -1,0 +1,153 @@
+<section class="slide bento zwalk s-software-challenge" id="slide-10" data-step="0"
+  data-step-titles='["Problem","Solve","Result"]'
+  data-step-subs='["Same Jam, 50 stones: Mac cruises with 5–10× headroom; the Pi pegs scsynth at 99.9% and the XRuns never stop.","Five layers of profile-guided work — frontend, jam loop, SuperCollider, polyphony, then a cProfile pass. Sound stays identical.","scsynth 99.9% → 79%, jam loop 90% → 60%. Fifty stones now play stable on the Pi."]'>
+  <div class="slide-header">
+    <div>
+      <div class="slide-eyebrow">Challenge</div>
+      <h2 class="slide-title">Making it run on the Raspberry Pi</h2>
+      <p class="beat-title" data-step-title>Problem</p>
+      <p class="slide-step-caption" data-step-sub>Same Jam, 50 stones: Mac cruises with 5–10× headroom; the Pi pegs scsynth at 99.9% and the XRuns never stop.</p>
+    </div>
+    <div class="slide-index">12</div>
+  </div>
+
+  <div class="bento-grid sw-pi-stage">
+
+    <header class="sw-pi-hero zw-static" aria-label="Mac vs Pi">
+      <div class="sw-pi-hero-mesh" aria-hidden="true"></div>
+      <div class="sw-pi-hero-body">
+        <p class="sw-pi-hero-lead">Works on <span class="sw-pi-hero-mac">Mac</span></p>
+        <p class="sw-pi-hero-punch">crackling, laggy playback on the <span class="sw-pi-hero-pi">Pi</span></p>
+      </div>
+    </header>
+
+    <nav class="sw-pi-rail" aria-label="Problem to result">
+      <div class="pi-tab" data-for="0"><span class="pi-tab-num">1</span><span class="pi-tab-label">Problem</span></div>
+      <div class="pi-tab" data-for="1"><span class="pi-tab-num">2</span><span class="pi-tab-label">Solve</span></div>
+      <div class="pi-tab" data-for="2"><span class="pi-tab-num">3</span><span class="pi-tab-label">Result</span></div>
+    </nav>
+
+    <!-- ===== STEP 0 · PROBLEM ===== -->
+    <div class="bento-card sw-pi-panel zw" data-step="0">
+      <div class="pi-panel pi-problem">
+        <div class="pi-panel-tag">Problem · the Pi just runs out of CPU</div>
+        <div class="pi-duel">
+          <article class="pi-machine pi-machine--mac">
+            <span class="pi-machine-name">Mac</span>
+            <div class="pi-meter" aria-label="Low CPU">
+              <div class="pi-meter-fill pi-meter-fill--ok" style="--pct: 16%"></div>
+            </div>
+            <span class="pi-meter-val">scsynth ~16%</span>
+            <svg class="pi-wave pi-wave--clean" viewBox="0 0 120 32" aria-hidden="true">
+              <path d="M0 16 Q15 8 30 16 T60 16 T90 16 T120 16" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <p class="pi-machine-note"><strong>5–10×</strong> CPU spare · no dropouts</p>
+          </article>
+          <div class="pi-duel-divider" aria-hidden="true"><span>vs</span></div>
+          <article class="pi-machine pi-machine--pi">
+            <span class="pi-machine-name">Pi 3B</span>
+            <div class="pi-meter" aria-label="CPU pegged">
+              <div class="pi-meter-fill pi-meter-fill--hot" style="--pct: 99.9%"></div>
+            </div>
+            <span class="pi-meter-val pi-meter-val--hot">scsynth 99.9% · jam loop 90%</span>
+            <svg class="pi-wave pi-wave--glitch" viewBox="0 0 120 32" aria-hidden="true">
+              <path d="M0 16 L8 6 L16 26 L24 10 L32 22 L40 8 L48 24 L56 12 L64 20 L72 4 L80 28 L88 14 L96 18 L104 8 L112 24 L120 16" fill="none" stroke="#E89318" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+            <p class="pi-machine-note">JACK XRuns nonstop · <strong>unlistenable</strong></p>
+          </article>
+        </div>
+        <p class="pi-problem-foot">Same code, same 50 stones — the only thing that changed is the box we ship on.</p>
+      </div>
+    </div>
+
+    <!-- ===== STEP 1 · SOLVE (everything, all at once) ===== -->
+    <div class="bento-card sw-pi-panel zw" data-step="1">
+      <div class="pi-panel pi-solve">
+        <div class="pi-solve-head">
+          <div class="pi-panel-tag">Solve · profiled, then attacked every layer</div>
+          <span class="pi-solve-sub">sound output byte-for-byte identical</span>
+        </div>
+        <div class="pi-solve-grid">
+
+          <section class="pi-col">
+            <h4 class="pi-col-head"><span class="pi-col-letter">A</span>Frontend</h4>
+            <span class="pi-chip"><b>30→10</b> fps heatmap</span>
+            <span class="pi-chip"><b>40→20</b> fps LED</span>
+            <span class="pi-chip">kill SVG <b>glow blur</b></span>
+          </section>
+
+          <section class="pi-col">
+            <h4 class="pi-col-head"><span class="pi-col-letter">B</span>Jam loop</h4>
+            <span class="pi-chip"><b>200→60</b> Hz loop</span>
+            <span class="pi-chip">scan <b>O(N)→O(k)</b> index</span>
+            <span class="pi-chip">LED <b>O(108·N)→O(N)</b></span>
+          </section>
+
+          <section class="pi-col">
+            <h4 class="pi-col-head"><span class="pi-col-letter">C</span>SuperCollider</h4>
+            <span class="pi-chip">shared reverb bus <b>−45%</b></span>
+            <span class="pi-chip">chord pad <b>5→1</b> synth</span>
+            <span class="pi-chip">block size held <b>@64</b></span>
+          </section>
+
+          <section class="pi-col">
+            <h4 class="pi-col-head"><span class="pi-col-letter">D</span>Polyphony</h4>
+            <span class="pi-chip">voice cap <b>12</b></span>
+            <span class="pi-chip">steal <b>oldest</b> voice</span>
+            <span class="pi-chip">per-instr <b>done_at</b></span>
+          </section>
+
+          <section class="pi-col pi-col--accent">
+            <h4 class="pi-col-head"><span class="pi-col-letter">E</span>cProfile pass</h4>
+            <span class="pi-chip">_render_led = <b>66%</b> of tick</span>
+            <span class="pi-chip">LED <b>60→30</b> Hz</span>
+            <span class="pi-chip">reverted <b>−z 4096</b></span>
+          </section>
+
+        </div>
+        <div class="pi-solve-bench" aria-label="micro-benchmark">
+          <span class="pi-bench-label">micro-bench · per frame @ 50 stones</span>
+          <span class="pi-bench-val"><s>1.6 ms</s> → <b>0.27 ms</b> <em>×6.0</em></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 2 · RESULT (big numbers) ===== -->
+    <div class="bento-card sw-pi-panel dark zw" data-step="2">
+      <div class="pi-panel pi-result">
+        <div class="pi-panel-tag pi-panel-tag--light">Result · 50 stones, stable on the Pi</div>
+        <div class="pi-result-stats">
+          <div class="pi-stat">
+            <span class="pi-stat-name">scsynth</span>
+            <span class="pi-stat-nums"><s class="pi-stat-before">99.9%</s><span class="pi-stat-arrow">→</span><b class="pi-stat-after">79%</b></span>
+            <div class="pi-gauge-track">
+              <div class="pi-gauge-bar pi-gauge-bar--before" style="--w: 99.9%"></div>
+              <div class="pi-gauge-bar pi-gauge-bar--after" style="--w: 79%"></div>
+            </div>
+            <span class="pi-stat-foot">21% headroom restored</span>
+          </div>
+          <div class="pi-stat">
+            <span class="pi-stat-name">jam loop</span>
+            <span class="pi-stat-nums"><s class="pi-stat-before">90%</s><span class="pi-stat-arrow">→</span><b class="pi-stat-after">60%</b></span>
+            <div class="pi-gauge-track">
+              <div class="pi-gauge-bar pi-gauge-bar--before" style="--w: 90%"></div>
+              <div class="pi-gauge-bar pi-gauge-bar--after" style="--w: 60%"></div>
+            </div>
+            <span class="pi-stat-foot">40% headroom restored</span>
+          </div>
+        </div>
+        <div class="pi-result-badges">
+          <span class="pi-badge"><span class="pi-badge-dot" aria-hidden="true"></span>XRuns <s>constant</s> → <strong>rare</strong></span>
+          <span class="pi-badge"><span class="pi-badge-dot" aria-hidden="true"></span><strong>50 stones</strong> play stable</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+
+  </div>
+</section>

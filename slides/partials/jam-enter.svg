@@ -1,0 +1,26 @@
+<svg class="diagram" viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="jamEnterGlow" cx="0" cy="0" r="115" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFDF8"/><stop offset="100%" stop-color="#F6F4EF"/>
+    </radialGradient>
+  </defs>
+  <circle r="115" fill="url(#jamEnterGlow)"/>
+  <g stroke="#1D1D1F" stroke-width="0.65" fill="none" opacity="0.3">
+    <circle r="38"/><circle r="58"/><circle r="78"/><circle r="98"/>
+  </g>
+  <g transform="rotate(-42)">
+    <line x1="0" y1="0" x2="98" y2="0" stroke="#F5A623" stroke-width="5" opacity="0.1"/>
+    <line x1="0" y1="0" x2="98" y2="0" stroke="#F5A623" stroke-width="4" opacity="0.18"/>
+    <line x1="0" y1="0" x2="98" y2="0" stroke="#F5A623" stroke-width="2.5"/>
+    <circle cx="98" cy="0" r="4" fill="#F5A623"/>
+  </g>
+  <circle cx="0" cy="-98" r="5" fill="#FF3B3B"/>
+  <circle r="36" fill="#1D1D1F"/>
+  <text x="0" y="-2" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="#fff">R0&middot;R1</text>
+  <text x="0" y="12" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.55)">control</text>
+  <g fill="#1D1D1F">
+    <circle cx="52" cy="-28" r="5"/><circle cx="72" cy="22" r="5"/><circle cx="-38" cy="48" r="5"/>
+  </g>
+  <g transform="rotate(-42)"><circle cx="72" cy="0" r="8" fill="#F5A623" opacity="0.35"/><circle cx="72" cy="0" r="4.5" fill="#E89318"/></g>
+  <text x="0" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#6E6E73">angle = time &middot; ring = voice</text>
+</svg>
