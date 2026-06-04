@@ -1351,46 +1351,64 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   animation-delay: 120ms;
 }
 
-/* 20 — Closing (Questions + web QR) */
-.s-closing {
-  justify-content: space-between;
-  padding-bottom: clamp(32px, 4vh, 48px);
-  gap: 0;
-}
+/* 20 — Closing (Questions + web QR) — see layouts.css for background */
 .s-closing .closing-main {
-  flex: 1;
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 0;
+  padding: clamp(48px, 8vh, 96px) var(--pad-x) 0;
+}
+.s-closing .hero-eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+}
+.s-closing .hero-title {
+  color: #fff;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.65);
+}
+.s-closing .hero-subtitle {
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.55);
 }
 .s-closing .closing-web {
+  position: relative;
+  z-index: 2;
   flex: none;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   text-align: center;
+  padding: 0 var(--pad-x) clamp(36px, 5vh, 56px);
 }
 .s-closing .closing-web-cta {
   margin: 0;
   font-size: clamp(16px, 1.35vw, 20px);
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--text);
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
 .s-closing .closing-web-url {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: clamp(12px, 1vw, 15px);
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--accent);
+  color: #FFD89A;
   text-decoration: none;
   word-break: break-all;
   max-width: min(92vw, 640px);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 .s-closing .closing-web-url:hover {
+  color: #fff;
   text-decoration: underline;
 }
 .s-closing .closing-web-qr {
@@ -1401,7 +1419,7 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   padding: 8px;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 4px 24px rgba(29, 29, 31, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 /* 15 — Sonification chapter hero */
