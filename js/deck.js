@@ -240,6 +240,21 @@
 
   const pad = n => String(n).padStart(2, '0');
 
+  function syncDeckVideos(activeSlide) {
+    slides.forEach(slide => {
+      slide.querySelectorAll('video.deck-video').forEach(v => {
+        if (slide === activeSlide) {
+          v.loop = true;
+          v.muted = true;
+          const p = v.play();
+          if (p && typeof p.catch === 'function') p.catch(() => {});
+        } else {
+          v.pause();
+        }
+      });
+    });
+  }
+
   function showSlide(idx, toEnd) {
     idx = Math.max(0, Math.min(total - 1, idx));
     slides.forEach((s, i) => s.classList.toggle('active', i === idx));
@@ -280,6 +295,8 @@
       }
       setTimeout(() => requestAnimationFrame(frame), 250);
     });
+
+    syncDeckVideos(active);
   }
 
   function next() {

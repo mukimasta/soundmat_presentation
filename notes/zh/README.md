@@ -18,11 +18,14 @@
 | `10-power-outdoor.md` | `10-power-outdoor` |
 | `10-audio-output.md` | `10-audio-output` |
 | `11-firmware-bento.md` | `11-firmware-bento` |
+| `11-firmware-video.md` | `11-firmware-video` |
 | `13-python-sc-hero.md` | `13-python-sc-hero` |
 | `14-software-bento.md` | `14-software-bento` |
+| `14-software-web-console.md` | `14-software-web-console` |
 | `15-software-challenge.md` | `15-software-challenge` |
 | `15-software-codebase.md` | `15-software-codebase` |
 | `15-sonification-hero.md` | `15-sonification-hero` |
+| `15-music-background.md` | `15-music-background` |
 | `16-sound-modes.md` | `16-sound-modes` |
 | `17-jam-sonification.md` | `17-jam-sonification` |
 | `18-jam-interaction.md` | `18-jam-interaction` |

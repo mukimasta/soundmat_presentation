@@ -374,24 +374,29 @@ svg.diagram { width: 100%; height: 100%; display: block; }
 }
 /* Philosophy — design goal keywords (step 1) */
 .s-philosophy-bento .design-goals {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(32px, 4vh, 52px);
+  gap: 0;
   min-height: 0;
   width: 100%;
   max-width: 1040px;
   margin: 0 auto;
+  padding: clamp(8px, 1vh, 16px) 0;
 }
 .s-philosophy-bento .design-goals-heading {
-  font-size: clamp(14px, 1.15vw, 16px);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .s-philosophy-bento .design-goals-keywords {
   list-style: none;
@@ -408,16 +413,19 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: clamp(22px, 2.8vh, 32px) clamp(16px, 1.5vw, 24px);
-  border-radius: 18px;
-  font-size: clamp(26px, 3.2vw, 44px);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  padding: clamp(20px, 2.6vh, 30px) clamp(14px, 1.4vw, 22px);
+  border-radius: 16px;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Inter", system-ui, sans-serif;
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   color: var(--text);
-  background: linear-gradient(145deg, #fff 0%, #f2ede6 100%);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  background: linear-gradient(160deg, #fff 0%, #f6f2eb 100%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 6px 20px rgba(29, 29, 31, 0.05);
 }
 .s-philosophy-bento .design-goal-kw:nth-child(1) { grid-column: 1 / 3; }
 .s-philosophy-bento .design-goal-kw:nth-child(2) { grid-column: 3 / 5; }
@@ -430,24 +438,18 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   border-color: rgba(0, 0, 0, 0.08);
   box-shadow: 0 8px 28px rgba(245, 166, 35, 0.28);
 }
-.s-philosophy-bento.zwalk[data-step="1"] .design-goals-heading {
-  font-size: clamp(36px, 4.2vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  text-transform: none;
-  color: var(--text);
-}
 .s-philosophy-bento.zwalk[data-step="1"] .design-goal-kw {
-  font-size: clamp(30px, 3.8vw, 52px);
+  font-size: clamp(24px, 2.9vw, 40px);
 }
 /* Philosophy — ambient trait (step 2) */
 .s-philosophy-bento .ambient-trait {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(24px, 3vh, 40px);
+  gap: clamp(20px, 2.5vh, 32px);
   min-height: 0;
   width: 100%;
   max-width: 980px;
@@ -455,21 +457,24 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   text-align: center;
 }
 .s-philosophy-bento .ambient-trait-heading {
-  margin: 0;
-  font-size: clamp(36px, 4.2vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: var(--text);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .s-philosophy-bento .ambient-trait-tagline {
-  margin: 0;
-  font-size: clamp(17px, 1.5vw, 22px);
+  margin: 0 0 clamp(8px, 1vh, 16px);
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 500;
   color: var(--text-2);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
   max-width: 28em;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 .s-philosophy-bento .ambient-trait-duo {
   display: flex;
@@ -499,10 +504,11 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   background: linear-gradient(145deg, #f7f5f2 0%, #ebe6de 100%);
 }
 .s-philosophy-bento .ambient-trait-label {
-  font-size: clamp(32px, 4vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Inter", system-ui, sans-serif;
+  font-size: clamp(26px, 3.2vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
   color: var(--text);
 }
 .s-philosophy-bento .ambient-trait-kw--listen .ambient-trait-label {
@@ -535,11 +541,12 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   padding: 0 4px;
 }
 .s-philosophy-bento.zwalk[data-step="2"] .ambient-trait-label {
-  font-size: clamp(36px, 4.6vw, 64px);
+  font-size: clamp(28px, 3.5vw, 48px);
 }
 .s-philosophy-bento.zwalk[data-step="2"] .ambient-trait-or {
-  font-size: clamp(32px, 3.5vw, 48px);
-  font-weight: 600;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 500;
+  font-style: italic;
 }
 
 .s-philosophy-bento.zwalk[data-step="3"] .concept-lead {
@@ -771,24 +778,29 @@ svg.diagram { width: 100%; height: 100%; display: block; }
 }
 
 /* Structure slide — planter rationale (plain list) */
+.s-structure-bento .c3 .card-label {
+  font-size: clamp(17px, 1.45vw, 22px);
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
 .s-structure-bento .planter-kws {
   list-style: none;
-  margin: 12px 0 0;
+  margin: 4px 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 .s-structure-bento .planter-kws li {
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.015em;
+  font-size: clamp(20px, 1.85vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: var(--text);
 }
 .s-structure-bento .planter-kw-accent {
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .surface-swatches {
@@ -1443,6 +1455,82 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   animation-delay: 420ms;
 }
 
+/* 15 — musical background cards */
+.s-music-background .slide-title {
+  font-size: clamp(34px, 3.2vw, 44px);
+}
+.s-music-background .slide-subtitle {
+  font-size: clamp(18px, 1.55vw, 22px);
+}
+.music-exp-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 0;
+}
+.music-exp-icon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 0;
+  max-height: 42%;
+  margin-bottom: 6px;
+}
+.music-exp-icon svg {
+  width: clamp(48px, 5.2vw, 68px);
+  height: auto;
+  display: block;
+}
+.music-exp-stat {
+  margin: 0;
+  font-size: clamp(13px, 1.15vw, 16px);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.music-exp-card.dark .music-exp-stat,
+.music-exp-card.dark .music-exp-stat--tag {
+  color: #F5A623;
+}
+.music-exp-stat--tag {
+  letter-spacing: 0.08em;
+}
+.music-exp-stat--light {
+  color: rgba(255, 255, 255, 0.82);
+}
+.music-exp-title {
+  margin: 0;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: clamp(28px, 3.2vh, 40px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--text);
+}
+.music-exp-card.dark .music-exp-title,
+.music-exp-title--light {
+  color: #fff;
+}
+.music-exp-desc {
+  margin: 0;
+  font-size: clamp(14px, 1.25vw, 18px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-2);
+}
+.music-exp-card.dark .music-exp-desc {
+  color: rgba(255, 255, 255, 0.58);
+}
+.music-exp-desc--light {
+  color: rgba(255, 255, 255, 0.78);
+}
+.music-exp-card--compose {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 /* 11 — Firmware zwalk */
 .s-firmware-bento .fw-role-panel {
   flex: 1;
@@ -2002,6 +2090,15 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);
   max-width: 720px;
+}
+.s-software-challenge .sw-pi-hero-body {
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+}
+.s-software-challenge .sw-pi-hero {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Step tabs — directly under hero */
@@ -2656,10 +2753,14 @@ svg.diagram { width: 100%; height: 100%; display: block; }
     linear-gradient(158deg, #2c2824 0%, #141416 52%, #1a1714 100%);
 }
 .jam-son-beat,
-.jam-son-fixed,
+.jam-son-harmony,
 .jam-son-melody {
   padding: 0;
   background: linear-gradient(180deg, #FBFAF7 0%, #F3F1EC 100%);
+}
+.jam-son-drums {
+  padding: 0;
+  background: linear-gradient(158deg, #2c2824 0%, #141416 52%, #1a1714 100%);
 }
 .jam-lofi-stage {
   display: grid;
@@ -2898,7 +2999,236 @@ svg.diagram { width: 100%; height: 100%; display: block; }
   display: block;
 }
 
-/* Beat 4 — fixed layer */
+/* Beat 3 — harmony */
+.jam-harmony-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+  gap: clamp(16px, 2vw, 28px);
+  align-items: center;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+  padding: clamp(20px, 2.4vh, 28px) clamp(32px, 3.5vw, 44px);
+  box-sizing: border-box;
+}
+.jam-harmony-copy {
+  min-height: 0;
+  overflow: hidden;
+}
+.jam-harmony-lead {
+  margin: 8px 0 0;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.4;
+  color: var(--text-2);
+}
+.jam-harmony-lead strong { color: var(--text); }
+.jam-harmony-facts {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jam-harmony-facts li {
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.35;
+  color: var(--text-2);
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+}
+.jam-harmony-facts strong { color: var(--text); }
+.jam-harmony-viz {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  height: 100%;
+}
+.jam-harmony-viz svg {
+  width: 100%;
+  max-height: min(100%, 36vh);
+  height: auto;
+  display: block;
+}
+
+/* Beat 4 — drums */
+.jam-drums-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  gap: clamp(20px, 2.6vw, 36px);
+  align-items: stretch;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+  padding: clamp(16px, 2vh, 22px) clamp(20px, 2.4vw, 32px);
+  box-sizing: border-box;
+}
+.jam-drums-copy {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.jam-beat-kicker--light { color: rgba(245, 166, 35, 0.85); }
+.jam-beat-headline--light { color: #fff; }
+.jam-son-drums .jam-beat-headline--light {
+  font-size: clamp(22px, 3vh, 36px);
+}
+.jam-drums-seq-line {
+  margin: 6px 0 12px;
+  font-size: clamp(13px, 1.15vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.88);
+  font-variant-numeric: tabular-nums;
+}
+.jam-drum-loops {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  overflow: hidden;
+}
+.jam-drum-loop {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  padding: 7px 10px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  min-height: 0;
+}
+.jam-drum-loop--a {
+  align-items: center;
+  min-height: 30px;
+  flex: none;
+}
+.jam-drum-loop-id {
+  font-size: 12px;
+  font-weight: 800;
+  color: #F5A623;
+  line-height: 1;
+}
+.jam-drum-loop-empty {
+  font-size: 10px;
+  font-weight: 600;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.32);
+  letter-spacing: 0.04em;
+}
+.jam-drum-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.jam-drum-loop--meter {
+  padding-top: 0;
+  padding-bottom: 0;
+  background: transparent;
+  border-color: transparent;
+  min-height: 0;
+}
+.jam-drum-row--meter {
+  margin-bottom: 1px;
+}
+.jam-drum-beat-num {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.32);
+  text-align: center;
+  align-self: end;
+  padding-bottom: 3px;
+}
+.jam-drum-beat-num:nth-child(2) { grid-column: 2 / 6; }
+.jam-drum-beat-num:nth-child(3) { grid-column: 6 / 10; }
+.jam-drum-beat-num:nth-child(4) { grid-column: 10 / 14; }
+.jam-drum-beat-num:nth-child(5) { grid-column: 14 / 18; }
+.jam-drum-row {
+  display: grid;
+  grid-template-columns: 36px repeat(16, minmax(11px, 1fr));
+  gap: 3px;
+  align-items: center;
+}
+.jam-drum-row-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+.jam-drum-cell {
+  width: 100%;
+  max-width: 15px;
+  aspect-ratio: 1;
+  justify-self: stretch;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.07);
+}
+.jam-drum-cell.is-x {
+  background: #F5A623;
+  box-shadow: 0 0 6px rgba(245, 166, 35, 0.45);
+}
+.jam-drum-cell.is-ghost {
+  background: rgba(245, 166, 35, 0.38);
+  transform: scale(0.72);
+}
+.jam-drum-key {
+  flex: none;
+  margin: 6px 0 0;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.jam-drum-key-x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #F5A623;
+  font-size: 8px;
+  font-weight: 800;
+  color: #1a1714;
+  line-height: 1;
+}
+.jam-drum-key-x--ghost {
+  background: rgba(245, 166, 35, 0.38);
+  transform: scale(0.85);
+}
+.jam-drums-viz {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  min-width: 0;
+  height: 100%;
+  padding: clamp(16px, 2vh, 26px) clamp(18px, 2vw, 28px);
+  border-radius: var(--radius-lg);
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.jam-drums-viz svg {
+  width: 100%;
+  height: 100%;
+  max-height: min(100%, 54vh);
+  display: block;
+}
+
+/* Legacy fixed layer (unused) */
 .jam-fixed-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2968,82 +3298,208 @@ svg.diagram { width: 100%; height: 100%; display: block; }
 }
 .jam-fixed-thesis strong { color: var(--text); font-weight: 700; }
 
-/* Beat 5 — melody + instruments */
+/* Beat 6 — melody: harmony-1 trigger grids + scan */
 .jam-melody-stage {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(200px, 0.72fr);
-  gap: clamp(16px, 2vw, 24px);
+  grid-template-columns: minmax(0, 1.15fr) minmax(160px, 0.62fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(10px, 1.2vh, 14px) clamp(16px, 2vw, 28px);
   align-items: stretch;
   height: 100%;
   min-height: 0;
   max-height: 100%;
   overflow: hidden;
-  padding: clamp(18px, 2.2vh, 26px) clamp(28px, 3vw, 40px);
+  padding: clamp(14px, 1.8vh, 22px) clamp(20px, 2.4vw, 32px);
   box-sizing: border-box;
 }
-.jam-melody-copy {
+.jam-melody-head {
+  grid-column: 1 / -1;
   display: flex;
-  flex-direction: column;
-  gap: clamp(8px, 1vh, 12px);
-  min-height: 0;
-  overflow: hidden;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 16px;
 }
 .jam-melody-lead {
-  margin: 0;
-  font-size: clamp(13px, 1.15vw, 16px);
+  margin: 4px 0 0;
+  font-size: clamp(12px, 1.05vw, 15px);
   line-height: 1.35;
   color: var(--text-2);
 }
-.jam-voice-grid {
+.jam-melody-voices {
+  margin: 0;
+  flex: 1 1 200px;
+  max-width: 420px;
+  font-size: clamp(10px, 0.9vw, 12px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-3);
+  text-align: right;
+}
+.jam-melody-matrix {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  gap: 6px;
+}
+.jam-melody-matrix-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+}
+.jam-melody-matrix-title {
+  font-size: clamp(10px, 0.9vw, 12px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.jam-melody-matrix-progression {
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 700;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+.jam-chord-meter-block {
+  flex: none;
+  padding: 0 4px;
+}
+.jam-chord-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  grid-template-columns: 28px repeat(8, minmax(0, 1fr));
+  gap: 2px;
+  align-items: center;
+}
+.jam-chord-row--meter,
+.jam-chord-row--sector {
+  margin-bottom: 1px;
+}
+.jam-chord-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--text-3);
+  letter-spacing: 0.02em;
+}
+.jam-chord-beat,
+.jam-chord-sec {
+  font-size: 8px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-3);
+}
+.jam-chord-beat { color: rgba(0, 0, 0, 0.28); }
+.jam-chord-grids {
   flex: 1;
   min-height: 0;
-  align-content: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(6px, 0.8vh, 8px);
+  overflow: hidden;
 }
-.jam-voice-chip {
+.jam-chord-panel {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+  min-width: 0;
+  padding: 6px 7px 7px;
   border-radius: 10px;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  min-width: 0;
+  border: 1px solid rgba(232, 147, 24, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
-.jam-voice-ring {
-  font-size: 12px;
+.jam-chord-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin-bottom: 2px;
+}
+.jam-chord-id {
+  font-size: clamp(12px, 1.05vw, 14px);
   font-weight: 800;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
-}
-.jam-voice-name {
-  font-size: clamp(12px, 1.05vw, 15px);
-  font-weight: 600;
   color: var(--text);
-  line-height: 1.2;
-  min-width: 0;
+  letter-spacing: -0.02em;
 }
+.jam-chord-pcs {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.jam-chord-cell {
+  font-size: clamp(7px, 0.62vw, 9px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  line-height: 1.2;
+  padding: 2px 0;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-2);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.jam-chord-cell.is-up {
+  background: rgba(245, 166, 35, 0.2);
+  color: #9a5a00;
+}
+.jam-chord-cell.is-low {
+  background: rgba(80, 70, 120, 0.12);
+  color: #4a4560;
+}
+.jam-chord-cell.is-sub {
+  background: rgba(40, 38, 55, 0.14);
+  color: #2c2a38;
+  font-size: clamp(6px, 0.55vw, 8px);
+}
+.jam-chord-key {
+  flex: none;
+  margin: 0;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.jam-chord-key-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.jam-chord-key-swatch.is-up { background: rgba(245, 166, 35, 0.35); }
+.jam-chord-key-swatch.is-low { background: rgba(80, 70, 120, 0.2); }
+.jam-chord-key-swatch.is-sub { background: rgba(40, 38, 55, 0.2); }
 .jam-melody-viz {
+  grid-column: 2;
+  grid-row: 2;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: clamp(10px, 1.2vh, 16px);
   border-radius: var(--radius-lg);
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
   min-height: 0;
-  max-height: 100%;
+  min-width: 0;
   overflow: hidden;
 }
 .jam-melody-viz svg {
-  width: auto;
+  width: 100%;
+  max-height: min(100%, 42vh);
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
   display: block;
 }
 

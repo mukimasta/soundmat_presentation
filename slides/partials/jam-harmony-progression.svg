@@ -1,0 +1,31 @@
+<svg class="jam-harmony-chart" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+  <g font-family="system-ui,-apple-system,sans-serif">
+    <rect x="0" y="0" width="720" height="200" rx="18" fill="#FAF6EE" stroke="#E89318" stroke-width="1.4"/>
+    <text x="28" y="36" font-size="12" font-weight="800" fill="#E89318" letter-spacing="0.08em">8-BAR CHORD LOOP</text>
+
+    <rect x="28" y="56" width="150" height="112" rx="14" fill="#fff" stroke="rgba(232,147,24,0.25)" stroke-width="1.2"/>
+    <text x="48" y="100" font-size="28" font-weight="800" fill="#1D1D1F">2m9</text>
+    <text x="48" y="132" font-size="11" font-weight="600" fill="#86868B">bars 1-2</text>
+
+    <text x="178" y="118" font-size="18" font-weight="700" fill="#86868B">&#8594;</text>
+
+    <rect x="194" y="56" width="150" height="112" rx="14" fill="#fff" stroke="rgba(232,147,24,0.25)" stroke-width="1.2"/>
+    <text x="214" y="100" font-size="28" font-weight="800" fill="#1D1D1F">513</text>
+    <text x="214" y="132" font-size="11" font-weight="600" fill="#86868B">bars 3-4</text>
+
+    <text x="344" y="118" font-size="18" font-weight="700" fill="#86868B">&#8594;</text>
+
+    <rect x="360" y="56" width="150" height="112" rx="14" fill="#fff" stroke="rgba(232,147,24,0.25)" stroke-width="1.2"/>
+    <text x="380" y="100" font-size="28" font-weight="800" fill="#1D1D1F">1maj9</text>
+    <text x="380" y="132" font-size="11" font-weight="600" fill="#86868B">bars 5-6</text>
+
+    <text x="510" y="118" font-size="18" font-weight="700" fill="#86868B">&#8594;</text>
+
+    <rect x="526" y="56" width="166" height="112" rx="14" fill="#fff" stroke="rgba(232,147,24,0.25)" stroke-width="1.2"/>
+    <text x="546" y="100" font-size="28" font-weight="800" fill="#1D1D1F">69</text>
+    <text x="546" y="132" font-size="11" font-weight="600" fill="#86868B">bars 7-8</text>
+
+    <text x="692" y="118" font-size="18" font-weight="700" fill="#86868B">&#8635;</text>
+    <text x="28" y="182" font-size="12" font-weight="500" fill="#6E6E73">Live synth voicings &middot; change key once, everything follows</text>
+  </g>
+</svg>

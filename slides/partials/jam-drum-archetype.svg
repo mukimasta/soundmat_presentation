@@ -1,0 +1,49 @@
+<svg class="jam-drum-chart" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="jamDrumFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#F5A623" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="jamDrumLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F5A623"/>
+      <stop offset="55%" stop-color="#E89318"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+  </defs>
+  <g font-family="system-ui,-apple-system,sans-serif">
+    <text x="56" y="28" font-size="11" font-weight="800" fill="rgba(255,255,255,0.45)" letter-spacing="0.1em">DENSITY OVER THE SET</text>
+
+    <line x1="56" y1="210" x2="744" y2="210" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
+    <line x1="56" y1="50" x2="56" y2="210" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="58" y="58" font-size="9" font-weight="700" fill="rgba(255,255,255,0.35)">full</text>
+    <text x="58" y="206" font-size="9" font-weight="700" fill="rgba(255,255,255,0.35)">rest</text>
+
+    <path d="M56 198 L142 158 L228 88 L314 88 L400 198 L486 42 L572 42 L658 198 L658 210 L56 210 Z" fill="url(#jamDrumFill)"/>
+    <polyline points="56,198 142,158 228,88 314,88 400,198 486,42 572,42 658,198" fill="none" stroke="url(#jamDrumLine)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <g fill="#F5A623">
+      <circle cx="56" cy="198" r="5"/><circle cx="142" cy="158" r="5"/><circle cx="228" cy="88" r="5"/><circle cx="314" cy="88" r="5"/>
+      <circle cx="400" cy="198" r="5"/><circle cx="486" cy="42" r="6"/><circle cx="572" cy="42" r="6"/><circle cx="658" cy="198" r="5"/>
+    </g>
+
+    <g font-size="10" font-weight="700" fill="rgba(255,255,255,0.5)">
+      <text x="48" y="248">A</text>
+      <text x="134" y="248">B</text>
+      <text x="220" y="248">C</text>
+      <text x="306" y="248">C</text>
+      <text x="392" y="248">A</text>
+      <text x="478" y="248">D</text>
+      <text x="564" y="248">D</text>
+      <text x="650" y="248">A</text>
+    </g>
+
+    <rect x="56" y="262" width="688" height="14" rx="4" fill="rgba(255,255,255,0.06)"/>
+    <g font-size="9" font-weight="600" fill="rgba(255,255,255,0.42)">
+      <text x="72" y="272">A empty</text>
+      <text x="168" y="272">+ kick &amp; hat</text>
+      <text x="268" y="272">+ snare</text>
+      <text x="460" y="272">+ ghost notes</text>
+      <text x="600" y="272">then silence</text>
+    </g>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
 <section class="slide bento zwalk" id="slide-14" data-step="0"
-  data-step-titles='["The tension","Why Lo-Fi","Fixed layer","Beat &amp; loop","Melody layer"]'
-  data-step-subs='["Two pulls on every music interface — we built Ambient and Jam instead of choosing one side.","Warm, loop-based, forgiving — made for a round mat and strangers playing together.","Chord loop and live drums always run underneath. You never trigger the harmony.","4/4 at ~120 BPM. One turn of the mat = two bars — angle is time on the beat grid.","Outer rings: six voices, pre-written notes. The scan line plays your placements."]'>
+  data-step-titles='["The tension","Why Lo-Fi","Harmony","Drums","Beat &amp; loop","Melody layer"]'
+  data-step-subs='["Two pulls on every music interface — we built Ambient and Jam instead of choosing one side.","Warm, loop-based, forgiving — made for a round mat and strangers playing together.","8-bar chord loop always running — live synth, not samples. You never place harmony.","Fixed play count A×1→B×1→C×2→A×1→D×2→A×1 — loops B–D add kick, snare, and hat.","4/4 at ~120 BPM. One turn of the mat = two bars — angle is time on the beat grid.","Six rings, eight sectors — every cell is a pre-written note; scan = when you trigger."]'>
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Sonification</div>
@@ -14,9 +14,10 @@
   <nav class="jam-son-rail" aria-label="Jam sonification">
     <div class="route-chip" data-for="0"><span class="route-chip-num">1</span><span class="route-chip-label">Tension</span></div>
     <div class="route-chip" data-for="1"><span class="route-chip-num">2</span><span class="route-chip-label">Lo-Fi</span></div>
-    <div class="route-chip" data-for="2"><span class="route-chip-num">3</span><span class="route-chip-label">Fixed</span></div>
-    <div class="route-chip" data-for="3"><span class="route-chip-num">4</span><span class="route-chip-label">Beat</span></div>
-    <div class="route-chip" data-for="4"><span class="route-chip-num">5</span><span class="route-chip-label">Melody</span></div>
+    <div class="route-chip" data-for="2"><span class="route-chip-num">3</span><span class="route-chip-label">Harmony</span></div>
+    <div class="route-chip" data-for="3"><span class="route-chip-num">4</span><span class="route-chip-label">Drums</span></div>
+    <div class="route-chip" data-for="4"><span class="route-chip-num">5</span><span class="route-chip-label">Beat</span></div>
+    <div class="route-chip" data-for="5"><span class="route-chip-num">6</span><span class="route-chip-label">Melody</span></div>
   </nav>
 
   <div class="bento-grid jam-son-stage">
@@ -96,28 +97,90 @@
     </div>
 
     <div class="bento-card c2 cream zw" data-step="2">
-      <div class="jam-son-panel jam-son-fixed">
-        <div class="jam-fixed-stage">
-          <p class="jam-beat-kicker">Always running — you don&rsquo;t place these</p>
-          <div class="jam-fixed-grid">
-            <article class="jam-fixed-card jam-fixed-card--harmony">
-              <span class="jam-fixed-tag">Harmony</span>
-              <h3 class="jam-fixed-title">8-bar chord loop</h3>
-              <p class="jam-fixed-progression">2m9 &rarr; 513 &rarr; 1maj9 &rarr; 69</p>
-              <p class="jam-fixed-detail">Live synth voicings &middot; change <code class="kbd">key</code> once, everything follows</p>
-            </article>
-            <article class="jam-fixed-card jam-fixed-card--drums">
-              <span class="jam-fixed-tag">Drums</span>
-              <h3 class="jam-fixed-title">Arranged kick &amp; snare</h3>
-              <p class="jam-fixed-detail">Kick, snare, hi-hat &mdash; pattern <strong>builds</strong> over the set (A&rarr;B&rarr;C&rarr;D), then rests until you restart the hub</p>
-            </article>
+      <div class="jam-son-panel jam-son-harmony">
+        <div class="jam-harmony-stage">
+          <div class="jam-harmony-copy">
+            <p class="jam-beat-kicker">Fixed layer &middot; always on</p>
+            <h3 class="jam-beat-headline">Harmony</h3>
+            <p class="jam-harmony-lead">8-bar chord loop under everything &mdash; you <strong>never</strong> trigger pads from the mat.</p>
+            <ul class="jam-harmony-facts">
+              <li>Progression: <strong>2m9 &rarr; 513 &rarr; 1maj9 &rarr; 69</strong></li>
+              <li>Live SuperCollider voicings, not samples</li>
+              <li>Change <code class="kbd">key</code> once &mdash; melody, bass, and pads follow</li>
+            </ul>
           </div>
-          <p class="jam-fixed-thesis">You choose <strong>when</strong> on the outer rings. The system guarantees <strong>what</strong> plays underneath.</p>
+          <figure class="jam-harmony-viz" aria-hidden="true">
+<!-- @include partials/jam-harmony-progression.svg -->
+          </figure>
         </div>
       </div>
     </div>
 
-    <div class="bento-card c3 cream zw" data-step="3">
+    <div class="bento-card c2d dark zw" data-step="3">
+      <div class="jam-son-panel jam-son-drums">
+        <div class="jam-drums-stage">
+          <div class="jam-drums-copy">
+            <p class="jam-beat-kicker jam-beat-kicker--light">Fixed layer</p>
+            <h3 class="jam-beat-headline jam-beat-headline--light">Drums</h3>
+            <p class="jam-drums-seq-line">A&times;1 &rarr; B&times;1 &rarr; C&times;2 &rarr; A&times;1 &rarr; D&times;2 &rarr; A&times;1</p>
+
+            <div class="jam-drum-loops" aria-label="Drum loops A through D">
+              <div class="jam-drum-loop jam-drum-loop--a">
+                <span class="jam-drum-loop-id">A</span>
+                <span class="jam-drum-loop-empty">empty</span>
+              </div>
+
+              <div class="jam-drum-loop jam-drum-loop--meter">
+                <span class="jam-drum-loop-id" aria-hidden="true"></span>
+                <div class="jam-drum-grid">
+                  <div class="jam-drum-row jam-drum-row--meter" aria-hidden="true">
+                    <span class="jam-drum-row-label"></span>
+                    <span class="jam-drum-beat-num">1</span>
+                    <span class="jam-drum-beat-num">2</span>
+                    <span class="jam-drum-beat-num">3</span>
+                    <span class="jam-drum-beat-num">4</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="jam-drum-loop">
+                <span class="jam-drum-loop-id">B</span>
+                <div class="jam-drum-grid">
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Kick</span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span></div>
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Snare</span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span></div>
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Hat</span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span></div>
+                </div>
+              </div>
+
+              <div class="jam-drum-loop">
+                <span class="jam-drum-loop-id">C</span>
+                <div class="jam-drum-grid">
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Kick</span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span></div>
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Snare</span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span></div>
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Hat</span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span></div>
+                </div>
+              </div>
+
+              <div class="jam-drum-loop">
+                <span class="jam-drum-loop-id">D</span>
+                <div class="jam-drum-grid">
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Kick</span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-ghost"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-ghost"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span></div>
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Snare</span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell"></span></div>
+                  <div class="jam-drum-row"><span class="jam-drum-row-label">Hat</span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell is-ghost"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell"></span><span class="jam-drum-cell is-x"></span><span class="jam-drum-cell is-ghost"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <p class="jam-drum-key"><span class="jam-drum-key-x">X</span> accent <span class="jam-drum-key-x jam-drum-key-x--ghost">x</span> ghost</p>
+          </div>
+          <figure class="jam-drums-viz" aria-hidden="true">
+<!-- @include partials/jam-drum-archetype.svg -->
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="bento-card c3 cream zw" data-step="4">
       <div class="jam-son-panel jam-son-beat">
         <div class="jam-beat-stage">
           <div class="jam-beat-copy">
@@ -154,22 +217,18 @@
       </div>
     </div>
 
-    <div class="bento-card c4 cream zw" data-step="4">
+    <div class="bento-card c4 cream zw" data-step="5">
       <div class="jam-son-panel jam-son-melody">
         <div class="jam-melody-stage">
-          <div class="jam-melody-copy">
-            <p class="jam-beat-kicker">Your layer</p>
-            <h3 class="jam-beat-headline">Melody &amp; bass</h3>
-            <p class="jam-melody-lead">Ring = voice &middot; angle = when &middot; scan = trigger</p>
-            <div class="jam-voice-grid" role="list">
-              <div class="jam-voice-chip" role="listitem"><span class="jam-voice-ring">R7</span><span class="jam-voice-name">Marimba</span></div>
-              <div class="jam-voice-chip" role="listitem"><span class="jam-voice-ring">R6</span><span class="jam-voice-name">Lo-Fi keys</span></div>
-              <div class="jam-voice-chip" role="listitem"><span class="jam-voice-ring">R5</span><span class="jam-voice-name">Lo-Fi keys</span></div>
-              <div class="jam-voice-chip" role="listitem"><span class="jam-voice-ring">R4</span><span class="jam-voice-name">Pad pluck</span></div>
-              <div class="jam-voice-chip" role="listitem"><span class="jam-voice-ring">R3</span><span class="jam-voice-name">Pluck bass</span></div>
-              <div class="jam-voice-chip" role="listitem"><span class="jam-voice-ring">R2</span><span class="jam-voice-name">Sub bass</span></div>
+          <header class="jam-melody-head">
+            <div>
+              <p class="jam-beat-kicker">Your layer</p>
+              <h3 class="jam-beat-headline">Melody &amp; bass</h3>
+              <p class="jam-melody-lead">Ring = voice &middot; sector = when &middot; scan = trigger</p>
             </div>
-          </div>
+            <p class="jam-melody-voices" aria-label="Ring instruments">R7 Marimba &middot; R6/R5 keys &middot; R4 pluck &middot; R3 bass &middot; R2 sub</p>
+          </header>
+<!-- @include partials/jam-melody-chord-grids.html -->
           <figure class="jam-melody-viz" aria-hidden="true">
 <!-- @include partials/jam-melody-scan.svg -->
           </figure>
@@ -178,7 +237,7 @@
     </div>
 
     <div class="step-progress">
-      <span data-dot></span><span data-dot></span><span data-dot></span><span data-dot></span><span data-dot></span>
+      <span data-dot></span><span data-dot></span><span data-dot></span><span data-dot></span><span data-dot></span><span data-dot></span>
     </div>
   </div>
 </section>

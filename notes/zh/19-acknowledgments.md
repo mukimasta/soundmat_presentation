@@ -5,4 +5,4 @@
 
 ## 口头稿（约 25s）
 
-「致谢：感谢 Prof. Yiyue Luo 老师的指导，Prof. Meichun Liu 老师在设计学院的支持，以及 Chenfei Ma 和 Po-Yu Chen 同学为我们设计了顶上的 mat。接下来 Live Demo。」
+「致谢：感谢 Prof. Yiyue Luo 老师的指导，Prof. Meichun Liu 老师在设计学院的支持，以及 Po-Yu Chen 和 Chenfei Ma 同学为我们设计了顶上的 mat。接下来 Live Demo。」
