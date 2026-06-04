@@ -284,16 +284,17 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk s-system-zoom" id="slide-6"
-  data-step-titles='["End-to-end signal flow","Touch","Scan","Synth","Sound + Light"]'
-  data-step-subs='["From stones to sound — five hardware boundaries, one Python + SuperCollider stack, one USB-C cable.","Pressure on the felt deforms Velostat — 224 polar zones become analog readings.","An ESP32 walks all 224 zones through two CD4067 multiplexers, 20 times a second.","UART frames land on a Raspberry Pi — Python does logic, SuperCollider renders sound.","USB-C DAC drives the speaker. L-frames travel back to light the LED ring."]'>
+<section class="slide zoom zwalk spine s-system-zoom" id="slide-6"
+  data-step-titles='["End-to-end signal flow","Sensor"]'
+  data-step-subs='["From stones to sound — five hardware boundaries, one Python + SuperCollider stack, one USB-C cable.","Pressure on the felt deforms Velostat — 224 polar zones become analog readings."]'>
   <div class="zoom-content zoom-walk-content">
     <div class="zoom-eyebrow">System overview</div>
     <h2 class="zoom-title" data-step-title>End-to-end signal flow</h2>
     <p class="zoom-caption" data-step-sub>From stones to sound — five hardware boundaries, one Python + SuperCollider stack, one USB-C cable.</p>
+    <span data-step="1" style="display:none"></span>
 
     <div class="zoom-stage-wrap">
-      <svg id="systemDiagram" class="zoom-walk-svg" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
+      <svg class="zoom-walk-svg" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="sysArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
@@ -305,13 +306,9 @@
             <path d="M0,0 L10,5 L0,10 z" fill="#86868B"/>
           </marker>
         </defs>
-
-        <g id="systemStage" data-zoom-stage
-           data-zones='[{"s":1.00,"cx":700,"cy":240},{"s":1.85,"cx":200,"cy":240},{"s":1.85,"cx":540,"cy":270},{"s":1.85,"cx":870,"cy":240},{"s":1.85,"cx":1190,"cy":240}]'
-           transform="translate(0 0) scale(1)">
-
-          <!-- =================== Zone 1 · Touch =================== -->
-          <g class="zw" data-step="1">
+        <g data-zoom-stage data-zones='[{"s":1,"cx":700,"cy":240},{"s":1.85,"cx":200,"cy":240}]' transform="translate(0 0) scale(1)">
+<!-- =================== Zone 1 · Touch =================== -->
+          <g class="zw-static">
             <circle cx="200" cy="220" r="118" fill="#FAF6EE" stroke="#2A2724" stroke-width="2"/>
             <g stroke="#86868B" stroke-width="0.7" fill="none" opacity="0.5">
               <circle cx="200" cy="220" r="32"/>
@@ -327,18 +324,18 @@
             <ellipse cx="158" cy="188" rx="16" ry="9"  fill="#7B6450"/>
             <ellipse cx="228" cy="208" rx="20" ry="11" fill="#9B8268"/>
             <ellipse cx="192" cy="262" rx="13" ry="8"  fill="#A89478"/>
-            <text x="200" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Touch</text>
+            <text x="200" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sensor</text>
             <text x="200" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Stones on the felt</text>
           </g>
 
           <!-- arrow 1 → 2 -->
-          <g class="zw" data-step="2">
+          <g class="zw-static">
             <line x1="328" y1="220" x2="432" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
             <text x="380" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">analog</text>
           </g>
 
           <!-- =================== Zone 2 · Scan =================== -->
-          <g class="zw" data-step="2">
+          <g class="zw-static">
             <rect x="442" y="130" width="200" height="170" rx="14" fill="#1D1D1F"/>
             <rect x="466" y="158" width="76" height="50" rx="5" fill="#2D2D30"/>
             <text x="504" y="190" text-anchor="middle" font-size="15" fill="#F5A623" font-weight="800" letter-spacing="0.5">ESP32</text>
@@ -354,7 +351,7 @@
               <circle cx="478" cy="272" r="2.5"/><circle cx="506" cy="272" r="2.5"/><circle cx="534" cy="272" r="2.5"/>
               <circle cx="562" cy="272" r="2.5"/><circle cx="590" cy="272" r="2.5"/><circle cx="618" cy="272" r="2.5"/>
             </g>
-            <text x="542" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Scan</text>
+            <text x="542" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Electronics</text>
             <text x="542" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">224 zones · 20 Hz</text>
             <rect x="470" y="438" width="144" height="34" rx="7" fill="#FAF6EE" stroke="#E89318" stroke-width="1.5"/>
             <text x="542" y="461" text-anchor="middle" font-size="15" fill="#E89318" font-weight="800">USB-C PD · 20V</text>
@@ -362,13 +359,13 @@
           </g>
 
           <!-- arrow 2 → 3 -->
-          <g class="zw" data-step="3">
+          <g class="zw-static">
             <line x1="652" y1="220" x2="756" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
             <text x="704" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">UART</text>
           </g>
 
           <!-- =================== Zone 3 · Synth =================== -->
-          <g class="zw" data-step="3">
+          <g class="zw-static">
             <rect x="766" y="130" width="208" height="170" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
             <text x="870" y="168" text-anchor="middle" font-size="16" fill="#1D1D1F" font-weight="700">Raspberry Pi 3B</text>
             <rect x="784" y="186" width="84" height="32" rx="16" fill="#2D7A2D" fill-opacity="0.14"/>
@@ -378,18 +375,18 @@
             <text x="826" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">logic</text>
             <text x="918" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">sound</text>
             <text x="870" y="274" text-anchor="middle" font-size="11" fill="#86868B">OSC bridge</text>
-            <text x="870" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Synth</text>
+            <text x="870" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Software</text>
             <text x="870" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Logic + sound, one Pi</text>
           </g>
 
           <!-- arrow 3 → 4 -->
-          <g class="zw" data-step="4">
+          <g class="zw-static">
             <line x1="984" y1="220" x2="1088" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
             <text x="1036" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">USB audio</text>
           </g>
 
           <!-- =================== Zone 4 · Output =================== -->
-          <g class="zw" data-step="4">
+          <g class="zw-static">
             <rect x="1100" y="138" width="96" height="160" rx="12" fill="#1D1D1F"/>
             <circle cx="1148" cy="184" r="28" fill="#2D2D30" stroke="#555" stroke-width="2"/>
             <circle cx="1148" cy="184" r="10" fill="#0A0A0B"/>
@@ -398,26 +395,22 @@
               <circle cx="0" cy="0" r="56" fill="none" stroke="#F5A623" stroke-width="7" stroke-dasharray="3.6 4"/>
               <circle cx="0" cy="0" r="46" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.35"/>
             </g>
-            <text x="1190" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Output</text>
+            <text x="1190" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sound &amp; Light</text>
             <text x="1190" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Sound · light</text>
           </g>
 
           <!-- back-channel Pi → LED ring -->
-          <g class="zw" data-step="4">
+          <g class="zw-static">
             <path d="M 870 130 Q 870 50 1280 50 L 1280 162"
                   stroke="#E89318" stroke-width="2" stroke-dasharray="6 5" fill="none"
                   marker-end="url(#sysArrAccent)"/>
             <text x="1075" y="38" text-anchor="middle" font-size="14" fill="#E89318" font-weight="800">L-frame · LED back-channel</text>
           </g>
-
         </g>
       </svg>
     </div>
 
     <div class="step-progress">
-      <span data-dot></span>
-      <span data-dot></span>
-      <span data-dot></span>
       <span data-dot></span>
       <span data-dot></span>
     </div>
@@ -503,7 +496,140 @@
   </div>
 </section>
 
-<section class="slide zoom zwalk s-electronics-arch" id="slide-8"
+<section class="slide zoom zwalk spine s-spine-electronics" id="slide-8"
+  data-step-titles='["Sensor","Electronics"]'
+  data-step-subs='["Touch captured. Next — the board that reads every zone.","An ESP32 walks all 224 zones through two CD4067 multiplexers, 20× a second — one USB-C cable powers it all."]'>
+  <div class="zoom-content zoom-walk-content">
+    <div class="zoom-eyebrow">System overview</div>
+    <h2 class="zoom-title" data-step-title>Sensor</h2>
+    <p class="zoom-caption" data-step-sub>Touch captured. Next — the board that reads every zone.</p>
+    <span data-step="1" style="display:none"></span>
+
+    <div class="zoom-stage-wrap">
+      <svg class="zoom-walk-svg" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="sysArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+          </marker>
+          <marker id="sysArrAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#E89318"/>
+          </marker>
+          <marker id="sysArrGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#86868B"/>
+          </marker>
+        </defs>
+        <g data-zoom-stage data-zones='[{"s":1.85,"cx":200,"cy":240},{"s":1.85,"cx":540,"cy":270}]' transform="translate(330 -204) scale(1.85)">
+<!-- =================== Zone 1 · Touch =================== -->
+          <g class="zw-static">
+            <circle cx="200" cy="220" r="118" fill="#FAF6EE" stroke="#2A2724" stroke-width="2"/>
+            <g stroke="#86868B" stroke-width="0.7" fill="none" opacity="0.5">
+              <circle cx="200" cy="220" r="32"/>
+              <circle cx="200" cy="220" r="58"/>
+              <circle cx="200" cy="220" r="86"/>
+            </g>
+            <g stroke="#86868B" stroke-width="0.5" opacity="0.4">
+              <line x1="200" y1="102" x2="200" y2="338"/>
+              <line x1="82"  y1="220" x2="318" y2="220"/>
+              <line x1="117" y1="137" x2="283" y2="303"/>
+              <line x1="283" y1="137" x2="117" y2="303"/>
+            </g>
+            <ellipse cx="158" cy="188" rx="16" ry="9"  fill="#7B6450"/>
+            <ellipse cx="228" cy="208" rx="20" ry="11" fill="#9B8268"/>
+            <ellipse cx="192" cy="262" rx="13" ry="8"  fill="#A89478"/>
+            <text x="200" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sensor</text>
+            <text x="200" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Stones on the felt</text>
+          </g>
+
+          <!-- arrow 1 → 2 -->
+          <g class="zw-static">
+            <line x1="328" y1="220" x2="432" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="380" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">analog</text>
+          </g>
+
+          <!-- =================== Zone 2 · Scan =================== -->
+          <g class="zw-static">
+            <rect x="442" y="130" width="200" height="170" rx="14" fill="#1D1D1F"/>
+            <rect x="466" y="158" width="76" height="50" rx="5" fill="#2D2D30"/>
+            <text x="504" y="190" text-anchor="middle" font-size="15" fill="#F5A623" font-weight="800" letter-spacing="0.5">ESP32</text>
+            <rect x="556" y="158" width="72" height="22" rx="3" fill="#2D2D30"/>
+            <text x="592" y="174" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">CD4067</text>
+            <rect x="556" y="186" width="72" height="22" rx="3" fill="#2D2D30"/>
+            <text x="592" y="202" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">CD4067</text>
+            <g fill="#F5A623" opacity="0.85">
+              <circle cx="478" cy="232" r="2.5"/><circle cx="506" cy="232" r="2.5"/><circle cx="534" cy="232" r="2.5"/>
+              <circle cx="562" cy="232" r="2.5"/><circle cx="590" cy="232" r="2.5"/><circle cx="618" cy="232" r="2.5"/>
+              <circle cx="478" cy="252" r="2.5"/><circle cx="506" cy="252" r="2.5"/><circle cx="534" cy="252" r="2.5"/>
+              <circle cx="562" cy="252" r="2.5"/><circle cx="590" cy="252" r="2.5"/><circle cx="618" cy="252" r="2.5"/>
+              <circle cx="478" cy="272" r="2.5"/><circle cx="506" cy="272" r="2.5"/><circle cx="534" cy="272" r="2.5"/>
+              <circle cx="562" cy="272" r="2.5"/><circle cx="590" cy="272" r="2.5"/><circle cx="618" cy="272" r="2.5"/>
+            </g>
+            <text x="542" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Electronics</text>
+            <text x="542" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">224 zones · 20 Hz</text>
+            <rect x="470" y="438" width="144" height="34" rx="7" fill="#FAF6EE" stroke="#E89318" stroke-width="1.5"/>
+            <text x="542" y="461" text-anchor="middle" font-size="15" fill="#E89318" font-weight="800">USB-C PD · 20V</text>
+            <line x1="542" y1="300" x2="542" y2="438" stroke="#E89318" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+          </g>
+
+          <!-- arrow 2 → 3 -->
+          <g class="zw-static">
+            <line x1="652" y1="220" x2="756" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="704" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">UART</text>
+          </g>
+
+          <!-- =================== Zone 3 · Synth =================== -->
+          <g class="zw-static">
+            <rect x="766" y="130" width="208" height="170" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="870" y="168" text-anchor="middle" font-size="16" fill="#1D1D1F" font-weight="700">Raspberry Pi 3B</text>
+            <rect x="784" y="186" width="84" height="32" rx="16" fill="#2D7A2D" fill-opacity="0.14"/>
+            <text x="826" y="207" text-anchor="middle" font-size="14" fill="#1B5E20" font-weight="800">Python</text>
+            <rect x="876" y="186" width="84" height="32" rx="16" fill="#E89318" fill-opacity="0.2"/>
+            <text x="918" y="207" text-anchor="middle" font-size="14" fill="#A65E00" font-weight="800">SC</text>
+            <text x="826" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">logic</text>
+            <text x="918" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">sound</text>
+            <text x="870" y="274" text-anchor="middle" font-size="11" fill="#86868B">OSC bridge</text>
+            <text x="870" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Software</text>
+            <text x="870" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Logic + sound, one Pi</text>
+          </g>
+
+          <!-- arrow 3 → 4 -->
+          <g class="zw-static">
+            <line x1="984" y1="220" x2="1088" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="1036" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">USB audio</text>
+          </g>
+
+          <!-- =================== Zone 4 · Output =================== -->
+          <g class="zw-static">
+            <rect x="1100" y="138" width="96" height="160" rx="12" fill="#1D1D1F"/>
+            <circle cx="1148" cy="184" r="28" fill="#2D2D30" stroke="#555" stroke-width="2"/>
+            <circle cx="1148" cy="184" r="10" fill="#0A0A0B"/>
+            <circle cx="1148" cy="248" r="13" fill="#2D2D30" stroke="#555" stroke-width="1.5"/>
+            <g transform="translate(1280, 220)">
+              <circle cx="0" cy="0" r="56" fill="none" stroke="#F5A623" stroke-width="7" stroke-dasharray="3.6 4"/>
+              <circle cx="0" cy="0" r="46" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.35"/>
+            </g>
+            <text x="1190" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sound &amp; Light</text>
+            <text x="1190" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Sound · light</text>
+          </g>
+
+          <!-- back-channel Pi → LED ring -->
+          <g class="zw-static">
+            <path d="M 870 130 Q 870 50 1280 50 L 1280 162"
+                  stroke="#E89318" stroke-width="2" stroke-dasharray="6 5" fill="none"
+                  marker-end="url(#sysArrAccent)"/>
+            <text x="1075" y="38" text-anchor="middle" font-size="14" fill="#E89318" font-weight="800">L-frame · LED back-channel</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+  </div>
+</section>
+
+<section class="slide zoom zwalk s-electronics-arch" id="slide-9"
   data-step-titles='["Five modules, three kinds of wire","Power","Compute","Sensor &amp; LED","Audio"]'
   data-step-subs='["Power in, data up, control out, sound out — every connection is power, data, or control.","One USB-C cable. PD negotiates 20 V; a buck converter drops it to 5 V for the whole device.","Raspberry Pi is the brain. ESP32 is its senses and nerves — analog in, GPIO out.","224 analog zones read through two cascaded multiplexers; 108 LEDs driven via a level shifter.","The Pi streams over USB to an external DAC — clean 3.5 mm line-out to the room."]'>
   <div class="zoom-content zoom-walk-content">
@@ -636,13 +762,13 @@
   </div>
 </section>
 
-<section class="slide bento s-power-module" id="slide-9">
+<section class="slide bento s-power-module" id="slide-10">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Power</div>
       <h2 class="slide-title">The hardest part is feeding it</h2>
     </div>
-    <div class="slide-index">09</div>
+    <div class="slide-index">10</div>
   </div>
   <div class="bento-grid">
 
@@ -722,13 +848,13 @@
   </div>
 </section>
 
-<section class="slide bento s-firmware-bento" id="slide-10">
+<section class="slide bento s-firmware-bento" id="slide-11">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Firmware</div>
       <h2 class="slide-title">One tight loop on the ESP32</h2>
     </div>
-    <div class="slide-index">10</div>
+    <div class="slide-index">11</div>
   </div>
   <div class="bento-grid">
 
@@ -790,7 +916,140 @@
   </div>
 </section>
 
-<section class="slide hero s-python-sc-hero" id="slide-11">
+<section class="slide zoom zwalk spine s-spine-software" id="slide-12"
+  data-step-titles='["Electronics","Software"]'
+  data-step-subs='["Zones digitized. Next — what turns numbers into music.","UART frames land on a Raspberry Pi — Python runs the logic, SuperCollider renders the sound."]'>
+  <div class="zoom-content zoom-walk-content">
+    <div class="zoom-eyebrow">System overview</div>
+    <h2 class="zoom-title" data-step-title>Electronics</h2>
+    <p class="zoom-caption" data-step-sub>Zones digitized. Next — what turns numbers into music.</p>
+    <span data-step="1" style="display:none"></span>
+
+    <div class="zoom-stage-wrap">
+      <svg class="zoom-walk-svg" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="sysArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+          </marker>
+          <marker id="sysArrAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#E89318"/>
+          </marker>
+          <marker id="sysArrGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#86868B"/>
+          </marker>
+        </defs>
+        <g data-zoom-stage data-zones='[{"s":1.85,"cx":540,"cy":270},{"s":1.85,"cx":870,"cy":240}]' transform="translate(-299 -259.5) scale(1.85)">
+<!-- =================== Zone 1 · Touch =================== -->
+          <g class="zw-static">
+            <circle cx="200" cy="220" r="118" fill="#FAF6EE" stroke="#2A2724" stroke-width="2"/>
+            <g stroke="#86868B" stroke-width="0.7" fill="none" opacity="0.5">
+              <circle cx="200" cy="220" r="32"/>
+              <circle cx="200" cy="220" r="58"/>
+              <circle cx="200" cy="220" r="86"/>
+            </g>
+            <g stroke="#86868B" stroke-width="0.5" opacity="0.4">
+              <line x1="200" y1="102" x2="200" y2="338"/>
+              <line x1="82"  y1="220" x2="318" y2="220"/>
+              <line x1="117" y1="137" x2="283" y2="303"/>
+              <line x1="283" y1="137" x2="117" y2="303"/>
+            </g>
+            <ellipse cx="158" cy="188" rx="16" ry="9"  fill="#7B6450"/>
+            <ellipse cx="228" cy="208" rx="20" ry="11" fill="#9B8268"/>
+            <ellipse cx="192" cy="262" rx="13" ry="8"  fill="#A89478"/>
+            <text x="200" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sensor</text>
+            <text x="200" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Stones on the felt</text>
+          </g>
+
+          <!-- arrow 1 → 2 -->
+          <g class="zw-static">
+            <line x1="328" y1="220" x2="432" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="380" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">analog</text>
+          </g>
+
+          <!-- =================== Zone 2 · Scan =================== -->
+          <g class="zw-static">
+            <rect x="442" y="130" width="200" height="170" rx="14" fill="#1D1D1F"/>
+            <rect x="466" y="158" width="76" height="50" rx="5" fill="#2D2D30"/>
+            <text x="504" y="190" text-anchor="middle" font-size="15" fill="#F5A623" font-weight="800" letter-spacing="0.5">ESP32</text>
+            <rect x="556" y="158" width="72" height="22" rx="3" fill="#2D2D30"/>
+            <text x="592" y="174" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">CD4067</text>
+            <rect x="556" y="186" width="72" height="22" rx="3" fill="#2D2D30"/>
+            <text x="592" y="202" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">CD4067</text>
+            <g fill="#F5A623" opacity="0.85">
+              <circle cx="478" cy="232" r="2.5"/><circle cx="506" cy="232" r="2.5"/><circle cx="534" cy="232" r="2.5"/>
+              <circle cx="562" cy="232" r="2.5"/><circle cx="590" cy="232" r="2.5"/><circle cx="618" cy="232" r="2.5"/>
+              <circle cx="478" cy="252" r="2.5"/><circle cx="506" cy="252" r="2.5"/><circle cx="534" cy="252" r="2.5"/>
+              <circle cx="562" cy="252" r="2.5"/><circle cx="590" cy="252" r="2.5"/><circle cx="618" cy="252" r="2.5"/>
+              <circle cx="478" cy="272" r="2.5"/><circle cx="506" cy="272" r="2.5"/><circle cx="534" cy="272" r="2.5"/>
+              <circle cx="562" cy="272" r="2.5"/><circle cx="590" cy="272" r="2.5"/><circle cx="618" cy="272" r="2.5"/>
+            </g>
+            <text x="542" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Electronics</text>
+            <text x="542" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">224 zones · 20 Hz</text>
+            <rect x="470" y="438" width="144" height="34" rx="7" fill="#FAF6EE" stroke="#E89318" stroke-width="1.5"/>
+            <text x="542" y="461" text-anchor="middle" font-size="15" fill="#E89318" font-weight="800">USB-C PD · 20V</text>
+            <line x1="542" y1="300" x2="542" y2="438" stroke="#E89318" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+          </g>
+
+          <!-- arrow 2 → 3 -->
+          <g class="zw-static">
+            <line x1="652" y1="220" x2="756" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="704" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">UART</text>
+          </g>
+
+          <!-- =================== Zone 3 · Synth =================== -->
+          <g class="zw-static">
+            <rect x="766" y="130" width="208" height="170" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="870" y="168" text-anchor="middle" font-size="16" fill="#1D1D1F" font-weight="700">Raspberry Pi 3B</text>
+            <rect x="784" y="186" width="84" height="32" rx="16" fill="#2D7A2D" fill-opacity="0.14"/>
+            <text x="826" y="207" text-anchor="middle" font-size="14" fill="#1B5E20" font-weight="800">Python</text>
+            <rect x="876" y="186" width="84" height="32" rx="16" fill="#E89318" fill-opacity="0.2"/>
+            <text x="918" y="207" text-anchor="middle" font-size="14" fill="#A65E00" font-weight="800">SC</text>
+            <text x="826" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">logic</text>
+            <text x="918" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">sound</text>
+            <text x="870" y="274" text-anchor="middle" font-size="11" fill="#86868B">OSC bridge</text>
+            <text x="870" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Software</text>
+            <text x="870" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Logic + sound, one Pi</text>
+          </g>
+
+          <!-- arrow 3 → 4 -->
+          <g class="zw-static">
+            <line x1="984" y1="220" x2="1088" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="1036" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">USB audio</text>
+          </g>
+
+          <!-- =================== Zone 4 · Output =================== -->
+          <g class="zw-static">
+            <rect x="1100" y="138" width="96" height="160" rx="12" fill="#1D1D1F"/>
+            <circle cx="1148" cy="184" r="28" fill="#2D2D30" stroke="#555" stroke-width="2"/>
+            <circle cx="1148" cy="184" r="10" fill="#0A0A0B"/>
+            <circle cx="1148" cy="248" r="13" fill="#2D2D30" stroke="#555" stroke-width="1.5"/>
+            <g transform="translate(1280, 220)">
+              <circle cx="0" cy="0" r="56" fill="none" stroke="#F5A623" stroke-width="7" stroke-dasharray="3.6 4"/>
+              <circle cx="0" cy="0" r="46" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.35"/>
+            </g>
+            <text x="1190" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sound &amp; Light</text>
+            <text x="1190" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Sound · light</text>
+          </g>
+
+          <!-- back-channel Pi → LED ring -->
+          <g class="zw-static">
+            <path d="M 870 130 Q 870 50 1280 50 L 1280 162"
+                  stroke="#E89318" stroke-width="2" stroke-dasharray="6 5" fill="none"
+                  marker-end="url(#sysArrAccent)"/>
+            <text x="1075" y="38" text-anchor="middle" font-size="14" fill="#E89318" font-weight="800">L-frame · LED back-channel</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+  </div>
+</section>
+
+<section class="slide hero s-python-sc-hero" id="slide-13">
   <h1 class="hero-title">
     <span class="hero-title-line">Logic in Python.</span>
     <span class="hero-title-line"><span class="accent">Sound in SuperCollider.</span></span>
@@ -798,13 +1057,13 @@
   <p class="hero-subtitle">Two languages, one boundary — and a clean split between <em>what</em> happens and <em>how it sounds</em>.</p>
 </section>
 
-<section class="slide bento s-software-bento" id="slide-12">
+<section class="slide bento s-software-bento" id="slide-14">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Software architecture</div>
       <h2 class="slide-title">Python orchestrates, SuperCollider sounds</h2>
     </div>
-    <div class="slide-index">12</div>
+    <div class="slide-index">14</div>
   </div>
   <div class="bento-grid">
     <div class="bento-card c-hero">
@@ -885,13 +1144,146 @@
   </div>
 </section>
 
-<section class="slide bento s-sonification-bento" id="slide-13">
+<section class="slide zoom zwalk spine s-spine-sound" id="slide-15"
+  data-step-titles='["Software","Sound & Light"]'
+  data-step-subs='["Music computed. Next — how it reaches your ears and eyes.","A USB-C DAC drives the speaker; L-frames travel back to light the LED ring."]'>
+  <div class="zoom-content zoom-walk-content">
+    <div class="zoom-eyebrow">System overview</div>
+    <h2 class="zoom-title" data-step-title>Software</h2>
+    <p class="zoom-caption" data-step-sub>Music computed. Next — how it reaches your ears and eyes.</p>
+    <span data-step="1" style="display:none"></span>
+
+    <div class="zoom-stage-wrap">
+      <svg class="zoom-walk-svg" viewBox="0 0 1400 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="sysArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+          </marker>
+          <marker id="sysArrAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#E89318"/>
+          </marker>
+          <marker id="sysArrGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#86868B"/>
+          </marker>
+        </defs>
+        <g data-zoom-stage data-zones='[{"s":1.85,"cx":870,"cy":240},{"s":1.85,"cx":1190,"cy":240}]' transform="translate(-909.5 -204) scale(1.85)">
+<!-- =================== Zone 1 · Touch =================== -->
+          <g class="zw-static">
+            <circle cx="200" cy="220" r="118" fill="#FAF6EE" stroke="#2A2724" stroke-width="2"/>
+            <g stroke="#86868B" stroke-width="0.7" fill="none" opacity="0.5">
+              <circle cx="200" cy="220" r="32"/>
+              <circle cx="200" cy="220" r="58"/>
+              <circle cx="200" cy="220" r="86"/>
+            </g>
+            <g stroke="#86868B" stroke-width="0.5" opacity="0.4">
+              <line x1="200" y1="102" x2="200" y2="338"/>
+              <line x1="82"  y1="220" x2="318" y2="220"/>
+              <line x1="117" y1="137" x2="283" y2="303"/>
+              <line x1="283" y1="137" x2="117" y2="303"/>
+            </g>
+            <ellipse cx="158" cy="188" rx="16" ry="9"  fill="#7B6450"/>
+            <ellipse cx="228" cy="208" rx="20" ry="11" fill="#9B8268"/>
+            <ellipse cx="192" cy="262" rx="13" ry="8"  fill="#A89478"/>
+            <text x="200" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sensor</text>
+            <text x="200" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Stones on the felt</text>
+          </g>
+
+          <!-- arrow 1 → 2 -->
+          <g class="zw-static">
+            <line x1="328" y1="220" x2="432" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="380" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">analog</text>
+          </g>
+
+          <!-- =================== Zone 2 · Scan =================== -->
+          <g class="zw-static">
+            <rect x="442" y="130" width="200" height="170" rx="14" fill="#1D1D1F"/>
+            <rect x="466" y="158" width="76" height="50" rx="5" fill="#2D2D30"/>
+            <text x="504" y="190" text-anchor="middle" font-size="15" fill="#F5A623" font-weight="800" letter-spacing="0.5">ESP32</text>
+            <rect x="556" y="158" width="72" height="22" rx="3" fill="#2D2D30"/>
+            <text x="592" y="174" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">CD4067</text>
+            <rect x="556" y="186" width="72" height="22" rx="3" fill="#2D2D30"/>
+            <text x="592" y="202" text-anchor="middle" font-size="12" fill="#E5E5E7" font-weight="600">CD4067</text>
+            <g fill="#F5A623" opacity="0.85">
+              <circle cx="478" cy="232" r="2.5"/><circle cx="506" cy="232" r="2.5"/><circle cx="534" cy="232" r="2.5"/>
+              <circle cx="562" cy="232" r="2.5"/><circle cx="590" cy="232" r="2.5"/><circle cx="618" cy="232" r="2.5"/>
+              <circle cx="478" cy="252" r="2.5"/><circle cx="506" cy="252" r="2.5"/><circle cx="534" cy="252" r="2.5"/>
+              <circle cx="562" cy="252" r="2.5"/><circle cx="590" cy="252" r="2.5"/><circle cx="618" cy="252" r="2.5"/>
+              <circle cx="478" cy="272" r="2.5"/><circle cx="506" cy="272" r="2.5"/><circle cx="534" cy="272" r="2.5"/>
+              <circle cx="562" cy="272" r="2.5"/><circle cx="590" cy="272" r="2.5"/><circle cx="618" cy="272" r="2.5"/>
+            </g>
+            <text x="542" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Electronics</text>
+            <text x="542" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">224 zones · 20 Hz</text>
+            <rect x="470" y="438" width="144" height="34" rx="7" fill="#FAF6EE" stroke="#E89318" stroke-width="1.5"/>
+            <text x="542" y="461" text-anchor="middle" font-size="15" fill="#E89318" font-weight="800">USB-C PD · 20V</text>
+            <line x1="542" y1="300" x2="542" y2="438" stroke="#E89318" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+          </g>
+
+          <!-- arrow 2 → 3 -->
+          <g class="zw-static">
+            <line x1="652" y1="220" x2="756" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="704" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">UART</text>
+          </g>
+
+          <!-- =================== Zone 3 · Synth =================== -->
+          <g class="zw-static">
+            <rect x="766" y="130" width="208" height="170" rx="14" fill="white" stroke="#1D1D1F" stroke-width="2"/>
+            <text x="870" y="168" text-anchor="middle" font-size="16" fill="#1D1D1F" font-weight="700">Raspberry Pi 3B</text>
+            <rect x="784" y="186" width="84" height="32" rx="16" fill="#2D7A2D" fill-opacity="0.14"/>
+            <text x="826" y="207" text-anchor="middle" font-size="14" fill="#1B5E20" font-weight="800">Python</text>
+            <rect x="876" y="186" width="84" height="32" rx="16" fill="#E89318" fill-opacity="0.2"/>
+            <text x="918" y="207" text-anchor="middle" font-size="14" fill="#A65E00" font-weight="800">SC</text>
+            <text x="826" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">logic</text>
+            <text x="918" y="240" text-anchor="middle" font-size="12" fill="#86868B" font-weight="600">sound</text>
+            <text x="870" y="274" text-anchor="middle" font-size="11" fill="#86868B">OSC bridge</text>
+            <text x="870" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Software</text>
+            <text x="870" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Logic + sound, one Pi</text>
+          </g>
+
+          <!-- arrow 3 → 4 -->
+          <g class="zw-static">
+            <line x1="984" y1="220" x2="1088" y2="220" stroke="#86868B" stroke-width="2.6" marker-end="url(#sysArrGray)"/>
+            <text x="1036" y="206" text-anchor="middle" font-size="16" fill="#6E6E73" font-weight="700">USB audio</text>
+          </g>
+
+          <!-- =================== Zone 4 · Output =================== -->
+          <g class="zw-static">
+            <rect x="1100" y="138" width="96" height="160" rx="12" fill="#1D1D1F"/>
+            <circle cx="1148" cy="184" r="28" fill="#2D2D30" stroke="#555" stroke-width="2"/>
+            <circle cx="1148" cy="184" r="10" fill="#0A0A0B"/>
+            <circle cx="1148" cy="248" r="13" fill="#2D2D30" stroke="#555" stroke-width="1.5"/>
+            <g transform="translate(1280, 220)">
+              <circle cx="0" cy="0" r="56" fill="none" stroke="#F5A623" stroke-width="7" stroke-dasharray="3.6 4"/>
+              <circle cx="0" cy="0" r="46" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.35"/>
+            </g>
+            <text x="1190" y="382" text-anchor="middle" font-size="30" font-weight="700" fill="#1D1D1F">Sound &amp; Light</text>
+            <text x="1190" y="414" text-anchor="middle" font-size="17" font-weight="500" fill="#86868B">Sound · light</text>
+          </g>
+
+          <!-- back-channel Pi → LED ring -->
+          <g class="zw-static">
+            <path d="M 870 130 Q 870 50 1280 50 L 1280 162"
+                  stroke="#E89318" stroke-width="2" stroke-dasharray="6 5" fill="none"
+                  marker-end="url(#sysArrAccent)"/>
+            <text x="1075" y="38" text-anchor="middle" font-size="14" fill="#E89318" font-weight="800">L-frame · LED back-channel</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="step-progress">
+      <span data-dot></span>
+      <span data-dot></span>
+    </div>
+  </div>
+</section>
+
+<section class="slide bento s-sonification-bento" id="slide-16">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Sonification · Jam mode</div>
       <h2 class="slide-title">Place a stone in time &mdash; it's always in key</h2>
     </div>
-    <div class="slide-index">13</div>
+    <div class="slide-index">16</div>
   </div>
   <div class="bento-grid">
 
@@ -990,13 +1382,13 @@
   </div>
 </section>
 
-<section class="slide bento s-jam-play" id="slide-14">
+<section class="slide bento s-jam-play" id="slide-17">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Interaction</div>
       <h2 class="slide-title">How you actually play it</h2>
     </div>
-    <div class="slide-index">14</div>
+    <div class="slide-index">17</div>
   </div>
   <div class="bento-grid">
 
@@ -1077,13 +1469,13 @@
   </div>
 </section>
 
-<section class="slide bento s-jam-craft" id="slide-15">
+<section class="slide bento s-jam-craft" id="slide-18">
   <div class="slide-header">
     <div>
       <div class="slide-eyebrow">Under the hood</div>
       <h2 class="slide-title">A whole arrangement, hand-composed</h2>
     </div>
-    <div class="slide-index">15</div>
+    <div class="slide-index">18</div>
   </div>
   <div class="bento-grid">
 
@@ -1159,13 +1551,13 @@
   </div>
 </section>
 
-<section class="slide hero s-live-demo" id="slide-16">
+<section class="slide hero s-live-demo" id="slide-19">
   <div class="hero-eyebrow">Next</div>
   <h1 class="hero-title"><span class="accent">Live Demo</span></h1>
   <p class="hero-subtitle">Five minutes. From silence, to a control stone, to a full Lo-Fi loop, and back to silence.</p>
 </section>
 
-<section class="slide hero s-closing" id="slide-17">
+<section class="slide hero s-closing" id="slide-20">
   <div class="hero-eyebrow">Thank you</div>
   <h1 class="hero-title">Questions?</h1>
   <p class="hero-subtitle">Hanlin Xue, Sora Kim<br>Advisor · Yiyue Luo · UW ECE 546C · Spring 2026</p>
@@ -1173,7 +1565,7 @@
 
 </div>
 
-<div class="slide-counter" id="slideCounter">01 / 17</div>
+<div class="slide-counter" id="slideCounter">01 / 20</div>
 <div class="help-hint"><kbd>SPACE</kbd> next / step · <kbd>←</kbd><kbd>→</kbd> nav · <kbd>F</kbd> fullscreen</div>
 
 <script src="js/deck.js"></script>

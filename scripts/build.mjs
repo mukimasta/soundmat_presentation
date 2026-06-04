@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, cpSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -55,5 +55,10 @@ for (const f of ['tokens.css', 'deck.css', 'components.css', 'layouts.css']) {
   writeFileSync(join(root, 'dist', 'css', f), read(join(root, 'css', f)));
 }
 writeFileSync(join(root, 'dist', 'js', 'deck.js'), read(join(root, 'js', 'deck.js')));
+
+// Copy image assets so dist/ is a self-contained offline bundle
+if (existsSync(join(root, 'soundmat'))) {
+  cpSync(join(root, 'soundmat'), join(root, 'dist', 'soundmat'), { recursive: true });
+}
 
 console.log(`Built index.html + pre.html (${manifest.length} slides), dist/`);

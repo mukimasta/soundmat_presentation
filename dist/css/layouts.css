@@ -176,6 +176,7 @@
 [data-zoom-stage] { transform-origin: 0 0; }
 
 .s-system-zoom    .zoom-stage-wrap { aspect-ratio: 1400 / 480; }
+.spine            .zoom-stage-wrap { aspect-ratio: 1400 / 480; }
 .s-electronics-arch .zoom-stage-wrap { aspect-ratio: 1400 / 560; }
 
 /* dimming: non-active items fade back, active step pops */
