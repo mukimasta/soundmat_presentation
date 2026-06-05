@@ -41,6 +41,23 @@ npm run build
 
 **Offline bundle** — use everything under `dist/`.
 
+## GitHub Pages
+
+This repo can be published as a static site. After pushing to `main`:
+
+1. On GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**
+2. The workflow `.github/workflows/deploy-pages.yml` runs `npm run build` and deploys `dist/`.
+
+Public URL (project site):
+
+**https://mukimasta.github.io/soundmat_presentation/**
+
+Notes:
+
+- CSS/JS/media use relative paths — no extra base URL config.
+- The bundle is ~90 MB (includes a `.mov` demo); within GitHub file limits, but first load may be slow on mobile.
+- PDF export (`npm run pdf`) is local-only; it is not deployed to Pages.
+
 ## Recover monolith
 
 `legacy-monolith.html` is the original single-file version. To re-extract sources:

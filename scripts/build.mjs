@@ -70,4 +70,6 @@ if (existsSync(join(root, 'soundmat'))) {
   cpSync(join(root, 'soundmat'), join(root, 'dist', 'soundmat'), { recursive: true });
 }
 
+writeFileSync(join(root, 'dist', '.nojekyll'), '');
+
 console.log(`Built index.html + pre.html (${manifest.length} slides), dist/`);

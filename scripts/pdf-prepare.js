@@ -30,6 +30,31 @@
     });
   }
 
+  /** Chromium PDF/print renders background-clip:text as solid gradient boxes. */
+  function flattenGradientText(root) {
+    root.querySelectorAll('*').forEach(el => {
+      const clip = getComputedStyle(el).webkitBackgroundClip || getComputedStyle(el).backgroundClip;
+      if (clip !== 'text') return;
+
+      let fill = '#E89318';
+      if (el.classList.contains('sketch-accent') || el.classList.contains('jam-lofi-title')) {
+        fill = '#F5A623';
+      } else if (el.classList.contains('spark-accent') || el.classList.contains('thesis-accent')) {
+        fill = '#F5A623';
+      } else if (el.closest('.s-philosophy-bento')) {
+        fill = '#5c5348';
+      } else if (el.closest('.s-tagline')) {
+        fill = '#F5A623';
+      }
+
+      el.style.setProperty('background', 'none', 'important');
+      el.style.setProperty('-webkit-background-clip', 'border-box', 'important');
+      el.style.setProperty('background-clip', 'border-box', 'important');
+      el.style.setProperty('-webkit-text-fill-color', fill, 'important');
+      el.style.setProperty('color', fill, 'important');
+    });
+  }
+
   document.querySelector('.slide-counter')?.remove();
   document.querySelector('.deck-hud-left')?.remove();
   document.getElementById('deckBottom')?.remove();
@@ -115,5 +140,6 @@
   });
 
   deck.replaceChildren(...pages);
+  flattenGradientText(deck);
   document.body.classList.remove('deck-dark');
 })();
